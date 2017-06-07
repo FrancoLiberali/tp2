@@ -3,6 +3,7 @@ package algoBall;
 public class Casillero {
 
 	private Personaje personaje;
+	//private Consumible consumible;
 	
 	
 	public Casillero()
@@ -18,19 +19,28 @@ public class Casillero {
 	public void setPersonaje(Personaje psje)
 	{
 		if(!this.estaVacio()){
-			 throw new CasilleroOcupado();
+			 throw new CasilleroOcupadoException();
 		}
 		
 		this.personaje = psje;
 	}
 	
-	public void vaciar()
+	public Personaje vaciar()
 	{
+		if(this.estaVacio()){
+			throw new CasilleroVacioException();
+		}
+		
+		Personaje psje = this.personaje;
 		this.personaje = null;
+		return psje;
 	}
 	
 	public Personaje getPersonaje()
 	{
+		if(this.estaVacio()){
+			throw new CasilleroVacioException();
+		}
 		return this.personaje;
 	}
 
