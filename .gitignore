@@ -1,9 +1,9 @@
-bin/
 .settings/
 libs/
-tmp/
+*.class
+bin/
+bie/
 .classpath
 .project
 build/
 *.jar
-*.sw*

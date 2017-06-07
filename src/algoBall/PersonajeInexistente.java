@@ -1,10 +1,6 @@
 package algoBall;
 
+@SuppressWarnings("serial")
 public class PersonajeInexistente extends RuntimeException {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 }

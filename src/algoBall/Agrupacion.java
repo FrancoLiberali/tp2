@@ -27,8 +27,9 @@ public class Agrupacion
 		return this.nombre;
 	}
 	
-	public Personaje getPersonaje(Personaje personajeBuscado)
+	public Personaje getPersonaje(String personajeBuscado)
 	{
+		Personaje personajeEncontrado = null;
 		if(!this.existePersonaje(personajeBuscado))
 		{
 			throw new PersonajeInexistente();
@@ -36,23 +37,39 @@ public class Agrupacion
 		int i = 0;
 		while(i <= this.pertenecientes.size())
 		{
-			if (this.pertenecientes.get(i).getNombre() == personajeBuscado.getNombre()){
-				personajeBuscado = this.pertenecientes.get(i);
+			if (this.pertenecientes.get(i).getNombre() == personajeBuscado){
+				personajeEncontrado = this.pertenecientes.get(i);
 			}
 		}
-		return personajeBuscado;
+		return personajeEncontrado;
 	}
 	
-	public boolean existePersonaje(Personaje personajeBuscado) 
+	public boolean existePersonaje(String personajeBuscado) 
 	{
 		int i = 0;
 		while(i <= this.pertenecientes.size())
 		{
-			if (this.pertenecientes.get(i).getNombre() == personajeBuscado.getNombre()){
+			if (this.pertenecientes.get(i).getNombre() == personajeBuscado){
 				return true;
 			}
 		}
 		return false;
 	}
-
+	
+	public void moverIzquierda(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.moverIzquierda();
+	}
+	public void moverAbajo(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.moverAbajo();
+	}
+	public void moverDerecha(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.moverDerecha();
+	}
+	public void moverArriba(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.moverArriba();
+	}
 }

@@ -39,9 +39,10 @@ public class PersonajeUnitarioTest {
 	{
 		Tablero tablero = new Tablero(10);
 		Personaje x = new Personaje("x");
+		x.setVelocidad(5);
 		Posicion posicionInicial = new Posicion(2,2, tablero);
 		tablero.agregarPersonaje(x, posicionInicial);
-		x.mover_derecha();
+		x.moverDerecha();
 		Posicion posicionFinal = new Posicion(3,2, tablero);
 		assertEquals(tablero.getPersonajeEn(posicionFinal).getNombre(), x.getNombre());
 		
@@ -52,7 +53,9 @@ public class PersonajeUnitarioTest {
 	{
 		Tablero tablero = new Tablero(10);
 		Personaje x = new Personaje("x");
+		x.setVelocidad(5);
 		Personaje y = new Personaje("y");
+		y.setVelocidad(5);
 		
 		Posicion posicionInicialX = new Posicion(2,2, tablero);
 		Posicion posicionInicialY = new Posicion(3,2, tablero);
@@ -60,7 +63,7 @@ public class PersonajeUnitarioTest {
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
 		
-		x.mover_derecha();
+		x.moverDerecha();
 		assertEquals(x.getPosicion(), posicionInicialX);
 		/*es decir, el movimiento no se realizo*/
 		

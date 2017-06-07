@@ -5,6 +5,7 @@ public class Personaje
 	private Posicion posicion;
 	private int velocidad;
 	private String nombre;
+	private int movimientosRestantes;
 	
 	public Personaje(String nombre)
 	{
@@ -29,6 +30,7 @@ public class Personaje
 	public void setVelocidad( int velocidad)
 	{
 		this.velocidad = velocidad;
+		this.movimientosRestantes = velocidad;
 	}
 	
 	public int getVelocidad()
@@ -36,28 +38,33 @@ public class Personaje
 		return this.velocidad;
 	}
 	
-	public void mover_izquierda(){
+	public void moverIzquierda(){
 		Posicion posicion_nueva = this.posicion.darIzquierda();
 		this.mover(posicion_nueva);
 	}
-	public void mover_abajo(){
+	public void moverAbajo(){
 		Posicion posicion_nueva = this.posicion.darAbajo();
 		this.mover(posicion_nueva);
 	}
-	public void mover_derecha(){
+	public void moverDerecha(){
 		Posicion posicion_nueva = this.posicion.darDerecha();
 		this.mover(posicion_nueva);
 	}
-	public void mover_arriba(){
+	public void moverArriba(){
 		Posicion posicion_nueva = this.posicion.darArriba();
 		this.mover(posicion_nueva);
 	}
 	
 	public void mover(Posicion nuevaPosicion){
+		if (this.movimientosRestantes == 0){
+			throw new NoQuedanMovimientos();
+		}
+			
 		try {
 			Posicion posicion_anterior = this.posicion;
 			nuevaPosicion.ponerEnTablero(this);
 			posicion_anterior.vaciarTableroEnPos();
+			this.movimientosRestantes = this.movimientosRestantes - 1;
 		}
 		catch (CasilleroOcupado error){
 			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/

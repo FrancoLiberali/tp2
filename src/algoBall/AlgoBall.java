@@ -2,24 +2,54 @@ package algoBall;
 
 
 public class AlgoBall {
+	private Jugador jugadorEnJuego;
+	private Turno turnoActual;
 	private Tablero tablero;
-	private Jugador jugador1;
-	private Jugador jugador2;
-	private Agrupacion agrupacion1;
-	private Agrupacion agrupacion2;
 	
 	public AlgoBall(int dimension, String nombre1, String nombre2)
 	{
 		this.tablero = new Tablero(dimension);
-		this.agrupacion1 = new Agrupacion("enemigosDeLaTierra");
-		this.agrupacion2 = new Agrupacion("guerrerosZ");
-		this.jugador1 = new Jugador(nombre1, agrupacion1);
-		this.jugador2 = new Jugador(nombre2, agrupacion2);
-		iniciarPersonajes();
+		Jugador jugador1 = new Jugador(nombre1, "enemigosDeLaTierra");
+		Jugador jugador2 = new Jugador(nombre2, "guerrerosZ");
+		iniciarPersonajes(jugador1, jugador2);
+		this.turnoActual = iniciarTurnos(jugador1, jugador2);
 	}
 	
+	public Turno iniciarTurnos(Jugador jugador1, Jugador jugador2){
+		Turno turnoJugador1 = new Turno(jugador1);
+		Turno turnoJugador2 = new Turno(jugador2);
+		turnoJugador1.setTurnoSiguiente(turnoJugador2);
+		turnoJugador2.setTurnoSiguiente(turnoJugador1);
+		return turnoJugador1;
+	}
+	
+	public void elegirJugadorActual(){
+		jugadorEnJuego = turnoActual.getJugador();
+	}
+	
+	public void finalizarTurno(){
+		turnoActual.restablecer();
+		turnoActual = turnoActual.getTurnoSiguiente();
+		this.elegirJugadorActual();
+	}
+	
+	public void moverIzquierda(String nombrePersonaje){
+		this.jugadorEnJuego.moverIzquierda(nombrePersonaje);
+	}
+	public void moverAbajo(String nombrePersonaje){
+		this.jugadorEnJuego.moverAbajo(nombrePersonaje);
+	}
+	public void moverDerecha(String nombrePersonaje){
+		this.jugadorEnJuego.moverDerecha(nombrePersonaje);
+	}
+	public void moverArriba(String nombrePersonaje){
+		this.jugadorEnJuego.moverArriba(nombrePersonaje);
+	}
+	
+	
+	
 	//Lo agregue aca y no en el constructor por si despu�s lo cambiamos
-	public void iniciarPersonajes()
+	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
 	{
 		Personaje personaje1 = new Personaje("Goku");
 		Personaje personaje2 = new Personaje("Gohan");
@@ -35,19 +65,19 @@ public class AlgoBall {
 		personaje5.setVelocidad(4);
 		personaje6.setVelocidad(2);
 		
-		this.agrupacion1.agregarPersonaje(personaje1);
-		this.agrupacion1.agregarPersonaje(personaje2);
-		this.agrupacion1.agregarPersonaje(personaje3);
-		this.agrupacion2.agregarPersonaje(personaje4);
-		this.agrupacion2.agregarPersonaje(personaje5);
-		this.agrupacion2.agregarPersonaje(personaje6);
+		jugador1.agregarPersonaje(personaje1);
+		jugador1.agregarPersonaje(personaje2);
+		jugador1.agregarPersonaje(personaje3);
+		jugador2.agregarPersonaje(personaje4);
+		jugador2.agregarPersonaje(personaje5);
+		jugador2.agregarPersonaje(personaje6);
 		}
 	
-	public boolean existePersonaje(String nombre)
+	/*DE ACA PARA ABAJO ESTA TODO SIN MANTENIMIENTO DE LOS CAMBIOS
+	 * public boolean existePersonaje(String nombre)
 	{
-		Personaje personajeBuscado = new Personaje(nombre);
-		if (this.agrupacion1.existePersonaje(personajeBuscado)
-				|| this.agrupacion2.existePersonaje(personajeBuscado)){
+		if (this.jugador1.existePersonaje(nombre)
+				|| this.jugador2.existePersonaje(nombre)){
 			return true;
 		}
 		return false;
@@ -58,9 +88,9 @@ public class AlgoBall {
 		if(!this.existePersonaje(nombrePersonaje)){
 			throw new PersonajeInexistente();
 		}
-		Personaje personajeBuscado = new Personaje(nombrePersonaje);
+		
 		Agrupacion agrupacion = this.agrupacionPerteneciente(nombrePersonaje);
-		return (agrupacion.getPersonaje(personajeBuscado));
+		return (agrupacion.getPersonaje(nombrePersonaje));
 		
 	}
 	
@@ -69,20 +99,19 @@ public class AlgoBall {
 		if(!this.existePersonaje(nombrePersonaje)){
 			throw new PersonajeInexistente();
 		}
-		Personaje personajeBuscado = new Personaje(nombrePersonaje);
 		Agrupacion agrupacionBuscada;
-		if (this.agrupacion1.existePersonaje(personajeBuscado)){
-			agrupacionBuscada = this.agrupacion1;
+		if (this.jugador1.existePersonaje(nombrePersonaje)){
+			agrupacionBuscada = this.jugador1.getAgrupacion();
 		}
 		
 		else{
-			agrupacionBuscada = this.agrupacion2;
+			agrupacionBuscada = this.jugador1.getAgrupacion();
 		}
 		
 		return agrupacionBuscada;
-		}
+		}*/
 	
-	/*public void movimientoUnitario(String nombrePersonaje, int x, int y)
+	/*public void mover_izquierda(String nombrePersonaje, int x, int y)
 	{
 		if (x>1 || y>1){
 			throw new MovimientoUnitarioInvalido();

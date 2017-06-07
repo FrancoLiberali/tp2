@@ -3,12 +3,12 @@ package algoBall;
 public class Jugador 
 {
 	private String nombre;
-	private Agrupacion equipo;
+	private Agrupacion agrupacion;
 	
-	public Jugador(String Nombre, Agrupacion equipo)
+	public Jugador(String Nombre, String equipo)
 	{
 		this.nombre = Nombre;
-		this.equipo = equipo;
+		this.agrupacion = new Agrupacion(equipo);
 	}
 	
 	public String getNombre()
@@ -18,6 +18,31 @@ public class Jugador
 	
 	public Agrupacion getEquipo()
 	{
-		return this.equipo;
+		return this.agrupacion;
+	}
+	
+	public void agregarPersonaje(Personaje personaje){
+		this.agrupacion.agregarPersonaje(personaje);
+	}
+	
+	public boolean existePersonaje(String personaje){
+		return (this.agrupacion.existePersonaje(personaje));
+	}
+	
+	public Agrupacion getAgrupacion(){
+		return this.agrupacion;
+	}
+	
+	public void moverIzquierda(String nombrePersonaje){
+		this.agrupacion.moverIzquierda(nombrePersonaje);
+	}
+	public void moverAbajo(String nombrePersonaje){
+		this.agrupacion.moverAbajo(nombrePersonaje);
+	}
+	public void moverDerecha(String nombrePersonaje){
+		this.agrupacion.moverDerecha(nombrePersonaje);
+	}
+	public void moverArriba(String nombrePersonaje){
+		this.agrupacion.moverArriba(nombrePersonaje);
 	}
 }
