@@ -82,7 +82,7 @@ public class AlgoBall {
 		return agrupacionBuscada;
 		}
 	
-	public void movimientoUnitario(String nombrePersonaje, int x, int y)
+	/*public void movimientoUnitario(String nombrePersonaje, int x, int y)
 	{
 		if (x>1 || y>1){
 			throw new MovimientoUnitarioInvalido();
@@ -92,13 +92,13 @@ public class AlgoBall {
 		}
 		Personaje personajeAMover = this.getPersonajeConNombre(nombrePersonaje);
 		this.tablero.movimientoUnitario(personajeAMover, x, y);
-	}
+	}*/
 	
-	public Posicion getPosicionPersonaje(String nombrePersonaje){
+	/*public Posicion getPosicionPersonaje(String nombrePersonaje){
 		if(!this.existePersonaje(nombrePersonaje)){
 			throw new PersonajeInexistente();
 		}
 		Personaje personajeBuscado = this.getPersonajeConNombre(nombrePersonaje);
 		return personajeBuscado.getPosicion();
-	}
+	}*/
 }

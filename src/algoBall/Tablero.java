@@ -19,12 +19,17 @@ public class Tablero
 	
 	public Casillero getCasillero(Posicion pos)
 	{
-		return this.tableroDeCasilleros[pos.getFila()][pos.getColumna()];
+		try{
+			return (this.tableroDeCasilleros[pos.getFila()][pos.getColumna()]);
+		}
+		catch (IndexOutOfBoundsException error){
+			throw new FueraDelTablero();
+		}
 	}
 	
 	public Personaje getPersonajeEn(Posicion pos)
 	{
-		return (this.tableroDeCasilleros[pos.getFila()][pos.getColumna()]).getPersonaje();
+		return ((this.getCasillero(pos)).getPersonaje());
 	}
 	
 
@@ -35,7 +40,7 @@ public class Tablero
 
 	public void agregarPersonaje(Personaje psje, Posicion pos)
 	{
-		this.getCasillero(pos).setPersonaje(psje);
+		(this.getCasillero(pos)).setPersonaje(psje);
 		psje.setPosicion(pos);
 	}
 
@@ -43,8 +48,12 @@ public class Tablero
 		// TODO Auto-generated method stub
 		return 1;
 	}
+	public void vaciarCasilleroEnPosicion (Posicion posicion){
+		Casillero casilleroEnPos = this.getCasillero(posicion);
+		casilleroEnPos.vaciar();
+	}
 	
-	public void movimientoUnitario(Personaje psje, int x, int y)
+	/*public void movimientoUnitario(Personaje psje, int x, int y)
 	{ 
 		if (x>1 || y>1){
 			throw new MovimientoUnitarioInvalido();
@@ -63,7 +72,7 @@ public class Tablero
 		this.agregarPersonaje(psje, posicionFinal);
 		casilleroInicial.vaciar();
 		psje.setPosicion(posicionFinal);
-		}
+		}*/
 	
 	
 }

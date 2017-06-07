@@ -35,4 +35,35 @@ public class Personaje
 	{
 		return this.velocidad;
 	}
+	
+	public void mover_izquierda(){
+		Posicion posicion_nueva = this.posicion.darIzquierda();
+		this.mover(posicion_nueva);
+	}
+	public void mover_abajo(){
+		Posicion posicion_nueva = this.posicion.darAbajo();
+		this.mover(posicion_nueva);
+	}
+	public void mover_derecha(){
+		Posicion posicion_nueva = this.posicion.darDerecha();
+		this.mover(posicion_nueva);
+	}
+	public void mover_arriba(){
+		Posicion posicion_nueva = this.posicion.darArriba();
+		this.mover(posicion_nueva);
+	}
+	
+	public void mover(Posicion nuevaPosicion){
+		try {
+			Posicion posicion_anterior = this.posicion;
+			nuevaPosicion.ponerEnTablero(this);
+			posicion_anterior.vaciarTableroEnPos();
+		}
+		catch (CasilleroOcupado error){
+			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
+		}
+		catch (FueraDelTablero error){
+			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
+		}
+	}
 }
