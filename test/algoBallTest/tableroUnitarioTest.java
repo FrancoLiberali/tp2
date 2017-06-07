@@ -5,7 +5,7 @@ import org.junit.Test;
 import algoBall.Posicion;
 import algoBall.Tablero;
 import algoBall.Personaje;
-public class tableroTestUnitario {
+public class tableroUnitarioTest {
 	
 	@Test
 	public void crearTableroConDimension4VerificarDimension()

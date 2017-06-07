@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import algoBall.Posicion;
 import org.junit.Test;
 
-public class PosicionTestUnitario {
+public class PosicionUnitarioTest {
 
 	@Test
 	public void obtenerFilaColumna(){

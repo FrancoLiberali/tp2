@@ -6,7 +6,7 @@ import org.junit.Test;
 import algoBall.Casillero;
 import algoBall.Personaje;
 
-public class CasilleroTestUnitario{
+public class CasilleroUnitarioTest{
 	
 
 	@Test

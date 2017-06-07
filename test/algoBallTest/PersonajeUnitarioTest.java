@@ -7,7 +7,7 @@ import org.junit.Test;
 import algoBall.Personaje;
 import algoBall.Posicion;
 
-public class PersonajeTestUnitario {
+public class PersonajeUnitarioTest {
 
 	@Test
 	public void CrearPersonaje() {
