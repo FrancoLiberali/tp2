@@ -6,9 +6,9 @@ public class AlgoBall {
 	private Turno turnoActual;
 	private Tablero tablero;
 	
-	public AlgoBall(int dimension, String nombre1, String nombre2)
+	public AlgoBall(String nombre1, String nombre2)
 	{
-		this.tablero = new Tablero(dimension);
+		this.tablero = new Tablero(8);
 		Jugador jugador1 = new Jugador(nombre1, "enemigosDeLaTierra");
 		Jugador jugador2 = new Jugador(nombre2, "guerrerosZ");
 		iniciarPersonajes(jugador1, jugador2);
@@ -71,6 +71,20 @@ public class AlgoBall {
 		jugador2.agregarPersonaje(personaje4);
 		jugador2.agregarPersonaje(personaje5);
 		jugador2.agregarPersonaje(personaje6);
+		
+		Posicion posicionInicial1 = new Posicion(1,1,tablero);
+		Posicion posicionInicial2 = new Posicion(1,2,tablero);
+		Posicion posicionInicial3 = new Posicion(1,3,tablero);
+		Posicion posicionInicial4 = new Posicion(3,1,tablero);
+		Posicion posicionInicial5 = new Posicion(3,2,tablero);
+		Posicion posicionInicial6 = new Posicion(3,3,tablero);
+		
+		tablero.agregarPersonaje(personaje1, posicionInicial1);
+		tablero.agregarPersonaje(personaje2, posicionInicial2);
+		tablero.agregarPersonaje(personaje3, posicionInicial3);
+		tablero.agregarPersonaje(personaje4, posicionInicial4);
+		tablero.agregarPersonaje(personaje5, posicionInicial5);
+		tablero.agregarPersonaje(personaje6, posicionInicial6);
 		}
 	
 	/*DE ACA PARA ABAJO ESTA TODO SIN MANTENIMIENTO DE LOS CAMBIOS
