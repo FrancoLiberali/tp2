@@ -32,7 +32,7 @@ public class Agrupacion
 		Personaje personajeEncontrado = null;
 		if(!this.existePersonaje(personajeBuscado))
 		{
-			throw new PersonajeInexistente();
+			throw new PersonajeInexistenteException();
 		}
 		int i = 0;
 		while(i <= this.pertenecientes.size())
