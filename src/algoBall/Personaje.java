@@ -3,18 +3,34 @@ package algoBall;
 public class Personaje 
 {
 	private Posicion posicion;
-	private int velocidad;
+	// private int velocidad;
 	private String nombre;
 	private int movimientosRestantes;
+	private int ki;
+	private int salud;
+	private Estado estadoActividad;
+	private EstadoTransformacion estadoTransformacion;
+	
+	
 	
 	public Personaje(String nombre)
 	{
 		this.nombre = nombre;
+		this.ki = 0;
+		this.estadoTransformacion = new EstadoTransformacion();
+		this.estadoActividad = new EstadoActividad();
+		
+		
 	}
-	
+		
 	public String getNombre()
 	{
 		return this.nombre;
+	}
+	
+	public int getKi()
+	{
+		return this.ki;
 	}
 	
 	public Posicion getPosicion()
@@ -29,13 +45,15 @@ public class Personaje
 	}
 	public void setVelocidad( int velocidad)
 	{
-		this.velocidad = velocidad;
-		this.movimientosRestantes = velocidad;
+		this.estadoTransformacion.setVelocidad(velocidad);
+		//this.velocidad = velocidad;
+		this.movimientosRestantes = this.estadoTransformacion.getVelocidad();
 	}
 	
 	public int getVelocidad()
 	{
-		return this.velocidad;
+		return (this.estadoTransformacion.getVelocidad());
+		//return this.velocidad;
 	}
 	
 	public void moverIzquierda(){
@@ -72,5 +90,13 @@ public class Personaje
 		catch (FueraDelTableroException error){
 			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
 		}
+	}
+
+	public int getSalud() {
+		return salud;
+	}
+
+	public void setSalud(int salud) {
+		this.salud = salud;
 	}
 }

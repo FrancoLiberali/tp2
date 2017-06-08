@@ -45,6 +45,7 @@ public class CasilleroUnitarioTest{
 	public void vaciarCasilleroVerificarQueQuedeVacio(){
 		Casillero c1 = new Casillero();
 		Personaje x = new Personaje("x");
+		c1.setPersonaje(x);
 		c1.vaciar();
 		assertTrue(c1.estaVacio());
 	}
