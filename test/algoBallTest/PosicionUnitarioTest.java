@@ -1,10 +1,11 @@
 package algoBallTest;
 
 import static org.junit.Assert.*;
-import algoBall.Posicion;
-import algoBall.Tablero;
 
 import org.junit.Test;
+
+import funcionamientoTablero.Posicion;
+import funcionamientoTablero.Tablero;
 
 public class PosicionUnitarioTest {
 

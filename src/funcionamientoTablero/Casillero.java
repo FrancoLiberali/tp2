@@ -1,4 +1,8 @@
-package algoBall;
+package funcionamientoTablero;
+
+import exceptions.CasilleroOcupadoException;
+import exceptions.CasilleroVacioException;
+import funcionamientoPersonaje.Personaje;
 
 public class Casillero {
 

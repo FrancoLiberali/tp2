@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algoBall.EstadoTransformacion;
+import funcionamientoPersonaje.EstadoTransformacion;
 
 public class EstadoTransformacionUnitarioTest {
 

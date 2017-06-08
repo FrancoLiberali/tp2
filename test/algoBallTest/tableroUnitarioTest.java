@@ -2,9 +2,9 @@ package algoBallTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import algoBall.Posicion;
-import algoBall.Tablero;
-import algoBall.Personaje;
+import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
+import funcionamientoTablero.Tablero;
 public class tableroUnitarioTest {
 	
 	@Test

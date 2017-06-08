@@ -1,5 +1,7 @@
 package algoBall;
 
+import funcionamientoPersonaje.Personaje;
+
 public class Jugador 
 {
 	private String nombre;

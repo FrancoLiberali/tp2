@@ -1,4 +1,6 @@
-package algoBall;
+package funcionamientoTablero;
+
+import funcionamientoPersonaje.Personaje;
 
 public class Posicion 
 {

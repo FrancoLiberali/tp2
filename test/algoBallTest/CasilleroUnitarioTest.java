@@ -3,10 +3,10 @@ package algoBallTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import algoBall.Casillero;
-import algoBall.CasilleroOcupadoException;
-import algoBall.CasilleroVacioException;
-import algoBall.Personaje;
+import exceptions.CasilleroOcupadoException;
+import exceptions.CasilleroVacioException;
+import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Casillero;
 
 public class CasilleroUnitarioTest{
 	

@@ -1,4 +1,4 @@
-package algoBall;
+package funcionamientoPersonaje;
 
 public class EstadoActividad implements Estado {
 

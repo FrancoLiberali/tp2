@@ -1,4 +1,7 @@
-package algoBall;
+package funcionamientoTablero;
+
+import exceptions.FueraDelTableroException;
+import funcionamientoPersonaje.Personaje;
 
 public class Tablero 
 {

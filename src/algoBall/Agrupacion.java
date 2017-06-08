@@ -2,6 +2,9 @@ package algoBall;
 
 import java.util.ArrayList;
 
+import exceptions.PersonajeInexistenteException;
+import funcionamientoPersonaje.Personaje;
+
 public class Agrupacion 
 {	
 	private String nombre;

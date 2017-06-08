@@ -1,5 +1,8 @@
 package algoBall;
 
+import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
+import funcionamientoTablero.Tablero;
 
 public class AlgoBall {
 	private Jugador jugadorEnJuego;

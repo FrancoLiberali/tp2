@@ -1,4 +1,4 @@
-package algoBall;
+package funcionamientoPersonaje;
 
 public class EstadoTransformacion implements Estado{
 	private int velocidad;

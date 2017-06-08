@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algoBall.Personaje;
-import algoBall.Posicion;
-import algoBall.Tablero;
+import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
+import funcionamientoTablero.Tablero;
 
 public class PersonajeUnitarioTest {
 

@@ -1,4 +1,4 @@
-package algoBall;
+package exceptions;
 
 public class MovimientoUnitarioInvalido extends RuntimeException {
 

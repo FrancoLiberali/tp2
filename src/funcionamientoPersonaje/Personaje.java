@@ -1,4 +1,9 @@
-package algoBall;
+package funcionamientoPersonaje;
+
+import exceptions.CasilleroOcupadoException;
+import exceptions.FueraDelTableroException;
+import exceptions.NoQuedanMovimientosException;
+import funcionamientoTablero.Posicion;
 
 public class Personaje 
 {
