@@ -23,7 +23,7 @@ public class Tablero
 			return (this.tableroDeCasilleros[pos.getFila()][pos.getColumna()]);
 		}
 		catch (IndexOutOfBoundsException error){
-			throw new FueraDelTablero();
+			throw new FueraDelTableroException();
 		}
 	}
 	

@@ -57,7 +57,7 @@ public class Personaje
 	
 	public void mover(Posicion nuevaPosicion){
 		if (this.movimientosRestantes == 0){
-			throw new NoQuedanMovimientos();
+			throw new NoQuedanMovimientosException();
 		}
 			
 		try {
@@ -66,10 +66,10 @@ public class Personaje
 			posicion_anterior.vaciarTableroEnPos();
 			this.movimientosRestantes = this.movimientosRestantes - 1;
 		}
-		catch (CasilleroOcupado error){
+		catch (CasilleroOcupadoException error){
 			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
 		}
-		catch (FueraDelTablero error){
+		catch (FueraDelTableroException error){
 			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
 		}
 	}

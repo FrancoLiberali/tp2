@@ -11,7 +11,7 @@ import algoBall.Tablero;
 public class PersonajeUnitarioTest {
 
 	@Test
-	public void CrearPersonaje() {
+	public void CrearPersonajeVerificarNombre() {
 		Personaje x = new Personaje("x");
 		assertEquals(x.getNombre(),"x");
 	}
