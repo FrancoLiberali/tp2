@@ -2,29 +2,30 @@ package funcionamientoPersonaje;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDelTableroException;
+import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
+import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoTablero.Posicion;
 
 public class Personaje 
 {
 	private Posicion posicion;
-	// private int velocidad;
 	private String nombre;
 	private int movimientosRestantes;
-	private int ki;
+	private Ki ki;
 	private int salud;
 	private Estado estadoActividad;
-	private EstadoTransformacion estadoTransformacion;
+	private EstadoTransformacion estadoTransformacionActual;
 	
 	
 	
-	public Personaje(String nombre)
+	public Personaje(String nombre, EstadoTransformacion estadoInicial)
 	{
 		this.nombre = nombre;
-		this.ki = 0;
-		this.estadoTransformacion = new EstadoTransformacion();
+		this.ki = new Ki(0);
+		this.estadoTransformacionActual = estadoInicial;
+		this.movimientosRestantes = estadoInicial.getVelocidad();
 		this.estadoActividad = new EstadoActividad();
-		
 		
 	}
 		
@@ -35,7 +36,7 @@ public class Personaje
 	
 	public int getKi()
 	{
-		return this.ki;
+		return ki.getKi();
 	}
 	
 	public Posicion getPosicion()
@@ -48,17 +49,31 @@ public class Personaje
 		this.posicion = pos;
 		
 	}
-	public void setVelocidad( int velocidad)
-	{
-		this.estadoTransformacion.setVelocidad(velocidad);
-		//this.velocidad = velocidad;
-		this.movimientosRestantes = this.estadoTransformacion.getVelocidad();
-	}
 	
 	public int getVelocidad()
 	{
-		return (this.estadoTransformacion.getVelocidad());
-		//return this.velocidad;
+		return (this.estadoTransformacionActual.getVelocidad());
+	}
+	
+	public int getPoderDePelea()
+	{
+		return (this.estadoTransformacionActual.getPoderDePelea());
+	}
+	public int getDistanciaDeAtaque()
+	{
+		return (this.estadoTransformacionActual.getDistanciaDeAtaque());
+	}
+	
+	public void transformar(){
+		try{
+			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(this.ki);
+		}
+		catch (YaNoPuedeEvolucionarException error){
+			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
+		}
+		catch (KiInsuficienteException error){
+			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
+		}
 	}
 	
 	public void moverIzquierda(){

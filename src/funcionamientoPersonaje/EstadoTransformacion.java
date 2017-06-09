@@ -1,15 +1,51 @@
 package funcionamientoPersonaje;
 
-public class EstadoTransformacion implements Estado{
-	private int velocidad;
+import exceptions.YaNoPuedeEvolucionarException;
 
+public class EstadoTransformacion implements Estado{
+	private String nombre;
+	private int velocidad;
+	private int distanciaDeAtaque;
+	private int poderDePelea;
+	private EstadoTransformacion siguienteEstado = null;
+	private Ki kiParaTransformacion = null;
+	
+	public EstadoTransformacion (String nombre, int poder, int distancia, int velocidad){
+		this.nombre = nombre;
+		this.velocidad = velocidad;
+		this.distanciaDeAtaque = distancia;
+		this.poderDePelea = poder;
+	}
+	
+	public void setSiguienteEstado(EstadoTransformacion siguiente, int kiNecesario){
+		this.siguienteEstado = siguiente;
+		this.kiParaTransformacion = new Ki(kiNecesario);		
+	}
+	
+	public EstadoTransformacion transformar(Ki kiPersonaje){
+		if (this.siguienteEstado == null){
+			throw new YaNoPuedeEvolucionarException();
+		}
+		kiPersonaje.restar(kiParaTransformacion);
+		return this.siguienteEstado;
+	}
+	
+	public String getNombre(){
+		return nombre;
+	}
+	
 	public int getVelocidad() {
 		return velocidad;
 	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
+	
+	public int getDistanciaDeAtaque() {
+		return distanciaDeAtaque;
 	}
+	
+	public int getPoderDePelea() {
+		return poderDePelea;
+	}
+
 	
 	
 }

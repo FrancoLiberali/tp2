@@ -2,10 +2,12 @@ package algoBallTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 public class tableroUnitarioTest {
+	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
 	
 	@Test
 	public void crearTableroConDimension4VerificarDimension()
@@ -27,7 +29,7 @@ public class tableroUnitarioTest {
 	public void agregarPersonajeACasillero()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x");
+		Personaje x = new Personaje("x",estadoX);
 		Posicion pos = new Posicion(2,2, tablero);
 		tablero.agregarPersonaje(x, pos);
 		assertEquals(tablero.getPersonajeEn(pos).getNombre(), x.getNombre());

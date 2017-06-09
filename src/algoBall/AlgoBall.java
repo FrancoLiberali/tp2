@@ -1,5 +1,6 @@
 package algoBall;
 
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
@@ -54,39 +55,43 @@ public class AlgoBall {
 	//Lo agregue aca y no en el constructor por si despu�s lo cambiamos
 	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
 	{
-		Personaje personaje1 = new Personaje("Goku");
-		Personaje personaje2 = new Personaje("Gohan");
+		EstadoTransformacion normalDeGoku= new EstadoTransformacion ("Normal",20,2,2);
+		EstadoTransformacion kaioKenDeGoku= new EstadoTransformacion ("Kaio-Ken",40,4,3);
+		EstadoTransformacion superSayajinDeGoku= new EstadoTransformacion ("Super Sayajin",60,4,5);
+		EstadoTransformacion normalDeMajinBoo= new EstadoTransformacion ("Normal",30,2,2);
+		EstadoTransformacion booMaloDeMajinBoo= new EstadoTransformacion ("Boo Malo",50,2,3);
+		EstadoTransformacion booOriginalDeMajinBoo= new EstadoTransformacion ("Boo Original",60,3,4);
+		normalDeGoku.setSiguienteEstado(kaioKenDeGoku,20);
+		kaioKenDeGoku.setSiguienteEstado(superSayajinDeGoku,50);
+		normalDeMajinBoo.setSiguienteEstado(booMaloDeMajinBoo,20);
+		booMaloDeMajinBoo.setSiguienteEstado(booOriginalDeMajinBoo,50);
+		
+		Personaje personaje1 = new Personaje("Goku",normalDeGoku);
+		/*Personaje personaje2 = new Personaje("Gohan");
 		Personaje personaje3 = new Personaje("Piccolo");
 		Personaje personaje4 = new Personaje("Cell");
-		Personaje personaje5 = new Personaje("Freezer");
-		Personaje personaje6 = new Personaje("Majin Boo");
-
-		personaje1.setVelocidad(2);
-		personaje2.setVelocidad(2);
-		personaje3.setVelocidad(2);
-		personaje4.setVelocidad(2);
-		personaje5.setVelocidad(4);
-		personaje6.setVelocidad(2);
+		Personaje personaje5 = new Personaje("Freezer");*/
+		Personaje personaje6 = new Personaje("Majin Boo",normalDeMajinBoo);
 		
 		jugador1.agregarPersonaje(personaje1);
-		jugador1.agregarPersonaje(personaje2);
+		/*jugador1.agregarPersonaje(personaje2);
 		jugador1.agregarPersonaje(personaje3);
 		jugador2.agregarPersonaje(personaje4);
-		jugador2.agregarPersonaje(personaje5);
+		jugador2.agregarPersonaje(personaje5);*/
 		jugador2.agregarPersonaje(personaje6);
 		
 		Posicion posicionInicial1 = new Posicion(1,1,tablero);
-		Posicion posicionInicial2 = new Posicion(1,2,tablero);
+		/*Posicion posicionInicial2 = new Posicion(1,2,tablero);
 		Posicion posicionInicial3 = new Posicion(1,3,tablero);
 		Posicion posicionInicial4 = new Posicion(3,1,tablero);
-		Posicion posicionInicial5 = new Posicion(3,2,tablero);
+		Posicion posicionInicial5 = new Posicion(3,2,tablero);*/
 		Posicion posicionInicial6 = new Posicion(3,3,tablero);
 		
 		tablero.agregarPersonaje(personaje1, posicionInicial1);
-		tablero.agregarPersonaje(personaje2, posicionInicial2);
+		/*tablero.agregarPersonaje(personaje2, posicionInicial2);
 		tablero.agregarPersonaje(personaje3, posicionInicial3);
 		tablero.agregarPersonaje(personaje4, posicionInicial4);
-		tablero.agregarPersonaje(personaje5, posicionInicial5);
+		tablero.agregarPersonaje(personaje5, posicionInicial5);*/
 		tablero.agregarPersonaje(personaje6, posicionInicial6);
 		}
 	
