@@ -167,7 +167,7 @@ public class PersonajeUnitarioTest {
 		tablero.agregarPersonaje(y, posicionInicialY);
 		
 		x.atacar(posicionInicialY);
-		assertEquals(y.getSalud(), 80);
+		assertEquals(y.getSalud(), 285);
 		
 	}
 	
