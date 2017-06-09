@@ -67,4 +67,26 @@ public class PersonajeUnitarioTest {
 		
 	}
 	
+	@Test
+	public void ataqueEntrePersonajes()
+	{
+		Tablero tablero = new Tablero(10);
+		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",20,2,2);
+		Personaje x = new Personaje("x",estadoEspecifico);
+		Personaje y = new Personaje("y",estadoX);
+		y.setSalud(100);
+		
+		Posicion posicionInicialX = new Posicion(2,2, tablero);
+		Posicion posicionInicialY = new Posicion(3,2, tablero);
+		
+		tablero.agregarPersonaje(x, posicionInicialX);
+		tablero.agregarPersonaje(y, posicionInicialY);
+		
+		x.atacar(posicionInicialY);
+		assertEquals(y.getSalud(), 80);
+		
+	}
+	
+	
+	
 }

@@ -1,6 +1,7 @@
 package funcionamientoTablero;
 
 import funcionamientoPersonaje.Personaje;
+import java.lang.*;
 
 public class Posicion 
 {
@@ -52,5 +53,19 @@ public class Posicion
 	
 	public void ponerEnTablero(Personaje personaje){
 		this.tablero.agregarPersonaje(personaje, this);
+	}
+
+	public int distanciaConPosicion(Posicion posicionOther) 
+	{
+		int filaOther = posicionOther.getFila();
+		int columnaOther = posicionOther.getColumna();
+		double distancia = Math.sqrt((Math.pow(this.fila - filaOther,2) +
+				Math.pow(this.columna - columnaOther,2)));
+		return (int) distancia;
+		
+	}
+
+	public Personaje getPersonajeAAtacar(Posicion posicionVictima) {
+		return this.tablero.getPersonajeEn(posicionVictima);
 	}
 }

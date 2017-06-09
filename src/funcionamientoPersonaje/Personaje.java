@@ -1,6 +1,7 @@
 package funcionamientoPersonaje;
 
 import exceptions.CasilleroOcupadoException;
+import exceptions.DistanciaDeAtaqueException;
 import exceptions.FueraDelTableroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
@@ -119,4 +120,23 @@ public class Personaje
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
+
+	public void atacar(Posicion posicionVictima){
+		if (this.posicion.distanciaConPosicion(posicionVictima) > 
+		this.estadoTransformacionActual.getDistanciaDeAtaque())
+		{
+			throw new DistanciaDeAtaqueException();
+		}
+		
+		Personaje personajeAAtacar = this.posicion.getPersonajeAAtacar(posicionVictima);
+		personajeAAtacar.recibirDaño(this.estadoTransformacionActual.getPoderDePelea());
+		this.movimientosRestantes --;
+		
+	
+	}
+
+	public void recibirDaño(int poderDePelea) {
+		this.salud = this.salud - poderDePelea;
+	}
+
 }
