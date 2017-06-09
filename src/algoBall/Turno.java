@@ -1,5 +1,9 @@
 package algoBall;
 
+import exceptions.FueraDeRangoException;
+import exceptions.YaNoPuedeAtacarException;
+import funcionamientoTablero.Posicion;
+
 public class Turno {
 	private Jugador jugador;
 	private int cantidadDeAtaquesRestantes;
@@ -17,8 +21,9 @@ public class Turno {
 		return cantidadDeAtaquesRestantes;
 	}
 	
-	public void restablecer(){
+	public void reestablecer(){
 		cantidadDeAtaquesRestantes = 1;
+		jugador.reestablecer();
 	}
 	
 	public Turno getTurnoSiguiente(){
@@ -27,5 +32,31 @@ public class Turno {
 	
 	public void setTurnoSiguiente(Turno turnoSiguiente){
 		this.turnoSiguiente = turnoSiguiente;
+	}
+	
+	public void moverIzquierda(String nombrePersonaje){
+		this.jugador.moverIzquierda(nombrePersonaje);
+	}
+	public void moverAbajo(String nombrePersonaje){
+		this.jugador.moverAbajo(nombrePersonaje);
+	}
+	public void moverDerecha(String nombrePersonaje){
+		this.jugador.moverDerecha(nombrePersonaje);
+	}
+	public void moverArriba(String nombrePersonaje){
+		this.jugador.moverArriba(nombrePersonaje);
+	}
+	
+	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
+		if (cantidadDeAtaquesRestantes == 0){
+			throw new YaNoPuedeAtacarException();
+		}
+		try{
+			this.jugador.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
+			this.cantidadDeAtaquesRestantes = 0;
+		}
+		catch (FueraDeRangoException error){
+			/* mensaje al usuario*/
+		}
 	}
 }

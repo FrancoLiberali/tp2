@@ -1,5 +1,6 @@
 package funcionamientoPersonaje;
 
+import algoBall.Agrupacion;
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
@@ -17,6 +18,7 @@ public class Personaje
 	private int salud;
 	private Estado estadoActividad;
 	private EstadoTransformacion estadoTransformacionActual;
+	private Agrupacion agrupacion;
 	
 	
 	
@@ -139,8 +141,24 @@ public class Personaje
 		
 	}
 
-	public void recibirDanio(int poderDePelea) {
+	public void recibirDanio(int poderDePelea){
 		this.salud = this.salud - poderDePelea;
+		if (this.salud <= 0){
+			this.agrupacion.eliminar(this);
+		}
+	}
+	public void setAgrupacion(Agrupacion agrupacion){
+		this.agrupacion = agrupacion;
+	}
+	
+	public void reestablecer(){
+		/*deja todo listo para el siguiente turno*/
+		movimientosRestantes = this.getVelocidad();
+		ki.sumar(5);
+	}
+	
+	public void prohibirMovimientos(){
+		movimientosRestantes = 0;
 	}
 
 }

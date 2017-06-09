@@ -1,4 +1,4 @@
-package algoBallTest;
+package algoBallUnitTest;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

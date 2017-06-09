@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
 
 public class Agrupacion 
 {	
@@ -18,6 +19,7 @@ public class Agrupacion
 	public void agregarPersonaje(Personaje psje)
 	{
 		pertenecientes.add(psje);
+		psje.setAgrupacion(this);
 	}
 	
 	public boolean perteneceMismaAgrupacion(Personaje psje)
@@ -37,11 +39,9 @@ public class Agrupacion
 		{
 			throw new PersonajeInexistenteException();
 		}
-		int i = 0;
-		while(i <= this.pertenecientes.size())
-		{
-			if (this.pertenecientes.get(i).getNombre() == personajeBuscado){
-				personajeEncontrado = this.pertenecientes.get(i);
+		for (Personaje personaje : pertenecientes) {
+			if (personaje.getNombre() == personajeBuscado){
+				personajeEncontrado = personaje;
 			}
 		}
 		return personajeEncontrado;
@@ -49,10 +49,8 @@ public class Agrupacion
 	
 	public boolean existePersonaje(String personajeBuscado) 
 	{
-		int i = 0;
-		while(i <= this.pertenecientes.size())
-		{
-			if (this.pertenecientes.get(i).getNombre() == personajeBuscado){
+		for (Personaje personaje : pertenecientes) {
+			if (personaje.getNombre() == personajeBuscado){
 				return true;
 			}
 		}
@@ -62,17 +60,44 @@ public class Agrupacion
 	public void moverIzquierda(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		personaje.moverIzquierda();
+		this.prohibirMovimientosMenosA(personaje);
 	}
 	public void moverAbajo(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		personaje.moverAbajo();
+		this.prohibirMovimientosMenosA(personaje);
 	}
 	public void moverDerecha(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		personaje.moverDerecha();
+		this.prohibirMovimientosMenosA(personaje);
 	}
 	public void moverArriba(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		personaje.moverArriba();
+		this.prohibirMovimientosMenosA(personaje);
+	}
+	
+	public void reestablecer(){
+		for (Personaje personaje : pertenecientes) {
+			personaje.reestablecer();
+		}
+	}
+	
+	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.atacar(posicionVictima);
+	}
+	
+	public void prohibirMovimientosMenosA(Personaje personajeQueNo){
+		for (Personaje personaje : pertenecientes) {
+			if (!(personaje == personajeQueNo)){
+				personaje.prohibirMovimientos();
+			}
+		}
+	}
+	
+	public void eliminar(Personaje personajeAEliminar){
+		pertenecientes.remove(personajeAEliminar);
 	}
 }

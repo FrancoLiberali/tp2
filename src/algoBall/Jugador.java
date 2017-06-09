@@ -1,6 +1,7 @@
 package algoBall;
 
 import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
 
 public class Jugador 
 {
@@ -47,4 +48,13 @@ public class Jugador
 	public void moverArriba(String nombrePersonaje){
 		this.agrupacion.moverArriba(nombrePersonaje);
 	}
+	
+	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
+		this.agrupacion.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
+	}
+	
+	public void reestablecer(){
+		agrupacion.reestablecer();
+	}
 }
+

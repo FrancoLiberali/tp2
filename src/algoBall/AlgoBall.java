@@ -1,12 +1,12 @@
 package algoBall;
 
+import exceptions.YaNoPuedeAtacarException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 
 public class AlgoBall {
-	private Jugador jugadorEnJuego;
 	private Turno turnoActual;
 	private Tablero tablero;
 	
@@ -26,28 +26,33 @@ public class AlgoBall {
 		turnoJugador2.setTurnoSiguiente(turnoJugador1);
 		return turnoJugador1;
 	}
-	
-	public void elegirJugadorActual(){
-		jugadorEnJuego = turnoActual.getJugador();
-	}
-	
+		
 	public void finalizarTurno(){
-		turnoActual.restablecer();
+		turnoActual.reestablecer();
 		turnoActual = turnoActual.getTurnoSiguiente();
-		this.elegirJugadorActual();
 	}
 	
 	public void moverIzquierda(String nombrePersonaje){
-		this.jugadorEnJuego.moverIzquierda(nombrePersonaje);
+		this.turnoActual.moverIzquierda(nombrePersonaje);
 	}
 	public void moverAbajo(String nombrePersonaje){
-		this.jugadorEnJuego.moverAbajo(nombrePersonaje);
+		this.turnoActual.moverAbajo(nombrePersonaje);
 	}
 	public void moverDerecha(String nombrePersonaje){
-		this.jugadorEnJuego.moverDerecha(nombrePersonaje);
+		this.turnoActual.moverDerecha(nombrePersonaje);
 	}
 	public void moverArriba(String nombrePersonaje){
-		this.jugadorEnJuego.moverArriba(nombrePersonaje);
+		this.turnoActual.moverArriba(nombrePersonaje);
+	}
+	
+	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
+		Posicion posicionVictima = new Posicion (fila,columna,tablero);
+		try{
+			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
+		}
+		catch(YaNoPuedeAtacarException error){
+			/*mensaje al usuario*/
+		}
 	}
 	
 	private Personaje crearGoku()
