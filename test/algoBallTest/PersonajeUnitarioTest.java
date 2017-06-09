@@ -8,6 +8,7 @@ import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
+import algoBall.ConstantesDelJuego;
 
 public class PersonajeUnitarioTest {
 	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
@@ -142,13 +143,17 @@ public class PersonajeUnitarioTest {
 		assertEquals(x.getKi(),1);
 	}
 	
-	public void ataqueEntrePersonajes()
+	public void ataqueEntrePersonajesVerificarSalud()
 	{
+		int poder = ConstantesDelJuego.PODER_GOHAN_NORMAL;
+		int vida = ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+		int velocidad = ConstantesDelJuego.VELOCIDAD_GOKU_NORMAL;
+		
 		Tablero tablero = new Tablero(10);
-		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",20,2,2);
+		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",poder,vida,velocidad);
 		Personaje x = new Personaje("x",estadoEspecifico);
 		Personaje y = new Personaje("y",estadoX);
-		y.setSalud(100);
+		y.setSalud(ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO);
 		
 		Posicion posicionInicialX = new Posicion(2,2, tablero);
 		Posicion posicionInicialY = new Posicion(3,2, tablero);
