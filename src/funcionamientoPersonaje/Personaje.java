@@ -137,13 +137,13 @@ public class Personaje
 		}
 		
 		Personaje personajeAAtacar = this.posicion.getPersonajeAAtacar(posicionVictima);
-		personajeAAtacar.recibirDaño(this.estadoTransformacionActual.getPoderDePelea());
+		personajeAAtacar.recibirDanio(this.estadoTransformacionActual.getPoderDePelea());
 		this.movimientosRestantes --;
 		
 	
 	}
 
-	public void recibirDaño(int poderDePelea) {
+	public void recibirDanio(int poderDePelea) {
 		this.salud = this.salud - poderDePelea;
 	}
 

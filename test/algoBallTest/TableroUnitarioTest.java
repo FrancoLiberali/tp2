@@ -8,7 +8,9 @@ import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
+
 public class TableroUnitarioTest {
+	
 	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
 	
 	@Test
