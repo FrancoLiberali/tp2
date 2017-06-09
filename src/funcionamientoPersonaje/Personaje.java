@@ -1,7 +1,7 @@
 package funcionamientoPersonaje;
 
 import exceptions.CasilleroOcupadoException;
-import exceptions.DistanciaDeAtaqueException;
+import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
@@ -130,17 +130,13 @@ public class Personaje
 	}
 
 	public void atacar(Posicion posicionVictima){
-		if (this.posicion.distanciaConPosicion(posicionVictima) > 
-		this.estadoTransformacionActual.getDistanciaDeAtaque())
-		{
-			throw new DistanciaDeAtaqueException();
+		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
+			throw new FueraDeRangoException();
 		}
 		
-		Personaje personajeAAtacar = this.posicion.getPersonajeAAtacar(posicionVictima);
+		Personaje personajeAAtacar = posicionVictima.getPersonaje();
 		personajeAAtacar.recibirDanio(this.estadoTransformacionActual.getPoderDePelea());
-		this.movimientosRestantes --;
 		
-	
 	}
 
 	public void recibirDanio(int poderDePelea) {

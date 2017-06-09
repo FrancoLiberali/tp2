@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.CasilleroVacioException;
+import exceptions.FueraDeRangoException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
@@ -69,7 +71,7 @@ public class PersonajeUnitarioTest {
 		Posicion posicionInicial = new Posicion(2,2, tablero);
 		tablero.agregarPersonaje(x, posicionInicial);
 		x.moverDerecha();
-		Posicion posicionFinal = new Posicion(3,2, tablero);
+		Posicion posicionFinal = new Posicion(2,3, tablero);
 		assertTrue(x.getPosicion().esIgualA(posicionFinal));
 		
 	}
@@ -87,7 +89,7 @@ public class PersonajeUnitarioTest {
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
 		
-		x.moverDerecha();
+		x.moverAbajo();
 		assertEquals(x.getPosicion(), posicionInicialX);
 		/*es decir, el movimiento no se realizo*/
 		
@@ -103,7 +105,7 @@ public class PersonajeUnitarioTest {
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		
-		x.moverDerecha();
+		x.moverAbajo();
 		assertEquals(x.getPosicion(), posicionInicialX);
 		/*es decir, el movimiento no se realizo*/
 		
@@ -143,6 +145,9 @@ public class PersonajeUnitarioTest {
 		assertEquals(x.getKi(),1);
 	}
 	
+
+	
+	@Test
 	public void ataqueEntrePersonajesVerificarSalud()
 	{
 		int poder = ConstantesDelJuego.PODER_GOHAN_NORMAL;
@@ -163,6 +168,41 @@ public class PersonajeUnitarioTest {
 		
 		x.atacar(posicionInicialY);
 		assertEquals(y.getSalud(), 80);
+		
+	}
+	
+	@Test(expected = FueraDeRangoException.class)
+	public void atacarAUnaPosicionMasLejanaQueLaDistanciaDeAtaqueLanzaFueraDeRango()
+	{
+		Tablero tablero = new Tablero(10);
+		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",20,2,2);
+		Personaje x = new Personaje("x",estadoEspecifico);
+		Personaje y = new Personaje("y",estadoX);
+		y.setSalud(100);
+		
+		Posicion posicionInicialX = new Posicion(2,2, tablero);
+		Posicion posicionInicialY = new Posicion(5,5, tablero);
+		
+		tablero.agregarPersonaje(x, posicionInicialX);
+		tablero.agregarPersonaje(y, posicionInicialY);
+		
+		x.atacar(posicionInicialY);
+		
+	}
+	
+	@Test(expected = CasilleroVacioException.class)
+	public void atacarAUnaPosicionQueEstaDentroDelRangoPeroNoContinePersonajeLanzaCasilleroVacio()
+	{
+		Tablero tablero = new Tablero(10);
+		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",20,2,2);
+		Personaje x = new Personaje("x",estadoEspecifico);
+		
+		Posicion posicionInicialX = new Posicion(2,2, tablero);
+		Posicion posicionInicialY = new Posicion(3,3, tablero);
+		
+		tablero.agregarPersonaje(x, posicionInicialX);
+		
+		x.atacar(posicionInicialY);
 		
 	}
 	

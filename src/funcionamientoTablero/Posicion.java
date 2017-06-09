@@ -1,7 +1,6 @@
 package funcionamientoTablero;
 
 import funcionamientoPersonaje.Personaje;
-import java.lang.*;
 
 public class Posicion 
 {
@@ -28,22 +27,22 @@ public class Posicion
 	}
 	
 	public Posicion darIzquierda(){
-		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna, this.tablero);
-		return nueva_posicion;
-	}
-	
-	public Posicion darDerecha(){
-		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna, this.tablero);
-		return nueva_posicion;
-	}
-	
-	public Posicion darAbajo(){
 		Posicion nueva_posicion = new Posicion(this.fila, this.columna-1, this.tablero);
 		return nueva_posicion;
 	}
 	
-	public Posicion darArriba(){
+	public Posicion darDerecha(){
 		Posicion nueva_posicion = new Posicion(this.fila, this.columna+1, this.tablero);
+		return nueva_posicion;
+	}
+	
+	public Posicion darAbajo(){
+		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna, this.tablero);
+		return nueva_posicion;
+	}
+	
+	public Posicion darArriba(){
+		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna, this.tablero);
 		return nueva_posicion;
 	}
 	
@@ -58,18 +57,14 @@ public class Posicion
 	public boolean esIgualA(Posicion otraPosicion){
 		return (this.fila == otraPosicion.getFila() && this.columna==otraPosicion.getColumna());
 	}
-
-	public int distanciaConPosicion(Posicion posicionOther) 
-	{
-		int filaOther = posicionOther.getFila();
-		int columnaOther = posicionOther.getColumna();
-		double distancia = Math.sqrt((Math.pow(this.fila - filaOther,2) +
-				Math.pow(this.columna - columnaOther,2)));
-		return (int) distancia;
-		
+	
+	public boolean dentroDelRango(Posicion otraPosicion, int rango){
+		int difFilas = Math.abs(this.fila - otraPosicion.getFila());
+		int difColumnas = Math.abs(this.columna - otraPosicion.getColumna());
+		return (difFilas <= rango && difColumnas <= rango);
 	}
 
-	public Personaje getPersonajeAAtacar(Posicion posicionVictima) {
-		return this.tablero.getPersonajeEn(posicionVictima);
+	public Personaje getPersonaje() {
+		return this.tablero.getPersonajeEn(this);
 	}
 }

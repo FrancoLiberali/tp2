@@ -13,8 +13,8 @@ public class Tablero
 		this.dimension = dimension;
 	    tableroDeCasilleros = new Casillero[dimension][dimension];
 	    
-	    for(int i = 1; i < dimension; i++)
-            for(int j=1; j < dimension; j++)
+	    for(int i = 0; i < dimension; i++)
+            for(int j=0; j < dimension; j++)
                 tableroDeCasilleros[i][j] = new Casillero();
 
 	    
