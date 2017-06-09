@@ -94,6 +94,7 @@ public class PersonajeUnitarioTest {
 	
 	@Test
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void moverPersonajeNoFuncionaSiElLugarAlQueNosQueremosMoverSeEncuentraFueraDelTablero()
 	{
 		Tablero tablero = new Tablero(10);
@@ -145,6 +146,8 @@ public class PersonajeUnitarioTest {
 	
 	
 =======
+=======
+>>>>>>> 6eda088c558852e34047193ab592138056c89920
 	public void ataqueEntrePersonajes()
 	{
 		Tablero tablero = new Tablero(10);
@@ -164,6 +167,9 @@ public class PersonajeUnitarioTest {
 		
 	}
 	
+<<<<<<< HEAD
+>>>>>>> 6eda088c558852e34047193ab592138056c89920
+=======
 >>>>>>> 6eda088c558852e34047193ab592138056c89920
 	
 	
