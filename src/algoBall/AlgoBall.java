@@ -50,28 +50,45 @@ public class AlgoBall {
 		this.jugadorEnJuego.moverArriba(nombrePersonaje);
 	}
 	
-	
-	
-	//Lo agregue aca y no en el constructor por si despu�s lo cambiamos
-	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
+	private Personaje crearGoku()
 	{
 		EstadoTransformacion normalDeGoku= new EstadoTransformacion ("Normal",20,2,2);
 		EstadoTransformacion kaioKenDeGoku= new EstadoTransformacion ("Kaio-Ken",40,4,3);
 		EstadoTransformacion superSayajinDeGoku= new EstadoTransformacion ("Super Sayajin",60,4,5);
+		normalDeGoku.setSiguienteEstado(kaioKenDeGoku,20);
+		kaioKenDeGoku.setSiguienteEstado(superSayajinDeGoku,50);
+		return (new Personaje("Goku",normalDeGoku));
+	}
+	
+	private Personaje crearMajinBoo()
+	{
+
 		EstadoTransformacion normalDeMajinBoo= new EstadoTransformacion ("Normal",30,2,2);
 		EstadoTransformacion booMaloDeMajinBoo= new EstadoTransformacion ("Boo Malo",50,2,3);
 		EstadoTransformacion booOriginalDeMajinBoo= new EstadoTransformacion ("Boo Original",60,3,4);
-		normalDeGoku.setSiguienteEstado(kaioKenDeGoku,20);
-		kaioKenDeGoku.setSiguienteEstado(superSayajinDeGoku,50);
 		normalDeMajinBoo.setSiguienteEstado(booMaloDeMajinBoo,20);
 		booMaloDeMajinBoo.setSiguienteEstado(booOriginalDeMajinBoo,50);
+		return (new Personaje("Majin Boo",normalDeMajinBoo));
+	}
+	
+	//private Personaje crearGohan() 
+	//{
+	//	EstadoTransformacion normalDeGohan = new EstadoTransformacion ("Normal",15,2,2);
+	//	EstadoTransformacion superSayjinFase1 = new EstadoTransformacion ("Super Sayajin Fase 1",30,2,2);
+	//	EstadoTransformacion superSayajinFase2 = new EstadoTransformacion ("Super Sayajin Fase 2",100,4,3);
+	//	
+	//	normalDeGohan.setSiguienteEstado(superSayjinFase1, 10);
 		
-		Personaje personaje1 = new Personaje("Goku",normalDeGoku);
-		/*Personaje personaje2 = new Personaje("Gohan");
-		Personaje personaje3 = new Personaje("Piccolo");
-		Personaje personaje4 = new Personaje("Cell");
-		Personaje personaje5 = new Personaje("Freezer");*/
-		Personaje personaje6 = new Personaje("Majin Boo",normalDeMajinBoo);
+	
+	//}
+	
+	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
+	{
+		
+		Personaje personaje1 = this.crearGoku();
+		//Personaje personaje2 = this.crearGohan();
+		Personaje personaje6 = this.crearMajinBoo();
+		
 		
 		jugador1.agregarPersonaje(personaje1);
 		/*jugador1.agregarPersonaje(personaje2);
@@ -94,6 +111,7 @@ public class AlgoBall {
 		tablero.agregarPersonaje(personaje5, posicionInicial5);*/
 		tablero.agregarPersonaje(personaje6, posicionInicial6);
 		}
+
 	
 	/*DE ACA PARA ABAJO ESTA TODO SIN MANTENIMIENTO DE LOS CAMBIOS
 	 * public boolean existePersonaje(String nombre)

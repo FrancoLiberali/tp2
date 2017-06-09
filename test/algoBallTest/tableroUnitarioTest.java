@@ -2,11 +2,13 @@ package algoBallTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import exceptions.CasilleroVacioException;
+import exceptions.FueraDelTableroException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
-public class tableroUnitarioTest {
+public class TableroUnitarioTest {
 	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
 	
 	@Test
@@ -25,14 +27,82 @@ public class tableroUnitarioTest {
 		assertTrue(tablero.getCasillero(pos).estaVacio());
 	}
 	
+	@Test(expected = CasilleroVacioException.class)
+	public void vaciarCasilleroEnPosicionDentroDelTableroLanzaCasilleroVacio() 
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion pos = new Posicion(2,3, tablero);
+		
+		tablero.vaciarCasilleroEnPosicion(pos);
+	}
+	
+	@Test(expected = FueraDelTableroException.class)
+	public void vaciarCasilleroEnPosicionFueraDelTableroLanzaFueraDelTablero() 
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion pos = new Posicion(9,3, tablero);
+		
+		tablero.vaciarCasilleroEnPosicion(pos);
+	}
+	
+	@Test (expected = FueraDelTableroException.class)
+	public void getCasilleroEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion pos = new Posicion(8,3, tablero);
+		
+		tablero.getCasillero(pos);
+	}
+	
+	@Test (expected = FueraDelTableroException.class)
+	public void getPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion pos = new Posicion(8,3, tablero);
+		
+		tablero.getPersonajeEn(pos);
+	}
+	
+	@Test (expected = FueraDelTableroException.class)
+	public void agregarPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion pos = new Posicion(8,3, tablero);
+		Personaje x = new Personaje("x",estadoX);
+		tablero.agregarPersonaje(x, pos);
+	}
+	
 	@Test
-	public void agregarPersonajeACasillero()
+	public void agregarPersonajeACasilleroDentroDelTablero()
 	{
 		Tablero tablero = new Tablero(4);
 		Personaje x = new Personaje("x",estadoX);
 		Posicion pos = new Posicion(2,2, tablero);
 		tablero.agregarPersonaje(x, pos);
-		assertEquals(tablero.getPersonajeEn(pos).getNombre(), x.getNombre());
+		assertEquals(tablero.getPersonajeEn(pos), x);
+		
+	}
+	
+	@Test
+	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
+	{
+		Tablero tablero = new Tablero(4);
+		Personaje x = new Personaje("x",estadoX);
+		Posicion pos = new Posicion(2,2, tablero);
+		tablero.agregarPersonaje(x, pos);
+		assertEquals(x.getPosicion(), pos);
+		
+	}
+	
+	@Test
+	public void vaciarCasillerooDentroDelTableroLeQuitaElPersonaje()
+	{
+		Tablero tablero = new Tablero(4);
+		Personaje x = new Personaje("x",estadoX);
+		Posicion pos = new Posicion(2,2, tablero);
+		tablero.agregarPersonaje(x, pos);
+		tablero.vaciarCasilleroEnPosicion(pos);
+		assertTrue(tablero.getCasillero(pos).estaVacio());
 		
 	}
 	

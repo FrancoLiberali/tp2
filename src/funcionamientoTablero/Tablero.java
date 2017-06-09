@@ -56,27 +56,6 @@ public class Tablero
 		casilleroEnPos.vaciar();
 	}
 	
-	/*public void movimientoUnitario(Personaje psje, int x, int y)
-	{ 
-		if (x>1 || y>1){
-			throw new MovimientoUnitarioInvalido();
-		}
-		
-		Posicion posicionInicial = psje.getPosicion();
-		Posicion posicionFinal = new Posicion( posicionInicial.getFila() + x, posicionInicial.getColumna() + y);
-		
-		Casillero casilleroInicial = this.getCasillero(posicionInicial);
-		Casillero casilleroFinal = this.getCasillero(posicionFinal);
-		if(!casilleroFinal.estaVacio()){
-			throw new MovimientoUnitarioInvalido();
-		}
-		
-		
-		this.agregarPersonaje(psje, posicionFinal);
-		casilleroInicial.vaciar();
-		psje.setPosicion(posicionFinal);
-		}*/
-	
 	
 }
 

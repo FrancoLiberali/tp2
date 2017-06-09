@@ -1,6 +1,7 @@
 package funcionamientoTablero;
 
 import funcionamientoPersonaje.Personaje;
+import java.lang.*;
 
 public class Posicion 
 {
@@ -52,5 +53,25 @@ public class Posicion
 	
 	public void ponerEnTablero(Personaje personaje){
 		this.tablero.agregarPersonaje(personaje, this);
+	}
+<<<<<<< HEAD
+	
+	public boolean esIgualA(Posicion otraPosicion){
+		return (this.fila == otraPosicion.getFila() && this.columna==otraPosicion.getColumna());
+=======
+
+	public int distanciaConPosicion(Posicion posicionOther) 
+	{
+		int filaOther = posicionOther.getFila();
+		int columnaOther = posicionOther.getColumna();
+		double distancia = Math.sqrt((Math.pow(this.fila - filaOther,2) +
+				Math.pow(this.columna - columnaOther,2)));
+		return (int) distancia;
+		
+	}
+
+	public Personaje getPersonajeAAtacar(Posicion posicionVictima) {
+		return this.tablero.getPersonajeEn(posicionVictima);
+>>>>>>> 6eda088c558852e34047193ab592138056c89920
 	}
 }

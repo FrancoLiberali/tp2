@@ -18,6 +18,14 @@ public class PosicionUnitarioTest {
 		
 	}
 	
-	
+	@Test
+	public void distanciaConOtraPosicion()
+	{
+		Tablero tablero = new Tablero(8);
+		Posicion ps = new Posicion(1,1, tablero);
+		Posicion ps2 = new Posicion(3,2, tablero);
+		assertEquals(ps.distanciaConPosicion(ps2), 2);
+		
+	}
 
 }

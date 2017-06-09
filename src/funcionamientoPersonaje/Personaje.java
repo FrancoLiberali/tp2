@@ -1,6 +1,7 @@
 package funcionamientoPersonaje;
 
 import exceptions.CasilleroOcupadoException;
+import exceptions.DistanciaDeAtaqueException;
 import exceptions.FueraDelTableroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
@@ -39,6 +40,10 @@ public class Personaje
 		return ki.getKi();
 	}
 	
+	public void aumentarKi(int cantidad){
+		ki.sumar(cantidad);
+	}
+	
 	public Posicion getPosicion()
 	{
 		return this.posicion;
@@ -74,6 +79,10 @@ public class Personaje
 		catch (KiInsuficienteException error){
 			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
 		}
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(){
+		return estadoTransformacionActual;
 	}
 	
 	public void moverIzquierda(){
@@ -119,4 +128,23 @@ public class Personaje
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
+
+	public void atacar(Posicion posicionVictima){
+		if (this.posicion.distanciaConPosicion(posicionVictima) > 
+		this.estadoTransformacionActual.getDistanciaDeAtaque())
+		{
+			throw new DistanciaDeAtaqueException();
+		}
+		
+		Personaje personajeAAtacar = this.posicion.getPersonajeAAtacar(posicionVictima);
+		personajeAAtacar.recibirDaño(this.estadoTransformacionActual.getPoderDePelea());
+		this.movimientosRestantes --;
+		
+	
+	}
+
+	public void recibirDaño(int poderDePelea) {
+		this.salud = this.salud - poderDePelea;
+	}
+
 }

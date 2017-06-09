@@ -13,7 +13,7 @@ public class CasilleroUnitarioTest{
 	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
 
 	@Test
-	public void crearCasilleroVacio(){
+	public void CasilleroRecienCreadoEstaVacio(){
 		Casillero c1 = new Casillero();
 		assertTrue(c1.estaVacio());
 	}
@@ -27,11 +27,11 @@ public class CasilleroUnitarioTest{
 	}
 	
 	@Test
-	public void agregarPersonajeVerificoNombre(){
+	public void agregarPersonajeVerificoQueSeAgrege(){
 		Casillero c1 = new Casillero();
 		Personaje x = new Personaje("x",estadoX);
 		c1.setPersonaje(x);
-		assertEquals(c1.getPersonaje().getNombre(), x.getNombre());
+		assertEquals(c1.getPersonaje(), x);
 	}
 	
 	@Test
@@ -40,7 +40,7 @@ public class CasilleroUnitarioTest{
 		Personaje x = new Personaje("x",estadoX);
 		c1.setPersonaje(x);
 		Personaje deseado = c1.vaciar();
-		assertEquals(x.getNombre(), deseado.getNombre());
+		assertEquals(x, deseado);
 	}
 	
 	public void vaciarCasilleroVerificarQueQuedeVacio(){
