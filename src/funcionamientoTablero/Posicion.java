@@ -54,14 +54,10 @@ public class Posicion
 	public void ponerEnTablero(Personaje personaje){
 		this.tablero.agregarPersonaje(personaje, this);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 	
 	public boolean esIgualA(Posicion otraPosicion){
 		return (this.fila == otraPosicion.getFila() && this.columna==otraPosicion.getColumna());
-=======
-=======
->>>>>>> 6eda088c558852e34047193ab592138056c89920
+	}
 
 	public int distanciaConPosicion(Posicion posicionOther) 
 	{
@@ -75,9 +71,5 @@ public class Posicion
 
 	public Personaje getPersonajeAAtacar(Posicion posicionVictima) {
 		return this.tablero.getPersonajeEn(posicionVictima);
-<<<<<<< HEAD
->>>>>>> 6eda088c558852e34047193ab592138056c89920
-=======
->>>>>>> 6eda088c558852e34047193ab592138056c89920
 	}
 }
