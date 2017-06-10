@@ -117,7 +117,7 @@ public class AlgoBallIntegracionTest {
 		juego.realizarAtaqueBasico("Goku",3,0);
 		saludMajin = saludMajin - 40;
 		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
-		/*al evolucionar si llega hasta antes no llegaba y le hace 40 de daño*/
+		/*al evolucionar si llega hasta antes no llegaba y le hace 40 de danio*/
 		juego.moverDerecha("Goku");
 		juego.moverDerecha("Goku");
 		juego.moverDerecha("Goku");
