@@ -91,9 +91,6 @@ public class Personaje
 		if (movimientosRestantes == 0){
 			return;
 		}
-		else if (movimientosRestantes == velocidadAnterior){
-			movimientosRestantes = this.getVelocidad();
-		}
 		else{
 			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
 			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);

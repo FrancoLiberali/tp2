@@ -88,6 +88,44 @@ public class AlgoBallIntegracionTest {
 	
 	@Test
 	public void pruebaDeIntegracionDeMovimientosAtaquesYTransforamaciones(){
+		AlgoBall juego = new AlgoBall("juan", "pepe");
+		assertEquals(juego.getKiDe("Goku"), 5);
+		juego.finalizarTurno();
+		juego.finalizarTurno();
+		assertEquals(juego.getKiDe("Goku"), 10);
+		juego.realizarAtaqueBasico("Goku",3,0);
+		int saludMajin = ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO - 20;
+		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		juego.moverDerecha("Goku");
+		juego.finalizarTurno();
+		juego.finalizarTurno();
+		assertEquals(juego.getKiDe("Goku"), 15);
+		juego.moverDerecha("Goku");
+		juego.moverDerecha("Goku");
+		Posicion posicion = new Posicion(1,3);
+		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
+		juego.moverDerecha("Goku");
+		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
+		/* su velocidad en estado normal es 2*/
+		juego.realizarAtaqueBasico("Goku",3,0);
+		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		/*el ataque no se efectua porque la distancia es mayor que el alcance normal de goku*/
+		juego.finalizarTurno();
+		juego.finalizarTurno();
+		assertEquals(juego.getKiDe("Goku"), 20);
+		juego.transformar("Goku");
+		juego.realizarAtaqueBasico("Goku",3,0);
+		saludMajin = saludMajin - 40;
+		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		/*al evolucionar si llega hasta antes no llegaba y le hace 40 de daño*/
+		juego.moverDerecha("Goku");
+		juego.moverDerecha("Goku");
+		juego.moverDerecha("Goku");
+		Posicion posicion2 = new Posicion(1,6);
+		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
+		juego.moverDerecha("Goku");
+		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
+		/*en esta evolucion la velocidad es 3*/
 	}
 
 }
