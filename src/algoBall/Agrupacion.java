@@ -120,7 +120,12 @@ public class Agrupacion
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.atacar(posicionVictima);
+		personaje.realizarAtaqueBasico(posicionVictima);
+	}
+	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.realizarAtaqueEspecial(posicionVictima);
 	}
 	
 	public void prohibirMovimientosMenosA(Personaje personajeQueNo){

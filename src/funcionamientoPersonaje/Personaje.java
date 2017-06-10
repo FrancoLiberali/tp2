@@ -20,6 +20,7 @@ public class Personaje
 	private Estado estadoActividad;
 	private EstadoTransformacion estadoTransformacionActual;
 	private Agrupacion agrupacion;
+	private AtaqueEspecial ataqueEspecial;
 	
 	
 	
@@ -142,7 +143,7 @@ public class Personaje
 		return salud;
 	}
 
-	public void atacar(Posicion posicionVictima){
+	public void atacar(Posicion posicionVictima, int danio){
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
@@ -151,8 +152,22 @@ public class Personaje
 		if (this.agrupacion.existePersonaje(personajeAAtacar.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
-		personajeAAtacar.recibirDanio(this.estadoTransformacionActual.getPoderDePelea());
+		personajeAAtacar.recibirDanio(danio);
 		
+	}
+	
+	public void realizarAtaqueBasico(Posicion posicionVictima){
+		this.atacar(posicionVictima, this.estadoTransformacionActual.getPoderDePelea());
+	}
+	
+	public void realizarAtaqueEspecial(Posicion posicionVictima){
+		int ataqueBasico = this.estadoTransformacionActual.getPoderDePelea();
+		int ataqueEspecial = this.ataqueEspecial.getAtaque(ataqueBasico, this.ki);
+		this.atacar(posicionVictima, ataqueEspecial);
+	}
+	
+	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial){
+		this.ataqueEspecial = ataqueEspecial;
 	}
 
 	public void recibirDanio(int poderDePelea){

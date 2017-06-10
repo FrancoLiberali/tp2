@@ -2,7 +2,7 @@ package algoBall;
 
 import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
-import exceptions.YaNoPuedeAtacarException;
+import exceptions.KiInsuficienteException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoTablero.Posicion;
 
@@ -52,7 +52,8 @@ public class Turno {
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		if (cantidadDeAtaquesRestantes == 0){
-			throw new YaNoPuedeAtacarException();
+			/*mensaje al usuario*/
+			return;
 		}
 		try{
 			this.jugador.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
@@ -62,6 +63,26 @@ public class Turno {
 			/*mensaje al usuario*/
 		}
 		catch (IntentandoAtacarAUnCompanieroException error){
+			/*mensaje al usuario*/
+		}
+	}
+	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		if (cantidadDeAtaquesRestantes == 0){
+			/*mensaje al usuario*/
+			return;
+		}
+		try{
+			this.jugador.realizarAtaqueEspecial( nombrePersonaje, posicionVictima);
+			this.cantidadDeAtaquesRestantes = 0;
+		}
+		catch (FueraDeRangoException error){
+			/*mensaje al usuario*/
+		}
+		catch (IntentandoAtacarAUnCompanieroException error){
+			/*mensaje al usuario*/
+		}
+		catch (KiInsuficienteException error){
 			/*mensaje al usuario*/
 		}
 	}

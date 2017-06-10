@@ -54,6 +54,10 @@ public class Jugador
 		this.agrupacion.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
 	}
 	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		this.agrupacion.realizarAtaqueEspecial( nombrePersonaje, posicionVictima);
+	}
+	
 	public void reestablecer(){
 		agrupacion.reestablecer();
 	}

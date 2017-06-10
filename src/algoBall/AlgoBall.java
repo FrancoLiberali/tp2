@@ -1,7 +1,6 @@
 package algoBall;
 
 import exceptions.PersonajeInexistenteException;
-import exceptions.YaNoPuedeAtacarException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
@@ -56,14 +55,21 @@ public class AlgoBall {
 		try{
 			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
 		}
-		catch(YaNoPuedeAtacarException error){
-			/*mensaje al usuario*/
-		}
 		catch (JuegoTerminado fin){
 			this.terminarJuego();
 		}
 	}
 	
+	public void realizarAtaqueEspecial(String nombrePersonaje, int fila, int columna){
+		Posicion posicionVictima = new Posicion (fila,columna);
+		posicionVictima.setTablero(tablero);
+		try{
+			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
+		}
+		catch (JuegoTerminado fin){
+			this.terminarJuego();
+		}
+	}
 	public void terminarJuego(){
 		@SuppressWarnings("unused")
 		Jugador jugadorGanador = this.turnoActual.getJugador();

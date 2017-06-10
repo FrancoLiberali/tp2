@@ -236,7 +236,7 @@ public class PersonajeUnitarioTest {
 		agrupacion1.agregarPersonaje(x);
 		agrupacion2.agregarPersonaje(y);
 		
-		x.atacar(posicionInicialY);
+		x.realizarAtaqueBasico(posicionInicialY);
 		assertEquals(y.getSalud(), 280);
 		
 	}
@@ -261,7 +261,7 @@ public class PersonajeUnitarioTest {
 		agrupacion1.agregarPersonaje(x);
 		agrupacion1.agregarPersonaje(y);
 		
-		x.atacar(posicionInicialY);		
+		x.realizarAtaqueBasico(posicionInicialY);		
 	}
 	
 	@Test(expected = FueraDeRangoException.class)
@@ -278,7 +278,7 @@ public class PersonajeUnitarioTest {
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
 		
-		x.atacar(posicionInicialY);
+		x.realizarAtaqueBasico(posicionInicialY);
 		
 	}
 	
@@ -295,7 +295,7 @@ public class PersonajeUnitarioTest {
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		
-		x.atacar(posicionInicialY);
+		x.realizarAtaqueBasico(posicionInicialY);
 		
 	}
 	
