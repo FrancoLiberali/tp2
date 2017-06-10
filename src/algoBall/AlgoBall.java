@@ -88,6 +88,18 @@ public class AlgoBall {
 		}
 	}
 	
+	public int getKiDe(String nombrePersonaje){
+		return this.turnoActual.getKiDe(nombrePersonaje);
+	}
+	
+	public void transformar(String nombrePersonaje){
+		this.turnoActual.transformar(nombrePersonaje);
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		return this.turnoActual.getEstadoTransformacion(nombrePersonaje);
+	}
+	
 	private Personaje crearGoku()
 	{
 		EstadoTransformacion normalDeGoku= new EstadoTransformacion ("Normal",20,2,2);
@@ -95,7 +107,7 @@ public class AlgoBall {
 		EstadoTransformacion superSayajinDeGoku= new EstadoTransformacion ("Super Sayajin",60,4,5);
 		normalDeGoku.setSiguienteEstado(kaioKenDeGoku,20);
 		kaioKenDeGoku.setSiguienteEstado(superSayajinDeGoku,50);
-		return (new Personaje("Goku",normalDeGoku));
+		return (new Personaje("Goku",normalDeGoku,500));
 	}
 	
 	private Personaje crearMajinBoo()
@@ -106,7 +118,7 @@ public class AlgoBall {
 		EstadoTransformacion booOriginalDeMajinBoo= new EstadoTransformacion ("Boo Original",60,3,4);
 		normalDeMajinBoo.setSiguienteEstado(booMaloDeMajinBoo,20);
 		booMaloDeMajinBoo.setSiguienteEstado(booOriginalDeMajinBoo,50);
-		return (new Personaje("Majin Boo",normalDeMajinBoo));
+		return (new Personaje("Majin Boo",normalDeMajinBoo,300));
 	}
 	
 	//private Personaje crearGohan() 

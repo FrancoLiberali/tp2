@@ -70,7 +70,7 @@ public class TableroUnitarioTest {
 	{
 		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		tablero.agregarPersonaje(x, pos);
 	}
 	
@@ -78,7 +78,7 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeACasilleroDentroDelTablero()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		assertEquals(tablero.getPersonajeEn(pos), x);
@@ -89,7 +89,7 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		assertEquals(x.getPosicion(), pos);
@@ -100,7 +100,7 @@ public class TableroUnitarioTest {
 	public void vaciarCasillerooDentroDelTableroLeQuitaElPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		tablero.vaciarCasilleroEnPosicion(pos);

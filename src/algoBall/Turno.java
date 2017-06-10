@@ -1,7 +1,9 @@
 package algoBall;
 
 import exceptions.FueraDeRangoException;
+import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.YaNoPuedeAtacarException;
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoTablero.Posicion;
 
 public class Turno {
@@ -12,6 +14,7 @@ public class Turno {
 	public Turno(Jugador jugador){
 		this.jugador = jugador;
 		this.cantidadDeAtaquesRestantes = 1;
+		this.reestablecer();
 	}
 	public Jugador getJugador(){
 		return jugador;
@@ -58,6 +61,9 @@ public class Turno {
 		catch (FueraDeRangoException error){
 			/*mensaje al usuario*/
 		}
+		catch (IntentandoAtacarAUnCompanieroException error){
+			/*mensaje al usuario*/
+		}
 	}
 	
 	public Posicion obtenerPosicionDe(String nombrePersonaje){
@@ -67,4 +73,16 @@ public class Turno {
 	public int obtenerSaludDe(String nombrePersonaje){
 		return this.jugador.obtenerSaludDe(nombrePersonaje);
 	}
+	public int getKiDe(String nombrePersonaje){
+		return this.jugador.getKiDe(nombrePersonaje);
+	}
+	public void transformar(String nombrePersonaje){
+		this.jugador.transformar(nombrePersonaje);
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		return this.jugador.getEstadoTransformacion(nombrePersonaje);
+	}
 }
+
+

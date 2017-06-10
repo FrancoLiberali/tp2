@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeInexistenteException;
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 
@@ -145,5 +146,20 @@ public class Agrupacion
 	public int obtenerSaludDe(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		return personaje.getSalud();
+	}
+	
+	public int getKiDe(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getKi();
+	}
+	
+	public void transformar(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.transformar();
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getEstadoTransformacion();
 	}
 }

@@ -21,7 +21,7 @@ public class CasilleroUnitarioTest{
 	@Test
 	public void agregarPersonajeVerificoCasilleroNoVacio(){
 		Casillero c1 = new Casillero();
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		c1.setPersonaje(x);
 		assertTrue(!c1.estaVacio());
 	}
@@ -29,7 +29,7 @@ public class CasilleroUnitarioTest{
 	@Test
 	public void agregarPersonajeVerificoQueSeAgrege(){
 		Casillero c1 = new Casillero();
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		c1.setPersonaje(x);
 		assertEquals(c1.getPersonaje(), x);
 	}
@@ -37,7 +37,7 @@ public class CasilleroUnitarioTest{
 	@Test
 	public void vaciarCasilleroDevuelvePersonajeDeseado(){
 		Casillero c1 = new Casillero();
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		c1.setPersonaje(x);
 		Personaje deseado = c1.vaciar();
 		assertEquals(x, deseado);
@@ -45,7 +45,7 @@ public class CasilleroUnitarioTest{
 	
 	public void vaciarCasilleroVerificarQueQuedeVacio(){
 		Casillero c1 = new Casillero();
-		Personaje x = new Personaje("x",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
 		c1.setPersonaje(x);
 		c1.vaciar();
 		assertTrue(c1.estaVacio());
@@ -54,8 +54,8 @@ public class CasilleroUnitarioTest{
 	@Test(expected = CasilleroOcupadoException.class)
 	public void tratarDeAgregarDosPersonajesLevantaExcepcion(){
 		Casillero c1 = new Casillero();
-		Personaje x = new Personaje("x",estadoX);
-		Personaje y = new Personaje("y",estadoX);
+		Personaje x = new Personaje("x",estadoX,2);
+		Personaje y = new Personaje("y",estadoX,2);
 		c1.setPersonaje(x);
 		c1.setPersonaje(y);
 	}
