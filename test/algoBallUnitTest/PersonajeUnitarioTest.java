@@ -26,7 +26,7 @@ public class PersonajeUnitarioTest {
 	public void verificarPosicion(){
 		Personaje x = new Personaje("x", estadoX);
 		Tablero tablero = new Tablero(8);
-		Posicion xy = new Posicion(1,1, tablero);
+		Posicion xy = new Posicion(1,1);
 		x.setPosicion(xy);
 		assertEquals(x.getPosicion(), xy);
 		
@@ -68,10 +68,10 @@ public class PersonajeUnitarioTest {
 	{
 		Tablero tablero = new Tablero(10);
 		Personaje x = new Personaje("x",estadoX);
-		Posicion posicionInicial = new Posicion(2,2, tablero);
+		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(x, posicionInicial);
 		x.moverDerecha();
-		Posicion posicionFinal = new Posicion(2,3, tablero);
+		Posicion posicionFinal = new Posicion(2,3);
 		assertTrue(x.getPosicion().esIgualA(posicionFinal));
 		
 	}
@@ -83,8 +83,8 @@ public class PersonajeUnitarioTest {
 		Personaje x = new Personaje("x",estadoX);
 		Personaje y = new Personaje("y",estadoX);
 		
-		Posicion posicionInicialX = new Posicion(2,2, tablero);
-		Posicion posicionInicialY = new Posicion(3,2, tablero);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,2);
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
@@ -101,7 +101,7 @@ public class PersonajeUnitarioTest {
 		Tablero tablero = new Tablero(10);
 		Personaje x = new Personaje("x",estadoX);
 		
-		Posicion posicionInicialX = new Posicion(9,2, tablero);
+		Posicion posicionInicialX = new Posicion(9,2);
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		
@@ -160,8 +160,8 @@ public class PersonajeUnitarioTest {
 		Personaje y = new Personaje("y",estadoX);
 		y.setSalud(ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO);
 		
-		Posicion posicionInicialX = new Posicion(2,2, tablero);
-		Posicion posicionInicialY = new Posicion(3,2, tablero);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,2);
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
@@ -180,8 +180,8 @@ public class PersonajeUnitarioTest {
 		Personaje y = new Personaje("y",estadoX);
 		y.setSalud(100);
 		
-		Posicion posicionInicialX = new Posicion(2,2, tablero);
-		Posicion posicionInicialY = new Posicion(5,5, tablero);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(5,5);
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		tablero.agregarPersonaje(y, posicionInicialY);
@@ -197,8 +197,9 @@ public class PersonajeUnitarioTest {
 		EstadoTransformacion estadoEspecifico = new EstadoTransformacion ("Normal",20,2,2);
 		Personaje x = new Personaje("x",estadoEspecifico);
 		
-		Posicion posicionInicialX = new Posicion(2,2, tablero);
-		Posicion posicionInicialY = new Posicion(3,3, tablero);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,3);
+		posicionInicialY.setTablero(tablero);
 		
 		tablero.agregarPersonaje(x, posicionInicialX);
 		

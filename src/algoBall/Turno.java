@@ -56,7 +56,15 @@ public class Turno {
 			this.cantidadDeAtaquesRestantes = 0;
 		}
 		catch (FueraDeRangoException error){
-			/* mensaje al usuario*/
+			/*mensaje al usuario*/
 		}
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		return this.jugador.obtenerPosicionDe(nombrePersonaje);
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		return this.jugador.obtenerSaludDe(nombrePersonaje);
 	}
 }

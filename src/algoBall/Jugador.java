@@ -56,5 +56,13 @@ public class Jugador
 	public void reestablecer(){
 		agrupacion.reestablecer();
 	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		return this.agrupacion.obtenerPosicionDe(nombrePersonaje);
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		return this.agrupacion.obtenerSaludDe(nombrePersonaje);
+	}
 }
 

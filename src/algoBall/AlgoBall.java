@@ -1,5 +1,6 @@
 package algoBall;
 
+import exceptions.PersonajeInexistenteException;
 import exceptions.YaNoPuedeAtacarException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
@@ -32,6 +33,10 @@ public class AlgoBall {
 		turnoActual = turnoActual.getTurnoSiguiente();
 	}
 	
+	public Turno turnoSiguiente(){
+		return turnoActual.getTurnoSiguiente();
+	}
+	
 	public void moverIzquierda(String nombrePersonaje){
 		this.turnoActual.moverIzquierda(nombrePersonaje);
 	}
@@ -46,12 +51,40 @@ public class AlgoBall {
 	}
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
-		Posicion posicionVictima = new Posicion (fila,columna,tablero);
+		Posicion posicionVictima = new Posicion (fila,columna);
+		posicionVictima.setTablero(tablero);
 		try{
 			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
 		}
 		catch(YaNoPuedeAtacarException error){
 			/*mensaje al usuario*/
+		}
+		catch (JuegoTerminado fin){
+			this.terminarJuego();
+		}
+	}
+	
+	public void terminarJuego(){
+		@SuppressWarnings("unused")
+		Jugador jugadorGanador = this.turnoActual.getJugador();
+		/*mensaje final*/
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		try{
+			return this.turnoActual.obtenerPosicionDe(nombrePersonaje);
+		}
+		catch (PersonajeInexistenteException error){
+			return this.turnoSiguiente().obtenerPosicionDe(nombrePersonaje);
+		}
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		try{
+			return this.turnoActual.obtenerSaludDe(nombrePersonaje);
+		}
+		catch (PersonajeInexistenteException error){
+			return this.turnoSiguiente().obtenerSaludDe(nombrePersonaje);
 		}
 	}
 	
@@ -102,12 +135,12 @@ public class AlgoBall {
 		jugador2.agregarPersonaje(personaje5);*/
 		jugador2.agregarPersonaje(personaje6);
 		
-		Posicion posicionInicial1 = new Posicion(1,1,tablero);
+		Posicion posicionInicial1 = new Posicion(1,0);
 		/*Posicion posicionInicial2 = new Posicion(1,2,tablero);
 		Posicion posicionInicial3 = new Posicion(1,3,tablero);
 		Posicion posicionInicial4 = new Posicion(3,1,tablero);
 		Posicion posicionInicial5 = new Posicion(3,2,tablero);*/
-		Posicion posicionInicial6 = new Posicion(3,3,tablero);
+		Posicion posicionInicial6 = new Posicion(3,0);
 		
 		tablero.agregarPersonaje(personaje1, posicionInicial1);
 		/*tablero.agregarPersonaje(personaje2, posicionInicial2);

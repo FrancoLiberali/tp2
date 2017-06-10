@@ -145,6 +145,7 @@ public class Personaje
 		this.salud = this.salud - poderDePelea;
 		if (this.salud <= 0){
 			this.agrupacion.eliminar(this);
+			this.posicion.vaciarTableroEnPos();
 		}
 	}
 	public void setAgrupacion(Agrupacion agrupacion){
