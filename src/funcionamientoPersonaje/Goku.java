@@ -2,6 +2,8 @@ package funcionamientoPersonaje;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import funcionamientoTablero.Posicion;
+
 public class Goku extends Personaje 
 {	
 	
@@ -11,8 +13,10 @@ public class Goku extends Personaje
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_GOKU);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOKU, KI_ATQ_ESPECIAL_GOKU);
+		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU);
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
+		
 	}
 	
 	
@@ -33,7 +37,8 @@ public class Goku extends Personaje
 	
 	
 	@Override 
-	public EstadoTransformacion setPrimerEstadoTransformacion() {
+	public EstadoTransformacion setPrimerEstadoTransformacion() 
+	{
 		String nombre = NOMBRE_GOKU_PRIMERA_TRANSF;
 		int velocidad = VELOCIDAD_GOKU_PRIMERA_TRANSF;
 		int distancia = DISTANCIA_GOKU_PRIMERA_TRANSF;
@@ -48,7 +53,8 @@ public class Goku extends Personaje
 	
 	
 	@Override 
-	public EstadoTransformacion setSegundoEstadoTransformacion() {
+	public EstadoTransformacion setSegundoEstadoTransformacion()
+	{
 		String nombre = NOMBRE_GOKU_SEGUNDA_TRANF;
 		int velocidad = VELOCIDAD_GOKU_SEGUNDA_TRANF;
 		int distancia = DISTANCIA_GOKU_SEGUNDA_TRANF;
@@ -56,5 +62,28 @@ public class Goku extends Personaje
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 
 		return segundaTranf;
+	}
+	
+	@Override
+	public int realizarAtaqueEspecial(Posicion posicionVictima)
+	{
+		int danioAtaque = super.realizarAtaqueEspecial(posicionVictima);
+		if (this.salud.getPorcentajeSalud()<= PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU )
+		{
+			danioAtaque = danioAtaque + danioAtaque * PORCENTAJE_AUMENTO_DANIO_GOKU / 100;
+		}
+		return danioAtaque;
+	}
+	
+	@Override
+	public void realizarAtaqueBasico(Posicion posicionVictima)
+	{
+		int poderExtra = 0;
+		if (this.salud.getPorcentajeSalud()<= PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU )
+		{
+			poderExtra = this.getPoderDePelea() * PORCENTAJE_AUMENTO_DANIO_GOKU / 100;
+		}
+		this.atacar(posicionVictima, this.estadoTransformacionActual.getPoderDePelea() + poderExtra);
+		
 	}
 }

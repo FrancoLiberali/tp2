@@ -61,7 +61,7 @@ public class PersonajeUnitTest
 	}
 	
 	@Test
-	public void AumentarKiSumarCantidadAlKi()
+	public void aumentarKiSumarCantidadAlKi()
 	{
 		Personaje goku = new Goku();
 		int cant = 5;
@@ -291,6 +291,5 @@ public class PersonajeUnitTest
 		
 		goku.realizarAtaqueBasico(posicionInicialY);
 	}
-	
 	
 }
