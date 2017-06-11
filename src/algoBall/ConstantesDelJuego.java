@@ -5,6 +5,8 @@ public final class ConstantesDelJuego {
 
     public static final int KI_INICIAL = 0;
 	public static final String NOMBRE_TRANF_NORMAL = "Normal";
+	public static final int KI_POR_TURNO = 5;
+	public static final int REDUCCION_DE_ATAQUE = 20; //CUANDO EL PODER DE PELEA DEL ENEMIGO ES MAYOR
 	
     //Goku.
 	//posicion

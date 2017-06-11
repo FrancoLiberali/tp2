@@ -1,6 +1,7 @@
 package funcionamientoPersonaje;
 
 import algoBall.Agrupacion;
+import algoBall.ConstantesDelJuego;
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
@@ -114,7 +115,7 @@ public abstract class Personaje
 		return this.salud.getSalud();
 	}
 
-	public void atacar(Posicion posicionVictima, int danio){
+	public void atacar(Posicion posicionVictima, int danio, int poderDePelea){
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
@@ -123,18 +124,20 @@ public abstract class Personaje
 		if (this.agrupacion.existePersonaje(personajeAAtacar.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
-		personajeAAtacar.recibirDanio(danio);
+		personajeAAtacar.recibirDanio(danio, poderDePelea);
 		
 	}
 	
 	public void realizarAtaqueBasico(Posicion posicionVictima){
-		this.atacar(posicionVictima, this.estadoTransformacionActual.getPoderDePelea());
+		int poderDePelea =  this.estadoTransformacionActual.getPoderDePelea();
+		this.atacar(posicionVictima, poderDePelea, poderDePelea);
+		//POR AHORA PORQUE NO HAY CONSUMIBLES ENTONCES ATAQUE BASICO SIEMPRE ES IGUAL A PODER DE PELEA
 	}
 	
 	public int realizarAtaqueEspecial(Posicion posicionVictima){
-		int ataqueBasico = this.estadoTransformacionActual.getPoderDePelea();
-		int ataqueEspecial = this.ataqueEspecial.getAtaque(ataqueBasico, this.ki);
-		this.atacar(posicionVictima, ataqueEspecial);
+		int poderDePelea = this.estadoTransformacionActual.getPoderDePelea();
+		int ataqueEspecial = this.ataqueEspecial.getAtaque(poderDePelea, this.ki);
+		this.atacar(posicionVictima, ataqueEspecial, poderDePelea);
 		return ataqueEspecial;
 	}
 	
@@ -142,8 +145,11 @@ public abstract class Personaje
 		this.ataqueEspecial = ataqueEspecial;
 	}
 
-	public void recibirDanio(int poderDePelea){
-		this.salud.disminuir(poderDePelea);
+	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){
+		if (poderDePeleaEnemigo < this.getPoderDePelea()){
+			danioARecibir = danioARecibir - (danioARecibir * ConstantesDelJuego.REDUCCION_DE_ATAQUE / 100);
+		}
+		this.salud.disminuir(danioARecibir);
 		if (this.salud.esCero()){
 			this.agrupacion.eliminar(this);
 		}
@@ -156,7 +162,7 @@ public abstract class Personaje
 	public void reestablecer(){
 		/*deja todo listo para el siguiente turno*/
 		movimientosRestantes = this.getVelocidad();
-		ki.sumar(5);
+		ki.sumar(ConstantesDelJuego.KI_POR_TURNO);
 	}
 	
 	public void prohibirMovimientos(){
