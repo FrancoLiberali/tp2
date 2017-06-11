@@ -10,7 +10,8 @@ public class EstadoTransformacion implements Estado{
 	private EstadoTransformacion siguienteEstado = null;
 	private Ki kiParaTransformacion = null;
 	private int vidasAbsorvidasNecesariasParaTransformar;
-	private int porcentajeVidaDeGohanNecesariaParaTranformar;
+	private int porcentajeVidaDeGohanNecesariaParaTransformar;
+	private int porcentajeVidaDeCompanierosNecesariaParaTransformar;
 	
 	public EstadoTransformacion (String nombre, int poder, int distancia, int velocidad){
 		this.nombre = nombre;
@@ -57,11 +58,20 @@ public class EstadoTransformacion implements Estado{
 	}
 	
 	public void setPorcetajeVidaDeGohanNecesaria(int vidaDeGohanNecesaria){
-		porcentajeVidaDeGohanNecesariaParaTranformar = vidaDeGohanNecesaria;
+		porcentajeVidaDeGohanNecesariaParaTransformar = vidaDeGohanNecesaria;
 	}
 	
 	public boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeVidaDeGohan){
-		return (porcentajeVidaDeGohan < porcentajeVidaDeGohanNecesariaParaTranformar);
+		return (porcentajeVidaDeGohan < porcentajeVidaDeGohanNecesariaParaTransformar);
+	}
+	
+	public void setPorcetajeVidaDeCompanierosNecesaria(int vidaDeCompanierosNecesaria){
+		porcentajeVidaDeCompanierosNecesariaParaTransformar = vidaDeCompanierosNecesaria;
+	}
+	
+	public boolean vidaDeCompanierosEsMenorALaNecesariaParaTranformar(int porcentajeVidaCompaniero1, int porcentajeVidaCompaniero2){
+		return (porcentajeVidaCompaniero1 < porcentajeVidaDeCompanierosNecesariaParaTransformar 
+				&& porcentajeVidaCompaniero2 < porcentajeVidaDeCompanierosNecesariaParaTransformar);
 	}
 
 	
