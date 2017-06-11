@@ -4,6 +4,7 @@ public class ConstantesDelJuego {
 	private ConstantesDelJuego(){}  // Previene instancia.
 
     public static final int KI_INICIAL = 0;
+	public static final String NOMBRE_TRANF_NORMAL = "Normal";
 	
     //Goku.
     public static final int PUNTOS_VIDA_GOKU   = 500;
@@ -90,7 +91,7 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_CELL_PRIMERA_TRANSF = "Semi-perfecto";
     public static final int PODER_CELL_PRIMERA_TRANSF = 40;
     public static final int DISTANCIA_CELL_PRIMERA_TRANSF = 4;
-    public static final int VELOCIDAD_CELL_PRIMERA_TRANSFO = 3;
+    public static final int VELOCIDAD_CELL_PRIMERA_TRANSF = 3;
     //Cell segunda transformacion.
     public static final int KI_CELL_SEGUNDA_TRANF = 0;
     public static final int CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF = 8;
@@ -142,8 +143,8 @@ public class ConstantesDelJuego {
     public static final int KI_MAJIN_BOO_SEGUNDA_TRANF = 50;
     public static final String NOMBRE_MAJIN_BOO_SEGUNDA_TRANSF = "Boo Original";
     public static final int PODER_MAJIN_BOO_SEGUNDA_TRANSF = 60;
-    public static final int DISTANCIA_MAJIN_SEGUNDA_TRANSF= 3;
-    public static final int VELOCIDAD_MAJIN_SEGUNDA_TRANSF = 4;
+    public static final int DISTANCIA_MAJIN_BOO_SEGUNDA_TRANSF= 3;
+    public static final int VELOCIDAD_MAJIN_BOO_SEGUNDA_TRANSF = 4;
     //Otros
     public static final int KI_ATQ_ESPECIAL_MAJIN_BOO = 30;
     public static final String NOMBRE_ATQ_ESPECIAL_MAJIN_BOO = "Conviertete en Chocolate";
@@ -155,7 +156,6 @@ public class ConstantesDelJuego {
     public static final int ESFERA_DEL_DRAGON_TURNOS = 2;
     public static final int NUBE_VOLADORA_MULTIPLICADOR_VELOCIDAD = 2;
     public static final int NUBE_VOLADORA_TURNOS = 2;
-    
 
 }
     
