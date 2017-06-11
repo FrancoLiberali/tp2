@@ -2,7 +2,6 @@ package algoBall;
 
 import java.util.ArrayList;
 
-import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
@@ -62,52 +61,41 @@ public class Agrupacion
 	public void moverIzquierda(String nombrePersonaje){
 		try {
 			Personaje personaje = this.getPersonaje(nombrePersonaje);
-			personaje.moverIzquierda();
-			this.prohibirMovimientosMenosA(personaje);
+			moverIzquierda movimiento = new moverIzquierda();
+			movimiento.mover(personaje,this.pertenecientes);
 		}
 		catch (PersonajeInexistenteException error){
-			/*mensaje al usuario*/
-		}
-		catch (NoQuedanMovimientosException error){
 			/*mensaje al usuario*/
 		}
 	}
 	public void moverAbajo(String nombrePersonaje){
 		try {
 			Personaje personaje = this.getPersonaje(nombrePersonaje);
-			personaje.moverAbajo();
-			this.prohibirMovimientosMenosA(personaje);
+			moverAbajo movimiento = new moverAbajo();
+			movimiento.mover(personaje,this.pertenecientes);
 		}
 		catch (PersonajeInexistenteException error){
-			/*mensaje al usuario*/
-		}
-		catch (NoQuedanMovimientosException error){
 			/*mensaje al usuario*/
 		}
 	}
 	public void moverDerecha(String nombrePersonaje){
+		
 		try {
 			Personaje personaje = this.getPersonaje(nombrePersonaje);
-			personaje.moverDerecha();
-			this.prohibirMovimientosMenosA(personaje);
+			moverDerecha movimiento = new moverDerecha();
+			movimiento.mover(personaje,this.pertenecientes);
 		}
 		catch (PersonajeInexistenteException error){
-			/*mensaje al usuario*/
-		}
-		catch (NoQuedanMovimientosException error){
-			/*mensaje al usuario*/
+			/*mensaje al usuario*/ 
 		}
 	}
 	public void moverArriba(String nombrePersonaje){
 		try {
 			Personaje personaje = this.getPersonaje(nombrePersonaje);
-			personaje.moverArriba();
-			this.prohibirMovimientosMenosA(personaje);
+			moverArriba movimiento = new moverArriba();
+			movimiento.mover(personaje,this.pertenecientes);
 		}
 		catch (PersonajeInexistenteException error){
-			/*mensaje al usuario*/
-		}
-		catch (NoQuedanMovimientosException error){
 			/*mensaje al usuario*/
 		}
 	}
