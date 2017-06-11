@@ -2,32 +2,36 @@ package funcionamientoPersonaje;
 
 import exceptions.KiInsuficienteException;
 
-public class Ki {
+public class Ki implements Comparable <Ki>  
+{
 	private int ki;
 	
-	public Ki(int kiInicial){
+	public Ki(int kiInicial)
+	{
 		this.ki = kiInicial;
 	}
 	
-	public void sumar(int cantidad){
-		ki = ki + cantidad;
+	public void sumar(int cantidad)
+	{
+		this.ki = this.ki + cantidad;
 	}
 	
-	public int getKi(){
-		return ki;
+	public int getKi()
+	{
+		return this.ki;
 	}
 	
-	public void restar(Ki kiARestar){
-		this.esMayor(kiARestar);
-		
-		ki = ki - (kiARestar.getKi());
-	}
-	
-	private void esMayor(Ki otroKi){
-		if (ki < otroKi.getKi()){
+	public void restar(Ki kiARestar)
+	{
+		if(this.compareTo(kiARestar) == -1){
 			throw new KiInsuficienteException();
 		}
+		this.ki = this.ki - kiARestar.getKi();
 	}
 	
-
+	@Override
+	public int compareTo(Ki otroKi) 
+	{
+	  return Integer.compare(this.ki, otroKi.getKi());
+	}
 }

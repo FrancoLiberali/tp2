@@ -9,7 +9,7 @@ import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Ki;
 
-public class EstadoTransformacionUnitarioTest {
+public class EstadoTransformacionUnitTest {
 
 	@Test
 	public void crearConVelocidadYObtenerla(){

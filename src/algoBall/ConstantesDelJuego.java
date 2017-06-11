@@ -1,12 +1,17 @@
 package algoBall;
     
-public class ConstantesDelJuego {
-	private ConstantesDelJuego(){}  // Previene instancia.
+public final class ConstantesDelJuego {
+	private ConstantesDelJuego(){}  
 
     public static final int KI_INICIAL = 0;
 	public static final String NOMBRE_TRANF_NORMAL = "Normal";
 	
     //Goku.
+	//posicion
+	public static final int GOKU_FIL = 1;
+	public static final int GOKU_COL = 0;
+	//normal
+	public static final String GOKU_NOMBRE = "Goku";
     public static final int PUNTOS_VIDA_GOKU   = 500;
     public static final int PODER_GOKU_NORMAL = 20;
     public static final int DISTANCIA_GOKU_NORMAL = 2;
@@ -32,7 +37,11 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_GOKU = "Kamehameha";
     
     //Gohan
+    //posicion
+  	public static final int GOHAN_FIL = 2;
+  	public static final int GOHAN_COL = 2;
     //Gohan normal.
+	public static final String GOHAN_NOMBRE = "Gohan";
     public static final int PUNTOS_VIDA_GOHAN= 300;
     public static final int PODER_GOHAN_NORMAL = 15;
     public static final int DISTANCIA_GOHAN_NORMAL = 2;
@@ -56,7 +65,11 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_GOHAN = "Masenko";
     
     //Piccolo
+    //posicion
+  	public static final int PICCOLO_FIL = 2;
+  	public static final int PICCOLO_COL = 3;
     //Piccolo normal.
+    public static final String PICCOLO_NOMBRE = "Piccolo";
     public static final int PUNTOS_VIDA_PICCOLO = 500;
     public static final int PODER_PICCOLO_NORMAL = 20;
     public static final int DISTANCIA_PICCOLO_NORMAL = 2;
@@ -80,7 +93,11 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_PICCOLO = "Makankosappo";
     
     //Cell
+    //posicion
+  	public static final int CELL_FIL = 3;
+  	public static final int CELL_COL = 2;
     //Cell normal.
+    public static final String CELL_NOMBRE = "Cell";
     public static final int PUNTOS_VIDA_CELL = 500;
     public static final int PODER_CELL_NORMAL = 20;
     public static final int DISTANCIA_CELL_NORMAL = 3;
@@ -104,7 +121,11 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_CELL = "Absorver";
     
     //Freezer
+    //posicion
+  	public static final int FREEZER_FIL = 3;
+  	public static final int FREEZER_COL = 0;
     //Freezer Normal
+    public static final String FREEZER_NOMBRE = "Freezer";
 	public static final int PUNTOS_VIDA_FREEZER = 400;
     public static final int PODER_FREEZER_NORMAL = 20;
     public static final int DISTANCIA_FREEZER_NORMAL = 2;
@@ -128,7 +149,11 @@ public class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_FREEZER = "Rayo Mortal";
      
     //MAJIN_BOO
+    //posicion
+  	public static final int MAJIN_BOO_FIL = 3;
+  	public static final int MAJIN_BOO_COL = 1;
     //MAJIN_BOO Normal
+    public static final String MAJIN_BOO_NOMBRE = "Majin Boo";
 	public static final int PUNTOS_VIDA_MAJIN_BOO = 300;
     public static final int PODER_MAJIN_BOO_NORMAL = 30;
     public static final int DISTANCIA_MAJIN_BOO_NORMAL = 2;
@@ -151,6 +176,9 @@ public class ConstantesDelJuego {
     
     
     //Consumibles
+    public static final String SEMILLA_HERMITANEO_NOMBRE = "Semilla del Hermitaneo";
+    public static final String ESFERA_DEL_DRAGON_NOMBRE = "Esfera del Dragon";
+    public static final String NUBE_VOLADORA_NOMBRE = "Nube Voladora";
     public static final int SEMILLA_HERMITANEO_PLUS_VIDA = 100;
     public static final int ESFERA_DEL_DRAGON_PORCENTAJE_PLUS_DANIO = 25;
     public static final int ESFERA_DEL_DRAGON_TURNOS = 2;

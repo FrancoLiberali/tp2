@@ -74,4 +74,26 @@ public class Posicion
 	public Personaje getPersonaje() {
 		return this.tablero.getPersonajeEn(this);
 	}
+	
+	@Override
+	public boolean equals(Object otraPosicion) 
+	{
+		if (this == otraPosicion){
+				return true;
+		}
+		if (!(otraPosicion instanceof Posicion)){
+				return false;
+		}
+		Posicion otraPos = (Posicion)otraPosicion;
+		return otraPos.fila == fila && otraPos.columna == columna;
+	}
+
+	@Override
+	public int hashCode() 
+	{
+	    int resultado = fila;
+	    resultado = 31 * resultado + columna;
+	    return resultado;
+	}
+	
 }

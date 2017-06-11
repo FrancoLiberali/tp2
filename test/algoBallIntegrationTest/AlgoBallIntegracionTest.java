@@ -1,42 +1,50 @@
 package algoBallIntegrationTest;
 
 import static org.junit.Assert.*;
+import static algoBall.ConstantesDelJuego.*;
 
 import org.junit.Test;
 
 import algoBall.AlgoBall;
-import algoBall.ConstantesDelJuego;
 import funcionamientoTablero.Posicion;
 
-public class AlgoBallIntegracionTest {
-	
+public class AlgoBallIntegracionTest 
+{	
 	@Test
 	public void pruebaDeIntegracionDeMovimientos(){
 		AlgoBall juego = new AlgoBall("juan", "pepe");
-		juego.moverAbajo("Goku");
+		
+		juego.moverAbajo(GOKU_NOMBRE);
 		Posicion posicion = new Posicion(2,0);
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
-		juego.moverAbajo("Goku");
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
-		/*el movimiento no se realizo por alli esta MajinBoo*/
-		juego.moverDerecha("Majin Boo");
-		Posicion posicionMajin = new Posicion(3,0);
-		assertTrue(juego.obtenerPosicionDe("Majin Boo").esIgualA(posicionMajin));
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
+		
+		juego.moverAbajo(GOKU_NOMBRE);
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
+		/*el movimiento no se realizo por que alli esta Freezer*/
+		
+		juego.moverDerecha(FREEZER_NOMBRE);
+		Posicion posFreezer = new Posicion(3,0);
+		assertEquals(juego.obtenerPosicionDe(FREEZER_NOMBRE), posFreezer);
 		/*no se puede mover a Majin porque no es el turno del jugador duenio*/
-		juego.moverIzquierda("Goku");
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
+		
+		juego.moverIzquierda(GOKU_NOMBRE);
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
 		/* el movimiento no se realizo porque alli termina el tablero*/
-		juego.moverDerecha("Goku");
+		
+		juego.moverDerecha(GOKU_NOMBRE);
 		Posicion posicion2 = new Posicion(2,1);
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
-		juego.moverDerecha("Goku");
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion2);
+		
+		juego.moverDerecha(GOKU_NOMBRE);
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion2);
 		/*el movimiento no se realizo porque goku ya ha realizado la cantidad de movimientos maxima
 		 * segun su velocidad*/
+		
 		juego.finalizarTurno();
-		juego.moverArriba("Majin Boo");
-		Posicion posicionmajin2 = new Posicion(2,0);
-		assertTrue(juego.obtenerPosicionDe("Majin Boo").esIgualA(posicionmajin2));
+		
+		juego.moverArriba(FREEZER_NOMBRE);
+		Posicion posFreezer2 = new Posicion(2,0);
+		assertEquals(juego.obtenerPosicionDe(FREEZER_NOMBRE),posFreezer2);
 		/* ahora si se puede mover ya que es su turno*/
 		
 	}
@@ -44,44 +52,54 @@ public class AlgoBallIntegracionTest {
 	@Test
 	public void pruebaDeIntegracionDeAtaques(){
 		AlgoBall juego = new AlgoBall("juan", "pepe");
-		int salud = ConstantesDelJuego.PUNTOS_VIDA_GOKU;
-		assertEquals(juego.obtenerSaludDe("Goku"), salud);
-		juego.realizarAtaqueBasico("Goku",1,0);
-		assertEquals(juego.obtenerSaludDe("Goku"), salud);
+		int salud = PUNTOS_VIDA_GOKU;
+		assertEquals(juego.obtenerSaludDe(GOKU_NOMBRE), salud);
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,1,0);
+		assertEquals(juego.obtenerSaludDe(GOKU_NOMBRE), salud);
 		/*El personaje no se puede atacar a el mismo*/
-		juego.realizarAtaqueBasico("Goku",3,0);
-		int saludMajin = ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO - 20;
-		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
-		juego.realizarAtaqueBasico("Goku",3,0);
-		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,3,0);
+		int saludMajin = PUNTOS_VIDA_FREEZER - PODER_GOKU_NORMAL;
+		assertEquals(juego.obtenerSaludDe(FREEZER_NOMBRE), saludMajin);
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,3,0);
+		assertEquals(juego.obtenerSaludDe(FREEZER_NOMBRE), saludMajin);
 		/*El jugador ya ataco este turno por lo que el ataque no es valido*/
 		juego.finalizarTurno();
-		juego.realizarAtaqueBasico("Majin Boo", 1, 0);
-		int saludGoku = ConstantesDelJuego.PUNTOS_VIDA_GOKU - 30;
-		assertEquals(juego.obtenerSaludDe("Goku"), saludGoku);
+		juego.realizarAtaqueBasico(FREEZER_NOMBRE, 1, 0);
+		int saludGoku = PUNTOS_VIDA_GOKU - PODER_FREEZER_NORMAL;
+		assertEquals(juego.obtenerSaludDe(GOKU_NOMBRE), saludGoku);
 		
 	}
 	
 	@Test
 	public void pruebaDeIntegracionDeTransformaciones(){
 		AlgoBall juego = new AlgoBall("juan", "pepe");
-		assertEquals(juego.getKiDe("Goku"), 5);
-		juego.transformar("Goku");
-		assertEquals(juego.getEstadoTransformacion("Goku").getNombre(), "Normal");
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 5);
+		
+		juego.transformar(GOKU_NOMBRE);
+		assertEquals(juego.getEstadoTransformacion(GOKU_NOMBRE).getNombre(), "Normal");
 		/*La transformacion no tuvo exito porque el ki no era suficiente*/
+		
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 10);
+		
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 10);
+		
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 15);
+		
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 15);
+		
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 20);
-		juego.transformar("Goku");
-		assertEquals(juego.getEstadoTransformacion("Goku").getNombre(), "Kaio-Ken");
+		
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 20);
+		
+		juego.transformar(GOKU_NOMBRE);
+		
+		assertEquals(juego.getEstadoTransformacion(GOKU_NOMBRE).getNombre(), "Kaio-Ken");
 		/*Se pudo realizar la tranformacion porque se tiene el ki suficiente*/
-		assertEquals(juego.getKiDe("Goku"), 0);
+		
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 0);
 		/* se gasto el ki para transformarse*/
 		
 	}
@@ -89,42 +107,51 @@ public class AlgoBallIntegracionTest {
 	@Test
 	public void pruebaDeIntegracionDeMovimientosAtaquesYTransforamaciones(){
 		AlgoBall juego = new AlgoBall("juan", "pepe");
-		assertEquals(juego.getKiDe("Goku"), 5);
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 5);
+		
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 10);
-		juego.realizarAtaqueBasico("Goku",3,0);
-		int saludMajin = ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO - 20;
-		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
-		juego.moverDerecha("Goku");
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 10);
+		
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,3,0);
+		int saludFreezer = PUNTOS_VIDA_FREEZER - PODER_GOKU_NORMAL;
+		assertEquals(juego.obtenerSaludDe(FREEZER_NOMBRE), saludFreezer);
+		
+		juego.moverDerecha(GOKU_NOMBRE);
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 15);
-		juego.moverDerecha("Goku");
-		juego.moverDerecha("Goku");
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 15);
+		
+		juego.moverDerecha(GOKU_NOMBRE);
+		juego.moverDerecha(GOKU_NOMBRE);
 		Posicion posicion = new Posicion(1,3);
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
-		juego.moverDerecha("Goku");
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion));
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
+		
+		juego.moverDerecha(GOKU_NOMBRE);
+		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
 		/* su velocidad en estado normal es 2*/
-		juego.realizarAtaqueBasico("Goku",3,0);
-		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,3,0);
+		assertEquals(juego.obtenerSaludDe(FREEZER_NOMBRE), saludFreezer);
 		/*el ataque no se efectua porque la distancia es mayor que el alcance normal de goku*/
+		
 		juego.finalizarTurno();
 		juego.finalizarTurno();
-		assertEquals(juego.getKiDe("Goku"), 20);
-		juego.transformar("Goku");
-		juego.realizarAtaqueBasico("Goku",3,0);
-		saludMajin = saludMajin - 40;
-		assertEquals(juego.obtenerSaludDe("Majin Boo"), saludMajin);
+		assertEquals(juego.getKiDe(GOKU_NOMBRE), 20);
+		
+		juego.transformar(GOKU_NOMBRE);
+		juego.realizarAtaqueBasico(GOKU_NOMBRE,3,0);
+		saludFreezer = saludFreezer - PODER_GOKU_PRIMERA_TRANSF;
+		assertEquals(juego.obtenerSaludDe(FREEZER_NOMBRE), saludFreezer);
 		/*al evolucionar si llega hasta antes no llegaba y le hace 40 de danio*/
-		juego.moverDerecha("Goku");
-		juego.moverDerecha("Goku");
-		juego.moverDerecha("Goku");
+		
+		juego.moverDerecha(GOKU_NOMBRE);
+		juego.moverDerecha(GOKU_NOMBRE);
+		juego.moverDerecha(GOKU_NOMBRE);
 		Posicion posicion2 = new Posicion(1,6);
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
-		juego.moverDerecha("Goku");
-		assertTrue(juego.obtenerPosicionDe("Goku").esIgualA(posicion2));
+		assertTrue(juego.obtenerPosicionDe(GOKU_NOMBRE).esIgualA(posicion2));
+		juego.moverDerecha(GOKU_NOMBRE);
+		assertTrue(juego.obtenerPosicionDe(GOKU_NOMBRE).esIgualA(posicion2));
 		/*en esta evolucion la velocidad es 3*/
 	}
 

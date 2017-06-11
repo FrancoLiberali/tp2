@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import funcionamientoTablero.Posicion;
 
-public class PosicionUnitarioTest {
+public class PosicionUnitTest {
 
 	@Test
 	public void obtenerFilaColumna(){

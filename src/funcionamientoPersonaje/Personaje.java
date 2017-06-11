@@ -10,30 +10,18 @@ import exceptions.NoQuedanMovimientosException;
 import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoTablero.Posicion;
 
-public class Personaje 
+public abstract class Personaje 
 {
-	private Posicion posicion;
-	private String nombre;
-	private int movimientosRestantes;
-	private Ki ki;
-	private int salud;
-	private Estado estadoActividad;
-	private EstadoTransformacion estadoTransformacionActual;
-	private Agrupacion agrupacion;
-	private AtaqueEspecial ataqueEspecial;
+	protected Posicion posicion;
+	protected String nombre;
+	protected int movimientosRestantes;
+	protected Ki ki;
+	protected Salud salud;
+	protected Estado estadoActividad;
+	protected EstadoTransformacion estadoTransformacionActual;
+	protected Agrupacion agrupacion;
+	protected AtaqueEspecial ataqueEspecial;
 	
-	
-	
-	public Personaje(String nombre, EstadoTransformacion estadoInicial, int saludInicial)
-	{
-		this.nombre = nombre;
-		this.ki = new Ki(0);
-		this.estadoTransformacionActual = estadoInicial;
-		this.movimientosRestantes = estadoInicial.getVelocidad();
-		this.estadoActividad = new EstadoActividad();
-		this.salud = saludInicial;
-		
-	}
 		
 	public String getNombre()
 	{
@@ -140,7 +128,7 @@ public class Personaje
 	}
 
 	public int getSalud() {
-		return salud;
+		return this.salud.getSalud();
 	}
 
 	public void atacar(Posicion posicionVictima, int danio){
@@ -171,12 +159,12 @@ public class Personaje
 	}
 
 	public void recibirDanio(int poderDePelea){
-		this.salud = this.salud - poderDePelea;
-		if (this.salud <= 0){
+		this.salud.disminuir(poderDePelea);
+		if (this.salud.esCero()){
 			this.agrupacion.eliminar(this);
-			this.posicion.vaciarTableroEnPos();
 		}
 	}
+		
 	public void setAgrupacion(Agrupacion agrupacion){
 		this.agrupacion = agrupacion;
 	}
@@ -190,5 +178,11 @@ public class Personaje
 	public void prohibirMovimientos(){
 		movimientosRestantes = 0;
 	}
+	
+	abstract EstadoTransformacion setEstadoNormal();
+	
+	abstract EstadoTransformacion setPrimerEstadoTransformacion();
+	
+	abstract EstadoTransformacion setSegundoEstadoTransformacion();
 
 }

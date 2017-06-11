@@ -7,7 +7,7 @@ public class Salud
 	
 	public Salud(int salud)
 	{
-		this.saludActual = salud;
+		this.saludInicial = salud;
 		this.saludActual = salud;
 	}
 	

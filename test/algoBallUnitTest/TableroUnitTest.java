@@ -4,15 +4,13 @@ import org.junit.Test;
 
 import exceptions.CasilleroVacioException;
 import exceptions.FueraDelTableroException;
-import funcionamientoPersonaje.EstadoTransformacion;
+import funcionamientoPersonaje.Goku;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 
-public class TableroUnitarioTest {
-	
-	private EstadoTransformacion estadoX = new EstadoTransformacion("normalx",40,2,4);
-	
+public class TableroUnitTest 
+{
 	@Test
 	public void crearTableroConDimension4VerificarDimension()
 	{
@@ -70,18 +68,18 @@ public class TableroUnitarioTest {
 	{
 		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
-		Personaje x = new Personaje("x",estadoX,2);
-		tablero.agregarPersonaje(x, pos);
+		Personaje goku = new Goku();
+		tablero.agregarPersonaje(goku, pos);
 	}
 	
 	@Test
 	public void agregarPersonajeACasilleroDentroDelTablero()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX,2);
+		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(x, pos);
-		assertEquals(tablero.getPersonajeEn(pos), x);
+		tablero.agregarPersonaje(goku, pos);
+		assertEquals(tablero.getPersonajeEn(pos), goku);
 		
 	}
 	
@@ -89,10 +87,10 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX,2);
+		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(x, pos);
-		assertEquals(x.getPosicion(), pos);
+		tablero.agregarPersonaje(goku, pos);
+		assertEquals(goku.getPosicion(), pos);
 		
 	}
 	
@@ -100,13 +98,11 @@ public class TableroUnitarioTest {
 	public void vaciarCasillerooDentroDelTableroLeQuitaElPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX,2);
+		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(x, pos);
+		tablero.agregarPersonaje(goku, pos);
 		tablero.vaciarCasilleroEnPosicion(pos);
 		assertTrue(tablero.getCasillero(pos).estaVacio());
-		
 	}
-	
 }
 	

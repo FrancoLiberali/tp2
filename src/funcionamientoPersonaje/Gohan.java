@@ -1,31 +1,32 @@
 package funcionamientoPersonaje;
 
-import algoBall.ConstantesDelJuego;
+import static algoBall.ConstantesDelJuego.*;
 
 public class Gohan extends Personaje 
 {	
 	
 	public Gohan()
 	{
-		this.nombre = "GOHAN";
-		this.ki = new Ki(ConstantesDelJuego.KI_INICIAL);
-		this.salud = new Salud(ConstantesDelJuego.PUNTOS_VIDA_GOHAN);
+		this.nombre = GOHAN_NOMBRE;
+		this.ki = new Ki(KI_INICIAL);
+		this.salud = new Salud(PUNTOS_VIDA_GOHAN);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOHAN, KI_ATQ_ESPECIAL_GOHAN);
 		this.estadoTransformacionActual = setEstadoNormal();
-		// falta agegar la agrupacion.
+		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 	}
 	
 	
 	@Override
 	public EstadoTransformacion setEstadoNormal()
 	{
-		String nombre = ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_GOHAN_NORMAL;
-		int distancia = ConstantesDelJuego.DISTANCIA_GOHAN_NORMAL;
-		int poder = ConstantesDelJuego.PODER_GOHAN_NORMAL;
+		String nombre = NOMBRE_TRANF_NORMAL;
+		int velocidad = VELOCIDAD_GOHAN_NORMAL;
+		int distancia = DISTANCIA_GOHAN_NORMAL;
+		int poder = PODER_GOHAN_NORMAL;
 		EstadoTransformacion normal = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
-		normal.setSiguienteEstado(siguiente, ConstantesDelJuego.KI_GOHAN_PRIMERA_TRANF);
+		normal.setSiguienteEstado(siguiente, KI_GOHAN_PRIMERA_TRANF);
 
 		return normal;
 	}
@@ -33,14 +34,14 @@ public class Gohan extends Personaje
 	
 	@Override 
 	public EstadoTransformacion setPrimerEstadoTransformacion() {
-		String nombre = ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_GOHAN_PRIMERA_TRANSF;
-		int distancia = ConstantesDelJuego.DISTANCIA_GOHAN_PRIMERA_TRANSF;
-		int poder = ConstantesDelJuego.PODER_GOHAN_PRIMERA_TRANSF;
+		String nombre = NOMBRE_GOHAN_PRIMERA_TRANSF;
+		int velocidad = VELOCIDAD_GOHAN_PRIMERA_TRANSF;
+		int distancia = DISTANCIA_GOHAN_PRIMERA_TRANSF;
+		int poder = PODER_GOHAN_PRIMERA_TRANSF;
 		EstadoTransformacion primeraTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 		
-		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
-		primeraTranf.setSiguienteEstado(siguiente, ConstantesDelJuego.KI_SEGUNDA_TRANF_GOHAN);
+		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
+		primeraTranf.setSiguienteEstado(siguiente, KI_SEGUNDA_TRANF_GOHAN);
 
 		return primeraTranf;
 	}
@@ -48,10 +49,10 @@ public class Gohan extends Personaje
 	
 	@Override 
 	public EstadoTransformacion setSegundoEstadoTransformacion() {
-		String nombre = ConstantesDelJuego.NOMBRE_GOHAN_SEGUNDA_TRANSF;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_GOHAN_SEGUNDA_TRANSF;
-		int distancia = ConstantesDelJuego.DISTANCIA_GOHAN_SEGUNDA_TRANSF;
-		int poder = ConstantesDelJuego.PODER_GOHAN_SEGUNDA_TRANSF;
+		String nombre = NOMBRE_GOHAN_SEGUNDA_TRANSF;
+		int velocidad = VELOCIDAD_GOHAN_SEGUNDA_TRANSF;
+		int distancia = DISTANCIA_GOHAN_SEGUNDA_TRANSF;
+		int poder = PODER_GOHAN_SEGUNDA_TRANSF;
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 
 		return segundaTranf;

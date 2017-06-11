@@ -1,57 +1,55 @@
 package funcionamientoPersonaje;
 
-import algoBall.ConstantesDelJuego;
+import static algoBall.ConstantesDelJuego.*;
 
 public class Piccolo extends Personaje 
 {	
 	
 	public Piccolo()
 	{
-		this.nombre = "Piccolo";
-		this.ki = new Ki(ConstantesDelJuego.KI_INICIAL);
-		this.salud = new Salud(ConstantesDelJuego.PUNTOS_VIDA_PICCOLO);
+		this.nombre = PICCOLO_NOMBRE;
+		this.ki = new Ki(KI_INICIAL);
+		this.salud = new Salud(PUNTOS_VIDA_PICCOLO);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = setEstadoNormal();
-		// falta agegar la agrupacion.
+		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 	}
-	
 	
 	@Override
 	public EstadoTransformacion setEstadoNormal()
 	{
-		String nombre = ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_PICCOLO_NORMAL;
-		int distancia = ConstantesDelJuego.DISTANCIA_PICCOLO_NORMAL;
-		int poder = ConstantesDelJuego.PODER_PICCOLO_NORMAL;
+		String nombre = NOMBRE_TRANF_NORMAL;
+		int velocidad = VELOCIDAD_PICCOLO_NORMAL;
+		int distancia = DISTANCIA_PICCOLO_NORMAL;
+		int poder = PODER_PICCOLO_NORMAL;
 		EstadoTransformacion normal = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
-		normal.setSiguienteEstado(siguiente, ConstantesDelJuego.KI_PICCOLO_PRIMERA_TRANF);
+		normal.setSiguienteEstado(siguiente, KI_PICCOLO_PRIMERA_TRANF);
 
 		return normal;
 	}
 	
-	
 	@Override 
 	public EstadoTransformacion setPrimerEstadoTransformacion() {
-		String nombre = ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_PICCOLO_PRIMERA_TRANSF;
-		int distancia = ConstantesDelJuego.DISTANCIA_PICCOLO_PRIMERA_TRANSF;
-		int poder = ConstantesDelJuego.PODER_PICCOLO_PRIMERA_TRANSF;
+		String nombre = NOMBRE_PICCOLO_PRIMERA_TRANSF;
+		int velocidad = VELOCIDAD_PICCOLO_PRIMERA_TRANSF;
+		int distancia = DISTANCIA_PICCOLO_PRIMERA_TRANSF;
+		int poder = PODER_PICCOLO_PRIMERA_TRANSF;
 		EstadoTransformacion primeraTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 		
-		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
-		primeraTranf.setSiguienteEstado(siguiente, ConstantesDelJuego.KI_PICCOLO_SEGUNDA_TRANF);
+		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
+		primeraTranf.setSiguienteEstado(siguiente, KI_PICCOLO_SEGUNDA_TRANF);
 
 		return primeraTranf;
 	}
 	
-	
 	@Override 
 	public EstadoTransformacion setSegundoEstadoTransformacion() {
-		String nombre = ConstantesDelJuego.NOMBRE_PICCOLO_SEGUNDA_TRANSF;
-		int velocidad = ConstantesDelJuego.VELOCIDAD_PICCOLO_SEGUNDA_TRANSF;
-		int distancia = ConstantesDelJuego.DISTANCIA_PICCOLO_SEGUNDA_TRANSF;
-		int poder = ConstantesDelJuego.PODER_PICCOLO_SEGUNDA_TRANSF;
+		String nombre = NOMBRE_PICCOLO_SEGUNDA_TRANSF;
+		int velocidad = VELOCIDAD_PICCOLO_SEGUNDA_TRANSF;
+		int distancia = DISTANCIA_PICCOLO_SEGUNDA_TRANSF;
+		int poder = PODER_PICCOLO_SEGUNDA_TRANSF;
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 
 		return segundaTranf;
