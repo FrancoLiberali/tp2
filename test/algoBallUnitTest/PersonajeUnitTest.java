@@ -157,7 +157,7 @@ public class PersonajeUnitTest
 	}
 	
 	@Test
-	public void ataqueEntrePersonajesDeDistintasAgrupacionesBajaLaSalud()
+	public void ataqueEntrePersonajesDeDistintasAgrupacionesBajaLaSaludIgualAlAtaqueSiElAtacanteEsMasFuerte()
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
@@ -177,6 +177,31 @@ public class PersonajeUnitTest
 		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOKU_NORMAL;
 		
 		goku.realizarAtaqueBasico(posicionInicialY);
+		assertEquals(cell.getSalud(), saludEsperada);
+		
+	}
+	
+	@Test
+	public void ataqueEntrePersonajesDeDistintasAgrupacionesBajaLaSaludMenosUn20PorCientoSiElAtacanteEsMasDebil()
+	{
+		Personaje gohan = new Gohan();
+		Personaje cell = new Cell();
+		
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,2);
+		
+		tablero.agregarPersonaje(gohan, posicionInicialX);
+		tablero.agregarPersonaje(cell, posicionInicialY);
+		
+		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Agrupacion agrupacion2 = new Agrupacion("malos");
+		agrupacion1.agregarPersonaje(gohan);
+		agrupacion2.agregarPersonaje(cell);
+		
+		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOHAN_NORMAL + PODER_GOHAN_NORMAL * REDUCCION_DE_ATAQUE /100;
+		
+		gohan.realizarAtaqueBasico(posicionInicialY);
 		assertEquals(cell.getSalud(), saludEsperada);
 		
 	}

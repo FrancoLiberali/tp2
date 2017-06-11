@@ -9,7 +9,8 @@ public class EstadoTransformacion implements Estado{
 	private int poderDePelea;
 	private EstadoTransformacion siguienteEstado = null;
 	private Ki kiParaTransformacion = null;
-	private int vidasNecesariasParaTransformar;
+	private int vidasAbsorvidasNecesariasParaTransformar;
+	private int porcentajeVidaDeGohanNecesariaParaTranformar;
 	
 	public EstadoTransformacion (String nombre, int poder, int distancia, int velocidad){
 		this.nombre = nombre;
@@ -47,12 +48,20 @@ public class EstadoTransformacion implements Estado{
 		return poderDePelea;
 	}
 	
-	public void setVidasNecesarias(int vidasNecesarias){
-		vidasNecesariasParaTransformar = vidasNecesarias;
+	public void setVidasAbsorvidasNecesarias(int vidasNecesarias){
+		vidasAbsorvidasNecesariasParaTransformar = vidasNecesarias;
 	}
 	
 	public boolean seAbsorvieronVidasNecesarias(int vidasAbsorvidas){
-		return (vidasAbsorvidas >= vidasNecesariasParaTransformar);
+		return (vidasAbsorvidas >= vidasAbsorvidasNecesariasParaTransformar);
+	}
+	
+	public void setPorcetajeVidaDeGohanNecesaria(int vidaDeGohanNecesaria){
+		porcentajeVidaDeGohanNecesariaParaTranformar = vidaDeGohanNecesaria;
+	}
+	
+	public boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeVidaDeGohan){
+		return (porcentajeVidaDeGohan < porcentajeVidaDeGohanNecesariaParaTranformar);
 	}
 
 	

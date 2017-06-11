@@ -84,7 +84,7 @@ public final class ConstantesDelJuego {
     public static final int VELOCIDAD_PICCOLO_PRIMERA_TRANSF = 3;
     //Piccolo segunda transformacion.
     public static final int PORCENTAJE_VIDA_GOHAN_PRIMERA_TRANF_PICCOLO = 20;
-    public static final int KI_PICCOLO_SEGUNDA_TRANF = 20;
+    public static final int KI_PICCOLO_SEGUNDA_TRANF = 0;
     public static final String NOMBRE_PICCOLO_SEGUNDA_TRANSF = "Protector";
     public static final int PODER_PICCOLO_SEGUNDA_TRANSF = 60;
     public static final int DISTANCIA_PICCOLO_SEGUNDA_TRANSF = 6;

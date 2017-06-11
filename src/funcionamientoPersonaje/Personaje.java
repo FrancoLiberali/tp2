@@ -114,8 +114,12 @@ public abstract class Personaje
 	public int getSalud() {
 		return this.salud.getSalud();
 	}
+	
+	public int getPorcentajeSalud(){
+		return this.salud.getPorcentajeSalud();
+	}
 
-	public void atacar(Posicion posicionVictima, int danio, int poderDePelea){
+	protected void atacar(Posicion posicionVictima, int danio, int poderDePelea){
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}

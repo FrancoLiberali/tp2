@@ -29,7 +29,7 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_CELL_PRIMERA_TRANF);
-		normal.setVidasNecesarias(CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF);
+		normal.setVidasAbsorvidasNecesarias(CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF);
 
 		return normal;
 	}
@@ -44,7 +44,7 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_CELL_SEGUNDA_TRANF);
-		primeraTranf.setVidasNecesarias(CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF);
+		primeraTranf.setVidasAbsorvidasNecesarias(CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF);
 
 		return primeraTranf;
 	}

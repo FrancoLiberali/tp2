@@ -33,7 +33,7 @@ public class Salud
 	
 	public int getPorcentajeSalud()
 	{
-		return (this.saludActual/this.saludInicial) * 100;
+		return (this.saludActual * 100) / this.saludInicial;
 	}
 	
 	public void aumentar(int salud)

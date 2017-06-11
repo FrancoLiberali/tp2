@@ -73,7 +73,7 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 70 / 100), 40);
+		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 71 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -99,7 +99,7 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 70 / 100), 40);
+		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 71 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		goku.aumentarKi(20);
 		
 		Tablero tablero = new Tablero(10);

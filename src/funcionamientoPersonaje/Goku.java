@@ -66,7 +66,7 @@ public class Goku extends Personaje
 	
 	@Override
 	public void atacar(Posicion posicionVictima, int danio, int poderDePelea){
-		if (this.salud.getPorcentajeSalud()< PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU )
+		if (this.getPorcentajeSalud()< PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU )
 		{
 			danio = danio + danio * PORCENTAJE_AUMENTO_DANIO_GOKU / 100;
 		}

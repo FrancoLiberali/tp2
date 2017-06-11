@@ -2,6 +2,8 @@ package funcionamientoPersonaje;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import exceptions.PersonajeInexistenteException;
+
 public class Piccolo extends Personaje 
 {	
 	
@@ -11,6 +13,7 @@ public class Piccolo extends Personaje
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_PICCOLO);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
+		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 	}
@@ -26,6 +29,7 @@ public class Piccolo extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_PICCOLO_PRIMERA_TRANF);
+		normal.setPorcetajeVidaDeGohanNecesaria(101);
 
 		return normal;
 	}
@@ -40,6 +44,7 @@ public class Piccolo extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_PICCOLO_SEGUNDA_TRANF);
+		primeraTranf.setPorcetajeVidaDeGohanNecesaria(PORCENTAJE_VIDA_GOHAN_PRIMERA_TRANF_PICCOLO);
 
 		return primeraTranf;
 	}
@@ -53,5 +58,24 @@ public class Piccolo extends Personaje
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 
 		return segundaTranf;
+	}
+	
+	@Override
+	public void transformar(){
+		Personaje gohan;
+		try{
+			gohan = this.agrupacion.getPersonaje("Gohan");
+		}
+		catch (PersonajeInexistenteException error){
+			/*mensaje al usuario*/
+			return; //si gohan ya murio no se puede tranformar ya que no tiene a quien protejer
+		}
+		int porcentajeSalud = gohan.getPorcentajeSalud();
+		if (this.getEstadoTransformacion().vidaDeGohanEsMenorALaNecesariaParaTranformar(porcentajeSalud)){
+			super.transformar();
+		}
+		else{
+			/*mensaje al usuario*/
+		}
 	}
 }
