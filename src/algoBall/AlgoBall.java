@@ -1,6 +1,6 @@
 package algoBall;
 
-import exceptions.YaNoPuedeAtacarException;
+import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
@@ -32,6 +32,10 @@ public class AlgoBall {
 		turnoActual = turnoActual.getTurnoSiguiente();
 	}
 	
+	public Turno turnoSiguiente(){
+		return turnoActual.getTurnoSiguiente();
+	}
+	
 	public void moverIzquierda(String nombrePersonaje){
 		this.turnoActual.moverIzquierda(nombrePersonaje);
 	}
@@ -46,13 +50,60 @@ public class AlgoBall {
 	}
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
-		Posicion posicionVictima = new Posicion (fila,columna,tablero);
+		Posicion posicionVictima = new Posicion (fila,columna);
+		posicionVictima.setTablero(tablero);
 		try{
 			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
 		}
-		catch(YaNoPuedeAtacarException error){
-			/*mensaje al usuario*/
+		catch (JuegoTerminado fin){
+			this.terminarJuego();
 		}
+	}
+	
+	public void realizarAtaqueEspecial(String nombrePersonaje, int fila, int columna){
+		Posicion posicionVictima = new Posicion (fila,columna);
+		posicionVictima.setTablero(tablero);
+		try{
+			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
+		}
+		catch (JuegoTerminado fin){
+			this.terminarJuego();
+		}
+	}
+	public void terminarJuego(){
+		@SuppressWarnings("unused")
+		Jugador jugadorGanador = this.turnoActual.getJugador();
+		/*mensaje final*/
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		try{
+			return this.turnoActual.obtenerPosicionDe(nombrePersonaje);
+		}
+		catch (PersonajeInexistenteException error){
+			return this.turnoSiguiente().obtenerPosicionDe(nombrePersonaje);
+		}
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		try{
+			return this.turnoActual.obtenerSaludDe(nombrePersonaje);
+		}
+		catch (PersonajeInexistenteException error){
+			return this.turnoSiguiente().obtenerSaludDe(nombrePersonaje);
+		}
+	}
+	
+	public int getKiDe(String nombrePersonaje){
+		return this.turnoActual.getKiDe(nombrePersonaje);
+	}
+	
+	public void transformar(String nombrePersonaje){
+		this.turnoActual.transformar(nombrePersonaje);
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		return this.turnoActual.getEstadoTransformacion(nombrePersonaje);
 	}
 	
 	private Personaje crearGoku()
@@ -62,7 +113,7 @@ public class AlgoBall {
 		EstadoTransformacion superSayajinDeGoku= new EstadoTransformacion ("Super Sayajin",60,4,5);
 		normalDeGoku.setSiguienteEstado(kaioKenDeGoku,20);
 		kaioKenDeGoku.setSiguienteEstado(superSayajinDeGoku,50);
-		return (new Personaje("Goku",normalDeGoku));
+		return (new Personaje("Goku",normalDeGoku,500));
 	}
 	
 	private Personaje crearMajinBoo()
@@ -73,7 +124,7 @@ public class AlgoBall {
 		EstadoTransformacion booOriginalDeMajinBoo= new EstadoTransformacion ("Boo Original",60,3,4);
 		normalDeMajinBoo.setSiguienteEstado(booMaloDeMajinBoo,20);
 		booMaloDeMajinBoo.setSiguienteEstado(booOriginalDeMajinBoo,50);
-		return (new Personaje("Majin Boo",normalDeMajinBoo));
+		return (new Personaje("Majin Boo",normalDeMajinBoo,300));
 	}
 	
 	//private Personaje crearGohan() 
@@ -102,12 +153,12 @@ public class AlgoBall {
 		jugador2.agregarPersonaje(personaje5);*/
 		jugador2.agregarPersonaje(personaje6);
 		
-		Posicion posicionInicial1 = new Posicion(1,1,tablero);
+		Posicion posicionInicial1 = new Posicion(1,0);
 		/*Posicion posicionInicial2 = new Posicion(1,2,tablero);
 		Posicion posicionInicial3 = new Posicion(1,3,tablero);
 		Posicion posicionInicial4 = new Posicion(3,1,tablero);
 		Posicion posicionInicial5 = new Posicion(3,2,tablero);*/
-		Posicion posicionInicial6 = new Posicion(3,3,tablero);
+		Posicion posicionInicial6 = new Posicion(3,0);
 		
 		tablero.agregarPersonaje(personaje1, posicionInicial1);
 		/*tablero.agregarPersonaje(personaje2, posicionInicial2);

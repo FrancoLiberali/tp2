@@ -1,7 +1,9 @@
 package algoBall;
 
 import exceptions.FueraDeRangoException;
-import exceptions.YaNoPuedeAtacarException;
+import exceptions.IntentandoAtacarAUnCompanieroException;
+import exceptions.KiInsuficienteException;
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoTablero.Posicion;
 
 public class Turno {
@@ -12,6 +14,7 @@ public class Turno {
 	public Turno(Jugador jugador){
 		this.jugador = jugador;
 		this.cantidadDeAtaquesRestantes = 1;
+		this.reestablecer();
 	}
 	public Jugador getJugador(){
 		return jugador;
@@ -49,14 +52,58 @@ public class Turno {
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		if (cantidadDeAtaquesRestantes == 0){
-			throw new YaNoPuedeAtacarException();
+			/*mensaje al usuario*/
+			return;
 		}
 		try{
 			this.jugador.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
 			this.cantidadDeAtaquesRestantes = 0;
 		}
 		catch (FueraDeRangoException error){
-			/* mensaje al usuario*/
+			/*mensaje al usuario*/
+		}
+		catch (IntentandoAtacarAUnCompanieroException error){
+			/*mensaje al usuario*/
 		}
 	}
+	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		if (cantidadDeAtaquesRestantes == 0){
+			/*mensaje al usuario*/
+			return;
+		}
+		try{
+			this.jugador.realizarAtaqueEspecial( nombrePersonaje, posicionVictima);
+			this.cantidadDeAtaquesRestantes = 0;
+		}
+		catch (FueraDeRangoException error){
+			/*mensaje al usuario*/
+		}
+		catch (IntentandoAtacarAUnCompanieroException error){
+			/*mensaje al usuario*/
+		}
+		catch (KiInsuficienteException error){
+			/*mensaje al usuario*/
+		}
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		return this.jugador.obtenerPosicionDe(nombrePersonaje);
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		return this.jugador.obtenerSaludDe(nombrePersonaje);
+	}
+	public int getKiDe(String nombrePersonaje){
+		return this.jugador.getKiDe(nombrePersonaje);
+	}
+	public void transformar(String nombrePersonaje){
+		this.jugador.transformar(nombrePersonaje);
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		return this.jugador.getEstadoTransformacion(nombrePersonaje);
+	}
 }
+
+

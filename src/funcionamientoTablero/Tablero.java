@@ -45,6 +45,7 @@ public class Tablero
 	{
 		(this.getCasillero(pos)).setPersonaje(psje);
 		psje.setPosicion(pos);
+		pos.setTablero(this);
 	}
 
 	public int cantPersonajes() {

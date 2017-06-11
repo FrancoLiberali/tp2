@@ -8,11 +8,14 @@ public class Posicion
 	private int columna;
 	private Tablero tablero;
 	
-	public Posicion(int fil, int col, Tablero tableroRepresentado)
+	public Posicion(int fil, int col)
 	{
 		fila = fil;
 		columna = col;
-		tablero = tableroRepresentado;
+	}
+	
+	public void setTablero(Tablero tablero){
+		this.tablero = tablero;
 	}
 	
 	public int getFila()
@@ -27,22 +30,26 @@ public class Posicion
 	}
 	
 	public Posicion darIzquierda(){
-		Posicion nueva_posicion = new Posicion(this.fila, this.columna-1, this.tablero);
+		Posicion nueva_posicion = new Posicion(this.fila, this.columna-1);
+		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darDerecha(){
-		Posicion nueva_posicion = new Posicion(this.fila, this.columna+1, this.tablero);
+		Posicion nueva_posicion = new Posicion(this.fila, this.columna+1);
+		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darAbajo(){
-		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna, this.tablero);
+		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna);
+		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darArriba(){
-		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna, this.tablero);
+		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna);
+		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	

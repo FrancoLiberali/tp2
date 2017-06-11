@@ -3,6 +3,7 @@ package algoBall;
 import java.util.ArrayList;
 
 import exceptions.PersonajeInexistenteException;
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 
@@ -58,24 +59,45 @@ public class Agrupacion
 	}
 	
 	public void moverIzquierda(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.moverIzquierda();
-		this.prohibirMovimientosMenosA(personaje);
+		try {
+			Personaje personaje = this.getPersonaje(nombrePersonaje);
+			moverIzquierda movimiento = new moverIzquierda();
+			movimiento.mover(personaje,this.pertenecientes);
+		}
+		catch (PersonajeInexistenteException error){
+			/*mensaje al usuario*/
+		}
 	}
 	public void moverAbajo(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.moverAbajo();
-		this.prohibirMovimientosMenosA(personaje);
+		try {
+			Personaje personaje = this.getPersonaje(nombrePersonaje);
+			moverAbajo movimiento = new moverAbajo();
+			movimiento.mover(personaje,this.pertenecientes);
+		}
+		catch (PersonajeInexistenteException error){
+			/*mensaje al usuario*/
+		}
 	}
 	public void moverDerecha(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.moverDerecha();
-		this.prohibirMovimientosMenosA(personaje);
+		
+		try {
+			Personaje personaje = this.getPersonaje(nombrePersonaje);
+			moverDerecha movimiento = new moverDerecha();
+			movimiento.mover(personaje,this.pertenecientes);
+		}
+		catch (PersonajeInexistenteException error){
+			/*mensaje al usuario*/ 
+		}
 	}
 	public void moverArriba(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.moverArriba();
-		this.prohibirMovimientosMenosA(personaje);
+		try {
+			Personaje personaje = this.getPersonaje(nombrePersonaje);
+			moverArriba movimiento = new moverArriba();
+			movimiento.mover(personaje,this.pertenecientes);
+		}
+		catch (PersonajeInexistenteException error){
+			/*mensaje al usuario*/
+		}
 	}
 	
 	public void reestablecer(){
@@ -86,7 +108,12 @@ public class Agrupacion
 	
 	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.atacar(posicionVictima);
+		personaje.realizarAtaqueBasico(posicionVictima);
+	}
+	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.realizarAtaqueEspecial(posicionVictima);
 	}
 	
 	public void prohibirMovimientosMenosA(Personaje personajeQueNo){
@@ -99,5 +126,33 @@ public class Agrupacion
 	
 	public void eliminar(Personaje personajeAEliminar){
 		pertenecientes.remove(personajeAEliminar);
+		if (pertenecientes.isEmpty()){
+			throw new JuegoTerminado();
+		}
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getPosicion();
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getSalud();
+	}
+	
+	public int getKiDe(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getKi();
+	}
+	
+	public void transformar(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		personaje.transformar();
+	}
+	
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		Personaje personaje = this.getPersonaje(nombrePersonaje);
+		return personaje.getEstadoTransformacion();
 	}
 }

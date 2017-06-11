@@ -24,7 +24,7 @@ public class TableroUnitarioTest {
 	public void crearTableroVerificarCasilleroVacio() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(2,3, tablero);
+		Posicion pos = new Posicion(2,3);
 		
 		assertTrue(tablero.getCasillero(pos).estaVacio());
 	}
@@ -33,7 +33,7 @@ public class TableroUnitarioTest {
 	public void vaciarCasilleroEnPosicionDentroDelTableroLanzaCasilleroVacio() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(2,3, tablero);
+		Posicion pos = new Posicion(2,3);
 		
 		tablero.vaciarCasilleroEnPosicion(pos);
 	}
@@ -42,7 +42,7 @@ public class TableroUnitarioTest {
 	public void vaciarCasilleroEnPosicionFueraDelTableroLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(9,3, tablero);
+		Posicion pos = new Posicion(9,3);
 		
 		tablero.vaciarCasilleroEnPosicion(pos);
 	}
@@ -51,7 +51,7 @@ public class TableroUnitarioTest {
 	public void getCasilleroEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(8,3, tablero);
+		Posicion pos = new Posicion(8,3);
 		
 		tablero.getCasillero(pos);
 	}
@@ -60,7 +60,7 @@ public class TableroUnitarioTest {
 	public void getPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(8,3, tablero);
+		Posicion pos = new Posicion(8,3);
 		
 		tablero.getPersonajeEn(pos);
 	}
@@ -69,8 +69,8 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(8,3, tablero);
-		Personaje x = new Personaje("x",estadoX);
+		Posicion pos = new Posicion(8,3);
+		Personaje x = new Personaje("x",estadoX,2);
 		tablero.agregarPersonaje(x, pos);
 	}
 	
@@ -78,8 +78,8 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeACasilleroDentroDelTablero()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
-		Posicion pos = new Posicion(2,2, tablero);
+		Personaje x = new Personaje("x",estadoX,2);
+		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		assertEquals(tablero.getPersonajeEn(pos), x);
 		
@@ -89,8 +89,8 @@ public class TableroUnitarioTest {
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
-		Posicion pos = new Posicion(2,2, tablero);
+		Personaje x = new Personaje("x",estadoX,2);
+		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		assertEquals(x.getPosicion(), pos);
 		
@@ -100,8 +100,8 @@ public class TableroUnitarioTest {
 	public void vaciarCasillerooDentroDelTableroLeQuitaElPersonaje()
 	{
 		Tablero tablero = new Tablero(4);
-		Personaje x = new Personaje("x",estadoX);
-		Posicion pos = new Posicion(2,2, tablero);
+		Personaje x = new Personaje("x",estadoX,2);
+		Posicion pos = new Posicion(2,2);
 		tablero.agregarPersonaje(x, pos);
 		tablero.vaciarCasilleroEnPosicion(pos);
 		assertTrue(tablero.getCasillero(pos).estaVacio());

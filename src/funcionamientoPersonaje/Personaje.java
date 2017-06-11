@@ -4,6 +4,7 @@ import algoBall.Agrupacion;
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
+import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
 import exceptions.YaNoPuedeEvolucionarException;
@@ -19,16 +20,18 @@ public class Personaje
 	private Estado estadoActividad;
 	private EstadoTransformacion estadoTransformacionActual;
 	private Agrupacion agrupacion;
+	private AtaqueEspecial ataqueEspecial;
 	
 	
 	
-	public Personaje(String nombre, EstadoTransformacion estadoInicial)
+	public Personaje(String nombre, EstadoTransformacion estadoInicial, int saludInicial)
 	{
 		this.nombre = nombre;
 		this.ki = new Ki(0);
 		this.estadoTransformacionActual = estadoInicial;
 		this.movimientosRestantes = estadoInicial.getVelocidad();
 		this.estadoActividad = new EstadoActividad();
+		this.salud = saludInicial;
 		
 	}
 		
@@ -73,7 +76,9 @@ public class Personaje
 	
 	public void transformar(){
 		try{
+			int velocidadAnterior = this.getVelocidad();
 			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(this.ki);
+			this.actualizarMovimientosRestantes(velocidadAnterior);
 		}
 		catch (YaNoPuedeEvolucionarException error){
 			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
@@ -81,6 +86,17 @@ public class Personaje
 		catch (KiInsuficienteException error){
 			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
 		}
+	}
+	
+	private void actualizarMovimientosRestantes(int velocidadAnterior){
+		if (movimientosRestantes == 0){
+			return;
+		}
+		else{
+			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
+			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);
+		}
+		
 	}
 	
 	public EstadoTransformacion getEstadoTransformacion(){
@@ -127,24 +143,38 @@ public class Personaje
 		return salud;
 	}
 
-	public void setSalud(int salud) {
-		this.salud = salud;
-	}
-
-	public void atacar(Posicion posicionVictima){
+	public void atacar(Posicion posicionVictima, int danio){
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
 		
 		Personaje personajeAAtacar = posicionVictima.getPersonaje();
-		personajeAAtacar.recibirDanio(this.estadoTransformacionActual.getPoderDePelea());
+		if (this.agrupacion.existePersonaje(personajeAAtacar.getNombre())){
+			throw new IntentandoAtacarAUnCompanieroException();
+		}
+		personajeAAtacar.recibirDanio(danio);
 		
+	}
+	
+	public void realizarAtaqueBasico(Posicion posicionVictima){
+		this.atacar(posicionVictima, this.estadoTransformacionActual.getPoderDePelea());
+	}
+	
+	public void realizarAtaqueEspecial(Posicion posicionVictima){
+		int ataqueBasico = this.estadoTransformacionActual.getPoderDePelea();
+		int ataqueEspecial = this.ataqueEspecial.getAtaque(ataqueBasico, this.ki);
+		this.atacar(posicionVictima, ataqueEspecial);
+	}
+	
+	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial){
+		this.ataqueEspecial = ataqueEspecial;
 	}
 
 	public void recibirDanio(int poderDePelea){
 		this.salud = this.salud - poderDePelea;
 		if (this.salud <= 0){
 			this.agrupacion.eliminar(this);
+			this.posicion.vaciarTableroEnPos();
 		}
 	}
 	public void setAgrupacion(Agrupacion agrupacion){

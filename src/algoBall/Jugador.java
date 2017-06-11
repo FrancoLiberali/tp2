@@ -1,5 +1,6 @@
 package algoBall;
 
+import funcionamientoPersonaje.EstadoTransformacion;
 import funcionamientoPersonaje.Personaje;
 import funcionamientoTablero.Posicion;
 
@@ -53,8 +54,31 @@ public class Jugador
 		this.agrupacion.realizarAtaqueBasico( nombrePersonaje, posicionVictima);
 	}
 	
+	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
+		this.agrupacion.realizarAtaqueEspecial( nombrePersonaje, posicionVictima);
+	}
+	
 	public void reestablecer(){
 		agrupacion.reestablecer();
+	}
+	
+	public Posicion obtenerPosicionDe(String nombrePersonaje){
+		return this.agrupacion.obtenerPosicionDe(nombrePersonaje);
+	}
+	
+	public int obtenerSaludDe(String nombrePersonaje){
+		return this.agrupacion.obtenerSaludDe(nombrePersonaje);
+	}
+	
+	public int getKiDe(String nombrePersonaje){
+		return this.agrupacion.getKiDe(nombrePersonaje);
+	}
+	
+	public void transformar(String nombrePersonaje){
+		this.agrupacion.transformar(nombrePersonaje);
+	}
+	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
+		return this.agrupacion.getEstadoTransformacion(nombrePersonaje);
 	}
 }
 
