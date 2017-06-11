@@ -13,7 +13,7 @@ public class Freezer extends Personaje
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_FREEZER, KI_ATQ_ESPECIAL_FREEZER);
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
-
+		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_FREEZER);
 	}
 	
 	
