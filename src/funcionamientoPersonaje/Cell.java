@@ -2,9 +2,11 @@ package funcionamientoPersonaje;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import funcionamientoTablero.Posicion;
+
 public class Cell extends Personaje 
 {	
-	
+	private int vidasAbsorvidas = 0;
 	public Cell()
 	{
 		this.nombre = CELL_NOMBRE;
@@ -27,6 +29,7 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_CELL_PRIMERA_TRANF);
+		normal.setVidasNecesarias(CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF);
 
 		return normal;
 	}
@@ -41,6 +44,7 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_CELL_SEGUNDA_TRANF);
+		primeraTranf.setVidasNecesarias(CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF);
 
 		return primeraTranf;
 	}
@@ -52,7 +56,26 @@ public class Cell extends Personaje
 		int distancia = DISTANCIA_CELL_SEGUNDA_TRANSF;
 		int poder = PODER_CELL_SEGUNDA_TRANSF;
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
-
 		return segundaTranf;
+	}
+	
+	@Override
+	public int realizarAtaqueEspecial(Posicion posicionVictima){
+		int danioAtaque = super.realizarAtaqueEspecial(posicionVictima);
+		vidasAbsorvidas = vidasAbsorvidas + 1;
+		salud.aumentar(danioAtaque);
+		return danioAtaque;
+		
+	}
+	
+	@Override
+	public void transformar(){
+		if (this.getEstadoTransformacion().seAbsorvieronVidasNecesarias(vidasAbsorvidas)){
+			super.transformar();
+		}
+		else{
+			/*mensaje al usuario*/
+		}
+		
 	}
 }

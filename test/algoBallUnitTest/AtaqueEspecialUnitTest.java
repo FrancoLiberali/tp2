@@ -17,7 +17,7 @@ public class AtaqueEspecialUnitTest
 		int ataqueBasico = 100;
 		int porcentaje = 20;
 		Ki kiActual = new Ki(11);
-		int ataqueEsperado = ataqueBasico + (ataqueBasico * porcentaje)/100;
+		int ataqueEsperado = 120;
 		AtaqueEspecial golpe = new AtaqueEspecial("Cabezaso Tucumano",kiNescesario);
 		golpe.setPorcentaje(porcentaje);
 

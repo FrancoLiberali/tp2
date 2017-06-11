@@ -9,6 +9,7 @@ public class EstadoTransformacion implements Estado{
 	private int poderDePelea;
 	private EstadoTransformacion siguienteEstado = null;
 	private Ki kiParaTransformacion = null;
+	private int vidasNecesariasParaTransformar;
 	
 	public EstadoTransformacion (String nombre, int poder, int distancia, int velocidad){
 		this.nombre = nombre;
@@ -44,6 +45,14 @@ public class EstadoTransformacion implements Estado{
 	
 	public int getPoderDePelea() {
 		return poderDePelea;
+	}
+	
+	public void setVidasNecesarias(int vidasNecesarias){
+		vidasNecesariasParaTransformar = vidasNecesarias;
+	}
+	
+	public boolean seAbsorvieronVidasNecesarias(int vidasAbsorvidas){
+		return (vidasAbsorvidas >= vidasNecesariasParaTransformar);
 	}
 
 	

@@ -148,10 +148,11 @@ public abstract class Personaje
 		this.atacar(posicionVictima, this.estadoTransformacionActual.getPoderDePelea());
 	}
 	
-	public void realizarAtaqueEspecial(Posicion posicionVictima){
+	public int realizarAtaqueEspecial(Posicion posicionVictima){
 		int ataqueBasico = this.estadoTransformacionActual.getPoderDePelea();
 		int ataqueEspecial = this.ataqueEspecial.getAtaque(ataqueBasico, this.ki);
 		this.atacar(posicionVictima, ataqueEspecial);
+		return ataqueEspecial;
 	}
 	
 	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial){
