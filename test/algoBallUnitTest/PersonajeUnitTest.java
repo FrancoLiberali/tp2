@@ -113,6 +113,50 @@ public class PersonajeUnitTest
 	}
 	
 	@Test
+	public void transformarseLuegoDeMoverseSinAlcarzarElLimiteDeMovimientosAumentaLaCantidadDeMovimientosPosibles(){
+		Personaje goku = new Goku();
+		goku.aumentarKi(40);
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPersonaje(goku, posicionInicial);
+		Posicion moverDerecha1 = new Posicion(2,3);
+		moverDerecha1.setTablero(tablero);
+		goku.mover(moverDerecha1);
+		goku.transformar();
+		Posicion moverDerecha2 = new Posicion(2,4);
+		moverDerecha2.setTablero(tablero);
+		goku.mover(moverDerecha2);
+		/*aqui se abrian limitado los movimientos sin la transformacion*/
+		Posicion moverDerecha3 = new Posicion(2,5);
+		moverDerecha3.setTablero(tablero);
+		goku.mover(moverDerecha3);
+		Posicion posicionFinal = new Posicion(2,5);
+		assertEquals(goku.getPosicion(),posicionFinal);
+	}
+	
+	@Test (expected = NoQuedanMovimientosException.class)
+	public void transformarseLuegoDeMoverseConAlcarzarElLimiteDeMovimientosNoAumentaLaCantidadDeMovimientosPosibles(){
+		Personaje goku = new Goku();
+		goku.aumentarKi(40);
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPersonaje(goku, posicionInicial);
+		Posicion moverDerecha1 = new Posicion(2,3);
+		moverDerecha1.setTablero(tablero);
+		Posicion moverDerecha2 = new Posicion(2,4);
+		moverDerecha2.setTablero(tablero);
+		goku.mover(moverDerecha1);
+		goku.mover(moverDerecha2);
+		/* se alcanza limite de movimientos*/
+		Posicion posicionFinal = new Posicion(2,4);
+		assertEquals(goku.getPosicion(), posicionFinal);
+		goku.transformar();
+		Posicion moverDerecha3 = new Posicion(2,5);
+		moverDerecha3.setTablero(tablero);
+		goku.mover(moverDerecha3);
+	}
+	
+	@Test
 	public void ataqueEntrePersonajesDeDistintasAgrupacionesBajaLaSalud()
 	{
 		Personaje goku = new Goku();
@@ -136,6 +180,95 @@ public class PersonajeUnitTest
 		assertEquals(cell.getSalud(), saludEsperada);
 		
 	}
+	
+	
+	@Test (expected = NoQuedanMovimientosException.class)
+	public void intentarMoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
+		Personaje piccolo = new Piccolo();
+		//velocidad == 2;
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPersonaje(piccolo, posicionInicial);
+		Posicion moverDerecha1 = new Posicion(2,3);
+		moverDerecha1.setTablero(tablero);
+		Posicion moverDerecha2 = new Posicion(2,4);
+		moverDerecha2.setTablero(tablero);
+		piccolo.mover(moverDerecha1);
+		piccolo.mover(moverDerecha2);
+		/* se alcanza limite de movimientos*/
+		Posicion moverDerecha3 = new Posicion(2,3);
+		moverDerecha3.setTablero(tablero);
+		piccolo.mover(moverDerecha3);
+		
+	}
+	
+	@Test (expected = NoQuedanMovimientosException.class)
+	public void intentarMoverPersonajeQueHaSidoProhibidoDeMovimientosLanzaNoQuedanMovimientos(){
+		Personaje majinBoo = new MajinBoo();
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPersonaje(majinBoo, posicionInicial);
+		majinBoo.prohibirMovimientos();
+		Posicion moverDerecha1 = new Posicion(2,3);
+		moverDerecha1.setTablero(tablero);
+		majinBoo.mover(moverDerecha1);
+		
+	}
+	
+	@Test
+	public void moverPersonajeVerificarPosicion()
+	{
+		Tablero tablero = new Tablero(10);
+		Personaje goku = new Goku();
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPersonaje(goku, posicionInicial);
+		Posicion moverDerecha1 = new Posicion(2,3);
+		moverDerecha1.setTablero(tablero);
+		goku.mover(moverDerecha1);
+		Posicion posicionFinal = new Posicion(2,3);
+		assertEquals(goku.getPosicion(), posicionFinal);
+		
+	}
+	
+	@Test
+	public void moverPersonajeNoFuncionaSiHayOtroPersonajeEnElLugarAlQueNosQueremosMover()
+	{
+		Tablero tablero = new Tablero(10);
+		Personaje goku = new Goku();
+		Personaje piccolo = new Piccolo();
+		
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,2);
+		
+		tablero.agregarPersonaje(goku, posicionInicialX);
+		tablero.agregarPersonaje(piccolo, posicionInicialY);
+		
+		Posicion moverAbajo = new Posicion(3,2);
+		moverAbajo.setTablero(tablero);
+		goku.mover(moverAbajo);
+		assertEquals(goku.getPosicion(), posicionInicialX);
+		/*es decir, el movimiento no se realizo*/
+		
+	}
+	
+	@Test
+	public void moverPersonajeNoFuncionaSiElLugarAlQueNosQueremosMoverSeEncuentraFueraDelTablero()
+	{
+		Tablero tablero = new Tablero(10);
+		Personaje piccolo = new Piccolo();
+		
+		Posicion posicionInicialX = new Posicion(9,2);
+		
+		tablero.agregarPersonaje(piccolo, posicionInicialX);
+		
+		Posicion moverAbajo = new Posicion(10,2);
+		moverAbajo.setTablero(tablero);
+		piccolo.mover(moverAbajo);
+		assertEquals(piccolo.getPosicion(), posicionInicialX);
+		/*es decir, el movimiento no se realizo*/
+		
+	}
+	
 	
 	@Test (expected = IntentandoAtacarAUnCompanieroException.class)
 	public void ataqueEntrePersonajesDeLaMismaAgrupacionLanzaIntentandoAtacarAUnCompaniero()
