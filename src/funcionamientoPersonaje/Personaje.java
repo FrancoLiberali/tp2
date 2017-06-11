@@ -91,23 +91,6 @@ public abstract class Personaje
 		return estadoTransformacionActual;
 	}
 	
-	public void moverIzquierda(){
-		Posicion posicion_nueva = this.posicion.darIzquierda();
-		this.mover(posicion_nueva);
-	}
-	public void moverAbajo(){
-		Posicion posicion_nueva = this.posicion.darAbajo();
-		this.mover(posicion_nueva);
-	}
-	public void moverDerecha(){
-		Posicion posicion_nueva = this.posicion.darDerecha();
-		this.mover(posicion_nueva);
-	}
-	public void moverArriba(){
-		Posicion posicion_nueva = this.posicion.darArriba();
-		this.mover(posicion_nueva);
-	}
-	
 	public void mover(Posicion nuevaPosicion){
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();

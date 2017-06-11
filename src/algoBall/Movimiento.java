@@ -7,11 +7,18 @@ import notificaciones.NotificacionPersonajeInexistente;
 import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.Personaje;
-
+import funcionamientoTablero.Posicion;
 
 public abstract class Movimiento {
-	protected abstract void moverEnDireccion(Personaje personaje);
 	
+	protected abstract Posicion darPosicionNueva(Posicion posicion);
+	
+	protected void moverEnDireccion(Personaje personaje)
+	{
+		Posicion posicion = personaje.getPosicion();
+		Posicion posicion_nueva = darPosicionNueva(posicion);
+		personaje.mover(posicion_nueva);
+	}
 	
 	public void mover(Agrupacion equipo, String nombreDelPersonaje )
 	{
