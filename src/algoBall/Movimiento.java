@@ -1,7 +1,7 @@
 package algoBall;
 
-import java.util.ArrayList;
 
+import  algoBall.Agrupacion;
 import notificaciones.NotificacionNoQuedanMovimientos;
 import notificaciones.NotificacionPersonajeInexistente;
 import exceptions.NoQuedanMovimientosException;
@@ -12,22 +12,16 @@ import funcionamientoPersonaje.Personaje;
 public abstract class Movimiento {
 	protected abstract void moverEnDireccion(Personaje personaje);
 	
-	public void prohibirMovimientosMenosA(Personaje personajeQueNo, ArrayList<Personaje> pertenecientes){
-		for (Personaje personaje : pertenecientes) {
-			if (!(personaje == personajeQueNo)){
-				personaje.prohibirMovimientos();
-			}
-		}
-	}
 	
-	public void mover(Personaje personaje , ArrayList<Personaje> pertenecientes)
+	public void mover(Agrupacion equipo, String nombreDelPersonaje )
 	{
 		NotificacionPersonajeInexistente notificacionPersonajeInexistenteException = new NotificacionPersonajeInexistente();
 		NotificacionNoQuedanMovimientos notificacionNoQuedanMovimientosException = new NotificacionNoQuedanMovimientos();
 		
 		try {
+			Personaje personaje = equipo.getPersonaje(nombreDelPersonaje);
 			this.moverEnDireccion(personaje);
-			this.prohibirMovimientosMenosA(personaje,pertenecientes);
+			equipo.prohibirMovimientosMenosA(personaje);
 		}
 		catch (PersonajeInexistenteException error){
 			/*mensaje al usuario*/
