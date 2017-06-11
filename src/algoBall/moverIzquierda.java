@@ -1,12 +1,13 @@
 package algoBall;
 
-import funcionamientoPersonaje.Personaje;
+import funcionamientoTablero.Posicion;
 
 public class moverIzquierda extends Movimiento {
 
-	protected void moverEnDireccion(Personaje personaje) {
-		personaje.moverIzquierda();
+protected Posicion darPosicionNueva (Posicion posicion) {
 		
+		Posicion posicionNueva = posicion.darIzquierda();
+		return posicionNueva;
 	}
 
 }
