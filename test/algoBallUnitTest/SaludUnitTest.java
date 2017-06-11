@@ -83,7 +83,7 @@ public class SaludUnitTest
 	{
 		int inicial = 300;
 		int valorDisminuir = 65;
-		int porcentajeEsperado = valorDisminuir/inicial;
+		int porcentajeEsperado = (inicial - valorDisminuir) * 100 /inicial;
 		Salud salud = new Salud(inicial);
 		salud.disminuir(valorDisminuir);
 		
@@ -96,7 +96,7 @@ public class SaludUnitTest
 		int inicial = 300;
 		int valorAumentar = 65;
 		int valorDisminuir = 200;
-		int porcentajeEsperado = ((inicial - valorDisminuir) + valorAumentar)/inicial;
+		int porcentajeEsperado = ((inicial - valorDisminuir) + valorAumentar)*100 /inicial;
 		
 		Salud salud = new Salud(inicial);
 		salud.disminuir(valorDisminuir);
