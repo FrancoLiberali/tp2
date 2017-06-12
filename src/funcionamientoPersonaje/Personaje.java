@@ -18,15 +18,45 @@ public abstract class Personaje
 	protected int movimientosRestantes;
 	protected Ki ki;
 	protected Salud salud;
-	protected Estado estadoActividad;
+	protected EstadoActividad estadoActividad = new EstadoActivo();
 	protected EstadoTransformacion estadoTransformacionActual;
 	protected Agrupacion agrupacion;
 	protected AtaqueEspecial ataqueEspecial;
 	
-		
+	abstract EstadoTransformacion setEstadoNormal();
+	abstract EstadoTransformacion setPrimerEstadoTransformacion();
+	abstract EstadoTransformacion setSegundoEstadoTransformacion();
+	
+	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial)
+	{
+		this.ataqueEspecial = ataqueEspecial;
+	}
+	
+	public void setPosicion(Posicion pos) 
+	{
+		this.posicion = pos;	
+	}
+	
+	public void setEstadoActividad(EstadoActividad estado)
+	{
+		this.estadoActividad = estado;
+	}
+	
+	public void setAgrupacion(Agrupacion agrupacion){
+		this.agrupacion = agrupacion;
+	}
+	
 	public String getNombre()
 	{
 		return this.nombre;
+	}
+	
+	public int getSalud() {
+		return this.salud.getSalud();
+	}
+	
+	public int getPorcentajeSalud(){
+		return this.salud.getPorcentajeSalud();
 	}
 	
 	public int getKi()
@@ -34,19 +64,9 @@ public abstract class Personaje
 		return ki.getKi();
 	}
 	
-	public void aumentarKi(int cantidad){
-		ki.sumar(cantidad);
-	}
-	
 	public Posicion getPosicion()
 	{
 		return this.posicion;
-	}
-	
-	public void setPosicion(Posicion pos) 
-	{
-		this.posicion = pos;
-		
 	}
 	
 	public int getVelocidad()
@@ -63,7 +83,29 @@ public abstract class Personaje
 		return (this.estadoTransformacionActual.getDistanciaDeAtaque());
 	}
 	
-	public void transformar(){
+	public EstadoTransformacion getEstadoTransformacion(){
+		return this.estadoTransformacionActual;
+	}
+	
+	public EstadoActividad getEstadoActividad(){
+		return this.estadoActividad;
+	}
+	
+	public void aumentarKi(int cantidad){
+		this.estadoActividad.aplicarKi(this, cantidad);
+	}
+	
+	public void ejecutarAumentoDeKi(int cantidad){
+		this.ki.sumar(cantidad);
+	}
+	
+	public void transformar()
+	{
+		this.estadoActividad.aplicarTransformacion(this);
+	}
+	
+	public void ejecutarTransformacion()
+	{
 		try{
 			int velocidadAnterior = this.getVelocidad();
 			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(this.ki);
@@ -77,22 +119,12 @@ public abstract class Personaje
 		}
 	}
 	
-	private void actualizarMovimientosRestantes(int velocidadAnterior){
-		if (movimientosRestantes == 0){
-			return;
-		}
-		else{
-			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
-			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);
-		}
-		
-	}
-	
-	public EstadoTransformacion getEstadoTransformacion(){
-		return estadoTransformacionActual;
-	}
-	
 	public void mover(Posicion nuevaPosicion){
+		this.estadoActividad.aplicarMovimiento(this, nuevaPosicion);
+	}
+	
+	public void ejecutarMovimiento(Posicion nuevaPosicion)
+	{
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
 		}
@@ -111,14 +143,6 @@ public abstract class Personaje
 		}
 	}
 
-	public int getSalud() {
-		return this.salud.getSalud();
-	}
-	
-	public int getPorcentajeSalud(){
-		return this.salud.getPorcentajeSalud();
-	}
-
 	protected void atacar(Posicion posicionVictima, int danio, int poderDePelea){
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
@@ -129,24 +153,30 @@ public abstract class Personaje
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
 		personajeAAtacar.recibirDanio(danio, poderDePelea);
-		
 	}
 	
 	public void realizarAtaqueBasico(Posicion posicionVictima){
+		this.estadoActividad.aplicarAtaqueBasico(this, posicionVictima);
+	}
+	
+	public void ejecutarAtaqueBasico(Posicion posVictima)
+	{
 		int poderDePelea =  this.estadoTransformacionActual.getPoderDePelea();
-		this.atacar(posicionVictima, poderDePelea, poderDePelea);
+		this.atacar(posVictima, poderDePelea, poderDePelea);
 		//POR AHORA PORQUE NO HAY CONSUMIBLES ENTONCES ATAQUE BASICO SIEMPRE ES IGUAL A PODER DE PELEA
 	}
 	
-	public int realizarAtaqueEspecial(Posicion posicionVictima){
-		int poderDePelea = this.estadoTransformacionActual.getPoderDePelea();
-		int ataqueEspecial = this.ataqueEspecial.getAtaque(poderDePelea, this.ki);
-		this.atacar(posicionVictima, ataqueEspecial, poderDePelea);
-		return ataqueEspecial;
+	public int realizarAtaqueEspecial(Posicion posicionVictima)
+	{
+		return this.estadoActividad.aplicarAtaqueEspecial(this, posicionVictima);
 	}
 	
-	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial){
-		this.ataqueEspecial = ataqueEspecial;
+	public int ejecutarAtaqueEspecial(Posicion posVictima)
+	{
+		int poderDePelea = this.estadoTransformacionActual.getPoderDePelea();
+		int ataqueEspecial = this.ataqueEspecial.getAtaque(poderDePelea, this.ki);
+		this.atacar(posVictima, ataqueEspecial, poderDePelea);
+		return ataqueEspecial;
 	}
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){
@@ -157,10 +187,6 @@ public abstract class Personaje
 		if (this.salud.esCero()){
 			this.agrupacion.eliminar(this);
 		}
-	}
-		
-	public void setAgrupacion(Agrupacion agrupacion){
-		this.agrupacion = agrupacion;
 	}
 	
 	public void reestablecer(){
@@ -173,10 +199,16 @@ public abstract class Personaje
 		movimientosRestantes = 0;
 	}
 	
-	abstract EstadoTransformacion setEstadoNormal();
 	
-	abstract EstadoTransformacion setPrimerEstadoTransformacion();
-	
-	abstract EstadoTransformacion setSegundoEstadoTransformacion();
+	private void actualizarMovimientosRestantes(int velocidadAnterior){
+		if (movimientosRestantes == 0){
+			return;
+		}
+		else{
+			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
+			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);
+		}
+		
+	}
 
 }

@@ -2,8 +2,6 @@ package algoBallUnitTest;
 
 import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_SEGUNDA_TRANSF;
-import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOHAN;
 import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
 import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_PICCOLO;
 import static org.junit.Assert.assertEquals;
@@ -45,7 +43,6 @@ public class GohanUnitTest {
 		gohan.aumentarKi(10);
 		
 		Personaje goku = new Goku();
-		
 		
 		Agrupacion agrupacion1 = new Agrupacion("buenos");
 		agrupacion1.agregarPersonaje(gohan);
@@ -107,7 +104,6 @@ public class GohanUnitTest {
 		
 		Personaje goku = new Goku();
 		
-		
 		Agrupacion agrupacion1 = new Agrupacion("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
@@ -131,6 +127,4 @@ public class GohanUnitTest {
 		gohan.transformar();
 		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
 	}
-	
-	
 }

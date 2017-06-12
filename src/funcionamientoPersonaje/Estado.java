@@ -1,5 +1,6 @@
 package funcionamientoPersonaje;
 
-public interface Estado {
+public interface Estado 
+{
 
 }

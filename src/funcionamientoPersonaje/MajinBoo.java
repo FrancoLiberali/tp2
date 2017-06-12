@@ -2,6 +2,8 @@ package funcionamientoPersonaje;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import funcionamientoTablero.Posicion;
+
 public class MajinBoo extends Personaje 
 {	
 	
@@ -55,5 +57,13 @@ public class MajinBoo extends Personaje
 		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 
 		return segundaTranf;
+	}
+	
+	@Override
+	public int realizarAtaqueEspecial(Posicion posVictima)
+	{
+		posVictima.getPersonaje().setEstadoActividad(new EstadoInactivoConChocolate());
+		return DANIO_ATAQ_ESPECIAL_MAJIN_BOO;
+		
 	}
 }

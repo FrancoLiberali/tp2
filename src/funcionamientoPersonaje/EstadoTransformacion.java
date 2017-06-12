@@ -74,6 +74,4 @@ public class EstadoTransformacion implements Estado{
 				&& porcentajeVidaCompaniero2 < porcentajeVidaDeCompanierosNecesariaParaTransformar);
 	}
 
-	
-	
 }
