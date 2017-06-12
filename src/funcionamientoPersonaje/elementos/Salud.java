@@ -1,4 +1,4 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.elementos;
 
 public class Salud 
 {

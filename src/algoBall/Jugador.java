@@ -1,7 +1,7 @@
 package algoBall;
 
-import funcionamientoPersonaje.EstadoTransformacion;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 
 public class Jugador 

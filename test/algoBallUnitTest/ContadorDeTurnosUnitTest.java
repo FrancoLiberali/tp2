@@ -4,7 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import funcionamientoPersonaje.ContadorDeTurnos;
+import exceptions.SeAcabaronTurnosDelEstadoException;
+import funcionamientoPersonaje.elementos.ContadorDeTurnos;
 
 
 public class ContadorDeTurnosUnitTest 
@@ -28,12 +29,11 @@ public class ContadorDeTurnosUnitTest
 		assertEquals(cont.getTurnosRestantes(), 1);
 	}
 	
-	@Test
-	public void reducirTurnosHastaCeroVerificarTurnosRestantesEsCero(){
+	@Test (expected = SeAcabaronTurnosDelEstadoException.class)
+	public void reducirTurnosHastaCeroLanzaSeAcabaronTurnosDelEstado(){
 		ContadorDeTurnos cont = new ContadorDeTurnos(2);
 		cont.reducir();
 		cont.reducir();
-		assertTrue(cont.estaEnCero());
 	}
 	
 	@Test

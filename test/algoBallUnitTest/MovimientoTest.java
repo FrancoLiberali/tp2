@@ -9,9 +9,7 @@ import algoBall.moverAbajo;
 import algoBall.moverArriba;
 import algoBall.moverDerecha;
 import algoBall.moverIzquierda;
-
-
-import funcionamientoPersonaje.PersonajeDePrueba;
+import funcionamientoPersonaje.personajes.PersonajeDePrueba;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 

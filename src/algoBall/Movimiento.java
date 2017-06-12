@@ -6,7 +6,7 @@ import notificaciones.NotificacionNoQuedanMovimientos;
 import notificaciones.NotificacionPersonajeInexistente;
 import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeInexistenteException;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 
 public abstract class Movimiento {

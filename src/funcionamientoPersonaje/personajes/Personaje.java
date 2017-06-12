@@ -1,4 +1,4 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.personajes;
 
 import algoBall.Agrupacion;
 import algoBall.ConstantesDelJuego;
@@ -8,7 +8,14 @@ import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
+import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
+import funcionamientoPersonaje.elementos.AtaqueEspecial;
+import funcionamientoPersonaje.elementos.EstadoActividad;
+import funcionamientoPersonaje.elementos.EstadoActivo;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.elementos.Ki;
+import funcionamientoPersonaje.elementos.Salud;
 import funcionamientoTablero.Posicion;
 
 public abstract class Personaje 
@@ -191,8 +198,14 @@ public abstract class Personaje
 	
 	public void reestablecer(){
 		/*deja todo listo para el siguiente turno*/
+		try{
+			estadoActividad.reducirTurnos();
+		}
+		catch (SeAcabaronTurnosDelEstadoException error){
+			this.setEstadoActividad(new EstadoActivo());
+		}
 		movimientosRestantes = this.getVelocidad();
-		ki.sumar(ConstantesDelJuego.KI_POR_TURNO);
+		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
 	}
 	
 	public void prohibirMovimientos(){

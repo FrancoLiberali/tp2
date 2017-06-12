@@ -5,11 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import algoBall.Agrupacion;
-import funcionamientoPersonaje.*;
+import funcionamientoPersonaje.elementos.*;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.MajinBoo;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.*;
 import exceptions.*;
 import static algoBall.ConstantesDelJuego.KI_INICIAL;
 import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 
 public class MajinBooUnitTest 
 {
@@ -62,8 +66,8 @@ public class MajinBooUnitTest
 		assertEquals(goku.getKi(), KI_INICIAL);
 	}
 	
-	@Test (expected = PersonajeInactivoNoPuedeTransformarseException.class)
-	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeTansformarseLanzaExcepcion()
+	@Test
+	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeTansformarse()
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
@@ -84,10 +88,11 @@ public class MajinBooUnitTest
 		
 		majinBoo.realizarAtaqueEspecial(posicionInicialY);
 		goku.transformar();
+		assertEquals(goku.getEstadoTransformacion().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
 	
-	@Test (expected = PersonajeInactivoNoPuedeMoverseException.class)
-	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeMoverseLanzaExcepcion()
+	@Test
+	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeMoverse()
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
@@ -109,6 +114,7 @@ public class MajinBooUnitTest
 		majinBoo.realizarAtaqueEspecial(posicionInicialY);
 		Posicion nuevaPosicion = new Posicion(4,4);
 		goku.mover(nuevaPosicion);
+		assertTrue(goku.getPosicion().esIgualA(posicionInicialY));
 	}
 	
 	@Test
@@ -133,16 +139,17 @@ public class MajinBooUnitTest
 		majinBoo.realizarAtaqueEspecial(posicionInicialY);
 		EstadoInactivoConChocolate estado = (EstadoInactivoConChocolate)goku.getEstadoActividad();
 		ContadorDeTurnos turnos = estado.getContadorDeTurnos();
+		assertEquals(turnos.getTurnosRestantes(), 3);
 		//simulo el juego.
-		turnos.reducir();
-		goku.aumentarKi(KI_POR_TURNO);
-		turnos.reducir();
-		goku.aumentarKi(KI_POR_TURNO);
-		turnos.reducir();
-		goku.aumentarKi(KI_POR_TURNO);
+		goku.reestablecer();//fin turno goku
+		assertEquals(turnos.getTurnosRestantes(), 2);
+		assertEquals(goku.getKi(), KI_INICIAL);
+		goku.reestablecer();//fin turno goku
+		assertEquals(turnos.getTurnosRestantes(), 1);
+		assertEquals(goku.getKi(), KI_INICIAL);
+		goku.reestablecer();//fin turno goku
 		assertTrue(turnos.estaEnCero());
 		/*Luego de tres turnos se va el efecto chocolate*/
-		goku.aumentarKi(KI_POR_TURNO);
 		int kiEsperado = KI_POR_TURNO + KI_INICIAL; // == 5
 		
 		assertEquals(goku.getKi(), kiEsperado);

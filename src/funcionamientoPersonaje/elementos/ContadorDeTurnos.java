@@ -1,4 +1,6 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.elementos;
+
+import exceptions.SeAcabaronTurnosDelEstadoException;
 
 public class ContadorDeTurnos 
 {
@@ -39,6 +41,9 @@ public class ContadorDeTurnos
 	public void reducir()
 	{
 		this.turnosRestantes--;
+		if (this.estaEnCero()){
+			throw new SeAcabaronTurnosDelEstadoException();
+		}
 	}
 	
 	public void reestablecer()

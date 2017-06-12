@@ -1,8 +1,12 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.personajes;
 
 import static algoBall.ConstantesDelJuego.*;
 
 import exceptions.PersonajeInexistenteException;
+import funcionamientoPersonaje.elementos.AtaqueEspecial;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.elementos.Ki;
+import funcionamientoPersonaje.elementos.Salud;
 
 public class Piccolo extends Personaje 
 {	

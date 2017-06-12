@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import exceptions.KiInsuficienteException;
-import funcionamientoPersonaje.Ki;
+import funcionamientoPersonaje.elementos.Ki;
 
 
 public class KiUnitTest {

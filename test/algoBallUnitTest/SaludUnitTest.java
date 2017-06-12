@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import funcionamientoPersonaje.Salud;
+import funcionamientoPersonaje.elementos.Salud;
 
 public class SaludUnitTest 
 {

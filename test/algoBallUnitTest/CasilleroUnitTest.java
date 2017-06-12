@@ -5,8 +5,10 @@ import org.junit.Test;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
-import funcionamientoPersonaje.*;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.elementos.*;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.MajinBoo;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Casillero;
 
 public class CasilleroUnitTest

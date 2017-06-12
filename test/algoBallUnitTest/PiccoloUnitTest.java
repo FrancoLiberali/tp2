@@ -9,9 +9,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algoBall.Agrupacion;
-import funcionamientoPersonaje.Gohan;
-import funcionamientoPersonaje.Personaje;
-import funcionamientoPersonaje.Piccolo;
+import funcionamientoPersonaje.personajes.Gohan;
+import funcionamientoPersonaje.personajes.Personaje;
+import funcionamientoPersonaje.personajes.Piccolo;
 
 public class PiccoloUnitTest {
 

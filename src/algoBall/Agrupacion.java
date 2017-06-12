@@ -3,8 +3,8 @@ package algoBall;
 import java.util.ArrayList;
 
 import exceptions.PersonajeInexistenteException;
-import funcionamientoPersonaje.EstadoTransformacion;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 
 public class Agrupacion 

@@ -1,4 +1,4 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.elementos;
 
 import exceptions.KiInsuficienteException;
 

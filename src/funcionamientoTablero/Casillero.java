@@ -2,7 +2,7 @@ package funcionamientoTablero;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.personajes.Personaje;
 
 public class Casillero {
 

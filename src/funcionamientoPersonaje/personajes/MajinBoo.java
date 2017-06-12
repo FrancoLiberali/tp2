@@ -1,7 +1,12 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.personajes;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import funcionamientoPersonaje.elementos.AtaqueEspecial;
+import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.elementos.Ki;
+import funcionamientoPersonaje.elementos.Salud;
 import funcionamientoTablero.Posicion;
 
 public class MajinBoo extends Personaje 

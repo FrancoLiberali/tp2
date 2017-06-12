@@ -6,9 +6,9 @@ import static algoBall.ConstantesDelJuego.*;
 import org.junit.Test;
 
 import algoBall.Agrupacion;
-import funcionamientoPersonaje.Cell;
-import funcionamientoPersonaje.Goku;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.personajes.Cell;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 

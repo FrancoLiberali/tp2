@@ -1,6 +1,6 @@
 package funcionamientoTablero;
 
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.personajes.Personaje;
 
 public class Posicion 
 {

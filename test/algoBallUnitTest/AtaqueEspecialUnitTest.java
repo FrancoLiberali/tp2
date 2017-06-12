@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import exceptions.KiInsuficienteException;
-import funcionamientoPersonaje.AtaqueEspecial;
-import funcionamientoPersonaje.Ki;
+import funcionamientoPersonaje.elementos.AtaqueEspecial;
+import funcionamientoPersonaje.elementos.Ki;
 
 public class AtaqueEspecialUnitTest 
 {

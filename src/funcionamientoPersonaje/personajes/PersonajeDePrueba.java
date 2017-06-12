@@ -1,4 +1,6 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.personajes;
+
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
 
 public class PersonajeDePrueba extends Personaje {
 	

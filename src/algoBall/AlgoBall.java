@@ -2,7 +2,14 @@ package algoBall;
 
 import static algoBall.ConstantesDelJuego.*;
 import exceptions.PersonajeInexistenteException;
-import funcionamientoPersonaje.*;
+import funcionamientoPersonaje.elementos.*;
+import funcionamientoPersonaje.personajes.Cell;
+import funcionamientoPersonaje.personajes.Freezer;
+import funcionamientoPersonaje.personajes.Gohan;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.MajinBoo;
+import funcionamientoPersonaje.personajes.Personaje;
+import funcionamientoPersonaje.personajes.Piccolo;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 

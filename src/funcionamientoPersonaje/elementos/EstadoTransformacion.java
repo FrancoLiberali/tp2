@@ -1,8 +1,8 @@
-package funcionamientoPersonaje;
+package funcionamientoPersonaje.elementos;
 
 import exceptions.YaNoPuedeEvolucionarException;
 
-public class EstadoTransformacion implements Estado{
+public class EstadoTransformacion{
 	private String nombre;
 	private int velocidad;
 	private int distanciaDeAtaque;

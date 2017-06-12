@@ -3,7 +3,8 @@ package algoBall;
 import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
-import funcionamientoPersonaje.EstadoTransformacion;
+import exceptions.PersonajeInactivoNoPuedeAtacarException;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoTablero.Posicion;
 
 public class Turno {
@@ -65,6 +66,9 @@ public class Turno {
 		catch (IntentandoAtacarAUnCompanieroException error){
 			/*mensaje al usuario*/
 		}
+		catch (PersonajeInactivoNoPuedeAtacarException error){
+			/*mensaje al usuario*/
+		}
 	}
 	
 	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
@@ -83,6 +87,9 @@ public class Turno {
 			/*mensaje al usuario*/
 		}
 		catch (KiInsuficienteException error){
+			/*mensaje al usuario*/
+		}
+		catch (PersonajeInactivoNoPuedeAtacarException error){
 			/*mensaje al usuario*/
 		}
 	}

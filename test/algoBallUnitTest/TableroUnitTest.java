@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import exceptions.CasilleroVacioException;
 import exceptions.FueraDelTableroException;
-import funcionamientoPersonaje.Goku;
-import funcionamientoPersonaje.Personaje;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
 

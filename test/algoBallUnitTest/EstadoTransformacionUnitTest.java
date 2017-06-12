@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import exceptions.KiInsuficienteException;
 import exceptions.YaNoPuedeEvolucionarException;
-import funcionamientoPersonaje.EstadoTransformacion;
-import funcionamientoPersonaje.Ki;
+import funcionamientoPersonaje.elementos.EstadoTransformacion;
+import funcionamientoPersonaje.elementos.Ki;
 
 public class EstadoTransformacionUnitTest {
 

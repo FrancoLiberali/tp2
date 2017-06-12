@@ -4,7 +4,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exceptions.*;
-import funcionamientoPersonaje.*;
+import funcionamientoPersonaje.elementos.*;
+import funcionamientoPersonaje.personajes.Cell;
+import funcionamientoPersonaje.personajes.Freezer;
+import funcionamientoPersonaje.personajes.Gohan;
+import funcionamientoPersonaje.personajes.Goku;
+import funcionamientoPersonaje.personajes.MajinBoo;
+import funcionamientoPersonaje.personajes.Personaje;
+import funcionamientoPersonaje.personajes.Piccolo;
 import funcionamientoTablero.*;
 import static algoBall.ConstantesDelJuego.*;
 import algoBall.Agrupacion;
