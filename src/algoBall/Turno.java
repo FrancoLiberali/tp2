@@ -51,9 +51,9 @@ public class Turno {
 		this.jugador.moverArriba(nombrePersonaje);
 	}
 	
-	public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
+	/*public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		if (cantidadDeAtaquesRestantes == 0){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 			return;
 		}
 		try{
@@ -61,19 +61,19 @@ public class Turno {
 			this.cantidadDeAtaquesRestantes = 0;
 		}
 		catch (FueraDeRangoException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 		catch (IntentandoAtacarAUnCompanieroException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 		catch (PersonajeInactivoNoPuedeAtacarException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 	}
 	
 	public void realizarAtaqueEspecial(String nombrePersonaje, Posicion posicionVictima){
 		if (cantidadDeAtaquesRestantes == 0){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 			return;
 		}
 		try{
@@ -81,19 +81,19 @@ public class Turno {
 			this.cantidadDeAtaquesRestantes = 0;
 		}
 		catch (FueraDeRangoException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 		catch (IntentandoAtacarAUnCompanieroException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 		catch (KiInsuficienteException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 		catch (PersonajeInactivoNoPuedeAtacarException error){
-			/*mensaje al usuario*/
+			//mensaje al usuario
 		}
 	}
-	
+	*/
 	public Posicion obtenerPosicionDe(String nombrePersonaje){
 		return this.jugador.obtenerPosicionDe(nombrePersonaje);
 	}

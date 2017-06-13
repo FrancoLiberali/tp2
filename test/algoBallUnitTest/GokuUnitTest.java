@@ -99,7 +99,7 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 71 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 80 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		goku.aumentarKi(20);
 		
 		Tablero tablero = new Tablero(10);
@@ -114,8 +114,8 @@ public class GokuUnitTest
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		int danioAtaqueEspecial = (PODER_GOKU_NORMAL + PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU * PODER_GOKU_NORMAL / 100 );
-		int saludEsperada = PUNTOS_VIDA_CELL -  (danioAtaqueEspecial
-				+ PORCENTAJE_AUMENTO_DANIO_GOKU * danioAtaqueEspecial / 100 );
+		int saludEsperada = PUNTOS_VIDA_CELL -  danioAtaqueEspecial
+				- PORCENTAJE_AUMENTO_DANIO_GOKU * danioAtaqueEspecial / 100 ;
 		
 		goku.realizarAtaqueEspecial(posicionInicialY);
 		assertEquals(cell.getSalud(), saludEsperada);

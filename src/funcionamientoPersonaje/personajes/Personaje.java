@@ -150,41 +150,29 @@ public abstract class Personaje
 		}
 	}
 
-	protected void atacar(Posicion posicionVictima, int danio, int poderDePelea){
+	protected void verificarAtaque(Posicion posicionVictima)
+	{
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
-		
 		Personaje personajeAAtacar = posicionVictima.getPersonaje();
 		if (this.agrupacion.existePersonaje(personajeAAtacar.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
-		personajeAAtacar.recibirDanio(danio, poderDePelea);
+		
 	}
-	
 	public void realizarAtaqueBasico(Posicion posicionVictima){
-		this.estadoActividad.aplicarAtaqueBasico(this, posicionVictima);
+		this.verificarAtaque(posicionVictima);
+		this.estadoTransformacionActual.realizarAtaqueBasico(posicionVictima);
+	}
+
+	public void realizarAtaqueEspecial(Posicion posicionVictima)
+	{
+		this.verificarAtaque(posicionVictima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima,
+				this.ataqueEspecial.getPorcentaje(this.ki));
 	}
 	
-	public void ejecutarAtaqueBasico(Posicion posVictima)
-	{
-		int poderDePelea =  this.estadoTransformacionActual.getPoderDePelea();
-		this.atacar(posVictima, poderDePelea, poderDePelea);
-		//POR AHORA PORQUE NO HAY CONSUMIBLES ENTONCES ATAQUE BASICO SIEMPRE ES IGUAL A PODER DE PELEA
-	}
-	
-	public int realizarAtaqueEspecial(Posicion posicionVictima)
-	{
-		return this.estadoActividad.aplicarAtaqueEspecial(this, posicionVictima);
-	}
-	
-	public int ejecutarAtaqueEspecial(Posicion posVictima)
-	{
-		int poderDePelea = this.estadoTransformacionActual.getPoderDePelea();
-		int ataqueEspecial = this.ataqueEspecial.getAtaque(poderDePelea, this.ki);
-		this.atacar(posVictima, ataqueEspecial, poderDePelea);
-		return ataqueEspecial;
-	}
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){
 		if (poderDePeleaEnemigo < this.getPoderDePelea()){

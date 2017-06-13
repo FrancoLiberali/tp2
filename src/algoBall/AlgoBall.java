@@ -56,7 +56,7 @@ public class AlgoBall
 	public void moverArriba(String nombrePersonaje){
 		this.turnoActual.moverArriba(nombrePersonaje);
 	}
-	
+	/*
 	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
 		Posicion posicionVictima = new Posicion (fila,columna);
 		posicionVictima.setTablero(tablero);
@@ -77,7 +77,7 @@ public class AlgoBall
 		catch (JuegoTerminado fin){
 			this.terminarJuego();
 		}
-	}
+	}*/
 	public void terminarJuego(){
 		@SuppressWarnings("unused")
 		Jugador jugadorGanador = this.turnoActual.getJugador();

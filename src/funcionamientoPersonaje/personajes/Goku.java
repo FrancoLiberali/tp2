@@ -68,12 +68,30 @@ public class Goku extends Personaje
 		return segundaTranf;
 	}
 	
-	@Override
-	public void atacar(Posicion posicionVictima, int danio, int poderDePelea){
+	private int bonusPorcentajeGoku()
+	{
+		int porcentajeExtra = 0;
+		
+		
 		if (this.getPorcentajeSalud()< PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU )
 		{
-			danio = danio + danio * PORCENTAJE_AUMENTO_DANIO_GOKU / 100;
+			porcentajeExtra = PORCENTAJE_AUMENTO_DANIO_GOKU;
 		}
-		super.atacar(posicionVictima, danio, poderDePelea);
+		return porcentajeExtra;
+	}
+	
+	@Override
+	public void realizarAtaqueBasico(Posicion posicionVictima)
+	{
+		this.verificarAtaque(posicionVictima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima, this.bonusPorcentajeGoku());
+	}
+	
+	@Override
+	public void realizarAtaqueEspecial(Posicion posicionVictima)
+	{
+		this.verificarAtaque(posicionVictima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima,
+				this.ataqueEspecial.getPorcentaje(this.ki) + this.bonusPorcentajeGoku());
 	}
 }

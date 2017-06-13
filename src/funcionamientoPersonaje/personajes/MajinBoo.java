@@ -65,10 +65,14 @@ public class MajinBoo extends Personaje
 	}
 	
 	@Override
-	public int realizarAtaqueEspecial(Posicion posVictima)
+	public void realizarAtaqueEspecial(Posicion posVictima)
 	{
+		
+		
+		
 		posVictima.getPersonaje().setEstadoActividad(new EstadoInactivoConChocolate());
-		return DANIO_ATAQ_ESPECIAL_MAJIN_BOO;
+		this.ki.restar( new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
+		
 		
 	}
 }

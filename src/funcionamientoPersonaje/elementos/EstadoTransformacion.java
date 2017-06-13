@@ -1,6 +1,10 @@
 package funcionamientoPersonaje.elementos;
 
+import exceptions.FueraDeRangoException;
+import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.YaNoPuedeEvolucionarException;
+import funcionamientoPersonaje.personajes.Personaje;
+import funcionamientoTablero.Posicion;
 
 public class EstadoTransformacion{
 	private String nombre;
@@ -31,6 +35,20 @@ public class EstadoTransformacion{
 		}
 		kiPersonaje.restar(kiParaTransformacion);
 		return this.siguienteEstado;
+	}
+	
+	protected void atacar(Posicion posicionVictima, int danio){
+		Personaje personajeAAtacar = posicionVictima.getPersonaje();
+		personajeAAtacar.recibirDanio(danio, this.getPoderDePelea());
+	
+	}
+	public void realizarAtaqueBasico(Posicion posicionVictima) {
+		this.atacar(posicionVictima, this.poderDePelea);
+		
+	}
+	public void realizarAtaqueEspecial(Posicion posicionVictima, int porcentajeBonus) {
+		this.atacar(posicionVictima, this.poderDePelea + this.poderDePelea * porcentajeBonus /100);
+		
 	}
 	
 	public String getNombre(){
@@ -73,5 +91,7 @@ public class EstadoTransformacion{
 		return (porcentajeVidaCompaniero1 < porcentajeVidaDeCompanierosNecesariaParaTransformar 
 				&& porcentajeVidaCompaniero2 < porcentajeVidaDeCompanierosNecesariaParaTransformar);
 	}
+
+
 
 }

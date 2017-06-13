@@ -14,9 +14,9 @@ public class AtaqueEspecial {
 		this.porcentaje = porcentaje;
 	}
 	
-	public int getAtaque(int ataqueBasico, Ki kiPersonaje){
+	public int getPorcentaje( Ki kiPersonaje){
 		kiPersonaje.restar(kiNecesario);
-		return (ataqueBasico + (ataqueBasico * porcentaje/100));
+		return porcentaje;
 	}
 	
 	public String getNombre(){
