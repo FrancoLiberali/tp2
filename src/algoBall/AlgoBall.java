@@ -44,18 +44,6 @@ public class AlgoBall
 		return turnoActual.getTurnoSiguiente();
 	}
 	
-	public void moverIzquierda(String nombrePersonaje){
-		this.turnoActual.moverIzquierda(nombrePersonaje);
-	}
-	public void moverAbajo(String nombrePersonaje){
-		this.turnoActual.moverAbajo(nombrePersonaje);
-	}
-	public void moverDerecha(String nombrePersonaje){
-		this.turnoActual.moverDerecha(nombrePersonaje);
-	}
-	public void moverArriba(String nombrePersonaje){
-		this.turnoActual.moverArriba(nombrePersonaje);
-	}
 	/*
 	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
 		Posicion posicionVictima = new Posicion (fila,columna);

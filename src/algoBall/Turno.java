@@ -38,19 +38,6 @@ public class Turno {
 		this.turnoSiguiente = turnoSiguiente;
 	}
 	
-	public void moverIzquierda(String nombrePersonaje){
-		this.jugador.moverIzquierda(nombrePersonaje);
-	}
-	public void moverAbajo(String nombrePersonaje){
-		this.jugador.moverAbajo(nombrePersonaje);
-	}
-	public void moverDerecha(String nombrePersonaje){
-		this.jugador.moverDerecha(nombrePersonaje);
-	}
-	public void moverArriba(String nombrePersonaje){
-		this.jugador.moverArriba(nombrePersonaje);
-	}
-	
 	/*public void realizarAtaqueBasico(String nombrePersonaje, Posicion posicionVictima){
 		if (cantidadDeAtaquesRestantes == 0){
 			//mensaje al usuario

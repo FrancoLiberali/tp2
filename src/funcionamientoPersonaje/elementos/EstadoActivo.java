@@ -11,7 +11,7 @@ public class EstadoActivo implements EstadoActividad
 	}
 
 	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
-		personaje.ejecutarMovimiento(nuevaPosicion);
+		return;
 	}
 /*
 	public int aplicarAtaqueEspecial(Personaje personaje, Posicion posicionVictima) {

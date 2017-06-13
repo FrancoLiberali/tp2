@@ -37,19 +37,6 @@ public class Jugador
 		return this.agrupacion;
 	}
 	
-	public void moverIzquierda(String nombrePersonaje){
-		this.agrupacion.moverIzquierda(nombrePersonaje);
-	}
-	public void moverAbajo(String nombrePersonaje){
-		this.agrupacion.moverAbajo(nombrePersonaje);
-	}
-	public void moverDerecha(String nombrePersonaje){
-		this.agrupacion.moverDerecha(nombrePersonaje);
-	}
-	public void moverArriba(String nombrePersonaje){
-		this.agrupacion.moverArriba(nombrePersonaje);
-	}
-	
 	public void reestablecer(){
 		agrupacion.reestablecer();
 	}

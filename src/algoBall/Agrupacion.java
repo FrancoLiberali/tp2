@@ -58,29 +58,6 @@ public class Agrupacion
 		return false;
 	}
 	
-	public void moverIzquierda(String nombrePersonaje)
-	{
-		moverIzquierda movimiento = new moverIzquierda();
-		movimiento.mover(this,nombrePersonaje);
-		
-	}
-	
-	public void moverAbajo(String nombrePersonaje)
-	{
-		moverAbajo movimiento = new moverAbajo();
-		movimiento.mover(this,nombrePersonaje);
-	}
-	public void moverDerecha(String nombrePersonaje)
-	{
-		moverDerecha movimiento = new moverDerecha();
-		movimiento.mover(this,nombrePersonaje);
-	}
-	public void moverArriba(String nombrePersonaje)
-	{
-		moverArriba movimiento = new moverArriba();
-		movimiento.mover(this,nombrePersonaje);
-	}
-	
 	public void reestablecer(){
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();

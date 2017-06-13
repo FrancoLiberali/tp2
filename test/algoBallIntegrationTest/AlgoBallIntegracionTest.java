@@ -10,45 +10,6 @@ import funcionamientoTablero.Posicion;
 
 public class AlgoBallIntegracionTest 
 {	
-	@Test
-	public void pruebaDeIntegracionDeMovimientos(){
-		AlgoBall juego = new AlgoBall("juan", "pepe");
-		
-		juego.moverAbajo(GOKU_NOMBRE);
-		Posicion posicion = new Posicion(2,0);
-		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
-		
-		juego.moverAbajo(GOKU_NOMBRE);
-		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
-		/*el movimiento no se realizo por que alli esta Freezer*/
-		
-		juego.moverDerecha(FREEZER_NOMBRE);
-		Posicion posFreezer = new Posicion(3,0);
-		assertEquals(juego.obtenerPosicionDe(FREEZER_NOMBRE), posFreezer);
-		/*no se puede mover a Majin porque no es el turno del jugador duenio*/
-		
-		juego.moverIzquierda(GOKU_NOMBRE);
-		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion);
-		/* el movimiento no se realizo porque alli termina el tablero*/
-		
-		juego.moverDerecha(GOKU_NOMBRE);
-		Posicion posicion2 = new Posicion(2,1);
-		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion2);
-		
-		juego.moverDerecha(GOKU_NOMBRE);
-		assertEquals(juego.obtenerPosicionDe(GOKU_NOMBRE), posicion2);
-		/*el movimiento no se realizo porque goku ya ha realizado la cantidad de movimientos maxima
-		 * segun su velocidad*/
-		
-		juego.finalizarTurno();
-		
-		juego.moverArriba(FREEZER_NOMBRE);
-		Posicion posFreezer2 = new Posicion(2,0);
-		assertEquals(juego.obtenerPosicionDe(FREEZER_NOMBRE),posFreezer2);
-		/* ahora si se puede mover ya que es su turno*/
-		
-	}
-	
 	/*@Test
 	public void pruebaDeIntegracionDeAtaques(){
 		AlgoBall juego = new AlgoBall("juan", "pepe");

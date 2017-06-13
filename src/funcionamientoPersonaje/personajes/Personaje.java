@@ -126,11 +126,8 @@ public abstract class Personaje
 		}
 	}
 	
-	public void mover(Posicion nuevaPosicion){
-		this.estadoActividad.aplicarMovimiento(this, nuevaPosicion);
-	}
 	
-	public void ejecutarMovimiento(Posicion nuevaPosicion)
+	public void mover(Posicion nuevaPosicion)
 	{
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
@@ -150,6 +147,26 @@ public abstract class Personaje
 		}
 	}
 
+	public void moverIzquierda()
+	{
+		this.mover(this.posicion.darIzquierda());
+	}
+	
+	public void moverDerecha()
+	{
+		this.mover(this.posicion.darDerecha());
+	}
+	
+	public void moverArriba()
+	{
+		this.mover(this.posicion.darArriba());
+	}
+	
+	public void moverAbajo()
+	{
+		this.mover(this.posicion.darAbajo());
+	}
+	
 	protected void verificarAtaque(Posicion posicionVictima)
 	{
 		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
