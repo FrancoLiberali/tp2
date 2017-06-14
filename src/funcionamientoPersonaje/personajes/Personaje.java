@@ -154,26 +154,26 @@ public abstract class Personaje
 		this.mover(this.posicion.darAbajo());
 	}
 	
-	protected void verificarAtaque(Posicion posicionVictima)
+	protected void verificarAtaque(Personaje victima)
 	{
-		if (!this.posicion.dentroDelRango(posicionVictima, this.getDistanciaDeAtaque())){
+		if (!this.posicion.dentroDelRango(victima.getPosicion(), this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
-		Personaje personajeAAtacar = posicionVictima.getPersonaje();
-		if (this.agrupacion.existePersonaje(personajeAAtacar.getNombre())){
+		//Personaje personajeAAtacar = posicionVictima.getPersonaje();
+		if (this.agrupacion.existePersonaje(victima.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
 		
 	}
-	public void realizarAtaqueBasico(Posicion posicionVictima){
-		this.verificarAtaque(posicionVictima);
-		this.estadoTransformacionActual.realizarAtaqueBasico(posicionVictima);
+	public void realizarAtaqueBasico(Personaje victima){
+		this.verificarAtaque(victima);
+		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
 	}
 
-	public void realizarAtaqueEspecial(Posicion posicionVictima)
+	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		this.verificarAtaque(posicionVictima);
-		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima,
+		this.verificarAtaque(victima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 				this.ataqueEspecial.getPorcentaje(this.ki));
 	}
 	

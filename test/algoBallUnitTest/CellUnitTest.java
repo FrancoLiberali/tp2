@@ -43,7 +43,7 @@ public class CellUnitTest {
 		
 		int saludEsperada = PUNTOS_VIDA_GOKU - PODER_CELL_NORMAL;
 		
-		cell.realizarAtaqueEspecial(posicionInicialX);
+		cell.realizarAtaqueEspecial(goku);
 		assertEquals(goku.getSalud(), saludEsperada);
 	}
 	
@@ -68,9 +68,9 @@ public class CellUnitTest {
 		
 		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOKU_NORMAL + PODER_CELL_NORMAL;
 		
-		goku.realizarAtaqueBasico(posicionInicialY);
+		goku.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), PUNTOS_VIDA_CELL - PODER_GOKU_NORMAL);
-		cell.realizarAtaqueEspecial(posicionInicialX);
+		cell.realizarAtaqueEspecial(goku);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 	
@@ -95,7 +95,7 @@ public class CellUnitTest {
 		
 		int saludEsperada = PUNTOS_VIDA_CELL;
 		
-		cell.realizarAtaqueEspecial(posicionInicialX);
+		cell.realizarAtaqueEspecial(goku);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 	
@@ -119,10 +119,10 @@ public class CellUnitTest {
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		
-		cell.realizarAtaqueEspecial(posicionInicialX);
-		cell.realizarAtaqueEspecial(posicionInicialX);
-		cell.realizarAtaqueEspecial(posicionInicialX);
-		cell.realizarAtaqueEspecial(posicionInicialX);
+		cell.realizarAtaqueEspecial(goku);
+		cell.realizarAtaqueEspecial(goku);
+		cell.realizarAtaqueEspecial(goku);
+		cell.realizarAtaqueEspecial(goku);
 		cell.transformar();
 		assertEquals(cell.getEstadoTransformacion().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);
 	}

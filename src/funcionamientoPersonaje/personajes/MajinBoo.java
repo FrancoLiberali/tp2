@@ -65,12 +65,9 @@ public class MajinBoo extends Personaje
 	}
 	
 	@Override
-	public void realizarAtaqueEspecial(Posicion posVictima)
-	{
-		
-		
-		
-		posVictima.getPersonaje().convertirAChocolate();
+	public void realizarAtaqueEspecial(Personaje victima)
+	{	
+		victima.convertirAChocolate();
 		this.ki.restar( new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
 		
 		

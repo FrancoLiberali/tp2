@@ -40,7 +40,7 @@ public class GokuUnitTest
 		int saludEsperada = PUNTOS_VIDA_CELL - (PODER_GOKU_NORMAL
 				+ PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU * PODER_GOKU_NORMAL / 100 );//470
 		
-		goku.realizarAtaqueEspecial(posicionInicialY);
+		goku.realizarAtaqueEspecial(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 	
@@ -64,7 +64,7 @@ public class GokuUnitTest
 		
 		int saludEsperada = PUNTOS_VIDA_CELL - (PODER_GOKU_NORMAL);
 		
-		goku.realizarAtaqueBasico(posicionInicialY);
+		goku.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 	
@@ -90,7 +90,7 @@ public class GokuUnitTest
 		int saludEsperada = PUNTOS_VIDA_CELL - (PODER_GOKU_NORMAL
 				+ PORCENTAJE_AUMENTO_DANIO_GOKU * PODER_GOKU_NORMAL / 100 );
 		
-		goku.realizarAtaqueBasico(posicionInicialY);
+		goku.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 	
@@ -117,7 +117,7 @@ public class GokuUnitTest
 		int saludEsperada = PUNTOS_VIDA_CELL -  danioAtaqueEspecial
 				- PORCENTAJE_AUMENTO_DANIO_GOKU * danioAtaqueEspecial / 100 ;
 		
-		goku.realizarAtaqueEspecial(posicionInicialY);
+		goku.realizarAtaqueEspecial(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 	}
 }

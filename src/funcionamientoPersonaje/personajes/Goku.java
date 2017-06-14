@@ -81,17 +81,17 @@ public class Goku extends Personaje
 	}
 	
 	@Override
-	public void realizarAtaqueBasico(Posicion posicionVictima)
+	public void realizarAtaqueBasico(Personaje victima)
 	{
-		this.verificarAtaque(posicionVictima);
-		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima, this.bonusPorcentajeGoku());
+		this.verificarAtaque(victima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(victima, this.bonusPorcentajeGoku());
 	}
 	
 	@Override
-	public void realizarAtaqueEspecial(Posicion posicionVictima)
+	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		this.verificarAtaque(posicionVictima);
-		this.estadoTransformacionActual.realizarAtaqueEspecial(posicionVictima,
+		this.verificarAtaque(victima);
+		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 				this.ataqueEspecial.getPorcentaje(this.ki) + this.bonusPorcentajeGoku());
 	}
 }

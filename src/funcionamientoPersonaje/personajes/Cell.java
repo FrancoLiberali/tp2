@@ -65,8 +65,8 @@ public class Cell extends Personaje
 	}
 	
 	@Override
-	public void realizarAtaqueEspecial(Posicion posicionVictima){
-		super.realizarAtaqueBasico(posicionVictima);
+	public void realizarAtaqueEspecial(Personaje victima){
+		super.realizarAtaqueBasico(victima);
 		vidasAbsorvidas = vidasAbsorvidas + 1;
 		salud.aumentar(this.estadoTransformacionActual.getPoderDePelea());
 		

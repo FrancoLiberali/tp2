@@ -61,7 +61,7 @@ public class MajinBooUnitTest
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
-		majinBoo.realizarAtaqueEspecial(posicionInicialY);
+		majinBoo.realizarAtaqueEspecial(goku);
 		goku.aumentarKi(100);
 		
 		assertEquals(goku.getKi(), KI_INICIAL);
@@ -87,7 +87,7 @@ public class MajinBooUnitTest
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
-		majinBoo.realizarAtaqueEspecial(posicionInicialY);
+		majinBoo.realizarAtaqueEspecial(goku);
 		goku.transformar();
 		assertEquals(goku.getEstadoTransformacion().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
@@ -112,7 +112,7 @@ public class MajinBooUnitTest
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
-		majinBoo.realizarAtaqueEspecial(posicionInicialY);
+		majinBoo.realizarAtaqueEspecial(goku);
 		goku.moverDerecha();
 		assertTrue(goku.getPosicion().esIgualA(posicionInicialY));
 	}
@@ -136,7 +136,7 @@ public class MajinBooUnitTest
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
-		majinBoo.realizarAtaqueEspecial(posicionInicialY);
+		majinBoo.realizarAtaqueEspecial(goku);
 		EstadoInactivoConChocolate estado = (EstadoInactivoConChocolate)goku.getEstadoActividad();
 		ContadorDeTurnos turnos = estado.getContadorDeTurnos();
 		assertEquals(turnos.getTurnosRestantes(), 3);

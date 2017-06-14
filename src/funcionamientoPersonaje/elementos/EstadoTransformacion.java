@@ -42,17 +42,16 @@ public class EstadoTransformacion implements EstadoActividad{
 		return this.siguienteEstado;
 	}
 	
-	protected void atacar(Posicion posicionVictima, int danio){
-		Personaje personajeAAtacar = posicionVictima.getPersonaje();
-		personajeAAtacar.recibirDanio(danio, this.getPoderDePelea());
+	protected void atacar(Personaje victima, int danio){
+		victima.recibirDanio(danio, this.getPoderDePelea());
 	
 	}
-	public void realizarAtaqueBasico(Posicion posicionVictima) {
-		this.atacar(posicionVictima, this.poderDePelea);
+	public void realizarAtaqueBasico(Personaje victima) {
+		this.atacar(victima, this.poderDePelea);
 		
 	}
-	public void realizarAtaqueEspecial(Posicion posicionVictima, int porcentajeBonus) {
-		this.atacar(posicionVictima, this.poderDePelea + this.poderDePelea * porcentajeBonus /100);
+	public void realizarAtaqueEspecial(Personaje victima, int porcentajeBonus) {
+		this.atacar(victima, this.poderDePelea + this.poderDePelea * porcentajeBonus /100);
 		
 	}
 	
