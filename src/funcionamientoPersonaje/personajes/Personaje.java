@@ -127,7 +127,7 @@ public abstract class Personaje
 	}
 	
 	
-	public void mover(Posicion nuevaPosicion)
+	private void mover(Posicion nuevaPosicion)
 	{
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
