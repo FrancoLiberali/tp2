@@ -7,12 +7,13 @@ import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
+import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.NoQuedanMovimientosException;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoActividad;
-import funcionamientoPersonaje.elementos.EstadoActivo;
+import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
@@ -25,12 +26,11 @@ public abstract class Personaje
 	protected int movimientosRestantes;
 	protected Ki ki;
 	protected Salud salud;
-	protected EstadoActividad estadoActividad = new EstadoActivo();
-	protected EstadoTransformacion estadoTransformacionActual;
+	protected EstadoActividad estadoTransformacionActual;
 	protected Agrupacion agrupacion;
 	protected AtaqueEspecial ataqueEspecial;
 	
-	abstract EstadoTransformacion setEstadoNormal();
+	abstract EstadoActividad setEstadoNormal();
 	abstract EstadoTransformacion setPrimerEstadoTransformacion();
 	abstract EstadoTransformacion setSegundoEstadoTransformacion();
 	
@@ -44,10 +44,6 @@ public abstract class Personaje
 		this.posicion = pos;	
 	}
 	
-	public void setEstadoActividad(EstadoActividad estado)
-	{
-		this.estadoActividad = estado;
-	}
 	
 	public void setAgrupacion(Agrupacion agrupacion){
 		this.agrupacion = agrupacion;
@@ -90,16 +86,12 @@ public abstract class Personaje
 		return (this.estadoTransformacionActual.getDistanciaDeAtaque());
 	}
 	
-	public EstadoTransformacion getEstadoTransformacion(){
+	public EstadoActividad getEstadoTransformacion(){
 		return this.estadoTransformacionActual;
 	}
 	
-	public EstadoActividad getEstadoActividad(){
-		return this.estadoActividad;
-	}
-	
 	public void aumentarKi(int cantidad){
-		this.estadoActividad.aplicarKi(this, cantidad);
+		this.estadoTransformacionActual.aplicarKi(this, cantidad);
 	}
 	
 	public void ejecutarAumentoDeKi(int cantidad){
@@ -107,11 +99,6 @@ public abstract class Personaje
 	}
 	
 	public void transformar()
-	{
-		this.estadoActividad.aplicarTransformacion(this);
-	}
-	
-	public void ejecutarTransformacion()
 	{
 		try{
 			int velocidadAnterior = this.getVelocidad();
@@ -204,10 +191,13 @@ public abstract class Personaje
 	public void reestablecer(){
 		/*deja todo listo para el siguiente turno*/
 		try{
-			estadoActividad.reducirTurnos();
+			this.estadoTransformacionActual.reducirTurnos();
 		}
 		catch (SeAcabaronTurnosDelEstadoException error){
-			this.setEstadoActividad(new EstadoActivo());
+			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(ki); 
+		}
+		catch( NoEstaEnEstadoChocolateException error){
+		 // si le mandas reducir turnos a un estado estandar tipo super sayajin
 		}
 		movimientosRestantes = this.getVelocidad();
 		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
@@ -229,4 +219,10 @@ public abstract class Personaje
 		
 	}
 
+	public void convertirAChocolate(){
+	    
+        EstadoActividad transformacionAChocolate = new EstadoInactivoConChocolate(); 
+        transformacionAChocolate.setSiguienteEstado(this.estadoTransformacionActual, 0);
+        this.estadoTransformacionActual = transformacionAChocolate;
+    }
 }

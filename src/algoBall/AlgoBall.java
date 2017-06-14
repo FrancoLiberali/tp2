@@ -94,13 +94,8 @@ public class AlgoBall
 		return this.turnoActual.getKiDe(nombrePersonaje);
 	}
 	
-	public void transformar(String nombrePersonaje){
-		this.turnoActual.transformar(nombrePersonaje);
-	}
 	
-	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
-		return this.turnoActual.getEstadoTransformacion(nombrePersonaje);
-	}
+	
 	
 	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
 	{

@@ -53,11 +53,6 @@ public class Jugador
 		return this.agrupacion.getKiDe(nombrePersonaje);
 	}
 	
-	public void transformar(String nombrePersonaje){
-		this.agrupacion.transformar(nombrePersonaje);
-	}
-	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
-		return this.agrupacion.getEstadoTransformacion(nombrePersonaje);
-	}
+	
 }
 

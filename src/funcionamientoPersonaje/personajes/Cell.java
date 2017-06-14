@@ -3,6 +3,7 @@ package funcionamientoPersonaje.personajes;
 import static algoBall.ConstantesDelJuego.*;
 
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
+import funcionamientoPersonaje.elementos.EstadoActividad;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
@@ -22,14 +23,14 @@ public class Cell extends Personaje
 	}
 	
 	
-	@Override
-	public EstadoTransformacion setEstadoNormal()
+	
+	public EstadoActividad setEstadoNormal()
 	{
 		String nombre = NOMBRE_TRANF_NORMAL;
 		int velocidad = VELOCIDAD_CELL_NORMAL;
 		int distancia = DISTANCIA_CELL_NORMAL;
 		int poder = PODER_CELL_NORMAL;
-		EstadoTransformacion normal = new EstadoTransformacion(nombre, poder, distancia, velocidad);
+		EstadoActividad normal = new EstadoTransformacion(nombre, poder, distancia, velocidad);
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_CELL_PRIMERA_TRANF);

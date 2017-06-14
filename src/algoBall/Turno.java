@@ -91,13 +91,7 @@ public class Turno {
 	public int getKiDe(String nombrePersonaje){
 		return this.jugador.getKiDe(nombrePersonaje);
 	}
-	public void transformar(String nombrePersonaje){
-		this.jugador.transformar(nombrePersonaje);
-	}
 	
-	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
-		return this.jugador.getEstadoTransformacion(nombrePersonaje);
-	}
 }
 
 

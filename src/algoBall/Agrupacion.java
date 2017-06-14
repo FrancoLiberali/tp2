@@ -95,13 +95,5 @@ public class Agrupacion
 		return personaje.getKi();
 	}
 	
-	public void transformar(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		personaje.transformar();
-	}
 	
-	public EstadoTransformacion getEstadoTransformacion(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		return personaje.getEstadoTransformacion();
-	}
 }

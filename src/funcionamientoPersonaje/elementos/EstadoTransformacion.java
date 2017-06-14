@@ -2,16 +2,17 @@ package funcionamientoPersonaje.elementos;
 
 import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
+import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 
-public class EstadoTransformacion{
+public class EstadoTransformacion implements EstadoActividad{
 	private String nombre;
 	private int velocidad;
 	private int distanciaDeAtaque;
 	private int poderDePelea;
-	private EstadoTransformacion siguienteEstado = null;
+	private EstadoActividad siguienteEstado = null;
 	private Ki kiParaTransformacion = null;
 	private int vidasAbsorvidasNecesariasParaTransformar;
 	private int porcentajeVidaDeGohanNecesariaParaTransformar;
@@ -24,12 +25,16 @@ public class EstadoTransformacion{
 		this.poderDePelea = poder;
 	}
 	
-	public void setSiguienteEstado(EstadoTransformacion siguiente, int kiNecesario){
+	public void setSiguienteEstado(EstadoActividad siguiente, int kiNecesario){
 		this.siguienteEstado = siguiente;
 		this.kiParaTransformacion = new Ki(kiNecesario);		
 	}
 	
-	public EstadoTransformacion transformar(Ki kiPersonaje){
+	public void reducirTurnos()
+	{
+		throw new NoEstaEnEstadoChocolateException();
+	}
+	public EstadoActividad transformar(Ki kiPersonaje){
 		if (this.siguienteEstado == null){
 			throw new YaNoPuedeEvolucionarException();
 		}
@@ -92,6 +97,14 @@ public class EstadoTransformacion{
 				&& porcentajeVidaCompaniero2 < porcentajeVidaDeCompanierosNecesariaParaTransformar);
 	}
 
+	public void aplicarKi(Personaje personaje, int cantidad) {
+		personaje.ejecutarAumentoDeKi(cantidad);
+	}
 
+	@Override
+	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

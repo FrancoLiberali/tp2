@@ -70,7 +70,7 @@ public class MajinBoo extends Personaje
 		
 		
 		
-		posVictima.getPersonaje().setEstadoActividad(new EstadoInactivoConChocolate());
+		posVictima.getPersonaje().convertirAChocolate();
 		this.ki.restar( new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
 		
 		
