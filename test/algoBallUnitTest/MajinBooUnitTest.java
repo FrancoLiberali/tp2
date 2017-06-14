@@ -113,8 +113,7 @@ public class MajinBooUnitTest
 		agrupacion2.agregarPersonaje(goku);
 		
 		majinBoo.realizarAtaqueEspecial(posicionInicialY);
-		Posicion nuevaPosicion = new Posicion(4,4);
-		goku.mover(nuevaPosicion);
+		goku.moverDerecha();
 		assertTrue(goku.getPosicion().esIgualA(posicionInicialY));
 	}
 	
