@@ -67,6 +67,7 @@ public class MajinBoo extends Personaje
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima)
 	{	
+		this.agrupacion.restarAtaqueRestates();
 		victima.convertirAChocolate();
 		this.ki.restar( new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
 		

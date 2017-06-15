@@ -91,6 +91,7 @@ public class Goku extends Personaje
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
 		this.verificarAtaque(victima);
+		this.agrupacion.restarAtaqueRestates();
 		float bonusPorPocaVida = this.bonusPorcentajeGoku();
 		float bonusAtaqueEspecial = this.ataqueEspecial.getPorcentaje(this.ki);
 		int bonusTotal = (int) sumarPorcentajes(bonusAtaqueEspecial, bonusPorPocaVida );

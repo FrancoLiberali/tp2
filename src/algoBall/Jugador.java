@@ -52,7 +52,20 @@ public class Jugador
 	public int getKiDe(String nombrePersonaje){
 		return this.agrupacion.getKiDe(nombrePersonaje);
 	}
+
+	public Personaje getPersonaje(String nombre) {
+		
+		return this.agrupacion.getPersonaje(nombre);
+	}
 	
+	public int getCantidadDeAtaquesRestantes(){
+		return this.agrupacion.getCantidadDeAtaquesRestantes();
+	}
+
+	public int getCantidadDeMovimientosRestantes() {
+		return this.agrupacion.getCantidadDeMovimientosRestantes();
+		
+	}
 	
 }
 

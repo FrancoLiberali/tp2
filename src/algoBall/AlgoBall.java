@@ -1,6 +1,9 @@
 package algoBall;
 
 import static algoBall.ConstantesDelJuego.*;
+
+import java.util.ArrayList;
+
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.elementos.*;
 import funcionamientoPersonaje.personajes.Cell;
@@ -17,6 +20,7 @@ public class AlgoBall
 {
 	private Turno turnoActual;
 	private Tablero tablero;
+	private ArrayList<Personaje> listaPerosnajes;
 	
 	public AlgoBall(String nombre1, String nombre2)
 	{
@@ -44,28 +48,7 @@ public class AlgoBall
 		return turnoActual.getTurnoSiguiente();
 	}
 	
-	/*
-	public void realizarAtaqueBasico(String nombrePersonaje, int fila, int columna){
-		Posicion posicionVictima = new Posicion (fila,columna);
-		posicionVictima.setTablero(tablero);
-		try{
-			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
-		}
-		catch (JuegoTerminado fin){
-			this.terminarJuego();
-		}
-	}
 	
-	public void realizarAtaqueEspecial(String nombrePersonaje, int fila, int columna){
-		Posicion posicionVictima = new Posicion (fila,columna);
-		posicionVictima.setTablero(tablero);
-		try{
-			this.turnoActual.realizarAtaqueBasico(nombrePersonaje, posicionVictima);
-		}
-		catch (JuegoTerminado fin){
-			this.terminarJuego();
-		}
-	}*/
 	public void terminarJuego(){
 		@SuppressWarnings("unused")
 		Jugador jugadorGanador = this.turnoActual.getJugador();
@@ -81,22 +64,6 @@ public class AlgoBall
 		}
 	}
 	
-	public int obtenerSaludDe(String nombrePersonaje){
-		try{
-			return this.turnoActual.obtenerSaludDe(nombrePersonaje);
-		}
-		catch (PersonajeInexistenteException error){
-			return this.turnoSiguiente().obtenerSaludDe(nombrePersonaje);
-		}
-	}
-	
-	public int getKiDe(String nombrePersonaje){
-		return this.turnoActual.getKiDe(nombrePersonaje);
-	}
-	
-	
-	
-	
 	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)
 	{
 		
@@ -106,6 +73,13 @@ public class AlgoBall
 		Personaje majinBoo = new MajinBoo();
 		Personaje cell = new Cell();
 		Personaje freezer = new Freezer();
+		
+		this.listaPerosnajes.add(goku);
+		this.listaPerosnajes.add(gohan);
+		this.listaPerosnajes.add(piccolo);
+		this.listaPerosnajes.add(majinBoo);
+		this.listaPerosnajes.add(cell);
+		this.listaPerosnajes.add(freezer);
 		
 		jugador1.agregarPersonaje(goku);
 		jugador1.agregarPersonaje(gohan);
@@ -122,4 +96,20 @@ public class AlgoBall
 		tablero.agregarPersonaje(freezer, new Posicion(FREEZER_FIL,FREEZER_COL));
 	}
 
+	public int getCantidadDeAtaquesRestantes()
+	{
+		 return this.turnoActual.getCantidadDeAtaquesRestantes();
+			
+	}
+	
+	
+	
+	public int getCantidadDeMovimientosRestantes() {
+		return this.turnoActual.getCantidadDeMovimientosRestantes();
+	}
+
+	public Personaje getPersonaje(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

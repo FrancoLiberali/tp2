@@ -122,7 +122,10 @@ public class PersonajeUnitTest
 	@Test
 	public void transformarseLuegoDeMoverseSinAlcarzarElLimiteDeMovimientosAumentaLaCantidadDeMovimientosPosibles(){
 		Personaje goku = new Goku();
+		Agrupacion guerrerosZ = new Agrupacion("z");
+		goku.setAgrupacion(guerrerosZ);
 		goku.aumentarKi(40);
+		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(goku, posicionInicial);
@@ -138,6 +141,8 @@ public class PersonajeUnitTest
 	@Test (expected = NoQuedanMovimientosException.class)
 	public void transformarseLuegoDeMoverseConAlcarzarElLimiteDeMovimientosNoAumentaLaCantidadDeMovimientosPosibles(){
 		Personaje goku = new Goku();
+		Agrupacion guerrerosZ = new Agrupacion("guerrerosZ");
+		goku.setAgrupacion(guerrerosZ);
 		goku.aumentarKi(40);
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
@@ -205,7 +210,8 @@ public class PersonajeUnitTest
 	@Test (expected = NoQuedanMovimientosException.class)
 	public void intentarMoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
 		Personaje piccolo = new Piccolo();
-		//velocidad == 2;
+		Agrupacion guerrerosZ = new Agrupacion("Guerreros Z");
+		piccolo.setAgrupacion(guerrerosZ);
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(piccolo, posicionInicial);
@@ -218,6 +224,8 @@ public class PersonajeUnitTest
 	@Test (expected = NoQuedanMovimientosException.class)
 	public void intentarMoverPersonajeQueHaSidoProhibidoDeMovimientosLanzaNoQuedanMovimientos(){
 		Personaje majinBoo = new MajinBoo();
+		Agrupacion enemigos = new Agrupacion("enemigos");
+		majinBoo.setAgrupacion(enemigos);
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(majinBoo, posicionInicial);
@@ -228,8 +236,11 @@ public class PersonajeUnitTest
 	@Test
 	public void moverPersonajeVerificarPosicion()
 	{
+		
 		Tablero tablero = new Tablero(10);
+		Agrupacion guerrerosZ = new Agrupacion("GuerrerosZ");
 		Personaje goku = new Goku();
+		goku.setAgrupacion(guerrerosZ);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(goku, posicionInicial);
 		goku.moverDerecha();

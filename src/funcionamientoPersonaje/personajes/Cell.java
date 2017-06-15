@@ -24,6 +24,7 @@ public class Cell extends Personaje
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_CELL, KI_ATQ_ESPECIAL_CELL);
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
+		
 	}
 	
 	

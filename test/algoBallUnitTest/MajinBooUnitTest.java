@@ -154,4 +154,41 @@ public class MajinBooUnitTest
 		assertEquals(goku.getKi(), kiEsperado);
 	}
 	
+	@Test
+	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteVuelveAlEstadoAnteriorEnTresTurnos()
+	{
+		Personaje majinBoo = new MajinBoo();
+		Personaje goku = new Goku();
+		majinBoo.aumentarKi(100);
+		
+		Tablero tablero = new Tablero(10);
+		Posicion posicionInicialX = new Posicion(2,2);
+		Posicion posicionInicialY = new Posicion(3,2);
+		
+		tablero.agregarPersonaje(majinBoo, posicionInicialX);
+		tablero.agregarPersonaje(goku, posicionInicialY);
+		
+		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Agrupacion agrupacion2 = new Agrupacion("malos");
+		agrupacion1.agregarPersonaje(majinBoo);
+		agrupacion2.agregarPersonaje(goku);
+		
+		majinBoo.realizarAtaqueEspecial(goku);
+		EstadoInactivoConChocolate estado = (EstadoInactivoConChocolate)goku.getEstadoActividad();
+		ContadorDeTurnos turnos = estado.getContadorDeTurnos();
+		assertEquals(turnos.getTurnosRestantes(), 3);
+		//simulo el juego.
+		goku.reestablecer();//fin turno goku
+		assertEquals(turnos.getTurnosRestantes(), 2);
+		assertEquals(goku.getKi(), KI_INICIAL);
+		goku.reestablecer();//fin turno goku
+		assertEquals(turnos.getTurnosRestantes(), 1);
+		assertEquals(goku.getKi(), KI_INICIAL);
+		goku.reestablecer();//fin turno goku
+		assertTrue(turnos.estaEnCero());
+		/*Luego de tres turnos se va el efecto chocolate*/
+		
+		
+		assertEquals(goku.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
+	}
 }

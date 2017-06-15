@@ -11,6 +11,8 @@ public class Agrupacion
 {	
 	private String nombre;
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
+	private int cantidadAtaquesRestantes = 1;
+	private int cantidadMovimientosRestantes = 1;
 	
 	public Agrupacion(String nombre)
 	{
@@ -21,6 +23,15 @@ public class Agrupacion
 	{
 		pertenecientes.add(psje);
 		psje.setAgrupacion(this);
+	}
+	 
+	public void restarAtaqueRestates()
+	{
+		this.cantidadAtaquesRestantes --;
+	}
+	
+	public void restarMovimientosRestantes(){
+		this.cantidadMovimientosRestantes--;
 	}
 	
 	public boolean perteneceMismaAgrupacion(Personaje psje)
@@ -59,6 +70,8 @@ public class Agrupacion
 	}
 	
 	public void reestablecer(){
+		this.cantidadAtaquesRestantes = 1;
+		this.cantidadMovimientosRestantes = 1;
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();
 		}
@@ -93,6 +106,14 @@ public class Agrupacion
 	public int getKiDe(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
 		return personaje.getKi();
+	}
+
+	public int getCantidadDeAtaquesRestantes() {
+		return this.cantidadAtaquesRestantes;
+	}
+
+	public int getCantidadDeMovimientosRestantes() {
+		return this.cantidadMovimientosRestantes;
 	}
 	
 	

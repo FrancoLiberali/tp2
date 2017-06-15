@@ -134,6 +134,9 @@ public abstract class Personaje
 			nuevaPosicion.ponerEnTablero(this);
 			posicion_anterior.vaciarTableroEnPos();
 			this.movimientosRestantes = this.movimientosRestantes - 1;
+			if (this.movimientosRestantes == 0){
+				this.agrupacion.restarMovimientosRestantes();
+			}
 		}
 		catch (CasilleroOcupadoException error){
 			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
@@ -180,12 +183,14 @@ public abstract class Personaje
 	}
 	public void realizarAtaqueBasico(Personaje victima){
 		this.verificarAtaque(victima);
+		this.agrupacion.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
 	}
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
 		this.verificarAtaque(victima);
+		this.agrupacion.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 				this.ataqueEspecial.getPorcentaje(this.ki));
 	}
@@ -238,6 +243,7 @@ public abstract class Personaje
         transformacionAChocolate.setSiguienteEstado(this.estadoTransformacionActual, 0);
         this.estadoTransformacionActual = transformacionAChocolate;
     }
+	
 	public EstadoActividad getEstadoActividad() {
 		return this.estadoTransformacionActual;
 	}
