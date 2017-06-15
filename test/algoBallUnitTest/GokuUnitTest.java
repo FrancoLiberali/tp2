@@ -9,12 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Agrupacion;
-import funcionamientoPersonaje.personajes.Cell;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
-import funcionamientoTablero.Tablero;
+import algoBall.Equipo;
+import personajes.Cell;
+import personajes.Goku;
+import personajes.Personaje;
+import tablero.Posicion;
+import tablero.Tablero;
 
 public class GokuUnitTest 
 {
@@ -32,8 +32,8 @@ public class GokuUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(cell, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		
@@ -57,8 +57,8 @@ public class GokuUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(cell, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		
@@ -82,8 +82,8 @@ public class GokuUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(cell, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		
@@ -109,8 +109,8 @@ public class GokuUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(cell, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		int danioAtaqueEspecial = (PODER_GOKU_NORMAL + PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU * PODER_GOKU_NORMAL / 100 );

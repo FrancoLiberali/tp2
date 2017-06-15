@@ -1,6 +1,28 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOHAN_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOHAN_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOHAN_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.GOHAN_NOMBRE;
+import static algoBall.ConstantesDelJuego.GOKU_NOMBRE;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_GOHAN;
+import static algoBall.ConstantesDelJuego.KI_GOHAN_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.KI_SEGUNDA_TRANF_GOHAN;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_GOHAN;
+import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PICCOLO_NOMBRE;
+import static algoBall.ConstantesDelJuego.PODER_GOHAN_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_GOHAN_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_GOHAN_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
+import static algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOHAN;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOHAN;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOHAN_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOHAN_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOHAN_SEGUNDA_TRANSF;
 
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.PersonajeInexistenteException;
@@ -92,7 +114,7 @@ public class Gohan extends Personaje
 	
 	private int obtenerPorcentajeDeVidaDe(String nombrePersonaje){
 		try{
-			Personaje personaje = this.agrupacion.getPersonaje(nombrePersonaje);
+			Personaje personaje = this.equipo.getPersonaje(nombrePersonaje);
 			return personaje.getPorcentajeSalud();
 		}
 		catch (PersonajeInexistenteException error){

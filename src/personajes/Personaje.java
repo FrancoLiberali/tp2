@@ -1,15 +1,15 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import algoBall.Agrupacion;
 import algoBall.ConstantesDelJuego;
+import algoBall.Equipo;
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
-import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.KiInsuficienteException;
 import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.NoQuedanMovimientosException;
+import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
@@ -18,7 +18,7 @@ import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import funcionamientoTablero.Posicion;
+import tablero.Posicion;
 
 
 public abstract class Personaje 
@@ -29,7 +29,7 @@ public abstract class Personaje
 	protected Ki ki;
 	protected Salud salud;
 	protected EstadoActividad estadoTransformacionActual;
-	protected Agrupacion agrupacion;
+	protected Equipo equipo;
 	protected AtaqueEspecial ataqueEspecial;
 	
 	abstract EstadoActividad setEstadoNormal();
@@ -47,8 +47,8 @@ public abstract class Personaje
 	}
 	
 	
-	public void setAgrupacion(Agrupacion agrupacion){
-		this.agrupacion = agrupacion;
+	public void setEquipo(Equipo equipo){
+		this.equipo = equipo;
 	}
 	
 	public String getNombre()
@@ -135,7 +135,7 @@ public abstract class Personaje
 			posicion_anterior.vaciarTableroEnPos();
 			this.movimientosRestantes = this.movimientosRestantes - 1;
 			if (this.movimientosRestantes == 0){
-				this.agrupacion.restarMovimientosRestantes();
+				this.equipo.restarMovimientosRestantes();
 			}
 		}
 		catch (CasilleroOcupadoException error){
@@ -176,21 +176,21 @@ public abstract class Personaje
 			throw new FueraDeRangoException();
 		}
 		
-		if (this.agrupacion.existePersonaje(victima.getNombre())){
+		if (this.equipo.existePersonaje(victima.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
 		
 	}
 	public void realizarAtaqueBasico(Personaje victima){
 		this.verificarAtaque(victima);
-		this.agrupacion.restarAtaqueRestates();
+		this.equipo.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
 	}
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
 		this.verificarAtaque(victima);
-		this.agrupacion.restarAtaqueRestates();
+		this.equipo.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 				this.ataqueEspecial.getPorcentaje(this.ki));
 	}
@@ -202,7 +202,7 @@ public abstract class Personaje
 		}
 		this.salud.disminuir(danioARecibir);
 		if (this.salud.esCero()){
-			this.agrupacion.eliminar(this);
+			this.equipo.eliminar(this);
 		}
 	}
 	

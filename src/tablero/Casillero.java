@@ -1,8 +1,8 @@
-package funcionamientoTablero;
+package tablero;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
-import funcionamientoPersonaje.personajes.Personaje;
+import personajes.Personaje;
 
 public class Casillero {
 

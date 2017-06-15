@@ -4,8 +4,8 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.YaNoPuedeEvolucionarException;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
 public class EstadoTransformacion implements EstadoActividad{
 	private String nombre;

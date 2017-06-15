@@ -3,18 +3,17 @@ package algoBall;
 import java.util.ArrayList;
 
 import exceptions.PersonajeInexistenteException;
-import funcionamientoPersonaje.elementos.EstadoTransformacion;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
-public class Agrupacion 
+public class Equipo 
 {	
 	private String nombre;
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
 	private int cantidadAtaquesRestantes = 1;
 	private int cantidadMovimientosRestantes = 1;
 	
-	public Agrupacion(String nombre)
+	public Equipo(String nombre)
 	{
 		this.nombre = nombre;
 	}
@@ -22,7 +21,7 @@ public class Agrupacion
 	public void agregarPersonaje(Personaje psje)
 	{
 		pertenecientes.add(psje);
-		psje.setAgrupacion(this);
+		psje.setEquipo(this);
 	}
 	 
 	public void restarAtaqueRestates()

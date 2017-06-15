@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Agrupacion;
+import algoBall.Equipo;
 import exceptions.NoCumpleCondicionesDeTransformacionException;
-import funcionamientoPersonaje.personajes.Gohan;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoPersonaje.personajes.Piccolo;
+import personajes.Gohan;
+import personajes.Personaje;
+import personajes.Piccolo;
 
 public class PiccoloUnitTest {
 
@@ -25,7 +25,7 @@ public class PiccoloUnitTest {
 		Personaje gohan = new Gohan();
 		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();
@@ -40,7 +40,7 @@ public class PiccoloUnitTest {
 		Personaje piccolo = new Piccolo();
 		piccolo.aumentarKi(20);		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		piccolo.transformar();
 		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
@@ -57,7 +57,7 @@ public class PiccoloUnitTest {
 		gohan.recibirDanio( (int) (PUNTOS_VIDA_GOHAN * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();

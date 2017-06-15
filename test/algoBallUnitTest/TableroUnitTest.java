@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import exceptions.CasilleroVacioException;
 import exceptions.FueraDelTableroException;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
-import funcionamientoTablero.Tablero;
+import personajes.Goku;
+import personajes.Personaje;
+import tablero.Posicion;
+import tablero.Tablero;
 
 public class TableroUnitTest 
 {

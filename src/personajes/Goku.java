@@ -1,12 +1,32 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.GOKU_NOMBRE;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_GOKU;
+import static algoBall.ConstantesDelJuego.KI_GOKU_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.KI_SEGUNDA_TRANF_GOKU;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_GOKU;
+import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_GOKU_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_GOKU_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.PORCENTAJE_AUMENTO_DANIO_GOKU;
+import static algoBall.ConstantesDelJuego.PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU;
+import static algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_SEGUNDA_TRANF;
 
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import funcionamientoTablero.Posicion;
 
 public class Goku extends Personaje 
 {	
@@ -84,7 +104,7 @@ public class Goku extends Personaje
 	public void realizarAtaqueBasico(Personaje victima)
 	{
 		this.verificarAtaque(victima);
-		this.agrupacion.restarAtaqueRestates();
+		this.equipo.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueEspecial(victima, this.bonusPorcentajeGoku());
 	}
 	
@@ -92,7 +112,7 @@ public class Goku extends Personaje
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
 		this.verificarAtaque(victima);
-		this.agrupacion.restarAtaqueRestates();
+		this.equipo.restarAtaqueRestates();
 		float bonusPorPocaVida = this.bonusPorcentajeGoku();
 		float bonusAtaqueEspecial = this.ataqueEspecial.getPorcentaje(this.ki);
 		int bonusTotal = (int) sumarPorcentajes(bonusAtaqueEspecial, bonusPorPocaVida );

@@ -1,15 +1,10 @@
 package algoBallUnitTest;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 import exceptions.KiInsuficienteException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
-import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoPersonaje.personajes.PersonajeDePrueba;
 
 public class AtaqueEspecialUnitTest 
 {

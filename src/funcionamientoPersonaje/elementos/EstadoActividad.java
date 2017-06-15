@@ -1,7 +1,7 @@
 package funcionamientoPersonaje.elementos;
 
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
 public interface EstadoActividad
 {

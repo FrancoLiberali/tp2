@@ -1,20 +1,27 @@
 package algoBall;
 
-import static algoBall.ConstantesDelJuego.*;
-
-import java.util.ArrayList;
+import static algoBall.ConstantesDelJuego.CELL_FIL;
+import static algoBall.ConstantesDelJuego.FREEZER_COL;
+import static algoBall.ConstantesDelJuego.FREEZER_FIL;
+import static algoBall.ConstantesDelJuego.GOHAN_COL;
+import static algoBall.ConstantesDelJuego.GOHAN_FIL;
+import static algoBall.ConstantesDelJuego.GOKU_COL;
+import static algoBall.ConstantesDelJuego.GOKU_FIL;
+import static algoBall.ConstantesDelJuego.MAJIN_BOO_COL;
+import static algoBall.ConstantesDelJuego.MAJIN_BOO_FIL;
+import static algoBall.ConstantesDelJuego.PICCOLO_COL;
+import static algoBall.ConstantesDelJuego.PICCOLO_FIL;
 
 import exceptions.PersonajeInexistenteException;
-import funcionamientoPersonaje.elementos.*;
-import funcionamientoPersonaje.personajes.Cell;
-import funcionamientoPersonaje.personajes.Freezer;
-import funcionamientoPersonaje.personajes.Gohan;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.MajinBoo;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoPersonaje.personajes.Piccolo;
-import funcionamientoTablero.Posicion;
-import funcionamientoTablero.Tablero;
+import personajes.Cell;
+import personajes.Freezer;
+import personajes.Gohan;
+import personajes.Goku;
+import personajes.MajinBoo;
+import personajes.Personaje;
+import personajes.Piccolo;
+import tablero.Posicion;
+import tablero.Tablero;
 
 public class AlgoBall 
 {

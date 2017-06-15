@@ -8,12 +8,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Agrupacion;
-import funcionamientoPersonaje.personajes.Gohan;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoPersonaje.personajes.Piccolo;
+import algoBall.Equipo;
 import exceptions.NoCumpleCondicionesDeTransformacionException;
+import personajes.Gohan;
+import personajes.Goku;
+import personajes.Personaje;
+import personajes.Piccolo;
 
 public class GohanUnitTest {
 
@@ -27,7 +27,7 @@ public class GohanUnitTest {
 		Personaje piccolo = new Piccolo();
 		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
@@ -45,7 +45,7 @@ public class GohanUnitTest {
 		
 		Personaje goku = new Goku();
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
 		gohan.transformar();
@@ -64,7 +64,7 @@ public class GohanUnitTest {
 		Personaje piccolo = new Piccolo();
 		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
@@ -85,7 +85,7 @@ public class GohanUnitTest {
 		Personaje piccolo = new Piccolo();
 		
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
@@ -105,7 +105,7 @@ public class GohanUnitTest {
 		
 		Personaje goku = new Goku();
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
+		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
 		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque

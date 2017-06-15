@@ -1,12 +1,7 @@
 package algoBall;
 
-import exceptions.FueraDeRangoException;
-import exceptions.IntentandoAtacarAUnCompanieroException;
-import exceptions.KiInsuficienteException;
-import exceptions.PersonajeInactivoNoPuedeAtacarException;
-import funcionamientoPersonaje.elementos.EstadoTransformacion;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
 public class Turno {
 	private Jugador jugador;
@@ -31,7 +26,6 @@ public class Turno {
 	public void setTurnoSiguiente(Turno turnoSiguiente){
 		this.turnoSiguiente = turnoSiguiente;
 	}
-	
 
 	public Posicion obtenerPosicionDe(String nombrePersonaje){
 		return this.jugador.obtenerPosicionDe(nombrePersonaje);

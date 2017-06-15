@@ -1,6 +1,6 @@
-package funcionamientoTablero;
+package tablero;
 
-import funcionamientoPersonaje.personajes.Personaje;
+import personajes.Personaje;
 
 public class Posicion 
 {

@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algoBall.Agrupacion;
+import algoBall.Equipo;
 import funcionamientoPersonaje.elementos.*;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.MajinBoo;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.*;
+import personajes.Goku;
+import personajes.MajinBoo;
+import personajes.Personaje;
+import tablero.*;
 import exceptions.*;
 import static algoBall.ConstantesDelJuego.KI_INICIAL;
 import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
@@ -32,8 +32,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
@@ -55,8 +55,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
@@ -81,8 +81,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
@@ -106,8 +106,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
@@ -130,8 +130,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
@@ -168,8 +168,8 @@ public class MajinBooUnitTest
 		tablero.agregarPersonaje(majinBoo, posicionInicialX);
 		tablero.agregarPersonaje(goku, posicionInicialY);
 		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		Agrupacion agrupacion2 = new Agrupacion("malos");
+		Equipo agrupacion1 = new Equipo("buenos");
+		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		

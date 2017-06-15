@@ -1,15 +1,16 @@
 package algoBallUnitTest;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
-import funcionamientoPersonaje.elementos.*;
-import funcionamientoPersonaje.personajes.Goku;
-import funcionamientoPersonaje.personajes.MajinBoo;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Casillero;
+import personajes.Goku;
+import personajes.MajinBoo;
+import personajes.Personaje;
+import tablero.Casillero;
 
 public class CasilleroUnitTest
 {

@@ -2,8 +2,8 @@ package funcionamientoPersonaje.elementos;
 
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.PersonajeInactivoNoPuedeAtacarException;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
 import static algoBall.ConstantesDelJuego.*;
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import funcionamientoTablero.Posicion;
+import tablero.Posicion;
 
 public class PosicionUnitTest {
 

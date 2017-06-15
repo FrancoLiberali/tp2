@@ -1,13 +1,29 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.DISTANCIA_MAJIN_BOO_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_MAJIN_BOO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_MAJIN_BOO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_MAJIN_BOO;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.KI_MAJIN_BOO_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_MAJIN_BOO_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.MAJIN_BOO_NOMBRE;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_MAJIN_BOO;
+import static algoBall.ConstantesDelJuego.NOMBRE_MAJIN_BOO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_MAJIN_BOO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_MAJIN_BOO_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_MAJIN_BOO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_MAJIN_BOO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_MAJIN_BOO;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_MAJIN_BOO_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_MAJIN_BOO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_MAJIN_BOO_SEGUNDA_TRANSF;
 
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
-import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import funcionamientoTablero.Posicion;
 
 public class MajinBoo extends Personaje 
 {	
@@ -67,7 +83,7 @@ public class MajinBoo extends Personaje
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima)
 	{	
-		this.agrupacion.restarAtaqueRestates();
+		this.equipo.restarAtaqueRestates();
 		victima.convertirAChocolate();
 		this.ki.restar( new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
 		

@@ -1,18 +1,17 @@
 package algoBall;
 
-import funcionamientoPersonaje.elementos.EstadoTransformacion;
-import funcionamientoPersonaje.personajes.Personaje;
-import funcionamientoTablero.Posicion;
+import personajes.Personaje;
+import tablero.Posicion;
 
 public class Jugador 
 {
 	private String nombre;
-	private Agrupacion agrupacion;
+	private Equipo equipo;
 	
 	public Jugador(String Nombre, String equipo)
 	{
 		this.nombre = Nombre;
-		this.agrupacion = new Agrupacion(equipo);
+		this.equipo = new Equipo(equipo);
 	}
 	
 	public String getNombre()
@@ -20,50 +19,50 @@ public class Jugador
 		return this.nombre;
 	}
 	
-	public Agrupacion getEquipo()
+	public Equipo getEquipo()
 	{
-		return this.agrupacion;
+		return this.equipo;
 	}
 	
 	public void agregarPersonaje(Personaje personaje){
-		this.agrupacion.agregarPersonaje(personaje);
+		this.equipo.agregarPersonaje(personaje);
 	}
 	
 	public boolean existePersonaje(String personaje){
-		return (this.agrupacion.existePersonaje(personaje));
+		return (this.equipo.existePersonaje(personaje));
 	}
 	
-	public Agrupacion getAgrupacion(){
-		return this.agrupacion;
+	public Equipo getAgrupacion(){
+		return this.equipo;
 	}
 	
 	public void reestablecer(){
-		agrupacion.reestablecer();
+		equipo.reestablecer();
 	}
 	
 	public Posicion obtenerPosicionDe(String nombrePersonaje){
-		return this.agrupacion.obtenerPosicionDe(nombrePersonaje);
+		return this.equipo.obtenerPosicionDe(nombrePersonaje);
 	}
 	
 	public int obtenerSaludDe(String nombrePersonaje){
-		return this.agrupacion.obtenerSaludDe(nombrePersonaje);
+		return this.equipo.obtenerSaludDe(nombrePersonaje);
 	}
 	
 	public int getKiDe(String nombrePersonaje){
-		return this.agrupacion.getKiDe(nombrePersonaje);
+		return this.equipo.getKiDe(nombrePersonaje);
 	}
 
 	public Personaje getPersonaje(String nombre) {
 		
-		return this.agrupacion.getPersonaje(nombre);
+		return this.equipo.getPersonaje(nombre);
 	}
 	
 	public int getCantidadDeAtaquesRestantes(){
-		return this.agrupacion.getCantidadDeAtaquesRestantes();
+		return this.equipo.getCantidadDeAtaquesRestantes();
 	}
 
 	public int getCantidadDeMovimientosRestantes() {
-		return this.agrupacion.getCantidadDeMovimientosRestantes();
+		return this.equipo.getCantidadDeMovimientosRestantes();
 		
 	}
 	

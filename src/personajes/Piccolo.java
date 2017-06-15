@@ -1,6 +1,26 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.DISTANCIA_PICCOLO_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_PICCOLO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_PICCOLO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_PICCOLO;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.KI_PICCOLO_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_PICCOLO_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_PICCOLO;
+import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PICCOLO_NOMBRE;
+import static algoBall.ConstantesDelJuego.PODER_PICCOLO_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_PICCOLO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_PICCOLO_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.PORCENTAJE_VIDA_GOHAN_PROTECTOR;
+import static algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_PICCOLO;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_PICCOLO_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_PICCOLO_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_PICCOLO_SEGUNDA_TRANSF;
 
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.PersonajeInexistenteException;
@@ -80,7 +100,7 @@ public class Piccolo extends Personaje
 	public boolean cumpleCondicionesProtector(){
 		Personaje gohan;
 		try{
-			gohan = this.agrupacion.getPersonaje("Gohan"); //Si Gohan esta muerto no se puede transformar
+			gohan = this.equipo.getPersonaje("Gohan"); //Si Gohan esta muerto no se puede transformar
 		}
 		catch (PersonajeInexistenteException error){
 			throw new NoCumpleCondicionesDeTransformacionException();

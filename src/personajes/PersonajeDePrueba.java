@@ -1,4 +1,4 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 

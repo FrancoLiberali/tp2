@@ -1,7 +1,7 @@
-package funcionamientoTablero;
+package tablero;
 
 import exceptions.FueraDelTableroException;
-import funcionamientoPersonaje.personajes.Personaje;
+import personajes.Personaje;
 
 public class Tablero 
 {

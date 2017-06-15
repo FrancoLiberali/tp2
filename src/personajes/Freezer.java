@@ -1,6 +1,25 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.DISTANCIA_FREEZER_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_FREEZER_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_FREEZER_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.FREEZER_NOMBRE;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_FREEZER;
+import static algoBall.ConstantesDelJuego.KI_FREEZER_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_FREEZER_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_FREEZER;
+import static algoBall.ConstantesDelJuego.NOMBRE_FREEZER_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_FREEZER_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_FREEZER_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_FREEZER_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_FREEZER_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_FREEZER;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_FREEZER;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_FREEZER_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_FREEZER_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_FREEZER_SEGUNDA_TRANSF;
 
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;

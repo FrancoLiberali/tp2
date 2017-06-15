@@ -3,9 +3,10 @@ package algoBallIntegrationTest;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import algoBall.ConstantesDelJuego;
+
 import algoBall.AlgoBall;
-import funcionamientoPersonaje.personajes.Personaje;
+import algoBall.ConstantesDelJuego;
+import personajes.Personaje;
 
 public class AlgoBallIntegrationTest {
 	
@@ -14,7 +15,6 @@ public class AlgoBallIntegrationTest {
 		AlgoBall juegoNuevo = new AlgoBall("Pedro","Juan");
 		
 		Personaje goku = juegoNuevo.getGoku();
-		Personaje gohan = juegoNuevo.getGohan();
 		Personaje cell = juegoNuevo.getCell();
 		
 		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);

@@ -1,6 +1,26 @@
-package funcionamientoPersonaje.personajes;
+package personajes;
 
-import static algoBall.ConstantesDelJuego.*;
+import static algoBall.ConstantesDelJuego.CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.CELL_NOMBRE;
+import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_NORMAL;
+import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_CELL;
+import static algoBall.ConstantesDelJuego.KI_CELL_PRIMERA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_CELL_SEGUNDA_TRANF;
+import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static algoBall.ConstantesDelJuego.NOMBRE_ATQ_ESPECIAL_CELL;
+import static algoBall.ConstantesDelJuego.NOMBRE_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_CELL_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_CELL_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_NORMAL;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_SEGUNDA_TRANSF;
 
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
@@ -8,7 +28,6 @@ import funcionamientoPersonaje.elementos.EstadoActividad;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import funcionamientoTablero.Posicion;
 
 public class Cell extends Personaje 
 {	
