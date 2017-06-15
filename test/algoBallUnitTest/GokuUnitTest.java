@@ -114,10 +114,10 @@ public class GokuUnitTest
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion2.agregarPersonaje(cell);
 		int danioAtaqueEspecial = (PODER_GOKU_NORMAL + PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU * PODER_GOKU_NORMAL / 100 );
-		int saludEsperada = PUNTOS_VIDA_CELL -  danioAtaqueEspecial
-				- PORCENTAJE_AUMENTO_DANIO_GOKU * danioAtaqueEspecial / 100 ;
+		int saludEsperada = PUNTOS_VIDA_CELL - ( danioAtaqueEspecial
+				+ PORCENTAJE_AUMENTO_DANIO_GOKU * danioAtaqueEspecial / 100 );
 		
 		goku.realizarAtaqueEspecial(cell);
-		assertEquals(cell.getSalud(), saludEsperada);
+		assertEquals(saludEsperada, cell.getSalud());
 	}
 }

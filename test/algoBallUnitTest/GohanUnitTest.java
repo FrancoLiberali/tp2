@@ -31,9 +31,9 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 	}
 	
 	@Test
@@ -48,9 +48,9 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 	}
 	
 	@Test
@@ -69,9 +69,9 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(goku);
 		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 	}
 	
 	@Test
@@ -91,9 +91,9 @@ public class GohanUnitTest {
 		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		piccolo.recibirDanio( (int) (PUNTOS_VIDA_PICCOLO * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
 	}
 	
 	@Test
@@ -109,9 +109,9 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(goku);
 		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
 	}
 	
 	@Test
@@ -123,8 +123,8 @@ public class GohanUnitTest {
 		Agrupacion agrupacion1 = new Agrupacion("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoTransformacion().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
+		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
 	}
 }

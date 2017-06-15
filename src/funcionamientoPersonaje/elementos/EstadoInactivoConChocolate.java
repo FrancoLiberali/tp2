@@ -1,14 +1,15 @@
 package funcionamientoPersonaje.elementos;
 
+import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.PersonajeInactivoNoPuedeAtacarException;
 import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 
-import static algoBall.ConstantesDelJuego.TURNOS_ESTUNEO_MAJIN_BOO;
+import static algoBall.ConstantesDelJuego.*;
 
 public class EstadoInactivoConChocolate implements EstadoActividad 
 {
-	
+	private String nombre = CHOCOLATE;
 	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(TURNOS_ESTUNEO_MAJIN_BOO);
 	private EstadoActividad siguienteEstado;
 
@@ -49,32 +50,31 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 
 	@Override
 	public int getVelocidad() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public int getPoderDePelea() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public int getDistanciaDeAtaque() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 
 	@Override
-	public void realizarAtaqueBasico(Posicion posicionVictima) {
-		// error
-		
+	public void realizarAtaqueBasico(Personaje victima) {
+		throw new PersonajeEnEstadoChocolate();
 	}
 
 	@Override
-	public void realizarAtaqueEspecial(Posicion posicionVictima, int porcentaje) {
-		// error
+	public void realizarAtaqueEspecial(Personaje victima, int porcentaje) {
+		throw new PersonajeEnEstadoChocolate();
 		
 	}
 
@@ -106,6 +106,11 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeSalud) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Object getNombre() {
+		return this.nombre;
 	}
 
 

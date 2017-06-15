@@ -177,6 +177,8 @@ public final class ConstantesDelJuego {
     public static final String NOMBRE_ATQ_ESPECIAL_MAJIN_BOO = "Conviertete en Chocolate";
     public static final int TURNOS_ESTUNEO_MAJIN_BOO = 3;
     public static final int DANIO_ATAQ_ESPECIAL_MAJIN_BOO = 0;
+    public static final String CHOCOLATE = "Chocolate";
+    
     
     //Consumibles
     public static final String SEMILLA_HERMITANEO_NOMBRE = "Semilla del Hermitaneo";

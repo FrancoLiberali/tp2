@@ -6,6 +6,7 @@ import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
+import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.KiInsuficienteException;
 import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.NoQuedanMovimientosException;
@@ -18,6 +19,7 @@ import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
 import funcionamientoTablero.Posicion;
+
 
 public abstract class Personaje 
 {
@@ -86,9 +88,7 @@ public abstract class Personaje
 		return (this.estadoTransformacionActual.getDistanciaDeAtaque());
 	}
 	
-	public EstadoActividad getEstadoTransformacion(){
-		return this.estadoTransformacionActual;
-	}
+
 	
 	public void aumentarKi(int cantidad){
 		this.estadoTransformacionActual.aplicarKi(this, cantidad);
@@ -113,13 +113,22 @@ public abstract class Personaje
 		}
 	}
 	
-	
+	private boolean estaConvertidoAChocolate()
+	{
+		if (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE){
+			return true;
+		}
+		return false;
+	}
 	private void mover(Posicion nuevaPosicion)
 	{
+		if (this.estaConvertidoAChocolate()){
+			throw new PersonajeEnEstadoChocolate();
+		}
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
 		}
-			
+				
 		try {
 			Posicion posicion_anterior = this.posicion;
 			nuevaPosicion.ponerEnTablero(this);
@@ -156,10 +165,14 @@ public abstract class Personaje
 	
 	protected void verificarAtaque(Personaje victima)
 	{
+		if(this.estaConvertidoAChocolate()){
+			throw new PersonajeEnEstadoChocolate();
+		}
+		
 		if (!this.posicion.dentroDelRango(victima.getPosicion(), this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
-		//Personaje personajeAAtacar = posicionVictima.getPersonaje();
+		
 		if (this.agrupacion.existePersonaje(victima.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
@@ -225,4 +238,7 @@ public abstract class Personaje
         transformacionAChocolate.setSiguienteEstado(this.estadoTransformacionActual, 0);
         this.estadoTransformacionActual = transformacionAChocolate;
     }
+	public EstadoActividad getEstadoActividad() {
+		return this.estadoTransformacionActual;
+	}
 }

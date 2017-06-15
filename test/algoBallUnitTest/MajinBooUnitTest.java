@@ -17,8 +17,7 @@ import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 
 public class MajinBooUnitTest 
 {
-	/* no esta resuelto todavia
-	@Test (expected = PersonajeInactivoNoPuedeAtacarException.class)
+	@Test (expected = PersonajeEnEstadoChocolate.class)
 	public void aplicarAtaqueEspecialDeMajinBooAGokuIntentarAtacarCongGokuLevantaExcepcion()
 	{
 		Personaje majinBoo = new MajinBoo();
@@ -38,10 +37,10 @@ public class MajinBooUnitTest
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
 		
-		majinBoo.realizarAtaqueEspecial(posicionInicialY);
-		goku.realizarAtaqueBasico(posicionInicialX);
+		majinBoo.realizarAtaqueEspecial(goku);
+		goku.realizarAtaqueBasico(majinBoo);
 	}
-	*/
+	
 	@Test 
 	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeGanarKi()
 	{
@@ -89,10 +88,10 @@ public class MajinBooUnitTest
 		
 		majinBoo.realizarAtaqueEspecial(goku);
 		goku.transformar();
-		assertEquals(goku.getEstadoTransformacion().getNombre(), NOMBRE_TRANF_NORMAL);
+		assertEquals(goku.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
 	
-	@Test
+	@Test (expected = PersonajeEnEstadoChocolate.class)
 	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeMoverse()
 	{
 		Personaje majinBoo = new MajinBoo();
@@ -114,7 +113,7 @@ public class MajinBooUnitTest
 		
 		majinBoo.realizarAtaqueEspecial(goku);
 		goku.moverDerecha();
-		assertTrue(goku.getPosicion().esIgualA(posicionInicialY));
+		
 	}
 	
 	@Test

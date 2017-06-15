@@ -28,9 +28,9 @@ public class PiccoloUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoTransformacion().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoTransformacion().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ public class PiccoloUnitTest {
 		Agrupacion agrupacion1 = new Agrupacion("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoTransformacion().getNombre(), NOMBRE_TRANF_NORMAL);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
 		
 	}
 	
@@ -60,8 +60,8 @@ public class PiccoloUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoTransformacion().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoTransformacion().getNombre(), NOMBRE_PICCOLO_SEGUNDA_TRANSF);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_SEGUNDA_TRANSF);
 	}
 }

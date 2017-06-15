@@ -19,7 +19,7 @@ public class CellUnitTest {
 	{
 		Personaje cell = new Cell();
 		cell.transformar();
-		assertEquals(cell.getEstadoTransformacion().getNombre(), NOMBRE_TRANF_NORMAL);
+		assertEquals(cell.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
 	
 	@Test
@@ -124,6 +124,6 @@ public class CellUnitTest {
 		cell.realizarAtaqueEspecial(goku);
 		cell.realizarAtaqueEspecial(goku);
 		cell.transformar();
-		assertEquals(cell.getEstadoTransformacion().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);
+		assertEquals(cell.getEstadoActividad().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);
 	}
 }

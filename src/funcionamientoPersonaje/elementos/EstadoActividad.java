@@ -7,8 +7,6 @@ public interface EstadoActividad
 {
 	public abstract void aplicarKi(Personaje personaje, int cantidad);
 	public abstract void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion);
-	//public abstract int aplicarAtaqueEspecial(Personaje personaje, Posicion posicionVictima);
-	//public abstract void aplicarAtaqueBasico(Personaje personaje, Posicion posicionVictima);
 	public abstract void reducirTurnos();
 	public abstract void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i);
 	public abstract int getVelocidad();
@@ -22,4 +20,5 @@ public interface EstadoActividad
 	public abstract boolean vidaDeCompanierosEsMenorALaNecesariaParaTranformar(int porcentajeVidaPiccolo,
 			int porcentajeVidaGoku);
 	public abstract boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeSalud);
+	public abstract Object getNombre();
 }

@@ -75,7 +75,7 @@ public class Piccolo extends Personaje
 			return; //si gohan ya murio no se puede tranformar ya que no tiene a quien protejer
 		}
 		int porcentajeSalud = gohan.getPorcentajeSalud();
-		if (this.getEstadoTransformacion().vidaDeGohanEsMenorALaNecesariaParaTranformar(porcentajeSalud)){
+		if (this.getEstadoActividad().vidaDeGohanEsMenorALaNecesariaParaTranformar(porcentajeSalud)){
 			super.transformar();
 		}
 		else{

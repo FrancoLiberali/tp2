@@ -74,7 +74,7 @@ public class Cell extends Personaje
 	
 	@Override
 	public void transformar(){
-		if (this.getEstadoTransformacion().seAbsorvieronVidasNecesarias(vidasAbsorvidas)){
+		if (this.getEstadoActividad().seAbsorvieronVidasNecesarias(vidasAbsorvidas)){
 			super.transformar();
 		}
 		else{

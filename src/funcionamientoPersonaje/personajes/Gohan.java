@@ -71,7 +71,7 @@ public class Gohan extends Personaje
 	public void transformar(){
 		int porcentajeVidaGoku = obtenerPorcentajeDeVidaDe(GOKU_NOMBRE);
 		int porcentajeVidaPiccolo = obtenerPorcentajeDeVidaDe(PICCOLO_NOMBRE);
-		if (this.getEstadoTransformacion().vidaDeCompanierosEsMenorALaNecesariaParaTranformar(porcentajeVidaPiccolo, porcentajeVidaGoku)){
+		if (this.getEstadoActividad().vidaDeCompanierosEsMenorALaNecesariaParaTranformar(porcentajeVidaPiccolo, porcentajeVidaGoku)){
 			super.transformar();
 		}
 		else{

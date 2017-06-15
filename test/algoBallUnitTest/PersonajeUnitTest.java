@@ -89,7 +89,7 @@ public class PersonajeUnitTest
 		//ki nescesario = 20;
 		goku.aumentarKi(10);
 		goku.transformar();
-		EstadoTransformacion estado = goku.getEstadoTransformacion();
+		EstadoActividad estado = goku.getEstadoActividad();
 		assertEquals(estado.getNombre(), NOMBRE_TRANF_NORMAL);
 		assertEquals(estado.getPoderDePelea(), PODER_GOKU_NORMAL);
 		assertEquals(estado.getDistanciaDeAtaque(), DISTANCIA_GOKU_NORMAL);
@@ -101,7 +101,7 @@ public class PersonajeUnitTest
 		Personaje goku = new Goku();
 		goku.aumentarKi(40);
 		goku.transformar();
-		EstadoTransformacion estado = goku.getEstadoTransformacion();
+		EstadoActividad estado = goku.getEstadoActividad();
 		assertEquals(estado.getNombre(), NOMBRE_GOKU_PRIMERA_TRANSF);
 		assertEquals(estado.getPoderDePelea(), PODER_GOKU_PRIMERA_TRANSF);
 		assertEquals(estado.getDistanciaDeAtaque(), DISTANCIA_GOKU_PRIMERA_TRANSF);
@@ -171,7 +171,7 @@ public class PersonajeUnitTest
 		
 		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOKU_NORMAL;
 		
-		goku.realizarAtaqueBasico(posicionInicialY);
+		goku.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 		
 	}
@@ -196,7 +196,7 @@ public class PersonajeUnitTest
 		
 		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOHAN_NORMAL + PODER_GOHAN_NORMAL * REDUCCION_DE_ATAQUE /100;
 		
-		gohan.realizarAtaqueBasico(posicionInicialY);
+		gohan.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
 		
 	}
@@ -291,7 +291,7 @@ public class PersonajeUnitTest
 		agrupacion1.agregarPersonaje(goku);
 		agrupacion1.agregarPersonaje(gohan);
 		
-		goku.realizarAtaqueBasico(posicionInicialY);		
+		goku.realizarAtaqueBasico(gohan);		
 	}
 	
 	@Test(expected = FueraDeRangoException.class)
@@ -308,21 +308,9 @@ public class PersonajeUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(cell, posicionInicialY);
 		
-		goku.realizarAtaqueBasico(posicionInicialY);
+		goku.realizarAtaqueBasico(cell);
 	}
 	
-	@Test(expected = CasilleroVacioException.class)
-	public void atacarAUnaPosicionQueEstaDentroDelRangoPeroNoContinePersonajeLanzaCasilleroVacio()
-	{
-		Personaje goku = new Goku();
-		
-		Tablero tablero = new Tablero(10);
-		Posicion posicionInicialX = new Posicion(2,2);
-		Posicion posicionInicialY = new Posicion(3,3);
-		posicionInicialY.setTablero(tablero);
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		
-		goku.realizarAtaqueBasico(posicionInicialY);
-	}
+	
 	
 }
