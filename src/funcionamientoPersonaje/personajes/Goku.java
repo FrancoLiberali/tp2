@@ -84,6 +84,7 @@ public class Goku extends Personaje
 	public void realizarAtaqueBasico(Personaje victima)
 	{
 		this.verificarAtaque(victima);
+		this.agrupacion.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueEspecial(victima, this.bonusPorcentajeGoku());
 	}
 	

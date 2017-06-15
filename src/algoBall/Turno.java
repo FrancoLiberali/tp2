@@ -50,6 +50,9 @@ public class Turno {
 	public int getCantidadDeMovimientosRestantes() {
 		return this.jugador.getCantidadDeMovimientosRestantes();
 	}
+	public Personaje getPersonaje(String nombre) {
+		return this.jugador.getPersonaje(nombre);
+	}
 }
 
 
