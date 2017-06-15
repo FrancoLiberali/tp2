@@ -2,6 +2,7 @@ package funcionamientoPersonaje.personajes;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
@@ -10,7 +11,7 @@ import funcionamientoPersonaje.elementos.Salud;
 
 public class Gohan extends Personaje 
 {	
-	
+	private int porcentajeVidaNecesariasParaSegundaTransformacion;
 	public Gohan()
 	{
 		this.nombre = GOHAN_NOMBRE;
@@ -20,6 +21,7 @@ public class Gohan extends Personaje
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOHAN);
+		this.porcentajeVidaNecesariasParaSegundaTransformacion = PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
 	}
 	
 	
@@ -34,8 +36,6 @@ public class Gohan extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_GOHAN_PRIMERA_TRANF);
-		normal.setPorcetajeVidaDeCompanierosNecesaria(101);
-
 		return normal;
 	}
 	
@@ -50,8 +50,6 @@ public class Gohan extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_SEGUNDA_TRANF_GOHAN);
-		primeraTranf.setPorcetajeVidaDeCompanierosNecesaria(PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN);
-
 		return primeraTranf;
 	}
 	
@@ -69,14 +67,27 @@ public class Gohan extends Personaje
 	
 	@Override
 	public void transformar(){
-		int porcentajeVidaGoku = obtenerPorcentajeDeVidaDe(GOKU_NOMBRE);
-		int porcentajeVidaPiccolo = obtenerPorcentajeDeVidaDe(PICCOLO_NOMBRE);
-		if (this.getEstadoActividad().vidaDeCompanierosEsMenorALaNecesariaParaTranformar(porcentajeVidaPiccolo, porcentajeVidaGoku)){
+		if  ((this.getEstadoActividad().getNombre() == NOMBRE_GOHAN_PRIMERA_TRANSF)){
+			
+			super.transformar();
+		}
+		else if (this.puedaRealizarSegundaTransformacion()){
+			
 			super.transformar();
 		}
 		else{
-			/*mensaje al usuario*/
+			throw new NoCumpleCondicionesDeTransformacionException();
 		}
+	}
+	
+	private boolean puedaRealizarSegundaTransformacion(){
+		int porcentajeVidaGoku = obtenerPorcentajeDeVidaDe(GOKU_NOMBRE);
+		int porcentajeVidaPiccolo = obtenerPorcentajeDeVidaDe(PICCOLO_NOMBRE);
+		if (porcentajeVidaGoku < this.porcentajeVidaNecesariasParaSegundaTransformacion
+				|| porcentajeVidaPiccolo < porcentajeVidaNecesariasParaSegundaTransformacion){
+			return true;
+		}
+		return false;
 	}
 	
 	private int obtenerPorcentajeDeVidaDe(String nombrePersonaje){

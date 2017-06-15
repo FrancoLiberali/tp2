@@ -11,15 +11,16 @@ import funcionamientoPersonaje.personajes.Goku;
 import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoTablero.Posicion;
 import funcionamientoTablero.Tablero;
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 
 public class CellUnitTest {
 
-	@Test
+	@Test (expected = NoCumpleCondicionesDeTransformacionException.class)
 	public void cellRecienCreadoNoSePuedeTransformar()
 	{
 		Personaje cell = new Cell();
 		cell.transformar();
-		assertEquals(cell.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
+		
 	}
 	
 	@Test

@@ -84,32 +84,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	@Override
-	public void setVidasAbsorvidasNecesarias(int cellCantAbsorverVidaPrimeraTransf) {
-		//error
-		
-	}
-
-	@Override
-	public boolean seAbsorvieronVidasNecesarias(int vidasAbsorvidas) {
-		// error
-		return false;
-	}
-
-	@Override
-	public boolean vidaDeCompanierosEsMenorALaNecesariaParaTranformar(int porcentajeVidaPiccolo,
-			int porcentajeVidaGoku) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeSalud) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Object getNombre() {
+	public String getNombre() {
 		return this.nombre;
 	}
 

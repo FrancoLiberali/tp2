@@ -2,6 +2,7 @@ package funcionamientoPersonaje.personajes;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
@@ -10,6 +11,7 @@ import funcionamientoPersonaje.elementos.Salud;
 
 public class Piccolo extends Personaje 
 {	
+	private int porcentajeVidaGohanParaProtector = PORCENTAJE_VIDA_GOHAN_PROTECTOR;
 	
 	public Piccolo()
 	{
@@ -33,7 +35,7 @@ public class Piccolo extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_PICCOLO_PRIMERA_TRANF);
-		normal.setPorcetajeVidaDeGohanNecesaria(101);
+	
 
 		return normal;
 	}
@@ -48,8 +50,6 @@ public class Piccolo extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_PICCOLO_SEGUNDA_TRANF);
-		primeraTranf.setPorcetajeVidaDeGohanNecesaria(PORCENTAJE_VIDA_GOHAN_PRIMERA_TRANF_PICCOLO);
-
 		return primeraTranf;
 	}
 	
@@ -66,20 +66,27 @@ public class Piccolo extends Personaje
 	
 	@Override
 	public void transformar(){
-		Personaje gohan;
-		try{
-			gohan = this.agrupacion.getPersonaje("Gohan");
+		if(this.estadoTransformacionActual.getNombre() != NOMBRE_PICCOLO_PRIMERA_TRANSF ){
+			super.transformar();
 		}
-		catch (PersonajeInexistenteException error){
-			/*mensaje al usuario*/
-			return; //si gohan ya murio no se puede tranformar ya que no tiene a quien protejer
-		}
-		int porcentajeSalud = gohan.getPorcentajeSalud();
-		if (this.getEstadoActividad().vidaDeGohanEsMenorALaNecesariaParaTranformar(porcentajeSalud)){
+		else if (this.cumpleCondicionesProtector()){
 			super.transformar();
 		}
 		else{
-			/*mensaje al usuario*/
+			throw new NoCumpleCondicionesDeTransformacionException();
 		}
+	}
+	
+	public boolean cumpleCondicionesProtector(){
+		Personaje gohan;
+		try{
+			gohan = this.agrupacion.getPersonaje("Gohan"); //Si Gohan esta muerto no se puede transformar
+		}
+		catch (PersonajeInexistenteException error){
+			throw new NoCumpleCondicionesDeTransformacionException();
+		}
+		
+		return (this.porcentajeVidaGohanParaProtector > gohan.getPorcentajeSalud());
+		
 	}
 }

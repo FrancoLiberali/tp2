@@ -2,6 +2,7 @@ package funcionamientoPersonaje.personajes;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoActividad;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
@@ -12,6 +13,9 @@ import funcionamientoTablero.Posicion;
 public class Cell extends Personaje 
 {	
 	private int vidasAbsorvidas = 0;
+	private int vidasNecesariasSegundaTransf = CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF;
+	private int vidasNecesariasPrimeraTransf = CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF;
+	
 	public Cell()
 	{
 		this.nombre = CELL_NOMBRE;
@@ -34,7 +38,7 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
 		normal.setSiguienteEstado(siguiente, KI_CELL_PRIMERA_TRANF);
-		normal.setVidasAbsorvidasNecesarias(CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF);
+		
 
 		return normal;
 	}
@@ -49,8 +53,6 @@ public class Cell extends Personaje
 		
 		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
 		primeraTranf.setSiguienteEstado(siguiente, KI_CELL_SEGUNDA_TRANF);
-		primeraTranf.setVidasAbsorvidasNecesarias(CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF);
-
 		return primeraTranf;
 	}
 	
@@ -74,12 +76,25 @@ public class Cell extends Personaje
 	
 	@Override
 	public void transformar(){
-		if (this.getEstadoActividad().seAbsorvieronVidasNecesarias(vidasAbsorvidas)){
+		if (seAbsorvieronVidasNecesarias()){
 			super.transformar();
 		}
 		else{
-			/*mensaje al usuario*/
+			throw new NoCumpleCondicionesDeTransformacionException();
 		}
 		
+	}
+	
+	private boolean seAbsorvieronVidasNecesarias(){
+		boolean seAbsorvieron = false;
+		String nombre = this.estadoTransformacionActual.getNombre();
+		if (nombre == NOMBRE_TRANF_NORMAL){
+			seAbsorvieron = this.vidasAbsorvidas >= vidasNecesariasPrimeraTransf;
+		}
+		else if (nombre == NOMBRE_CELL_PRIMERA_TRANSF){
+			seAbsorvieron = this.vidasAbsorvidas >= vidasNecesariasSegundaTransf;
+		
+		}
+		return seAbsorvieron;
 	}
 }

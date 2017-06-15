@@ -9,13 +9,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import algoBall.Agrupacion;
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 import funcionamientoPersonaje.personajes.Gohan;
 import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoPersonaje.personajes.Piccolo;
 
 public class PiccoloUnitTest {
 
-	@Test
+	@Test (expected = NoCumpleCondicionesDeTransformacionException.class)
 	public void piccoloSePuedeTransformarSoloUnaVezSiGohanEstaEnLaAgrupacionConMasDe20PorcientoDeVida()
 	{
 		Personaje piccolo = new Piccolo();
@@ -30,11 +31,11 @@ public class PiccoloUnitTest {
 		piccolo.transformar();
 		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		
 	}
 	
 	@Test
-	public void piccoloNoSePuedeTransformarSiGohanNoEstaEnLaAgrupacion()
+	public void piccoloSePuedeTransformarAPrimeraTransSiGohanNoEstaEnLaAgrupacion()
 	{
 		Personaje piccolo = new Piccolo();
 		piccolo.aumentarKi(20);		
@@ -42,7 +43,7 @@ public class PiccoloUnitTest {
 		Agrupacion agrupacion1 = new Agrupacion("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
+		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		
 	}
 	

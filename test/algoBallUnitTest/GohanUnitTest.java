@@ -13,10 +13,11 @@ import funcionamientoPersonaje.personajes.Gohan;
 import funcionamientoPersonaje.personajes.Goku;
 import funcionamientoPersonaje.personajes.Personaje;
 import funcionamientoPersonaje.personajes.Piccolo;
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 
 public class GohanUnitTest {
 
-	@Test
+	@Test (expected = NoCumpleCondicionesDeTransformacionException.class)
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuYPiccoloEstanEnLaAgrupacionCon100PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
@@ -33,7 +34,7 @@ public class GohanUnitTest {
 		gohan.transformar();
 		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
+		
 	}
 	
 	@Test
@@ -114,17 +115,5 @@ public class GohanUnitTest {
 		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
 	}
 	
-	@Test
-	public void gohanSePuedeTransformarDosVecesSiNiGokuNiPiccoloEstanEnLaAgrupacion()
-	{
-		Personaje gohan = new Gohan();
-		gohan.aumentarKi(40);		
-		
-		Agrupacion agrupacion1 = new Agrupacion("buenos");
-		agrupacion1.agregarPersonaje(gohan);
-		gohan.transformar();
-		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
-		gohan.transformar();
-		assertEquals(gohan.getEstadoActividad().getNombre(), NOMBRE_GOHAN_SEGUNDA_TRANSF);
-	}
+	
 }

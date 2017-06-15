@@ -14,9 +14,6 @@ public class EstadoTransformacion implements EstadoActividad{
 	private int poderDePelea;
 	private EstadoActividad siguienteEstado = null;
 	private Ki kiParaTransformacion = null;
-	private int vidasAbsorvidasNecesariasParaTransformar;
-	private int porcentajeVidaDeGohanNecesariaParaTransformar;
-	private int porcentajeVidaDeCompanierosNecesariaParaTransformar;
 	
 	public EstadoTransformacion (String nombre, int poder, int distancia, int velocidad){
 		this.nombre = nombre;
@@ -71,31 +68,7 @@ public class EstadoTransformacion implements EstadoActividad{
 		return poderDePelea;
 	}
 	
-	public void setVidasAbsorvidasNecesarias(int vidasNecesarias){
-		vidasAbsorvidasNecesariasParaTransformar = vidasNecesarias;
-	}
 	
-	public boolean seAbsorvieronVidasNecesarias(int vidasAbsorvidas){
-		return (vidasAbsorvidas >= vidasAbsorvidasNecesariasParaTransformar);
-	}
-	
-	public void setPorcetajeVidaDeGohanNecesaria(int vidaDeGohanNecesaria){
-		porcentajeVidaDeGohanNecesariaParaTransformar = vidaDeGohanNecesaria;
-	}
-	
-	public boolean vidaDeGohanEsMenorALaNecesariaParaTranformar(int porcentajeVidaDeGohan){
-		return (porcentajeVidaDeGohan < porcentajeVidaDeGohanNecesariaParaTransformar);
-	}
-	
-	public void setPorcetajeVidaDeCompanierosNecesaria(int vidaDeCompanierosNecesaria){
-		porcentajeVidaDeCompanierosNecesariaParaTransformar = vidaDeCompanierosNecesaria;
-	}
-	
-	public boolean vidaDeCompanierosEsMenorALaNecesariaParaTranformar(int porcentajeVidaCompaniero1, int porcentajeVidaCompaniero2){
-		return (porcentajeVidaCompaniero1 < porcentajeVidaDeCompanierosNecesariaParaTransformar 
-				&& porcentajeVidaCompaniero2 < porcentajeVidaDeCompanierosNecesariaParaTransformar);
-	}
-
 	public void aplicarKi(Personaje personaje, int cantidad) {
 		personaje.ejecutarAumentoDeKi(cantidad);
 	}
