@@ -28,7 +28,6 @@ import funcionamientoPersonaje.elementos.EstadoActividad;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import javafx.scene.image.Image;
 
 public class Cell extends Personaje 
 {	
@@ -43,7 +42,7 @@ public class Cell extends Personaje
 		this.salud = new Salud(PUNTOS_VIDA_CELL);
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_CELL, KI_ATQ_ESPECIAL_CELL);
-		this.imagen = new Image("file:src/vista/imagenes/cell.png");
+		this.rutaImagen = "file:src/vista/imagenes/cell.png";
 		
 	}
 	

@@ -14,7 +14,6 @@ import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import javafx.scene.image.Image;
 import tablero.Posicion;
 
 
@@ -27,7 +26,7 @@ public abstract class Personaje
 	protected EstadoActividad estadoTransformacionActual;
 	protected Equipo equipo;
 	protected AtaqueEspecial ataqueEspecial;
-	protected Image imagen;
+	protected String rutaImagen;
 	
 	abstract EstadoActividad setEstadoNormal();
 	abstract EstadoTransformacion setPrimerEstadoTransformacion();
@@ -187,7 +186,7 @@ public abstract class Personaje
 		return this.estadoTransformacionActual;
 	}
 	
-	public Image getImagen(){
-		return imagen;
+	public String getImagen(){
+		return rutaImagen;
 	}
 }

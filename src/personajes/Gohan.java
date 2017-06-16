@@ -30,7 +30,6 @@ import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import javafx.scene.image.Image;
 
 public class Gohan extends Personaje 
 {	
@@ -44,7 +43,7 @@ public class Gohan extends Personaje
 		this.estadoTransformacionActual = setEstadoNormal();
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOHAN);
 		this.porcentajeVidaNecesariasParaSegundaTransformacion = PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
-		this.imagen = new Image("file:src/vista/imagenes/gohan.png");
+		this.rutaImagen = "file:src/vista/imagenes/gohan.png";
 	}
 	
 	

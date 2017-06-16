@@ -8,9 +8,11 @@ import personajes.Goku;
 import personajes.Personaje;
 import tablero.Posicion;
 import tablero.Tablero;
+import vistas.Aplicacion;
 
 public class TableroUnitTest 
-{
+{	
+	Aplicacion aplicacion = new Aplicacion();
 	@Test
 	public void crearTableroConDimension4VerificarDimension()
 	{

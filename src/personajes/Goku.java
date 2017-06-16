@@ -27,7 +27,6 @@ import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import javafx.scene.image.Image;
 
 public class Goku extends Personaje 
 {	
@@ -40,7 +39,7 @@ public class Goku extends Personaje
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOKU, KI_ATQ_ESPECIAL_GOKU);
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU);
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.imagen = new Image("file:src/vista/imagenes/goku.png");
+		this.rutaImagen = "file:src/vista/imagenes/goku.png";
 		
 	}
 	

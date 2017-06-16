@@ -28,7 +28,6 @@ import funcionamientoPersonaje.elementos.AtaqueEspecial;
 import funcionamientoPersonaje.elementos.EstadoTransformacion;
 import funcionamientoPersonaje.elementos.Ki;
 import funcionamientoPersonaje.elementos.Salud;
-import javafx.scene.image.Image;
 
 public class Piccolo extends Personaje 
 {	
@@ -42,7 +41,7 @@ public class Piccolo extends Personaje
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.imagen = new Image("file:src/vista/imagenes/piccolo.png");
+		this.rutaImagen = "file:src/vista/imagenes/piccolo.png";
 	}
 	
 	@Override
