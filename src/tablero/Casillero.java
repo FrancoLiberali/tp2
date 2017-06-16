@@ -1,51 +1,30 @@
 package tablero;
 
-import exceptions.CasilleroOcupadoException;
-import exceptions.CasilleroVacioException;
-import personajes.Personaje;
-
 public class Casillero {
 
-	private Personaje personaje;
+	//private Personaje personaje;
 	//private Consumible consumible;
+	private EstadoCasillero estado;
 	
 	
 	public Casillero()
 	{
-		this.personaje = null;
+		this.estado = new EstadoVacio();
 	}
 	
 	public boolean estaVacio()
 	{
-		return (this.personaje == null);
+		return (this.estado.estaVacio());
 	}
 	
-	public void setPersonaje(Personaje psje)
+	public void ocupar()
 	{
-		if(!this.estaVacio()){
-			 throw new CasilleroOcupadoException();
-		}
-		
-		this.personaje = psje;
+		this.estado = this.estado.ocupar();
 	}
 	
-	public Personaje vaciar()
+	public void vaciar()
 	{
-		if(this.estaVacio()){
-			throw new CasilleroVacioException();
-		}
-		
-		Personaje psje = this.personaje;
-		this.personaje = null;
-		return psje;
-	}
-	
-	public Personaje getPersonaje()
-	{
-		if(this.estaVacio()){
-			throw new CasilleroVacioException();
-		}
-		return this.personaje;
+		this.estado = this.estado.vaciar();
 	}
 
 }

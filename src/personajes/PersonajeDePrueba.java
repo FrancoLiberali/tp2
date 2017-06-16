@@ -8,7 +8,6 @@ public class PersonajeDePrueba extends Personaje {
 	{
 		this.nombre = "estadoDePrueba";
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 	}
 
 	public EstadoTransformacion setEstadoNormal() {

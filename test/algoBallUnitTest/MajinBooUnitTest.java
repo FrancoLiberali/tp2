@@ -91,7 +91,7 @@ public class MajinBooUnitTest
 		assertEquals(goku.getEstadoActividad().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
 	
-	@Test (expected = PersonajeEnEstadoChocolate.class)
+	@Test
 	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeMoverse()
 	{
 		Personaje majinBoo = new MajinBoo();
@@ -112,7 +112,9 @@ public class MajinBooUnitTest
 		agrupacion2.agregarPersonaje(goku);
 		
 		majinBoo.realizarAtaqueEspecial(goku);
-		goku.moverDerecha();
+		Posicion posicion = goku.getPosicion();
+		agrupacion2.moverDerecha(goku);
+		assertEquals(goku.getPosicion(),posicion);
 		
 	}
 	

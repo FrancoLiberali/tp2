@@ -54,14 +54,14 @@ public class TableroUnitTest
 		tablero.getCasillero(pos);
 	}
 	
-	@Test (expected = FueraDelTableroException.class)
+	/*@Test (expected = FueraDelTableroException.class)
 	public void getPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
 		
 		tablero.getPersonajeEn(pos);
-	}
+	}*/
 	
 	@Test (expected = FueraDelTableroException.class)
 	public void agregarPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
@@ -72,7 +72,7 @@ public class TableroUnitTest
 		tablero.agregarPersonaje(goku, pos);
 	}
 	
-	@Test
+	/*@Test
 	public void agregarPersonajeACasilleroDentroDelTablero()
 	{
 		Tablero tablero = new Tablero(4);
@@ -81,7 +81,7 @@ public class TableroUnitTest
 		tablero.agregarPersonaje(goku, pos);
 		assertEquals(tablero.getPersonajeEn(pos), goku);
 		
-	}
+	}*/
 	
 	@Test
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()

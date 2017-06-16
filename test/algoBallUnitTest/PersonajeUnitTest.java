@@ -101,6 +101,8 @@ public class PersonajeUnitTest
 	public void transformarFuncionaSiHaySiguienteEstadoYKiSuficienteVerificarAtributos(){
 		Personaje goku = new Goku();
 		goku.aumentarKi(40);
+		Equipo guerrerosZ = new Equipo("z");
+		goku.setEquipo(guerrerosZ);
 		goku.transformar();
 		EstadoActividad estado = goku.getEstadoActividad();
 		assertEquals(estado.getNombre(), NOMBRE_GOKU_PRIMERA_TRANSF);
@@ -112,6 +114,8 @@ public class PersonajeUnitTest
 	@Test
 	public void transformarseBajaElKiEnLaCantidadNecesariaParaLaTransformacion(){
 		Personaje goku = new Goku();
+		Equipo guerrerosZ = new Equipo("z");
+		goku.setEquipo(guerrerosZ);
 		int ki = 40;
 		int kiEsperado = ki - KI_GOKU_PRIMERA_TRANF;
 		goku.aumentarKi(ki);
@@ -130,31 +134,32 @@ public class PersonajeUnitTest
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(goku, posicionInicial);
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		goku.transformar();
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		/*aqui se abrian limitado los movimientos sin la transformacion*/
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		Posicion posicionFinal = new Posicion(2,5);
 		assertEquals(goku.getPosicion(),posicionFinal);
 	}
 	
-	@Test (expected = NoQuedanMovimientosException.class)
-	public void transformarseLuegoDeMoverseConAlcarzarElLimiteDeMovimientosNoAumentaLaCantidadDeMovimientosPosibles(){
+	@Test
+	public void transformarseLuegoDeMoverseConAlcarzarElLimiteDeMovimientosAumentLaCantidadDeMovimientosPosibles(){
+		
 		Personaje goku = new Goku();
-		Equipo guerrerosZ = new Equipo("guerrerosZ");
+		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
 		goku.aumentarKi(40);
+		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(goku, posicionInicial);
-		goku.moverDerecha();
-		goku.moverDerecha();
-		/* se alcanza limite de movimientos*/
-		Posicion posicionFinal = new Posicion(2,4);
-		assertEquals(goku.getPosicion(), posicionFinal);
+		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.moverDerecha(goku);
 		goku.transformar();
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
+		Posicion posicionFinal = new Posicion(2,5);
+		assertEquals(goku.getPosicion(),posicionFinal);
 	}
 	
 	@Test
@@ -208,30 +213,37 @@ public class PersonajeUnitTest
 	}
 	
 	
-	@Test (expected = NoQuedanMovimientosException.class)
-	public void intentarMoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
+	@Test
+	public void noSePuedeMoverPersonajeMasVecesQueSuVelocidadActual(){
 		Personaje piccolo = new Piccolo();
 		Equipo guerrerosZ = new Equipo("Guerreros Z");
 		piccolo.setEquipo(guerrerosZ);
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(piccolo, posicionInicial);
-		piccolo.moverDerecha();
-		piccolo.moverDerecha();
+		guerrerosZ.moverDerecha(piccolo);
+		guerrerosZ.moverDerecha(piccolo);
+		Posicion posAnt = piccolo.getPosicion();
 		/* se alcanza limite de movimientos*/
-		piccolo.moverDerecha();
+		guerrerosZ.moverDerecha(piccolo);
+		assertEquals(piccolo.getPosicion(), posAnt);
 	}
 	
-	@Test (expected = NoQuedanMovimientosException.class)
-	public void intentarMoverPersonajeQueHaSidoProhibidoDeMovimientosLanzaNoQuedanMovimientos(){
+	@Test 
+	public void noSePuedeMoverPersonajeLuegoDeMoverAOtroEnEsteTurno(){
 		Personaje majinBoo = new MajinBoo();
+		Personaje cell = new Cell();
 		Equipo enemigos = new Equipo("enemigos");
 		majinBoo.setEquipo(enemigos);
 		Tablero tablero = new Tablero(10);
-		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPersonaje(majinBoo, posicionInicial);
-		majinBoo.prohibirMovimientos();
-		majinBoo.moverDerecha();
+		Posicion posicionInicialM = new Posicion(2,2);
+		Posicion posicionInicialC = new Posicion(3,2);
+		tablero.agregarPersonaje(majinBoo, posicionInicialM);
+		tablero.agregarPersonaje(cell, posicionInicialC);
+		enemigos.moverDerecha(majinBoo);
+		Posicion pos = cell.getPosicion();
+		enemigos.moverDerecha(cell);
+		assertEquals(cell.getPosicion(),pos);
 	}
 	
 	@Test
@@ -244,7 +256,7 @@ public class PersonajeUnitTest
 		goku.setEquipo(guerrerosZ);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPersonaje(goku, posicionInicial);
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		Posicion posicionFinal = new Posicion(2,3);
 		assertEquals(goku.getPosicion(), posicionFinal);
 		
@@ -254,7 +266,9 @@ public class PersonajeUnitTest
 	public void moverPersonajeNoFuncionaSiHayOtroPersonajeEnElLugarAlQueNosQueremosMover()
 	{
 		Tablero tablero = new Tablero(10);
+		Equipo guerrerosZ = new Equipo("GuerrerosZ");
 		Personaje goku = new Goku();
+		goku.setEquipo(guerrerosZ);
 		Personaje piccolo = new Piccolo();
 		
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -263,7 +277,7 @@ public class PersonajeUnitTest
 		tablero.agregarPersonaje(goku, posicionInicialX);
 		tablero.agregarPersonaje(piccolo, posicionInicialY);
 		
-		goku.moverAbajo();
+		guerrerosZ.moverAbajo(goku);
 		assertEquals(goku.getPosicion(), posicionInicialX);
 		/*es decir, el movimiento no se realizo*/
 		
@@ -274,12 +288,14 @@ public class PersonajeUnitTest
 	{
 		Tablero tablero = new Tablero(10);
 		Personaje piccolo = new Piccolo();
+		Equipo guerrerosZ = new Equipo("GuerrerosZ");
+		piccolo.setEquipo(guerrerosZ);
 		
 		Posicion posicionInicialX = new Posicion(9,2);
 		
 		tablero.agregarPersonaje(piccolo, posicionInicialX);
 		
-		piccolo.moverAbajo();
+		guerrerosZ.moverAbajo(piccolo);
 		assertEquals(piccolo.getPosicion(), posicionInicialX);
 		/*es decir, el movimiento no se realizo*/
 		

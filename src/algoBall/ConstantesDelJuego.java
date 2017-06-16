@@ -2,7 +2,9 @@ package algoBall;
     
 public final class ConstantesDelJuego {
 	private ConstantesDelJuego(){}  
-
+	
+	public static final String NOMBRE_GUERREROS = "Guerreros Z";
+	public static final String NOMBRE_ENEMIGOS = "Enemigos de la Tierra";
     public static final int KI_INICIAL = 0;
 	public static final String NOMBRE_TRANF_NORMAL = "Normal";
 	public static final int KI_POR_TURNO = 5;

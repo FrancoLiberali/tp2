@@ -2,7 +2,6 @@ package algoBallUnitTest;
 
 import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_SEGUNDA_TRANSF;
-import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOHAN;
 import static org.junit.Assert.assertEquals;
 

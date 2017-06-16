@@ -2,13 +2,9 @@ package personajes;
 
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
-import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
-import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
-import exceptions.NoEstaEnEstadoChocolateException;
-import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
@@ -25,7 +21,6 @@ public abstract class Personaje
 {
 	protected Posicion posicion;
 	protected String nombre;
-	protected int movimientosRestantes;
 	protected Ki ki;
 	protected Salud salud;
 	protected EstadoActividad estadoTransformacionActual;
@@ -113,57 +108,9 @@ public abstract class Personaje
 		}
 	}
 	
-	private boolean estaConvertidoAChocolate()
+	public boolean estaConvertidoAChocolate()
 	{
-		if (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE){
-			return true;
-		}
-		return false;
-	}
-	private void mover(Posicion nuevaPosicion)
-	{
-		if (this.estaConvertidoAChocolate()){
-			throw new PersonajeEnEstadoChocolate();
-		}
-		if (this.movimientosRestantes == 0){
-			throw new NoQuedanMovimientosException();
-		}
-				
-		try {
-			Posicion posicion_anterior = this.posicion;
-			nuevaPosicion.ponerEnTablero(this);
-			posicion_anterior.vaciarTableroEnPos();
-			this.movimientosRestantes = this.movimientosRestantes - 1;
-			if (this.movimientosRestantes == 0){
-				this.equipo.restarMovimientosRestantes();
-			}
-		}
-		catch (CasilleroOcupadoException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
-		}
-		catch (FueraDelTableroException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
-		}
-	}
-
-	public void moverIzquierda()
-	{
-		this.mover(this.posicion.darIzquierda());
-	}
-	
-	public void moverDerecha()
-	{
-		this.mover(this.posicion.darDerecha());
-	}
-	
-	public void moverArriba()
-	{
-		this.mover(this.posicion.darArriba());
-	}
-	
-	public void moverAbajo()
-	{
-		this.mover(this.posicion.darAbajo());
+		return (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE);
 	}
 	
 	protected void verificarAtaque(Personaje victima)
@@ -191,8 +138,13 @@ public abstract class Personaje
 	{
 		this.verificarAtaque(victima);
 		this.equipo.restarAtaqueRestates();
-		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
-				this.ataqueEspecial.getPorcentaje(this.ki));
+		try{
+			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
+					this.ataqueEspecial.getPorcentaje(this.ki));
+		}
+		catch( KiInsuficienteException error){
+		}
+				
 	}
 	
 
@@ -214,26 +166,11 @@ public abstract class Personaje
 		catch (SeAcabaronTurnosDelEstadoException error){
 			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(ki); 
 		}
-		catch( NoEstaEnEstadoChocolateException error){
-		 // si le mandas reducir turnos a un estado estandar tipo super sayajin
-		}
-		movimientosRestantes = this.getVelocidad();
 		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
-	}
-	
-	public void prohibirMovimientos(){
-		movimientosRestantes = 0;
-	}
-	
+	}	
 	
 	private void actualizarMovimientosRestantes(int velocidadAnterior){
-		if (movimientosRestantes == 0){
-			return;
-		}
-		else{
-			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
-			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);
-		}
+		equipo.actualizarMovimientosRestantes(this, velocidadAnterior, this.getVelocidad());
 		
 	}
 

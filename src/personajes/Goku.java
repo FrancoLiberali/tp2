@@ -39,7 +39,6 @@ public class Goku extends Personaje
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOKU, KI_ATQ_ESPECIAL_GOKU);
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU);
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 		
 	}
 	

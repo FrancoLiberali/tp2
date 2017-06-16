@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import algoBall.AlgoBall;
 import algoBall.ConstantesDelJuego;
+import algoBall.Equipo;
 import personajes.Personaje;
 
 public class AlgoBallIntegrationTest {
@@ -16,25 +17,24 @@ public class AlgoBallIntegrationTest {
 		
 		Personaje goku = juegoNuevo.getGoku();
 		Personaje cell = juegoNuevo.getCell();
+		Equipo guerrerosZ = juegoNuevo.getGuerrerosZ();
 		
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		assertEquals(goku.getPosicion().getColumna(),0);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
-		
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		assertEquals(goku.getPosicion().getColumna(),1);
 		assertEquals(goku.getPosicion().getFila(),1);
-		//como goku tiene velocidad 2 no se gasta una accion de movimiento
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		
-		goku.moverDerecha();
+		guerrerosZ.moverDerecha(goku);
 		assertEquals(goku.getPosicion().getColumna(),2);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),0);
+		guerrerosZ.moverDerecha(goku);
+		assertEquals(goku.getPosicion().getColumna(),2);
+		assertEquals(goku.getPosicion().getFila(),1);//goku ya no se puede mover
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		
 		goku.realizarAtaqueBasico(cell);
@@ -46,7 +46,6 @@ public class AlgoBallIntegrationTest {
 		juegoNuevo.finalizarTurno();
 		
 
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 	}
 }

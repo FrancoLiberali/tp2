@@ -1,8 +1,5 @@
 package funcionamientoPersonaje.elementos;
 
-import exceptions.FueraDeRangoException;
-import exceptions.IntentandoAtacarAUnCompanieroException;
-import exceptions.NoEstaEnEstadoChocolateException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import tablero.Posicion;
@@ -28,9 +25,7 @@ public class EstadoTransformacion implements EstadoActividad{
 	}
 	
 	public void reducirTurnos()
-	{
-		throw new NoEstaEnEstadoChocolateException();
-	}
+	{}
 	public EstadoActividad transformar(Ki kiPersonaje){
 		if (this.siguienteEstado == null){
 			throw new YaNoPuedeEvolucionarException();

@@ -1,6 +1,8 @@
 package algoBall;
 
 import static algoBall.ConstantesDelJuego.CELL_FIL;
+import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
+import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.FREEZER_COL;
 import static algoBall.ConstantesDelJuego.FREEZER_FIL;
 import static algoBall.ConstantesDelJuego.GOHAN_COL;
@@ -12,6 +14,7 @@ import static algoBall.ConstantesDelJuego.MAJIN_BOO_FIL;
 import static algoBall.ConstantesDelJuego.PICCOLO_COL;
 import static algoBall.ConstantesDelJuego.PICCOLO_FIL;
 
+import exceptions.EquipoInexistenteException;
 import exceptions.PersonajeInexistenteException;
 import personajes.Cell;
 import personajes.Freezer;
@@ -31,8 +34,8 @@ public class AlgoBall
 	public AlgoBall(String nombre1, String nombre2)
 	{
 		this.tablero = new Tablero(8);
-		Jugador jugador1 = new Jugador(nombre1, "enemigosDeLaTierra");
-		Jugador jugador2 = new Jugador(nombre2, "guerrerosZ");
+		Jugador jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
+		Jugador jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
 		iniciarPersonajes(jugador1, jugador2);
 		this.turnoActual = iniciarTurnos(jugador1, jugador2);
 	}
@@ -101,10 +104,6 @@ public class AlgoBall
 		 return this.turnoActual.getCantidadDeAtaquesRestantes();
 			
 	}
-	
-	public int getCantidadDeMovimientosRestantes() {
-		return this.turnoActual.getCantidadDeMovimientosRestantes();
-	}
 
 	public Personaje getPersonaje(String nombre) {
 		Personaje personajeBuscado;
@@ -115,6 +114,25 @@ public class AlgoBall
 			personajeBuscado = this.turnoActual.getTurnoSiguiente().getPersonaje(nombre);
 		}
 		return personajeBuscado;
+	}
+	
+	public Equipo getEquipo(String nombre) {
+		Equipo equipoBuscado;
+		try{
+			equipoBuscado = this.turnoActual.getEquipo(nombre);
+		}
+		catch (EquipoInexistenteException error){
+			equipoBuscado = this.turnoActual.getTurnoSiguiente().getEquipo(nombre);
+		}
+		return equipoBuscado;
+	}
+	
+	public Equipo getGuerrerosZ(){
+		return this.getEquipo(ConstantesDelJuego.NOMBRE_GUERREROS);
+	}
+	
+	public Equipo getEnemigos(){
+		return this.getEquipo(ConstantesDelJuego.NOMBRE_ENEMIGOS);
 	}
 	
 	public Personaje getGoku(){

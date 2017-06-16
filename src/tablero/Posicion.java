@@ -53,11 +53,11 @@ public class Posicion
 		return nueva_posicion;
 	}
 	
-	public void vaciarTableroEnPos(){
+	public void vaciarEnTablero(){
 		this.tablero.vaciarCasilleroEnPosicion(this);
 	}
 	
-	public void ponerEnTablero(Personaje personaje){
+	public void agregarEnTablero(Personaje personaje){
 		this.tablero.agregarPersonaje(personaje, this);
 	}
 	
@@ -71,9 +71,9 @@ public class Posicion
 		return (difFilas <= rango && difColumnas <= rango);
 	}
 
-	public Personaje getPersonaje() {
+	/*public Personaje getPersonaje() {
 		return this.tablero.getPersonajeEn(this);
-	}
+	}*/
 	
 	@Override
 	public boolean equals(Object otraPosicion) 

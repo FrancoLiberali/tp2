@@ -41,7 +41,6 @@ public class Gohan extends Personaje
 		this.salud = new Salud(PUNTOS_VIDA_GOHAN);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOHAN, KI_ATQ_ESPECIAL_GOHAN);
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOHAN);
 		this.porcentajeVidaNecesariasParaSegundaTransformacion = PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
 	}

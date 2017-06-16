@@ -42,8 +42,6 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 		return cantTurnos;
 	}
 
-	
-	
 	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
 		this.siguienteEstado = estadoTransformacionActual;
 	}

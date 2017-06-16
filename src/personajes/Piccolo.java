@@ -41,7 +41,6 @@ public class Piccolo extends Personaje
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = setEstadoNormal();
-		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
 	}
 	
 	@Override
