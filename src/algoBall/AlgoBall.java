@@ -1,6 +1,8 @@
 package algoBall;
 
 import static algoBall.ConstantesDelJuego.CELL_FIL;
+import static algoBall.ConstantesDelJuego.CELL_COL;
+import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
 import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.FREEZER_COL;
@@ -33,7 +35,7 @@ public class AlgoBall
 	
 	public AlgoBall(String nombre1, String nombre2)
 	{
-		this.tablero = new Tablero(8);
+		this.tablero = new Tablero(TAMANIO_TABLERO);
 		Jugador jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
 		Jugador jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
 		iniciarPersonajes(jugador1, jugador2);
@@ -95,7 +97,7 @@ public class AlgoBall
 		tablero.agregarPersonaje(gohan, new Posicion(GOHAN_FIL,GOHAN_COL));
 		tablero.agregarPersonaje(piccolo, new Posicion(PICCOLO_FIL,PICCOLO_COL));
 		tablero.agregarPersonaje(majinBoo,  new Posicion(MAJIN_BOO_FIL,MAJIN_BOO_COL));
-		tablero.agregarPersonaje(cell, new Posicion(CELL_FIL,CELL_FIL));
+		tablero.agregarPersonaje(cell, new Posicion(CELL_FIL,CELL_COL));
 		tablero.agregarPersonaje(freezer, new Posicion(FREEZER_FIL,FREEZER_COL));
 	}
 
@@ -103,6 +105,10 @@ public class AlgoBall
 	{
 		 return this.turnoActual.getCantidadDeAtaquesRestantes();
 			
+	}
+	
+	public int getDimensionTablero(){
+		return tablero.getDimension();
 	}
 
 	public Personaje getPersonaje(String nombre) {

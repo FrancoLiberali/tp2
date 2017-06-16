@@ -6,11 +6,19 @@ import java.util.List;
 import algoBall.AlgoBall;
 import algoBall.Equipo;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -39,12 +47,15 @@ public class ContenedorPrincipal extends BorderPane {
     BarraDeMenu menuBar;
 	private BotonFinalizarTurnoHandler finalizarTurnoHandler;
 	final ToggleGroup grupo = new ToggleGroup();
+	private Canvas canvasCentral;
+	private VistaTablero vistaTablero;
+    
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar) {
         this.setPrefWidth(75);
     	this.setMenu(stage);
-        this.setCentro(juego);
         this.setConsola();
+        this.setCentro(juego, agrupacionMover, agrupacionAtacar);
         this.setBotoneraDerecha(stage, juego, agrupacionAtacar);
         this.setBotoneraIzquierda(juego, agrupacionMover);
         
@@ -106,56 +117,56 @@ public class ContenedorPrincipal extends BorderPane {
     	
     	Button botonArribaIzquierda = new Button("ArI");
     	botones.add(botonArribaIzquierda);
-    	BotonMoverArribaIzquierdaHandler moveUpLeftButtonHandler = new BotonMoverArribaIzquierdaHandler(equipoMover);
+    	BotonMoverArribaIzquierdaHandler moveUpLeftButtonHandler = new BotonMoverArribaIzquierdaHandler(equipoMover, vistaTablero);
         botonArribaIzquierda.setOnAction(moveUpLeftButtonHandler);
         handlersBotones.add(moveUpLeftButtonHandler);
         botonArribaIzquierda.setDisable(true);
         
     	Button botonArriba = new Button("Arr");
     	botones.add(botonArriba);
-    	BotonMoverArribaHandler moveUpButtonHandler = new BotonMoverArribaHandler(equipoMover);
+    	BotonMoverArribaHandler moveUpButtonHandler = new BotonMoverArribaHandler(equipoMover, vistaTablero);
         botonArriba.setOnAction(moveUpButtonHandler);
         handlersBotones.add(moveUpButtonHandler);
         botonArriba.setDisable(true);
         
     	Button botonArribaDerecha = new Button("ArD");
     	botones.add(botonArribaDerecha);
-    	BotonMoverArribaDerechaHandler moveUpRightButtonHandler = new BotonMoverArribaDerechaHandler(equipoMover);
+    	BotonMoverArribaDerechaHandler moveUpRightButtonHandler = new BotonMoverArribaDerechaHandler(equipoMover, vistaTablero);
         botonArribaDerecha.setOnAction(moveUpRightButtonHandler);
         handlersBotones.add(moveUpRightButtonHandler);
         botonArribaDerecha.setDisable(true);
         
     	Button botonDerecha = new Button("Der");
     	botones.add(botonDerecha);
-    	BotonMoverDerechaHandler moveRightButtonHandler = new BotonMoverDerechaHandler(equipoMover);
+    	BotonMoverDerechaHandler moveRightButtonHandler = new BotonMoverDerechaHandler(equipoMover, vistaTablero);
         botonDerecha.setOnAction(moveRightButtonHandler);
         handlersBotones.add(moveRightButtonHandler);
         botonDerecha.setDisable(true);
         
     	Button botonAbajoDerecha = new Button("AbD");
     	botones.add(botonAbajoDerecha);
-    	BotonMoverAbajoDerechaHandler moveDownRightButtonHandler = new BotonMoverAbajoDerechaHandler(equipoMover);
+    	BotonMoverAbajoDerechaHandler moveDownRightButtonHandler = new BotonMoverAbajoDerechaHandler(equipoMover, vistaTablero);
         botonAbajoDerecha.setOnAction(moveDownRightButtonHandler);
         handlersBotones.add(moveDownRightButtonHandler);
         botonAbajoDerecha.setDisable(true);
         
     	Button botonAbajo = new Button("Aba");
     	botones.add(botonAbajo);
-    	BotonMoverAbajoHandler moveDownButtonHandler = new BotonMoverAbajoHandler(equipoMover);
+    	BotonMoverAbajoHandler moveDownButtonHandler = new BotonMoverAbajoHandler(equipoMover, vistaTablero);
         botonAbajo.setOnAction(moveDownButtonHandler);
         handlersBotones.add(moveDownButtonHandler);
         botonAbajo.setDisable(true);
         
     	Button botonAbajoIzquierda = new Button("AbI");
     	botones.add(botonAbajoIzquierda);
-    	BotonMoverAbajoIzquierdaHandler moveDownLeftButtonHandler = new BotonMoverAbajoIzquierdaHandler(equipoMover);
+    	BotonMoverAbajoIzquierdaHandler moveDownLeftButtonHandler = new BotonMoverAbajoIzquierdaHandler(equipoMover, vistaTablero);
         botonAbajoIzquierda.setOnAction(moveDownLeftButtonHandler);
         handlersBotones.add(moveDownLeftButtonHandler);
         botonAbajoIzquierda.setDisable(true);
         
     	Button botonIzquierda = new Button("Izq");
     	botones.add(botonIzquierda);
-    	BotonMoverIzquierdaHandler moveLeftButtonHandler = new BotonMoverIzquierdaHandler(equipoMover);
+    	BotonMoverIzquierdaHandler moveLeftButtonHandler = new BotonMoverIzquierdaHandler(equipoMover, vistaTablero);
         botonIzquierda.setOnAction(moveLeftButtonHandler);
         handlersBotones.add(moveLeftButtonHandler);
         botonIzquierda.setDisable(true);
@@ -191,8 +202,19 @@ public class ContenedorPrincipal extends BorderPane {
         this.setTop(menuBar);
     }
 
-    private void setCentro(AlgoBall juego) {
-    	//aca hiria el tablero
+    public void setCentro(AlgoBall juego, Equipo equipo1, Equipo equipo2) {
+    	canvasCentral = new Canvas (600,600);
+        vistaTablero = new VistaTablero(juego, canvasCentral, equipo1, equipo2);
+    	vistaTablero.dibujar();
+        VBox contenedorCentral = new VBox(canvasCentral);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral.setSpacing(20);
+        contenedorCentral.setPadding(new Insets(25));
+        //Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
+        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        //contenedorCentral.setBackground(new Background(imagenDeFondo));
+
+        this.setCenter(contenedorCentral);
     }
 
     private void setConsola() {
@@ -215,8 +237,12 @@ public class ContenedorPrincipal extends BorderPane {
         return menuBar;
     }
     
-    public void setProximaEscena(Scene proximaEscena){
+    public void setProximaEscena(Scene proximaEscena, VistaTablero proximaVista){
     	finalizarTurnoHandler.setProximaEscena(proximaEscena);
+    	finalizarTurnoHandler.setProximaVista(proximaVista);
     }
-
+    
+    public VistaTablero getVista(){
+    	return vistaTablero;
+    }
 }
