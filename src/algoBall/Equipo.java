@@ -68,6 +68,7 @@ public class Equipo implements Iterable<Personaje>
 	
 	public void reestablecer(){
 		this.cantidadAtaquesRestantes = 1;
+		movimiento = new Movimiento();
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();
 		}
