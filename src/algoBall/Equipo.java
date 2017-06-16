@@ -1,13 +1,14 @@
 package algoBall;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.elementos.Movimiento;
 import personajes.Personaje;
 import tablero.Posicion;
 
-public class Equipo 
+public class Equipo implements Iterable<Personaje> 
 {	
 	private String nombre;
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
@@ -118,9 +119,34 @@ public class Equipo
 		movimiento.moverAbajo(personaje);
 	}
 	
+	public void moverArribaIzquierda(Personaje personaje)
+	{	
+		movimiento.moverArribaIzquierda(personaje);
+	}
+	
+	public void moverArribaDerecha(Personaje personaje)
+	{
+		movimiento.moverArribaDerecha(personaje);
+	}
+	
+	public void moverAbajoDerecha(Personaje personaje)
+	{
+		movimiento.moverAbajoDerecha(personaje);
+	}
+	
+	public void moverAbajoIzquierda(Personaje personaje)
+	{
+		movimiento.moverAbajoIzquierda(personaje);
+	}
+	
 	public void actualizarMovimientosRestantes(Personaje personaje,int velocidadAnterior, int velocidadActual){
 		movimiento.actualizarMovimientosRestantes(personaje, velocidadAnterior, velocidadActual);
 		
+	}
+
+	@Override
+	public Iterator<Personaje> iterator() {
+		return pertenecientes.iterator();
 	}
 	
 	

@@ -48,6 +48,10 @@ public class Turno {
 	public Equipo getEquipo(String nombre) {
 		return this.jugador.getEquipo(nombre);
 	}
+	
+	public Equipo getEquipo() {
+		return this.jugador.getEquipo();
+	}
 }
 
 

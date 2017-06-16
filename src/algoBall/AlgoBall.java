@@ -116,6 +116,14 @@ public class AlgoBall
 		return personajeBuscado;
 	}
 	
+	public Equipo getEquipoActual(){
+		return this.turnoActual.getEquipo();
+	}
+	
+	public Equipo getEquipoSiguiente(){
+		return this.turnoSiguiente().getEquipo();
+	}
+	
 	public Equipo getEquipo(String nombre) {
 		Equipo equipoBuscado;
 		try{

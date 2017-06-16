@@ -53,6 +53,22 @@ public class Posicion
 		return nueva_posicion;
 	}
 	
+	public Posicion darArribaIzquierda(){
+		return this.darArriba().darIzquierda();
+	}
+	
+	public Posicion darArribaDerecha(){
+		return this.darArriba().darDerecha();
+	}
+	
+	public Posicion darAbajoDerecha(){
+		return this.darAbajo().darDerecha();
+	}
+	
+	public Posicion darAbajoIzquierda(){
+		return this.darAbajo().darIzquierda();
+	}
+	
 	public void vaciarEnTablero(){
 		this.tablero.vaciarCasilleroEnPosicion(this);
 	}

@@ -66,5 +66,25 @@ public class Movimiento {
 	{
 		this.mover(personaje, personaje.getPosicion().darAbajo());
 	}
+	
+	public void moverArribaIzquierda(Personaje personaje)
+	{	
+		this.mover(personaje, personaje.getPosicion().darArribaIzquierda());
+	}
+	
+	public void moverArribaDerecha(Personaje personaje)
+	{
+		this.mover(personaje, personaje.getPosicion().darArribaDerecha());
+	}
+	
+	public void moverAbajoDerecha(Personaje personaje)
+	{
+		this.mover(personaje, personaje.getPosicion().darAbajoDerecha());
+	}
+	
+	public void moverAbajoIzquierda(Personaje personaje)
+	{
+		this.mover(personaje, personaje.getPosicion().darAbajoIzquierda());
+	}
 }	
 

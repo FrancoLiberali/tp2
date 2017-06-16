@@ -33,10 +33,6 @@ public class Jugador
 		return (this.equipo.existePersonaje(personaje));
 	}
 	
-	public Equipo getAgrupacion(){
-		return this.equipo;
-	}
-	
 	public void reestablecer(){
 		equipo.reestablecer();
 	}
@@ -68,6 +64,5 @@ public class Jugador
 		}
 		return equipo;
 	}
-	
 }
 
