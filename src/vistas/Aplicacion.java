@@ -21,7 +21,10 @@ public class Aplicacion extends Application {
 
         stage.setTitle("Dragon AlgoBall");
         Screen screen = Screen.getPrimary();
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen);
+        
+        Reproductor reproductor = new Reproductor();
+        reproductor.reproducionAutomitica(true);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen, reproductor);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
         contenedorBienvenidos.requestFocus();
 
@@ -30,24 +33,20 @@ public class Aplicacion extends Application {
 
         stage.setScene(escenaBienvenidos);
         stage.setFullScreen(true);
-     
-   
-        Reproductor reproductor =new Reproductor();
-        reproductor.reproducionAutomitica(true);
 
         
         stage.show();
 
     }
     
-    public Scene crearJuego(Stage stage, String nombre1, String nombre2){
+    public Scene crearJuego(Stage stage, String nombre1, String nombre2,Reproductor reproductor){
     	AlgoBall juego = new AlgoBall(nombre1,nombre2);
     	
     	Equipo equipo1 = juego.getEquipoActual();
         Equipo equipo2 = juego.getEquipoSiguiente();
         
-        ContenedorPrincipal contenedorTurnoJugador1 = new ContenedorPrincipal(stage, juego, equipo1, equipo2);
-        ContenedorPrincipal contenedorTurnoJugador2 = new ContenedorPrincipal(stage, juego, equipo2, equipo1);
+        ContenedorPrincipal contenedorTurnoJugador1 = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor);
+        ContenedorPrincipal contenedorTurnoJugador2 = new ContenedorPrincipal(stage, juego, equipo2, equipo1,reproductor);
         
         Scene escenaJugador2 = new Scene(contenedorTurnoJugador2, 640, 480);
         Scene escenaJugador1 = new Scene(contenedorTurnoJugador1, 640, 480);

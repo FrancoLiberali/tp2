@@ -15,11 +15,34 @@ public class Reproductor {
 	public void reproducionAutomitica(boolean estado){
 		
 		mediaPlayer.setAutoPlay(estado);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		
 	}
 	
 	public void pausar(){
 		
 		mediaPlayer.pause();
+	}
+	
+	
+	public void play(){
+	
+		mediaPlayer.play();
+	}
+
+	
+	public void muteOn(){
+		
+		mediaPlayer.setMute(true);
+	}
+
+	public void muteOff(){
+		
+		mediaPlayer.setMute(false);
+	}
+	
+	public boolean estaMudo(){
+		
+		return mediaPlayer.isMute();
 	}
 }
