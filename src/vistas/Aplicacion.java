@@ -36,8 +36,8 @@ public class Aplicacion extends Application {
         stage.setFullScreen(true);
      
    
-        Reproductor reproductor =new Reproductor();
-        reproductor.reproducionAutomitica(true);
+       // Reproductor reproductor =new Reproductor();
+        //reproductor.reproducionAutomitica(true);
 
         
         stage.show();

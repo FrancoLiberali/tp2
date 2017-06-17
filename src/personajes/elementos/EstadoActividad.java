@@ -22,4 +22,5 @@ public interface EstadoActividad
 	EstadoActividad getEstadoAnterior();
 	void capturarConsumible(Personaje personaje, Consumible consumible);
 	void reducirKi(Personaje personaje, int cantidad);
+	void reducirTurnos();
 }

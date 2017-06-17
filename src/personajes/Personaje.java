@@ -110,6 +110,7 @@ public abstract class Personaje implements Posicionable
 		}
 	}
 	
+	/*
 	private void mover(Posicion nuevaPosicion)
 	{
 		if (this.movimientosRestantes == 0){
@@ -126,12 +127,14 @@ public abstract class Personaje implements Posicionable
 			}
 		}
 		catch (CasilleroOcupadoException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
+			//cancela movimiento (mas adelante agregar mensaje a usuario)
 		}
 		catch (FueraDelTableroException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
+			//cancela movimiento (mas adelante agregar mensaje a usuario)
 		}
-	}
+	} 
+
+
 
 	public void moverIzquierda()
 	{
@@ -153,6 +156,8 @@ public abstract class Personaje implements Posicionable
 		this.mover(this.posicion.darAbajo());
 
 	}
+	
+	 */
 	
 	protected void verificarAtaque(Personaje victima)
 	{	
@@ -275,5 +280,10 @@ public abstract class Personaje implements Posicionable
 	public void actualizarEstado()
 	{
 		this.estadoTransformacionActual.actualizarEstado(this);
+	}
+	
+	//se puede hacer definiendo el equals en cada estado de actividad
+	public boolean estaConvertidoAChocolate() {
+		return this.estadoTransformacionActual.getClass() == EstadoInactivoConChocolate.class;
 	}
 }
