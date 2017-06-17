@@ -48,9 +48,9 @@ public class ContenedorPrincipal extends BorderPane {
 	private BarrasDeVida barras;
     
 
-    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar) {
+    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor) {
         this.setPrefWidth(75);
-    	this.setMenu(stage);
+    	this.setMenu(stage, reproductor);
         this.setConsola();
         this.setCentro(juego, agrupacionMover, agrupacionAtacar);
         this.setBotoneraDerecha(stage, juego, agrupacionAtacar, agrupacionMover);
@@ -201,8 +201,8 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
-    private void setMenu(Stage stage) {
-        this.menuBar = new BarraDeMenu(stage);
+    private void setMenu(Stage stage,Reproductor reproductor) {
+        this.menuBar = new BarraDeMenu(stage, reproductor);
         this.setTop(menuBar);
     }
 

@@ -22,13 +22,15 @@ import vista.eventos.BotonEntrarEventHandler;
 public class ContenedorBienvenidos extends VBox {
 
     Stage stage;
-
-    public ContenedorBienvenidos(Aplicacion aplicacion, Stage stage, Screen screen) {
+    Reproductor reproductor;
+    
+    public ContenedorBienvenidos(Aplicacion aplicacion, Stage stage, Screen screen ,Reproductor reproductor) {
 
         super();
 
         this.stage = stage;
-
+        this.reproductor = reproductor;
+        
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
@@ -53,7 +55,7 @@ public class ContenedorBienvenidos extends VBox {
         etiqueta.setText("Bienvenidos al AlgoBall. Por favor complete los siguientes parametros");
         etiqueta.setTextFill(Color.RED);
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2,reproductor);
         botonEntrar.setOnAction(botonEntrarHandler);
         
         

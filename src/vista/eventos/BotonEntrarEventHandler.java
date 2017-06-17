@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import vistas.Aplicacion;
+import vistas.Reproductor;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 	
@@ -17,14 +18,16 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     TextField nombre2;
     Label label1;
     Label label2;
+    Reproductor reproductor;
 
-    public BotonEntrarEventHandler(Aplicacion aplicacion, Stage stage, Label label1, TextField nombre1, Label label2, TextField nombre2) {
+    public BotonEntrarEventHandler(Aplicacion aplicacion, Stage stage, Label label1, TextField nombre1, Label label2, TextField nombre2,Reproductor reproductor) {
         this.aplicacion = aplicacion;
     	this.stage = stage;
         this.nombre1 = nombre1;
         this.nombre2 = nombre2;
         this.label1 = label1;
         this.label2 = label2;
+        this.reproductor = reproductor;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
             this.nombre2.requestFocus();
     	}
     	else{
-    		Scene proximaEscena = aplicacion.crearJuego(stage, this.nombre1.getText(), this.nombre2.getText());
+    		Scene proximaEscena = aplicacion.crearJuego(stage, this.nombre1.getText(), this.nombre2.getText(), reproductor);
     		stage.setScene(proximaEscena);
             stage.setFullScreenExitHint("");
             stage.setFullScreen(true);
