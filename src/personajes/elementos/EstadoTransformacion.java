@@ -3,7 +3,6 @@ package personajes.elementos;
 import consumibles.Consumible;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
-import tablero.Posicion;
 
 public class EstadoTransformacion implements EstadoActividad {
 	protected String nombre;
@@ -90,23 +89,6 @@ public class EstadoTransformacion implements EstadoActividad {
 	
 	public void aplicarKi(Personaje personaje, int cantidad) {
 		personaje.getKi().sumar(cantidad);
-	}
-
-	
-	public void reducirKi(Personaje personaje, int cantidad) {
-		personaje.getKi().restar(new Ki(cantidad));
-	}
-	
-	@Override
-	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void realizarAtaqueEspecial(Personaje atacante, Personaje victima) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

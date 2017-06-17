@@ -23,14 +23,6 @@ public class EstadoCellSemiPerfecto extends EstadoTransformacion
 		this.siguienteEstado = new EstadoCellPerfecto();
 	}
 	
-	@Override
-	public void realizarAtaqueEspecial(Personaje atacante, Personaje victima){
-		Cell cell = (Cell)atacante;
-		super.realizarAtaqueBasico(victima);
-		cell.absorverVida();
-		cell.regenerarSalud(this.poderDePelea);
-		
-	}
 	
 	@Override
 	public void transformar(Personaje personaje){

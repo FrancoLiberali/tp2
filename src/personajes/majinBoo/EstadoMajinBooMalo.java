@@ -1,7 +1,6 @@
 package personajes.majinBoo;
 
 import static algoBall.ConstantesDelJuego.DISTANCIA_MAJIN_BOO_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_MAJIN_BOO;
 import static algoBall.ConstantesDelJuego.NOMBRE_MAJIN_BOO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_MAJIN_BOO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_MAJIN_BOO_PRIMERA_TRANSF;
@@ -22,9 +21,8 @@ public class EstadoMajinBooMalo extends EstadoTransformacion{
 	}
 	
 	@Override
-	public void realizarAtaqueEspecial(Personaje majinBoo, Personaje victima)
+	public void realizarAtaqueEspecial(Personaje victima, int porcetajeBonus)
 	{	
 		victima.setEstado(new EstadoInactivoConChocolate());
-		majinBoo.reducirKi(KI_ATQ_ESPECIAL_MAJIN_BOO);
 	}
 }

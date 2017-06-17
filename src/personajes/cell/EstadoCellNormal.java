@@ -24,15 +24,6 @@ public class EstadoCellNormal extends EstadoTransformacion {
 		};
 		
 		@Override
-		public void realizarAtaqueEspecial(Personaje atacante, Personaje victima){
-			Cell cell = (Cell)atacante;
-			this.realizarAtaqueBasico(victima);
-			cell.absorverVida();
-			cell.regenerarSalud(this.poderDePelea);
-			
-		}
-		
-		@Override
 		public void transformar(Personaje personaje){
 			Cell cell = (Cell)personaje;
 			if (!this.seAbsorvieronVidasNecesarias(cell.getVidasAbsorvidas())){

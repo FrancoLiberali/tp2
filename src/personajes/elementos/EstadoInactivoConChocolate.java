@@ -18,10 +18,6 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	
 	public void aplicarKi(Personaje personaje, int cantidad) {}
 
-	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
-		throw new PersonajeEnEstadoChocolate();
-	}
-
 	public int aplicarAtaqueEspecial(Personaje personaje, Posicion posicionVictima) {
 		throw new PersonajeInactivoNoPuedeAtacarException();
 	}
@@ -80,11 +76,6 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	@Override
-	public void realizarAtaqueEspecial(Personaje atacante, Personaje victima) {
-		throw new PersonajeEnEstadoChocolate();
-	}
-
-	@Override
 	public void actualizarEstado(Personaje personaje) {
 		if (cantTurnos.estaEnCero()){
 			personaje.setEstado(estadoAnterior);
@@ -107,9 +98,6 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public EstadoActividad getEstadoAnterior() {
 		return this.estadoAnterior;	
 	}
-
-	@Override
-	public void reducirKi(Personaje personaje, int cantidad) {}
 
 
 }

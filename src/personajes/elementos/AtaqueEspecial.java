@@ -1,7 +1,7 @@
 package personajes.elementos;
 
 public class AtaqueEspecial {
-	private Ki kiNecesario;
+	protected Ki kiNecesario;
 	private String nombre;
 	private int porcentaje = 0;
 	

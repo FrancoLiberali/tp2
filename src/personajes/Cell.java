@@ -36,7 +36,9 @@ public class Cell extends Personaje
 	
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima){
-		this.estadoTransformacionActual.realizarAtaqueEspecial(this, victima);
+		super.realizarAtaqueEspecial(victima);
+		this.absorverVida();
+		this.regenerarSalud(this.getPoderDePelea());
 		
 	}
 	

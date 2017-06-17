@@ -124,8 +124,11 @@ public class CellUnitTest {
 		agrupacion2.agregarPersonaje(cell);
 		
 		cell.realizarAtaqueEspecial(goku);
+		agrupacion2.reestablecer();//simulacion de paso de turno para poder atacar
 		cell.realizarAtaqueEspecial(goku);
+		agrupacion2.reestablecer();//simulacion de paso de turno para poder atacar
 		cell.realizarAtaqueEspecial(goku);
+		agrupacion2.reestablecer();//simulacion de paso de turno para poder atacar
 		cell.realizarAtaqueEspecial(goku);
 		cell.transformar();
 		assertEquals(cell.getEstado().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);

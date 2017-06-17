@@ -4,12 +4,9 @@ import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
 import algoBall.Posicionable;
 import consumibles.Consumible;
-import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
-import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
-import exceptions.NoQuedanMovimientosException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
@@ -92,10 +89,6 @@ public abstract class Personaje implements Posicionable
 		this.estadoTransformacionActual.aplicarKi(this, cantidad);
 	}
 	
-	public void reducirKi(int cantidad){
-		this.estadoTransformacionActual.reducirKi(this, cantidad);
-	}
-	
 	public void transformar()
 	{
 		try{
@@ -138,9 +131,8 @@ public abstract class Personaje implements Posicionable
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		this.verificarAtaque(victima);
 		try{
-			
+			this.verificarAtaque(victima);
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
 			this.equipo.restarAtaqueRestates();
@@ -173,6 +165,7 @@ public abstract class Personaje implements Posicionable
 			this.estadoTransformacionActual.reducirTurnos();
 		}
 		catch (SeAcabaronTurnosDelEstadoException error){
+			this.estadoTransformacionActual.actualizarEstado(this);
 			//Falta volver al estado anterior.
 		}
 		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
