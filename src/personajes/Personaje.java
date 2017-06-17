@@ -2,15 +2,15 @@ package personajes;
 
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
+<<<<<<< HEAD
 import algoBall.Posicionable;
 import consumibles.Consumible;
 import exceptions.CasilleroOcupadoException;
+=======
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
 import exceptions.FueraDeRangoException;
-import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
-import exceptions.NoEstaEnEstadoChocolateException;
-import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
@@ -27,12 +27,12 @@ public abstract class Personaje implements Posicionable
 {
 	protected Posicion posicion;
 	protected String nombre;
-	protected int movimientosRestantes;
 	protected Ki ki;
 	protected Salud salud;
 	protected EstadoActividad estadoTransformacionActual;
 	protected Equipo equipo;
 	protected AtaqueEspecial ataqueEspecial;
+	protected String rutaImagen;
 	
 	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial)
 	{
@@ -109,6 +109,7 @@ public abstract class Personaje implements Posicionable
 		}
 	}
 	
+<<<<<<< HEAD
 	private void mover(Posicion nuevaPosicion)
 	{
 		if (this.movimientosRestantes == 0){
@@ -150,6 +151,11 @@ public abstract class Personaje implements Posicionable
 	public void moverAbajo()
 	{
 		this.mover(this.posicion.darAbajo());
+=======
+	public boolean estaConvertidoAChocolate()
+	{
+		return (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE);
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
 	}
 	
 	protected void verificarAtaque(Personaje victima)
@@ -173,8 +179,13 @@ public abstract class Personaje implements Posicionable
 	{
 		this.verificarAtaque(victima);
 		this.equipo.restarAtaqueRestates();
-		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
-				this.ataqueEspecial.getPorcentaje(this.ki));
+		try{
+			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
+					this.ataqueEspecial.getPorcentaje(this.ki));
+		}
+		catch( KiInsuficienteException error){
+		}
+				
 	}
 	
 
@@ -196,26 +207,11 @@ public abstract class Personaje implements Posicionable
 		catch (SeAcabaronTurnosDelEstadoException error){
 			//Falta volver al estado anterior.
 		}
-		catch( NoEstaEnEstadoChocolateException error){
-		 // si le mandas reducir turnos a un estado estandar tipo super sayajin
-		}
-		movimientosRestantes = this.getVelocidad();
 		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
-	}
-	
-	public void prohibirMovimientos(){
-		movimientosRestantes = 0;
-	}
-	
+	}	
 	
 	private void actualizarMovimientosRestantes(int velocidadAnterior){
-		if (movimientosRestantes == 0){
-			return;
-		}
-		else{
-			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
-			movimientosRestantes = (this.getVelocidad() - movimientosRealizados);
-		}
+		equipo.actualizarMovimientosRestantes(this, velocidadAnterior, this.getVelocidad());
 		
 	}
 
@@ -228,6 +224,7 @@ public abstract class Personaje implements Posicionable
 	public EstadoActividad getEstado() {
 		return this.estadoTransformacionActual;
 	}
+<<<<<<< HEAD
 
 	public void regenerarSalud(int plusVida) {
 		this.salud.aumentar(plusVida);
@@ -240,5 +237,10 @@ public abstract class Personaje implements Posicionable
 
 	public void setEstado(EstadoActividad estado) {
 		this.estadoTransformacionActual = estado;
+=======
+	
+	public String getImagen(){
+		return rutaImagen;
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
 	}
 }

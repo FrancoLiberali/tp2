@@ -41,11 +41,16 @@ public class Turno {
 	public int getCantidadDeAtaquesRestantes(){
 		return this.jugador.getCantidadDeAtaquesRestantes();
 	}
-	public int getCantidadDeMovimientosRestantes() {
-		return this.jugador.getCantidadDeMovimientosRestantes();
-	}
 	public Personaje getPersonaje(String nombre) {
 		return this.jugador.getPersonaje(nombre);
+	}
+	
+	public Equipo getEquipo(String nombre) {
+		return this.jugador.getEquipo(nombre);
+	}
+	
+	public Equipo getEquipo() {
+		return this.jugador.getEquipo();
 	}
 }
 

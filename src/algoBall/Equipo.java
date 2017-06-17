@@ -1,17 +1,19 @@
 package algoBall;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import exceptions.PersonajeInexistenteException;
+import funcionamientoPersonaje.elementos.Movimiento;
 import personajes.Personaje;
 import tablero.Posicion;
 
-public class Equipo 
+public class Equipo implements Iterable<Personaje> 
 {	
 	private String nombre;
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
 	private int cantidadAtaquesRestantes = 1;
-	private int cantidadMovimientosRestantes = 1;
+	private Movimiento movimiento = new Movimiento();
 	
 	public Equipo(String nombre)
 	{
@@ -27,10 +29,6 @@ public class Equipo
 	public void restarAtaqueRestates()
 	{
 		this.cantidadAtaquesRestantes --;
-	}
-	
-	public void restarMovimientosRestantes(){
-		this.cantidadMovimientosRestantes--;
 	}
 	
 	public boolean perteneceMismaAgrupacion(Personaje psje)
@@ -70,18 +68,9 @@ public class Equipo
 	
 	public void reestablecer(){
 		this.cantidadAtaquesRestantes = 1;
-		this.cantidadMovimientosRestantes = 1;
+		movimiento = new Movimiento();
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();
-		}
-	}
-	
-
-	public void prohibirMovimientosMenosA(Personaje personajeQueNo){
-		for (Personaje personaje : pertenecientes) {
-			if (!(personaje == personajeQueNo)){
-				personaje.prohibirMovimientos();
-			}
 		}
 	}
 	
@@ -110,10 +99,57 @@ public class Equipo
 	public int getCantidadDeAtaquesRestantes() {
 		return this.cantidadAtaquesRestantes;
 	}
-
-	public int getCantidadDeMovimientosRestantes() {
-		return this.cantidadMovimientosRestantes;
+	
+	public void moverIzquierda(Personaje personaje)
+	{	
+		movimiento.moverIzquierda(personaje);
 	}
+	
+	public void moverDerecha(Personaje personaje)
+	{
+		movimiento.moverDerecha(personaje);
+	}
+	
+	public void moverArriba(Personaje personaje)
+	{
+		movimiento.moverArriba(personaje);
+	}
+	
+	public void moverAbajo(Personaje personaje)
+	{
+		movimiento.moverAbajo(personaje);
+	}
+	
+	public void moverArribaIzquierda(Personaje personaje)
+	{	
+		movimiento.moverArribaIzquierda(personaje);
+	}
+	
+	public void moverArribaDerecha(Personaje personaje)
+	{
+		movimiento.moverArribaDerecha(personaje);
+	}
+	
+	public void moverAbajoDerecha(Personaje personaje)
+	{
+		movimiento.moverAbajoDerecha(personaje);
+	}
+	
+	public void moverAbajoIzquierda(Personaje personaje)
+	{
+		movimiento.moverAbajoIzquierda(personaje);
+	}
+	
+	public void actualizarMovimientosRestantes(Personaje personaje,int velocidadAnterior, int velocidadActual){
+		movimiento.actualizarMovimientosRestantes(personaje, velocidadAnterior, velocidadActual);
+		
+	}
+
+	@Override
+	public Iterator<Personaje> iterator() {
+		return pertenecientes.iterator();
+	}
+	
 	
 	
 }

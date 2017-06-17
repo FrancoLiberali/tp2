@@ -28,33 +28,22 @@ public class Tablero
 		catch (IndexOutOfBoundsException error){
 			throw new FueraDelTableroException();
 		}
-	}
-	
-	public Personaje getPersonajeEn(Posicion pos)
-	{
-		return ((this.getCasillero(pos)).getPersonaje());
-	}
-	
+	}	
 
 	public int getDimension()
 	{
 		return dimension;
 	}
-
-	public void agregarPersonaje(Personaje psje, Posicion pos)
+	
+	public void agregarPersonaje(Personaje personaje, Posicion pos)
 	{
-		(this.getCasillero(pos)).setPersonaje(psje);
-		psje.setPosicion(pos);
+		(this.getCasillero(pos)).ocupar();
 		pos.setTablero(this);
+		personaje.setPosicion(pos);
 	}
-
-	public int cantPersonajes() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
+	
 	public void vaciarCasilleroEnPosicion (Posicion posicion){
-		Casillero casilleroEnPos = this.getCasillero(posicion);
-		casilleroEnPos.vaciar();
+		this.getCasillero(posicion).vaciar();
 	}
 	
 	

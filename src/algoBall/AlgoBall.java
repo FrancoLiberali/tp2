@@ -1,6 +1,10 @@
 package algoBall;
 
 import static algoBall.ConstantesDelJuego.CELL_FIL;
+import static algoBall.ConstantesDelJuego.CELL_COL;
+import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
+import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
+import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.FREEZER_COL;
 import static algoBall.ConstantesDelJuego.FREEZER_FIL;
 import static algoBall.ConstantesDelJuego.GOHAN_COL;
@@ -12,6 +16,7 @@ import static algoBall.ConstantesDelJuego.MAJIN_BOO_FIL;
 import static algoBall.ConstantesDelJuego.PICCOLO_COL;
 import static algoBall.ConstantesDelJuego.PICCOLO_FIL;
 
+import exceptions.EquipoInexistenteException;
 import exceptions.PersonajeInexistenteException;
 import personajes.Cell;
 import personajes.Freezer;
@@ -30,9 +35,9 @@ public class AlgoBall
 	
 	public AlgoBall(String nombre1, String nombre2)
 	{
-		this.tablero = new Tablero(8);
-		Jugador jugador1 = new Jugador(nombre1, "enemigosDeLaTierra");
-		Jugador jugador2 = new Jugador(nombre2, "guerrerosZ");
+		this.tablero = new Tablero(TAMANIO_TABLERO);
+		Jugador jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
+		Jugador jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
 		iniciarPersonajes(jugador1, jugador2);
 		this.turnoActual = iniciarTurnos(jugador1, jugador2);
 	}
@@ -92,7 +97,7 @@ public class AlgoBall
 		tablero.agregarPersonaje(gohan, new Posicion(GOHAN_FIL,GOHAN_COL));
 		tablero.agregarPersonaje(piccolo, new Posicion(PICCOLO_FIL,PICCOLO_COL));
 		tablero.agregarPersonaje(majinBoo,  new Posicion(MAJIN_BOO_FIL,MAJIN_BOO_COL));
-		tablero.agregarPersonaje(cell, new Posicion(CELL_FIL,CELL_FIL));
+		tablero.agregarPersonaje(cell, new Posicion(CELL_FIL,CELL_COL));
 		tablero.agregarPersonaje(freezer, new Posicion(FREEZER_FIL,FREEZER_COL));
 	}
 
@@ -102,8 +107,8 @@ public class AlgoBall
 			
 	}
 	
-	public int getCantidadDeMovimientosRestantes() {
-		return this.turnoActual.getCantidadDeMovimientosRestantes();
+	public int getDimensionTablero(){
+		return tablero.getDimension();
 	}
 
 	public Personaje getPersonaje(String nombre) {
@@ -115,6 +120,33 @@ public class AlgoBall
 			personajeBuscado = this.turnoActual.getTurnoSiguiente().getPersonaje(nombre);
 		}
 		return personajeBuscado;
+	}
+	
+	public Equipo getEquipoActual(){
+		return this.turnoActual.getEquipo();
+	}
+	
+	public Equipo getEquipoSiguiente(){
+		return this.turnoSiguiente().getEquipo();
+	}
+	
+	public Equipo getEquipo(String nombre) {
+		Equipo equipoBuscado;
+		try{
+			equipoBuscado = this.turnoActual.getEquipo(nombre);
+		}
+		catch (EquipoInexistenteException error){
+			equipoBuscado = this.turnoActual.getTurnoSiguiente().getEquipo(nombre);
+		}
+		return equipoBuscado;
+	}
+	
+	public Equipo getGuerrerosZ(){
+		return this.getEquipo(ConstantesDelJuego.NOMBRE_GUERREROS);
+	}
+	
+	public Equipo getEnemigos(){
+		return this.getEquipo(ConstantesDelJuego.NOMBRE_ENEMIGOS);
 	}
 	
 	public Personaje getGoku(){

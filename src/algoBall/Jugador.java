@@ -1,5 +1,6 @@
 package algoBall;
 
+import exceptions.EquipoInexistenteException;
 import personajes.Personaje;
 import tablero.Posicion;
 
@@ -32,10 +33,6 @@ public class Jugador
 		return (this.equipo.existePersonaje(personaje));
 	}
 	
-	public Equipo getAgrupacion(){
-		return this.equipo;
-	}
-	
 	public void reestablecer(){
 		equipo.reestablecer();
 	}
@@ -60,11 +57,12 @@ public class Jugador
 	public int getCantidadDeAtaquesRestantes(){
 		return this.equipo.getCantidadDeAtaquesRestantes();
 	}
-
-	public int getCantidadDeMovimientosRestantes() {
-		return this.equipo.getCantidadDeMovimientosRestantes();
-		
-	}
 	
+	public Equipo getEquipo(String nombre) {
+		if (equipo.getNombre() != nombre){
+			throw new EquipoInexistenteException();
+		}
+		return equipo;
+	}
 }
 

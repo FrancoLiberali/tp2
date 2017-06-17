@@ -2,15 +2,18 @@ package algoBall;
     
 public final class ConstantesDelJuego {
 	private ConstantesDelJuego(){}  
-
+	
+	public static final String NOMBRE_GUERREROS = "Guerreros Z";
+	public static final String NOMBRE_ENEMIGOS = "Enemigos de la Tierra";
     public static final int KI_INICIAL = 0;
+    public static final int TAMANIO_TABLERO = 6;
 	public static final String NOMBRE_TRANF_NORMAL = "Normal";
 	public static final int KI_POR_TURNO = 5;
 	public static final int REDUCCION_DE_ATAQUE = 20; //CUANDO EL PODER DE PELEA DEL ENEMIGO ES MAYOR
 	
     //Goku.
 	//posicion
-	public static final int GOKU_FIL = 1;
+	public static final int GOKU_FIL = 0;
 	public static final int GOKU_COL = 0;
 	//normal
 	public static final String GOKU_NOMBRE = "Goku";
@@ -40,8 +43,8 @@ public final class ConstantesDelJuego {
     
     //Gohan
     //posicion
-  	public static final int GOHAN_FIL = 2;
-  	public static final int GOHAN_COL = 2;
+  	public static final int GOHAN_FIL = 0;
+  	public static final int GOHAN_COL = 1;
     //Gohan normal.
 	public static final String GOHAN_NOMBRE = "Gohan";
     public static final int PUNTOS_VIDA_GOHAN= 300;
@@ -68,8 +71,8 @@ public final class ConstantesDelJuego {
     
     //Piccolo
     //posicion
-  	public static final int PICCOLO_FIL = 2;
-  	public static final int PICCOLO_COL = 3;
+  	public static final int PICCOLO_FIL = 0;
+  	public static final int PICCOLO_COL = 2;
     //Piccolo normal.
     public static final String PICCOLO_NOMBRE = "Piccolo";
     public static final int PUNTOS_VIDA_PICCOLO = 500;
@@ -97,7 +100,7 @@ public final class ConstantesDelJuego {
     //Cell
     //posicion
   	public static final int CELL_FIL = 3;
-  	public static final int CELL_COL = 2;
+  	public static final int CELL_COL = 0;
     //Cell normal.
     public static final String CELL_NOMBRE = "Cell";
     public static final int PUNTOS_VIDA_CELL = 500;
@@ -125,7 +128,7 @@ public final class ConstantesDelJuego {
     //Freezer
     //posicion
   	public static final int FREEZER_FIL = 3;
-  	public static final int FREEZER_COL = 0;
+  	public static final int FREEZER_COL = 1;
     //Freezer Normal
     public static final String FREEZER_NOMBRE = "Freezer";
 	public static final int PUNTOS_VIDA_FREEZER = 400;
@@ -153,7 +156,7 @@ public final class ConstantesDelJuego {
     //MAJIN_BOO
     //posicion
   	public static final int MAJIN_BOO_FIL = 3;
-  	public static final int MAJIN_BOO_COL = 1;
+  	public static final int MAJIN_BOO_COL = 2;
     //MAJIN_BOO Normal
     public static final String MAJIN_BOO_NOMBRE = "Majin Boo";
 	public static final int PUNTOS_VIDA_MAJIN_BOO = 300;

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import algoBall.AlgoBall;
 import algoBall.ConstantesDelJuego;
+import algoBall.Equipo;
 import personajes.Personaje;
 
 public class AlgoBallIntegrationTest {
@@ -16,37 +17,36 @@ public class AlgoBallIntegrationTest {
 		
 		Personaje goku = juegoNuevo.getGoku();
 		Personaje cell = juegoNuevo.getCell();
+		Equipo guerrerosZ = juegoNuevo.getGuerrerosZ();
+		Equipo enemigos = juegoNuevo.getEnemigos();
 		
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		assertEquals(goku.getPosicion().getColumna(),0);
-		assertEquals(goku.getPosicion().getFila(),1);
+		assertEquals(goku.getPosicion().getFila(),0);
 		
-		
-		goku.moverDerecha();
-		assertEquals(goku.getPosicion().getColumna(),1);
+		guerrerosZ.moverAbajo(goku);
+		assertEquals(goku.getPosicion().getColumna(),0);
 		assertEquals(goku.getPosicion().getFila(),1);
-		//como goku tiene velocidad 2 no se gasta una accion de movimiento
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		
-		goku.moverDerecha();
-		assertEquals(goku.getPosicion().getColumna(),2);
+		guerrerosZ.moverDerecha(goku);
+		assertEquals(goku.getPosicion().getColumna(),1);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),0);
+		guerrerosZ.moverDerecha(goku);
+		assertEquals(goku.getPosicion().getColumna(),1);
+		assertEquals(goku.getPosicion().getFila(),1);//goku ya no se puede mover
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
 		
 		goku.realizarAtaqueBasico(cell);
 		
 		assertEquals(cell.getSalud(), ConstantesDelJuego.PUNTOS_VIDA_CELL - ConstantesDelJuego.PODER_GOKU_NORMAL);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),0);
-		
-		
-		juegoNuevo.finalizarTurno();
-		
+		juegoNuevo.finalizarTurno();		
 
-		assertEquals(juegoNuevo.getCantidadDeMovimientosRestantes(),1);
 		assertEquals(juegoNuevo.getCantidadDeAtaquesRestantes(),1);
+		enemigos.moverAbajo(cell);
+		assertEquals(cell.getPosicion().getColumna(),0);
+		assertEquals(cell.getPosicion().getFila(),4);
 	}
 }

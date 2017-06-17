@@ -1,5 +1,9 @@
 package personajes.elementos;
 
+<<<<<<< HEAD:src/personajes/elementos/EstadoTransformacion.java
+=======
+import exceptions.YaNoPuedeEvolucionarException;
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19:src/funcionamientoPersonaje/elementos/EstadoTransformacion.java
 import personajes.Personaje;
 import tablero.Posicion;
 
@@ -16,11 +20,22 @@ public class EstadoTransformacion implements EstadoActividad {
 		this.kiParaTransformacion = new Ki(kiNecesario);		
 	}
 	
+<<<<<<< HEAD:src/personajes/elementos/EstadoTransformacion.java
 	public void reducirTurnos() {};
 	
 
 	public void transformar(Personaje personaje) {
 		personaje.setEstado(this.siguienteEstado);
+=======
+	public void reducirTurnos()
+	{}
+	public EstadoActividad transformar(Ki kiPersonaje){
+		if (this.siguienteEstado == null){
+			throw new YaNoPuedeEvolucionarException();
+		}
+		kiPersonaje.restar(kiParaTransformacion);
+		return this.siguienteEstado;
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19:src/funcionamientoPersonaje/elementos/EstadoTransformacion.java
 	}
 	
 	protected void atacar(Personaje victima, int danio){

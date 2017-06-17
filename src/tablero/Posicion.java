@@ -53,11 +53,27 @@ public class Posicion
 		return nueva_posicion;
 	}
 	
-	public void vaciarTableroEnPos(){
+	public Posicion darArribaIzquierda(){
+		return this.darArriba().darIzquierda();
+	}
+	
+	public Posicion darArribaDerecha(){
+		return this.darArriba().darDerecha();
+	}
+	
+	public Posicion darAbajoDerecha(){
+		return this.darAbajo().darDerecha();
+	}
+	
+	public Posicion darAbajoIzquierda(){
+		return this.darAbajo().darIzquierda();
+	}
+	
+	public void vaciarEnTablero(){
 		this.tablero.vaciarCasilleroEnPosicion(this);
 	}
 	
-	public void ponerEnTablero(Personaje personaje){
+	public void agregarEnTablero(Personaje personaje){
 		this.tablero.agregarPersonaje(personaje, this);
 	}
 	
@@ -71,9 +87,9 @@ public class Posicion
 		return (difFilas <= rango && difColumnas <= rango);
 	}
 
-	public Personaje getPersonaje() {
+	/*public Personaje getPersonaje() {
 		return this.tablero.getPersonajeEn(this);
-	}
+	}*/
 	
 	@Override
 	public boolean equals(Object otraPosicion) 

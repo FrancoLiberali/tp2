@@ -27,8 +27,13 @@ public class Piccolo extends Personaje
 		this.salud = new Salud(PUNTOS_VIDA_PICCOLO);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
+<<<<<<< HEAD
 		this.estadoTransformacionActual = new EstadoPiccoloNormal();
 		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
+=======
+		this.estadoTransformacionActual = setEstadoNormal();
+		this.rutaImagen = "file:src/vista/imagenes/piccolo.png";
+>>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
 	}
 	
 	@Override
