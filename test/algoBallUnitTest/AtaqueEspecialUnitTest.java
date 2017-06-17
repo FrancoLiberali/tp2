@@ -8,8 +8,6 @@ import personajes.elementos.Ki;
 
 public class AtaqueEspecialUnitTest 
 {
-	
-	
 	@Test(expected = KiInsuficienteException.class)
 	public void getAtaqueLanzaKiInsuficienteSiElKiActualEsMenorAlNecesario(){
 		int kiNescesario = 10;

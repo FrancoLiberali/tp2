@@ -12,8 +12,7 @@ import personajes.elementos.Ki;
 public class EstadoGohanNormal extends EstadoTransformacion {
 
 	public EstadoGohanNormal()
-	{
-		
+	{	
 		this.nombre = NOMBRE_TRANF_NORMAL;
 		this.velocidad = VELOCIDAD_GOHAN_NORMAL;
 		this.distanciaDeAtaque = DISTANCIA_GOHAN_NORMAL;

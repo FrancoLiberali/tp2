@@ -23,13 +23,4 @@ public class MajinBoo extends Personaje
 		this.estadoTransformacionActual = new EstadoMajinBooNormal();
 		this.rutaImagen = "file:src/vista/imagenes/majinboo.png";
 	}
-	
-	
-	@Override
-	public void realizarAtaqueEspecial(Personaje victima)
-	{	
-		this.equipo.restarAtaqueRestates();
-		victima.convertirAChocolate();
-		this.ki.restar(new Ki(KI_ATQ_ESPECIAL_MAJIN_BOO));
-	}
 }

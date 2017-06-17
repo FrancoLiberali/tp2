@@ -7,12 +7,14 @@ import tablero.Posicion;
 
 import static algoBall.ConstantesDelJuego.*;
 
+import consumibles.Consumible;
+
 public class EstadoInactivoConChocolate implements EstadoActividad 
 {
+	private EstadoActividad estadoSiguiente;
+	private EstadoActividad estadoAnterior;
 	private String nombre = CHOCOLATE;
 	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(TURNOS_ESTUNEO_MAJIN_BOO);
-	private EstadoActividad siguienteEstado;
-
 	
 	public void aplicarKi(Personaje personaje, int cantidad) {}
 
@@ -39,7 +41,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
-		this.siguienteEstado = estadoTransformacionActual;
+		this.estadoSiguiente = estadoTransformacionActual;
 	}
 
 	@Override
@@ -65,11 +67,12 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima, int porcentaje) {
 		throw new PersonajeEnEstadoChocolate();
-		
 	}
 
 	@Override
-	public void transformar(Personaje personaje) {}
+	public void transformar(Personaje personaje) {
+		throw new PersonajeEnEstadoChocolate();
+	}
 
 	@Override
 	public String getNombre() {
@@ -78,9 +81,35 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 
 	@Override
 	public void realizarAtaqueEspecial(Personaje atacante, Personaje victima) {
-		// TODO Auto-generated method stub
-		
+		throw new PersonajeEnEstadoChocolate();
 	}
+
+	@Override
+	public void actualizarEstado(Personaje personaje) {
+		if (cantTurnos.estaEnCero()){
+			personaje.setEstado(estadoAnterior);
+			return;
+		}
+		cantTurnos.reducir();
+	}
+
+	@Override
+	public void capturarConsumible(Personaje personaje, Consumible consumible) {
+		throw new PersonajeEnEstadoChocolate();
+	}
+
+	@Override
+	public EstadoActividad getEstadoSiguiente() {
+		return this.estadoSiguiente;
+	}
+
+	@Override
+	public EstadoActividad getEstadoAnterior() {
+		return this.estadoAnterior;	
+	}
+
+	@Override
+	public void reducirKi(Personaje personaje, int cantidad) {}
 
 
 }

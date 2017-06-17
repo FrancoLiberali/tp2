@@ -75,7 +75,7 @@ public abstract class Personaje implements Posicionable
 	
 	public int getVelocidad()
 	{
-		return (this.estadoTransformacionActual.getVelocidad());
+		return this.estadoTransformacionActual.getVelocidad();
 	}
 	
 	public int getPoderDePelea()
@@ -89,6 +89,10 @@ public abstract class Personaje implements Posicionable
 	
 	public void aumentarKi(int cantidad){
 		this.estadoTransformacionActual.aplicarKi(this, cantidad);
+	}
+	
+	public void reducirKi(int cantidad){
+		this.estadoTransformacionActual.reducirKi(this, cantidad);
 	}
 	
 	public void transformar()
@@ -186,9 +190,15 @@ public abstract class Personaje implements Posicionable
 			danioARecibir = danioARecibir - (danioARecibir * ConstantesDelJuego.REDUCCION_DE_ATAQUE / 100);
 		}
 		this.salud.disminuir(danioARecibir);
+		
 		if (this.salud.esCero()){
 			this.equipo.eliminar(this);
 		}
+	}
+	
+	public void reducirSalud(int cantidad)
+	{
+		this.salud.disminuir(cantidad);
 	}
 	
 	public void reestablecer(){
@@ -223,7 +233,7 @@ public abstract class Personaje implements Posicionable
 	
 	public void agarrarConsumible(Consumible consumible)
 	{
-		consumible.aplicarAPersonaje(this);
+		this.estadoTransformacionActual.capturarConsumible(this, consumible);
 	}
 
 	public void setEstado(EstadoActividad estado) {
@@ -232,5 +242,38 @@ public abstract class Personaje implements Posicionable
 	
 	public String getImagen(){
 		return rutaImagen;
+	}
+
+	@Override
+	public boolean equals(Object otroPersonaje) 
+	{
+		if (this == otroPersonaje){
+				return true;
+		}
+		if (!(otroPersonaje instanceof Posicion)){
+				return false;
+		}
+		Personaje otroPsje = (Personaje)otroPersonaje;
+		return this.getNombre() == otroPsje.getNombre();
+	}
+
+	@Override
+	public int hashCode() 
+	{
+	    return 0;
+	}
+
+	public int mayorPorcentajeSaludDeCompanieros() {
+		return equipo.mayorPorcentajeSaludDeCompanierosDe(this);
+	}
+	
+	public Personaje getCompaniero(String nombre)
+	{
+		return this.equipo.getPersonaje(nombre);
+	}
+	
+	public void actualizarEstado()
+	{
+		this.estadoTransformacionActual.actualizarEstado(this);
 	}
 }

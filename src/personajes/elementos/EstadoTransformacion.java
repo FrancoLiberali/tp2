@@ -1,5 +1,6 @@
 package personajes.elementos;
 
+import consumibles.Consumible;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import tablero.Posicion;
@@ -10,6 +11,7 @@ public class EstadoTransformacion implements EstadoActividad {
 	protected int distanciaDeAtaque;
 	protected int poderDePelea;
 	protected EstadoActividad siguienteEstado = null;
+	protected EstadoActividad anteriorEstado = null;
 	protected Ki kiParaTransformacion = null;
 	
 	public void reducirTurnos() {};
@@ -75,10 +77,26 @@ public class EstadoTransformacion implements EstadoActividad {
 		return poderDePelea;
 	}
 	
+	public EstadoActividad getEstadoSiguiente() {
+		return siguienteEstado;
+	}
+	
+	public EstadoActividad getEstadoAnterior() {
+		if(this.anteriorEstado == null){
+			return this;
+		}
+		return anteriorEstado;
+	}
+	
 	public void aplicarKi(Personaje personaje, int cantidad) {
 		personaje.getKi().sumar(cantidad);
 	}
 
+	
+	public void reducirKi(Personaje personaje, int cantidad) {
+		personaje.getKi().restar(new Ki(cantidad));
+	}
+	
 	@Override
 	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
 		// TODO Auto-generated method stub
@@ -96,5 +114,16 @@ public class EstadoTransformacion implements EstadoActividad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void actualizarEstado(Personaje personaje) {};
+
+	@Override
+	public void capturarConsumible(Personaje personaje, Consumible consumible) {
+		consumible.aplicarAPersonaje(personaje);
+	}
+
+
+
 
 }
