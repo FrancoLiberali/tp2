@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_131"/>
+>>>>>>> df435c947474d554e02feb2f32a7a4b7ea55cf01
 	<classpathentry kind="lib" path="libs/junit-jar-4.11.jar"/>
 	<classpathentry kind="lib" path="libs/ant-jar-1.8.3.jar"/>
 	<classpathentry kind="lib" path="libs/ant-junit-jar-1.8.3.jar"/>

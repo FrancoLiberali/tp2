@@ -173,5 +173,10 @@ public class Equipo implements Iterable<Personaje>
 		}
 		return mayorPorcentaje;
 	}
+
+	public int getAtaquesRestantes() {
+		
+		return this.cantidadAtaquesRestantes;
+	}
 	
 }

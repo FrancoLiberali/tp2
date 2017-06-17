@@ -10,6 +10,7 @@ import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoQuedanMovimientosException;
+import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
@@ -119,21 +120,30 @@ public abstract class Personaje implements Posicionable
 		if (this.equipo.existePersonaje(victima.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
+		if(this.equipo.getAtaquesRestantes() == 0){
+			throw new NoTienesAtaquesRestantesException();
+			
+		}
 		
 	}
 	public void realizarAtaqueBasico(Personaje victima){
-		this.verificarAtaque(victima);
-		this.equipo.restarAtaqueRestates();
-		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
+		try{
+			this.verificarAtaque(victima);
+			this.equipo.restarAtaqueRestates();
+			this.estadoTransformacionActual.realizarAtaqueBasico(victima);
+		}
+		catch(NoTienesAtaquesRestantesException error){
+		}
 	}
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
 		this.verificarAtaque(victima);
-		this.equipo.restarAtaqueRestates();
 		try{
+			
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
+			this.equipo.restarAtaqueRestates();
 		}
 		catch( KiInsuficienteException error){
 		}
