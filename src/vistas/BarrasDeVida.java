@@ -18,11 +18,12 @@ import personajes.Personaje;
 public class BarrasDeVida extends VBox{
 	List<Equipo> equipos = new ArrayList<Equipo>();
 	Hashtable<Personaje,ProgressBar> barras = new Hashtable<Personaje,ProgressBar>();
+	Hashtable<Personaje,Label> numerosVida = new Hashtable<Personaje, Label>();
 	
 	public BarrasDeVida(Equipo equipo1, Equipo equipo2){
 		equipos.add(equipo1);
 		equipos.add(equipo2);
-		this.setSpacing(7); //no se si estara bien
+		this.setSpacing(7); 
 		this.setPadding(new Insets(10));
 		this.agregarBarras();
 	}
@@ -33,14 +34,19 @@ public class BarrasDeVida extends VBox{
 				Label nombrePersonaje = new Label();
 				nombrePersonaje.setText(personaje.getNombre() + ":");
 				nombrePersonaje.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-	
+				Label numeroVida = new Label();
+				numeroVida.setText(((Integer)personaje.getSalud()).toString());
+				numeroVida.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+				
 				ProgressBar barraVidaParticular = new ProgressBar(); // crea la barra de vida
 				barras.put(personaje, barraVidaParticular);
+				this.numerosVida.put(personaje, numeroVida);
 				barraVidaParticular.setProgress(personaje.getPorcentajeSalud()/100F); // Ese F es necesario
-	
+				
+				
 				final HBox hb = new HBox();
 				hb.setAlignment(Pos.CENTER_RIGHT);
-				hb.getChildren().addAll(nombrePersonaje, barraVidaParticular);
+				hb.getChildren().addAll(nombrePersonaje, barraVidaParticular, numeroVida);
 				this.getChildren().add(hb);
 			}
 		}
@@ -49,6 +55,9 @@ public class BarrasDeVida extends VBox{
 	public void actualizar(){
 		for (Personaje personaje : barras.keySet()){
 			barras.get(personaje).setProgress(personaje.getPorcentajeSalud()/100F);
+		}
+		for (Personaje personaje : this.numerosVida.keySet()){
+			this.numerosVida.get(personaje).setText(((Integer)personaje.getSalud()).toString());
 		}
 	}
 }
