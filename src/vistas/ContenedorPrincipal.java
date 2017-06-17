@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import algoBall.AlgoBall;
+import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,9 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -51,7 +56,7 @@ public class ContenedorPrincipal extends BorderPane {
         this.setConsola();
         this.setCentro(juego, agrupacionMover, agrupacionAtacar);
         this.setBotoneraDerecha(stage, juego, agrupacionAtacar);
-        this.setBotoneraIzquierda(juego, agrupacionMover);
+        this.setBotoneraIzquierda(juego, agrupacionMover, agrupacionAtacar);
         
     }
     
@@ -108,7 +113,6 @@ public class ContenedorPrincipal extends BorderPane {
     }
     
     private void setBotonesDeMovimiento(Equipo equipoMover){
-    	
     	Button botonArribaIzquierda = new Button("ArI");
     	botones.add(botonArribaIzquierda);
     	BotonMoverArribaIzquierdaHandler moveUpLeftButtonHandler = new BotonMoverArribaIzquierdaHandler(equipoMover, vistaTablero);
@@ -116,6 +120,7 @@ public class ContenedorPrincipal extends BorderPane {
         handlersBotones.add(moveUpLeftButtonHandler);
         botonArribaIzquierda.setDisable(true);
         
+    
     	Button botonArriba = new Button("Arr");
     	botones.add(botonArriba);
     	BotonMoverArribaHandler moveUpButtonHandler = new BotonMoverArribaHandler(equipoMover, vistaTablero);
@@ -166,7 +171,7 @@ public class ContenedorPrincipal extends BorderPane {
         botonIzquierda.setDisable(true);
     }
     
-    private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover) {
+    private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar) {
         this.setBotonesDeMovimiento(agrupacionMover);
         Label label = new Label("Seleccionar personaje");
         VBox contenedorVertical = new VBox(label);
@@ -187,6 +192,7 @@ public class ContenedorPrincipal extends BorderPane {
         Label labelBasicos = new Label("Mover personaje");
         contenedorVertical.getChildren().add(labelBasicos);
         contenedorVertical.getChildren().add(contenedorFlechas);
+        contenedorVertical.getChildren().add(this.verBarraVidaPersonaje(agrupacionMover, agrupacionAtacar));
         this.setLeft(contenedorVertical);
 
     }
@@ -210,7 +216,36 @@ public class ContenedorPrincipal extends BorderPane {
 
         this.setCenter(contenedorCentral);
     }
-
+    
+    private VBox verBarraVidaPersonaje(Equipo equipo1, Equipo equipo2)
+    {	
+    	List<Equipo> equipos = new ArrayList<Equipo>();
+    	equipos.add(equipo1);
+    	equipos.add(equipo2);
+    	VBox vb = new VBox();
+    	vb.setSpacing(7); //no se si estara bien
+    	vb.setPadding(new Insets(10));
+    	 
+    	for (Equipo equipo : equipos){
+    		for (Personaje personaje : equipo){
+    	
+    			Label nombrePersonaje = new Label();
+    			nombrePersonaje.setText(personaje.getNombre() + ":");
+    			nombrePersonaje.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+    	
+    			ProgressBar barraVidaParticular = new ProgressBar(); // crea la barra de vida
+    			barraVidaParticular.setProgress(personaje.getPorcentajeSalud()/100F); // Ese F es necesario
+    	
+    			final HBox hb = new HBox();
+    			hb.setAlignment(Pos.CENTER_RIGHT);
+    			hb.getChildren().addAll(nombrePersonaje, barraVidaParticular);
+    			vb.getChildren().add(hb);
+    		}
+    	}
+    	vb.setAlignment(Pos.CENTER_RIGHT);
+    	return vb;
+    }
+  
     private void setConsola() {
 
         // TODO cambiar por el modelo de Consola...

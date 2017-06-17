@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -53,8 +54,9 @@ public class ContenedorBienvenidos extends VBox {
 
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2);
         botonEntrar.setOnAction(botonEntrarHandler);
-
+        
+        
         this.getChildren().addAll(etiqueta, label1, nombre1, label2, nombre2, botonEntrar);
+       
     }
-
 }
