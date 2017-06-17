@@ -1,5 +1,7 @@
 package tablero;
 
+
+
 import exceptions.FueraDelTableroException;
 import personajes.Personaje;
 

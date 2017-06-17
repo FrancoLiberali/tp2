@@ -45,11 +45,13 @@ public class Turno {
 		return this.jugador.getPersonaje(nombre);
 	}
 	
+	
 	public Equipo getEquipo(String nombre) {
 		return this.jugador.getEquipo(nombre);
 	}
 	
 	public Equipo getEquipo() {
+		
 		return this.jugador.getEquipo();
 	}
 }
