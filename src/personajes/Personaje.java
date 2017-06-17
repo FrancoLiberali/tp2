@@ -110,55 +110,6 @@ public abstract class Personaje implements Posicionable
 		}
 	}
 	
-	/*
-	private void mover(Posicion nuevaPosicion)
-	{
-		if (this.movimientosRestantes == 0){
-			throw new NoQuedanMovimientosException();
-		}
-				
-		try {
-			Posicion posicion_anterior = this.posicion;
-			nuevaPosicion.ponerEnTablero(this);
-			posicion_anterior.vaciarTableroEnPos();
-			this.movimientosRestantes = this.movimientosRestantes - 1;
-			if (this.movimientosRestantes == 0){
-				this.equipo.restarMovimientosRestantes();
-			}
-		}
-		catch (CasilleroOcupadoException error){
-			//cancela movimiento (mas adelante agregar mensaje a usuario)
-		}
-		catch (FueraDelTableroException error){
-			//cancela movimiento (mas adelante agregar mensaje a usuario)
-		}
-	} 
-
-
-
-	public void moverIzquierda()
-	{
-		this.mover(this.posicion.darIzquierda());
-	}
-	
-	public void moverDerecha()
-	{
-		this.mover(this.posicion.darDerecha());
-	}
-	
-	public void moverArriba()
-	{
-		this.mover(this.posicion.darArriba());
-	}
-	
-	public void moverAbajo()
-	{
-		this.mover(this.posicion.darAbajo());
-
-	}
-	
-	 */
-	
 	protected void verificarAtaque(Personaje victima)
 	{	
 		if (!this.posicion.dentroDelRango(victima.getPosicion(), this.getDistanciaDeAtaque())){

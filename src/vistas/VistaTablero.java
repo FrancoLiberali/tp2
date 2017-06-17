@@ -11,14 +11,12 @@ import tablero.Posicion;
 
 public class VistaTablero {
 	private Image suelo = new Image("file:src/vista/imagenes/texturaSuelo.jpg");
-	private AlgoBall juego;
 	private int dimension;
     Canvas canvas;
     private Equipo equipo1;
     private Equipo equipo2;
 
     public VistaTablero(AlgoBall juego, Canvas canvas, Equipo equipo1, Equipo equipo2) {
-        this.juego = juego;
         this.dimension = juego.getDimensionTablero();
         this.canvas = canvas;
         this.equipo1=equipo1;

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import algoBall.AlgoBall;
-import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -112,58 +111,65 @@ public class ContenedorPrincipal extends BorderPane {
     	return boton;
     }
     
+    private Button setBotonConImagen(String path){
+    	Image dir = new Image(path);
+    	ImageView botonImagen = new ImageView(dir);
+    	Button boton = new Button();
+    	boton.setGraphic(botonImagen);
+    	return boton;
+    }
+    
     private void setBotonesDeMovimiento(Equipo equipoMover){
-    	Button botonArribaIzquierda = new Button("ArI");
+    	Button botonArribaIzquierda = setBotonConImagen("file:src/vista/imagenes/upLeft.png");
     	botones.add(botonArribaIzquierda);
     	BotonMoverArribaIzquierdaHandler moveUpLeftButtonHandler = new BotonMoverArribaIzquierdaHandler(equipoMover, vistaTablero);
         botonArribaIzquierda.setOnAction(moveUpLeftButtonHandler);
         handlersBotones.add(moveUpLeftButtonHandler);
         botonArribaIzquierda.setDisable(true);
         
-    
-    	Button botonArriba = new Button("Arr");
+        Button botonArriba = setBotonConImagen("file:src/vista/imagenes/up.png");
     	botones.add(botonArriba);
     	BotonMoverArribaHandler moveUpButtonHandler = new BotonMoverArribaHandler(equipoMover, vistaTablero);
         botonArriba.setOnAction(moveUpButtonHandler);
         handlersBotones.add(moveUpButtonHandler);
         botonArriba.setDisable(true);
         
-    	Button botonArribaDerecha = new Button("ArD");
+        Button botonArribaDerecha = setBotonConImagen("file:src/vista/imagenes/upRight.png");
     	botones.add(botonArribaDerecha);
     	BotonMoverArribaDerechaHandler moveUpRightButtonHandler = new BotonMoverArribaDerechaHandler(equipoMover, vistaTablero);
         botonArribaDerecha.setOnAction(moveUpRightButtonHandler);
         handlersBotones.add(moveUpRightButtonHandler);
         botonArribaDerecha.setDisable(true);
         
-    	Button botonDerecha = new Button("Der");
+        Button botonDerecha = setBotonConImagen("file:src/vista/imagenes/right.png");
     	botones.add(botonDerecha);
     	BotonMoverDerechaHandler moveRightButtonHandler = new BotonMoverDerechaHandler(equipoMover, vistaTablero);
         botonDerecha.setOnAction(moveRightButtonHandler);
         handlersBotones.add(moveRightButtonHandler);
         botonDerecha.setDisable(true);
         
-    	Button botonAbajoDerecha = new Button("AbD");
+        Button botonAbajoDerecha = setBotonConImagen("file:src/vista/imagenes/downRight.png");
     	botones.add(botonAbajoDerecha);
     	BotonMoverAbajoDerechaHandler moveDownRightButtonHandler = new BotonMoverAbajoDerechaHandler(equipoMover, vistaTablero);
         botonAbajoDerecha.setOnAction(moveDownRightButtonHandler);
         handlersBotones.add(moveDownRightButtonHandler);
         botonAbajoDerecha.setDisable(true);
         
-    	Button botonAbajo = new Button("Aba");
+        Button botonAbajo = setBotonConImagen("file:src/vista/imagenes/down.png");
     	botones.add(botonAbajo);
     	BotonMoverAbajoHandler moveDownButtonHandler = new BotonMoverAbajoHandler(equipoMover, vistaTablero);
         botonAbajo.setOnAction(moveDownButtonHandler);
         handlersBotones.add(moveDownButtonHandler);
         botonAbajo.setDisable(true);
         
-    	Button botonAbajoIzquierda = new Button("AbI");
+        Button botonAbajoIzquierda = setBotonConImagen("file:src/vista/imagenes/downLeft.png");
     	botones.add(botonAbajoIzquierda);
     	BotonMoverAbajoIzquierdaHandler moveDownLeftButtonHandler = new BotonMoverAbajoIzquierdaHandler(equipoMover, vistaTablero);
         botonAbajoIzquierda.setOnAction(moveDownLeftButtonHandler);
         handlersBotones.add(moveDownLeftButtonHandler);
         botonAbajoIzquierda.setDisable(true);
         
-    	Button botonIzquierda = new Button("Izq");
+        Button botonIzquierda = setBotonConImagen("file:src/vista/imagenes/left.png");
     	botones.add(botonIzquierda);
     	BotonMoverIzquierdaHandler moveLeftButtonHandler = new BotonMoverIzquierdaHandler(equipoMover, vistaTablero);
         botonIzquierda.setOnAction(moveLeftButtonHandler);

@@ -2,13 +2,9 @@ package vistas;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import algoBall.Equipo;
-
-import java.io.File;
 
 import algoBall.AlgoBall;
 import vista.eventos.AplicacionOnKeyPressEventHandler;
@@ -24,8 +20,8 @@ public class Aplicacion extends Application {
     public void start(final Stage stage) throws Exception {
 
         stage.setTitle("Dragon AlgoBall");
-
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage);
+        Screen screen = Screen.getPrimary();
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
         contenedorBienvenidos.requestFocus();
 
@@ -36,8 +32,8 @@ public class Aplicacion extends Application {
         stage.setFullScreen(true);
      
    
-       // Reproductor reproductor =new Reproductor();
-        //reproductor.reproducionAutomitica(true);
+        Reproductor reproductor =new Reproductor();
+        reproductor.reproducionAutomitica(true);
 
         
         stage.show();
