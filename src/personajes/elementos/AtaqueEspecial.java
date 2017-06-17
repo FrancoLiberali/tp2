@@ -1,4 +1,4 @@
-package funcionamientoPersonaje.elementos;
+package personajes.elementos;
 
 public class AtaqueEspecial {
 	private Ki kiNecesario;

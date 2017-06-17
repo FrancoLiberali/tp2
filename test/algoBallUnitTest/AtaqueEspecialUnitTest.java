@@ -3,8 +3,8 @@ package algoBallUnitTest;
 import org.junit.Test;
 
 import exceptions.KiInsuficienteException;
-import funcionamientoPersonaje.elementos.AtaqueEspecial;
-import funcionamientoPersonaje.elementos.Ki;
+import personajes.elementos.AtaqueEspecial;
+import personajes.elementos.Ki;
 
 public class AtaqueEspecialUnitTest 
 {

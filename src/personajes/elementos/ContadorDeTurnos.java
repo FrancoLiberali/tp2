@@ -1,4 +1,4 @@
-package funcionamientoPersonaje.elementos;
+package personajes.elementos;
 
 import exceptions.SeAcabaronTurnosDelEstadoException;
 

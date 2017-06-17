@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exceptions.SeAcabaronTurnosDelEstadoException;
-import funcionamientoPersonaje.elementos.ContadorDeTurnos;
+import personajes.elementos.ContadorDeTurnos;
 
 
 public class ContadorDeTurnosUnitTest 

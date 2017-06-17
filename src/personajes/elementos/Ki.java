@@ -1,4 +1,4 @@
-package funcionamientoPersonaje.elementos;
+package personajes.elementos;
 
 import exceptions.KiInsuficienteException;
 
@@ -13,7 +13,7 @@ public class Ki implements Comparable <Ki>
 	
 	public void sumar(int cantidad)
 	{
-		this.ki = this.ki + cantidad;
+		this.ki += cantidad;
 	}
 	
 	public int getKi()

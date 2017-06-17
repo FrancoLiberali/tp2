@@ -2,6 +2,8 @@ package personajes;
 
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
+import algoBall.Posicionable;
+import consumibles.Consumible;
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDeRangoException;
 import exceptions.FueraDelTableroException;
@@ -12,16 +14,16 @@ import exceptions.NoQuedanMovimientosException;
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
-import funcionamientoPersonaje.elementos.AtaqueEspecial;
-import funcionamientoPersonaje.elementos.EstadoActividad;
-import funcionamientoPersonaje.elementos.EstadoInactivoConChocolate;
-import funcionamientoPersonaje.elementos.EstadoTransformacion;
-import funcionamientoPersonaje.elementos.Ki;
-import funcionamientoPersonaje.elementos.Salud;
+import personajes.elementos.AtaqueEspecial;
+import personajes.elementos.EstadoActividad;
+import personajes.elementos.EstadoInactivoConChocolate;
+import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
+import personajes.elementos.Salud;
 import tablero.Posicion;
 
 
-public abstract class Personaje 
+public abstract class Personaje implements Posicionable
 {
 	protected Posicion posicion;
 	protected String nombre;
@@ -32,10 +34,6 @@ public abstract class Personaje
 	protected Equipo equipo;
 	protected AtaqueEspecial ataqueEspecial;
 	
-	abstract EstadoActividad setEstadoNormal();
-	abstract EstadoTransformacion setPrimerEstadoTransformacion();
-	abstract EstadoTransformacion setSegundoEstadoTransformacion();
-	
 	public void setAtaqueEspecial(AtaqueEspecial ataqueEspecial)
 	{
 		this.ataqueEspecial = ataqueEspecial;
@@ -45,7 +43,6 @@ public abstract class Personaje
 	{
 		this.posicion = pos;	
 	}
-	
 	
 	public void setEquipo(Equipo equipo){
 		this.equipo = equipo;
@@ -64,9 +61,14 @@ public abstract class Personaje
 		return this.salud.getPorcentajeSalud();
 	}
 	
-	public int getKi()
+	public int getKiCantidad()
 	{
 		return ki.getKi();
+	}
+	
+	public Ki getKi()
+	{
+		return this.ki;
 	}
 	
 	public Posicion getPosicion()
@@ -81,28 +83,22 @@ public abstract class Personaje
 	
 	public int getPoderDePelea()
 	{
-		return (this.estadoTransformacionActual.getPoderDePelea());
+		return this.estadoTransformacionActual.getPoderDePelea();
 	}
 	public int getDistanciaDeAtaque()
 	{
-		return (this.estadoTransformacionActual.getDistanciaDeAtaque());
+		return this.estadoTransformacionActual.getDistanciaDeAtaque();
 	}
-	
-
 	
 	public void aumentarKi(int cantidad){
 		this.estadoTransformacionActual.aplicarKi(this, cantidad);
-	}
-	
-	public void ejecutarAumentoDeKi(int cantidad){
-		this.ki.sumar(cantidad);
 	}
 	
 	public void transformar()
 	{
 		try{
 			int velocidadAnterior = this.getVelocidad();
-			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(this.ki);
+			this.estadoTransformacionActual.transformar(this);
 			this.actualizarMovimientosRestantes(velocidadAnterior);
 		}
 		catch (YaNoPuedeEvolucionarException error){
@@ -113,18 +109,8 @@ public abstract class Personaje
 		}
 	}
 	
-	private boolean estaConvertidoAChocolate()
-	{
-		if (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE){
-			return true;
-		}
-		return false;
-	}
 	private void mover(Posicion nuevaPosicion)
 	{
-		if (this.estaConvertidoAChocolate()){
-			throw new PersonajeEnEstadoChocolate();
-		}
 		if (this.movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
 		}
@@ -167,11 +153,7 @@ public abstract class Personaje
 	}
 	
 	protected void verificarAtaque(Personaje victima)
-	{
-		if(this.estaConvertidoAChocolate()){
-			throw new PersonajeEnEstadoChocolate();
-		}
-		
+	{	
 		if (!this.posicion.dentroDelRango(victima.getPosicion(), this.getDistanciaDeAtaque())){
 			throw new FueraDeRangoException();
 		}
@@ -212,7 +194,7 @@ public abstract class Personaje
 			this.estadoTransformacionActual.reducirTurnos();
 		}
 		catch (SeAcabaronTurnosDelEstadoException error){
-			this.estadoTransformacionActual = this.estadoTransformacionActual.transformar(ki); 
+			//Falta volver al estado anterior.
 		}
 		catch( NoEstaEnEstadoChocolateException error){
 		 // si le mandas reducir turnos a un estado estandar tipo super sayajin
@@ -238,13 +220,25 @@ public abstract class Personaje
 	}
 
 	public void convertirAChocolate(){
-	    
         EstadoActividad transformacionAChocolate = new EstadoInactivoConChocolate(); 
         transformacionAChocolate.setSiguienteEstado(this.estadoTransformacionActual, 0);
         this.estadoTransformacionActual = transformacionAChocolate;
     }
 	
-	public EstadoActividad getEstadoActividad() {
+	public EstadoActividad getEstado() {
 		return this.estadoTransformacionActual;
+	}
+
+	public void regenerarSalud(int plusVida) {
+		this.salud.aumentar(plusVida);
+	}
+	
+	public void agarrarConsumible(Consumible consumible)
+	{
+		consumible.aplicarAPersonaje(this);
+	}
+
+	public void setEstado(EstadoActividad estado) {
+		this.estadoTransformacionActual = estado;
 	}
 }

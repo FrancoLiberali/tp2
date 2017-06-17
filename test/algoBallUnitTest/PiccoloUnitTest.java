@@ -29,7 +29,7 @@ public class PiccoloUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstado().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		piccolo.transformar();
 		
 	}
@@ -43,7 +43,7 @@ public class PiccoloUnitTest {
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstado().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		
 	}
 	
@@ -61,8 +61,8 @@ public class PiccoloUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
+		assertEquals(piccolo.getEstado().getNombre(), NOMBRE_PICCOLO_PRIMERA_TRANSF);
 		piccolo.transformar();
-		assertEquals(piccolo.getEstadoActividad().getNombre(), NOMBRE_PICCOLO_SEGUNDA_TRANSF);
+		assertEquals(piccolo.getEstado().getNombre(), NOMBRE_PICCOLO_SEGUNDA_TRANSF);
 	}
 }

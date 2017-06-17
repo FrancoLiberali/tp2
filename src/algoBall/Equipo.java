@@ -104,7 +104,7 @@ public class Equipo
 	
 	public int getKiDe(String nombrePersonaje){
 		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		return personaje.getKi();
+		return personaje.getKiCantidad();
 	}
 
 	public int getCantidadDeAtaquesRestantes() {

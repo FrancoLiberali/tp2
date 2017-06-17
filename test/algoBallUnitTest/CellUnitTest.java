@@ -1,17 +1,21 @@
 package algoBallUnitTest;
 
+import static algoBall.ConstantesDelJuego.NOMBRE_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
+import static algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
 import static org.junit.Assert.assertEquals;
-import static algoBall.ConstantesDelJuego.*;
 
 import org.junit.Test;
 
 import algoBall.Equipo;
-import tablero.Posicion;
-import tablero.Tablero;
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import personajes.Cell;
 import personajes.Goku;
 import personajes.Personaje;
+import tablero.Posicion;
+import tablero.Tablero;
 
 public class CellUnitTest {
 
@@ -19,8 +23,7 @@ public class CellUnitTest {
 	public void cellRecienCreadoNoSePuedeTransformar()
 	{
 		Personaje cell = new Cell();
-		cell.transformar();
-		
+		cell.transformar();	
 	}
 	
 	@Test
@@ -125,6 +128,6 @@ public class CellUnitTest {
 		cell.realizarAtaqueEspecial(goku);
 		cell.realizarAtaqueEspecial(goku);
 		cell.transformar();
-		assertEquals(cell.getEstadoActividad().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);
+		assertEquals(cell.getEstado().getNombre(), NOMBRE_CELL_PRIMERA_TRANSF);
 	}
 }

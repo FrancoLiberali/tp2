@@ -1,4 +1,4 @@
-package funcionamientoPersonaje.elementos;
+package personajes.elementos;
 
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.PersonajeInactivoNoPuedeAtacarException;
@@ -14,24 +14,20 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	private EstadoActividad siguienteEstado;
 
 	
-	public void aplicarKi(Personaje personaje, int cantidad) 
-	{}
+	public void aplicarKi(Personaje personaje, int cantidad) {}
 
 	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
-		/*mensaje al usuario*/
+		throw new PersonajeEnEstadoChocolate();
 	}
 
 	public int aplicarAtaqueEspecial(Personaje personaje, Posicion posicionVictima) {
 		throw new PersonajeInactivoNoPuedeAtacarException();
-		
 	}
 
 	public void aplicarAtaqueBasico(Personaje personaje, Posicion posicionVictima) {
 		throw new PersonajeInactivoNoPuedeAtacarException();
 	}
 
-	
-	
 	public void reducirTurnos()
 	{
 		this.cantTurnos.reducir();
@@ -42,30 +38,24 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 		return cantTurnos;
 	}
 
-	
-	
 	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
 		this.siguienteEstado = estadoTransformacionActual;
 	}
 
 	@Override
 	public int getVelocidad() {
-		
 		return 0;
 	}
 
 	@Override
 	public int getPoderDePelea() {
-		
 		return 0;
 	}
 
 	@Override
 	public int getDistanciaDeAtaque() {
-		
 		return 0;
 	}
-
 
 	@Override
 	public void realizarAtaqueBasico(Personaje victima) {
@@ -79,13 +69,17 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	@Override
-	public EstadoActividad transformar(Ki ki) {
-		return this.siguienteEstado;
-	}
+	public void transformar(Personaje personaje) {}
 
 	@Override
 	public String getNombre() {
 		return this.nombre;
+	}
+
+	@Override
+	public void realizarAtaqueEspecial(Personaje atacante, Personaje victima) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exceptions.*;
-import funcionamientoPersonaje.elementos.*;
 import personajes.Cell;
 import personajes.Freezer;
 import personajes.Gohan;
@@ -12,6 +11,7 @@ import personajes.Goku;
 import personajes.MajinBoo;
 import personajes.Personaje;
 import personajes.Piccolo;
+import personajes.elementos.*;
 import tablero.*;
 
 import static algoBall.ConstantesDelJuego.*;
@@ -60,12 +60,12 @@ public class PersonajeUnitTest
 		Personaje freezer = new Freezer();
 		Personaje majinBoo = new MajinBoo();
 		
-		assertEquals(gohan.getKi(), KI_INICIAL);
-		assertEquals(goku.getKi(), KI_INICIAL);
-		assertEquals(cell.getKi(), KI_INICIAL);
-		assertEquals(piccolo.getKi(), KI_INICIAL);
-		assertEquals(freezer.getKi(), KI_INICIAL);
-		assertEquals(majinBoo.getKi(), KI_INICIAL);
+		assertEquals(gohan.getKiCantidad(), KI_INICIAL);
+		assertEquals(goku.getKiCantidad(), KI_INICIAL);
+		assertEquals(cell.getKiCantidad(), KI_INICIAL);
+		assertEquals(piccolo.getKiCantidad(), KI_INICIAL);
+		assertEquals(freezer.getKiCantidad(), KI_INICIAL);
+		assertEquals(majinBoo.getKiCantidad(), KI_INICIAL);
 	}
 	
 	@Test
@@ -74,7 +74,7 @@ public class PersonajeUnitTest
 		Personaje goku = new Goku();
 		int cant = 5;
 		goku.aumentarKi(cant);
-		assertEquals(goku.getKi(), cant);
+		assertEquals(goku.getKiCantidad(), cant);
 	}
 	
 	@Test
@@ -90,7 +90,7 @@ public class PersonajeUnitTest
 		//ki nescesario = 20;
 		goku.aumentarKi(10);
 		goku.transformar();
-		EstadoActividad estado = goku.getEstadoActividad();
+		EstadoActividad estado = goku.getEstado();
 		assertEquals(estado.getNombre(), NOMBRE_TRANF_NORMAL);
 		assertEquals(estado.getPoderDePelea(), PODER_GOKU_NORMAL);
 		assertEquals(estado.getDistanciaDeAtaque(), DISTANCIA_GOKU_NORMAL);
@@ -102,7 +102,7 @@ public class PersonajeUnitTest
 		Personaje goku = new Goku();
 		goku.aumentarKi(40);
 		goku.transformar();
-		EstadoActividad estado = goku.getEstadoActividad();
+		EstadoActividad estado = goku.getEstado();
 		assertEquals(estado.getNombre(), NOMBRE_GOKU_PRIMERA_TRANSF);
 		assertEquals(estado.getPoderDePelea(), PODER_GOKU_PRIMERA_TRANSF);
 		assertEquals(estado.getDistanciaDeAtaque(), DISTANCIA_GOKU_PRIMERA_TRANSF);
@@ -117,7 +117,7 @@ public class PersonajeUnitTest
 		goku.aumentarKi(ki);
 		goku.transformar();
 		
-		assertEquals(goku.getKi(), kiEsperado);
+		assertEquals(goku.getKiCantidad(), kiEsperado);
 	}
 	
 	@Test
