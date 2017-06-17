@@ -2,6 +2,7 @@ package personajes.piccolo;
 
 import static algoBall.ConstantesDelJuego.DISTANCIA_PICCOLO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.GOHAN_NOMBRE;
+import static algoBall.ConstantesDelJuego.KI_PICCOLO_SEGUNDA_TRANF;
 import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_PICCOLO_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PORCENTAJE_VIDA_GOHAN_PROTECTOR;
@@ -23,6 +24,7 @@ public class EstadoPiccoloFortalecido extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_PICCOLO_PRIMERA_TRANSF;
 		this.poderDePelea = PODER_PICCOLO_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoPiccoloProtector();
+		this.kiParaTransformacion = new Ki(KI_PICCOLO_SEGUNDA_TRANF);
 	}
 	
 	@Override

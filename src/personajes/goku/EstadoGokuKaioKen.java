@@ -1,6 +1,7 @@
 package personajes.goku;
 
 import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_SEGUNDA_TRANF_GOKU;
 import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_GOKU_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU;
@@ -19,7 +20,8 @@ public class EstadoGokuKaioKen extends EstadoTransformacion {
 		this.velocidad = VELOCIDAD_GOKU_PRIMERA_TRANSF;
 		this.distanciaDeAtaque = DISTANCIA_GOKU_PRIMERA_TRANSF;
 		this.poderDePelea = PODER_GOKU_PRIMERA_TRANSF;
-		this.siguienteEstado = new EstadoGokuSuperSayajin();	
+		this.siguienteEstado = new EstadoGokuSuperSayajin();
+		this.kiParaTransformacion = new Ki(KI_SEGUNDA_TRANF_GOKU);
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package personajes.cell;
 
 import static algoBall.ConstantesDelJuego.CELL_CANT_ABSORVER_VIDA_SEGUNDA_TRANSF;
 import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_CELL_SEGUNDA_TRANF;
 import static algoBall.ConstantesDelJuego.NOMBRE_CELL_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_CELL_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_PRIMERA_TRANSF;
@@ -22,6 +23,7 @@ public class EstadoCellSemiPerfecto extends EstadoTransformacion
 		this.distanciaDeAtaque = DISTANCIA_CELL_PRIMERA_TRANSF;
 		this.poderDePelea = PODER_CELL_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoCellPerfecto();
+		this.kiParaTransformacion = new Ki(KI_CELL_SEGUNDA_TRANF);
 	}
 	
 	
