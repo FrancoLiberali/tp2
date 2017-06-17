@@ -10,6 +10,7 @@ import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoGohanSuperSayajinFaseUno extends EstadoTransformacion 
 {
@@ -26,11 +27,11 @@ public class EstadoGohanSuperSayajinFaseUno extends EstadoTransformacion
 	}
 	
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki kiPersonaje) {
 		if(!this.companierosTienenMinimoPorcentajeDeSalud(personaje)){
 			throw new NoCumpleCondicionesDeTransformacionException();
 		}
-		super.transformar(personaje);
+		super.transformar(personaje, kiPersonaje);
 	}
 	
 	private boolean companierosTienenMinimoPorcentajeDeSalud(Personaje personaje){

@@ -10,6 +10,7 @@ import static algoBall.ConstantesDelJuego.VELOCIDAD_PICCOLO_PRIMERA_TRANSF;
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoPiccoloFortalecido extends EstadoTransformacion {
 	
@@ -25,11 +26,11 @@ public class EstadoPiccoloFortalecido extends EstadoTransformacion {
 	}
 	
 	@Override
-	public void transformar(Personaje personaje){
+	public void transformar(Personaje personaje, Ki kiPersonaje){
 		if (!this.cumpleCondicionesProtector(personaje)){
 			throw new NoCumpleCondicionesDeTransformacionException();
 		}
-		super.transformar(personaje);
+		super.transformar(personaje, kiPersonaje);
 	}
 	
 	private boolean cumpleCondicionesProtector(Personaje piccolo){

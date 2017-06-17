@@ -9,6 +9,7 @@ import static algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_SEGUNDA_TRANF;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoGokuSuperSayajin extends EstadoTransformacion {
 
@@ -22,7 +23,7 @@ public class EstadoGokuSuperSayajin extends EstadoTransformacion {
 	}
 	
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki kiPersonaje) {
 		throw new YaNoPuedeEvolucionarException();
 	}
 	

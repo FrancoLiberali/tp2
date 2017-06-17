@@ -61,7 +61,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki ki) {
 		throw new PersonajeEnEstadoChocolate();
 	}
 

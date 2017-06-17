@@ -1,10 +1,9 @@
 package personajes.elementos;
 
 import consumibles.Consumible;
-import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 
-public class EstadoTransformacion implements EstadoActividad {
+public abstract class EstadoTransformacion implements EstadoActividad {
 	protected String nombre;
 	protected int velocidad;
 	protected int distanciaDeAtaque;
@@ -13,16 +12,9 @@ public class EstadoTransformacion implements EstadoActividad {
 	protected EstadoActividad anteriorEstado = null;
 	protected Ki kiParaTransformacion = null;
 	
-	public void transformar(Personaje personaje) {
-		personaje.setEstado(this.siguienteEstado);
-	}
-	
-	public EstadoActividad transformar(Ki kiPersonaje){
-		if (this.siguienteEstado == null){
-			throw new YaNoPuedeEvolucionarException();
-		}
+	public void transformar(Personaje personaje, Ki kiPersonaje){
 		kiPersonaje.restar(kiParaTransformacion);
-		return this.siguienteEstado;
+		personaje.setEstado(this.siguienteEstado);
 	}
 	
 	protected void atacar(Personaje victima, int danio){

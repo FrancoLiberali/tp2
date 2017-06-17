@@ -10,6 +10,7 @@ import exceptions.NoCumpleCondicionesDeTransformacionException;
 import personajes.Cell;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoCellNormal extends EstadoTransformacion {
 	
@@ -24,12 +25,12 @@ public class EstadoCellNormal extends EstadoTransformacion {
 		};
 		
 		@Override
-		public void transformar(Personaje personaje){
+		public void transformar(Personaje personaje, Ki kiPersonaje){
 			Cell cell = (Cell)personaje;
 			if (!this.seAbsorvieronVidasNecesarias(cell.getVidasAbsorvidas())){
 				throw new NoCumpleCondicionesDeTransformacionException();
 			}
-			super.transformar(personaje);
+			super.transformar(personaje, kiPersonaje);
 		}
 
 		private boolean seAbsorvieronVidasNecesarias(int vidasAbsorvidas){

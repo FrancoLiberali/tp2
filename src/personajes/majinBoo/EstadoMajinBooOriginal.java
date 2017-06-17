@@ -9,6 +9,7 @@ import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import personajes.elementos.EstadoInactivoConChocolate;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoMajinBooOriginal extends EstadoTransformacion {
 	
@@ -23,7 +24,7 @@ public class EstadoMajinBooOriginal extends EstadoTransformacion {
 	}
 	
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki kiPersonaje) {
 		throw new YaNoPuedeEvolucionarException();
 	}
 	

@@ -92,7 +92,7 @@ public abstract class Personaje implements Posicionable
 	{
 		try{
 			int velocidadAnterior = this.getVelocidad();
-			this.estadoTransformacionActual.transformar(this);
+			this.estadoTransformacionActual.transformar(this, this.ki);
 			this.actualizarMovimientosRestantes(velocidadAnterior);
 		}
 		catch (YaNoPuedeEvolucionarException error){

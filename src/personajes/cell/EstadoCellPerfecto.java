@@ -8,6 +8,7 @@ import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_SEGUNDA_TRANSF;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
+import personajes.elementos.Ki;
 
 public class EstadoCellPerfecto extends EstadoTransformacion{
 	
@@ -20,7 +21,7 @@ public class EstadoCellPerfecto extends EstadoTransformacion{
 	}
 	
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki kiPersonaje) {
 		throw new YaNoPuedeEvolucionarException();
 	}
 	

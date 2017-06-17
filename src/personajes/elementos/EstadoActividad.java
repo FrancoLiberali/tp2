@@ -12,7 +12,7 @@ public interface EstadoActividad
 	int getPoderDePelea();
 	int getDistanciaDeAtaque();
 	EstadoActividad getEstadoSiguiente();
-	void transformar(Personaje personaje);
+	void transformar(Personaje personaje, Ki ki);
 	void realizarAtaqueBasico(Personaje victima);
 	void realizarAtaqueEspecial(Personaje victima, int porcentaje);
 	String getNombre();

@@ -22,7 +22,7 @@ public class EstadoGohanSuperSayajinFaseDos extends EstadoTransformacion  {
 	}
 	
 	@Override
-	public void transformar(Personaje personaje) {
+	public void transformar(Personaje personaje, Ki kiPersonaje) {
 		throw new YaNoPuedeEvolucionarException();
 	}
 }
