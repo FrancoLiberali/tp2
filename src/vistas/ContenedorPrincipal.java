@@ -11,13 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -47,6 +45,7 @@ public class ContenedorPrincipal extends BorderPane {
 	final ToggleGroup grupo = new ToggleGroup();
 	private Canvas canvasCentral;
 	private VistaTablero vistaTablero;
+	private BarrasDeVida barras;
     
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar) {
@@ -54,57 +53,57 @@ public class ContenedorPrincipal extends BorderPane {
     	this.setMenu(stage);
         this.setConsola();
         this.setCentro(juego, agrupacionMover, agrupacionAtacar);
-        this.setBotoneraDerecha(stage, juego, agrupacionAtacar);
+        this.setBotoneraDerecha(stage, juego, agrupacionAtacar, agrupacionMover);
         this.setBotoneraIzquierda(juego, agrupacionMover, agrupacionAtacar);
         
     }
     
-    private void setBotoneraDerecha(Stage stage, AlgoBall juego, Equipo agrupacionAtacar) {
+    private void setBotoneraDerecha(Stage stage, AlgoBall juego, Equipo agrupacionAtacar, Equipo equipoMover) {
     	
+    	barras = new BarrasDeVida(agrupacionAtacar, equipoMover);
     	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
         Label labelBasicos = new Label("Realizar ataque basico sobre:");
         contenedorVertical.getChildren().add(labelBasicos);
         for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje);
+        	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje, barras);
         	contenedorVertical.getChildren().add(boton);
         }
         Label labelEspecial = new Label("Realizar ataque especial sobre:");
         contenedorVertical.getChildren().add(labelEspecial);
         for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje);
+        	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje, barras);
         	contenedorVertical.getChildren().add(boton);
         }
-        
         Button finalizarTurno = new Button();
         finalizarTurno.setText("Finalizar turno");
         BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego);
         this.finalizarTurnoHandler = finalizarHandler;
         finalizarTurno.setOnAction(finalizarHandler);
         contenedorVertical.getChildren().add(finalizarTurno);
-        
+        contenedorVertical.getChildren().add(barras);
         this.setRight(contenedorVertical);
 
     }
-    private Button setBotonAtaqueBasicoPersonaje(String text, Personaje personaje){
+    private Button setBotonAtaqueBasicoPersonaje(String text, Personaje personaje, BarrasDeVida barras){
     	Button boton = new Button();
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje);
+    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje, barras);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
     	return boton;
     }
     
-    private Button setBotonAtaqueEspecialPersonaje(String text, Personaje personaje){
+    private Button setBotonAtaqueEspecialPersonaje(String text, Personaje personaje, BarrasDeVida barras){
     	Button boton = new Button();
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -198,7 +197,6 @@ public class ContenedorPrincipal extends BorderPane {
         Label labelBasicos = new Label("Mover personaje");
         contenedorVertical.getChildren().add(labelBasicos);
         contenedorVertical.getChildren().add(contenedorFlechas);
-        contenedorVertical.getChildren().add(this.verBarraVidaPersonaje(agrupacionMover, agrupacionAtacar));
         this.setLeft(contenedorVertical);
 
     }
@@ -221,35 +219,6 @@ public class ContenedorPrincipal extends BorderPane {
         //contenedorCentral.setBackground(new Background(imagenDeFondo));
 
         this.setCenter(contenedorCentral);
-    }
-    
-    private VBox verBarraVidaPersonaje(Equipo equipo1, Equipo equipo2)
-    {	
-    	List<Equipo> equipos = new ArrayList<Equipo>();
-    	equipos.add(equipo1);
-    	equipos.add(equipo2);
-    	VBox vb = new VBox();
-    	vb.setSpacing(7); //no se si estara bien
-    	vb.setPadding(new Insets(10));
-    	 
-    	for (Equipo equipo : equipos){
-    		for (Personaje personaje : equipo){
-    	
-    			Label nombrePersonaje = new Label();
-    			nombrePersonaje.setText(personaje.getNombre() + ":");
-    			nombrePersonaje.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-    	
-    			ProgressBar barraVidaParticular = new ProgressBar(); // crea la barra de vida
-    			barraVidaParticular.setProgress(personaje.getPorcentajeSalud()/100F); // Ese F es necesario
-    	
-    			final HBox hb = new HBox();
-    			hb.setAlignment(Pos.CENTER_RIGHT);
-    			hb.getChildren().addAll(nombrePersonaje, barraVidaParticular);
-    			vb.getChildren().add(hb);
-    		}
-    	}
-    	vb.setAlignment(Pos.CENTER_RIGHT);
-    	return vb;
     }
   
     private void setConsola() {
@@ -279,5 +248,13 @@ public class ContenedorPrincipal extends BorderPane {
     
     public VistaTablero getVista(){
     	return vistaTablero;
+    }
+    
+    public BarrasDeVida getBarras(){
+    	return barras;
+    }
+    
+    public void setProximasBarras(BarrasDeVida proximasBarras){
+    	finalizarTurnoHandler.setProximasBarras(proximasBarras);
     }
 }
