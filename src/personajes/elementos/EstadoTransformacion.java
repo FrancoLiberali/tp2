@@ -13,8 +13,6 @@ public class EstadoTransformacion implements EstadoActividad {
 	protected EstadoActividad anteriorEstado = null;
 	protected Ki kiParaTransformacion = null;
 	
-	public void reducirTurnos() {};
-
 	public void transformar(Personaje personaje) {
 		personaje.setEstado(this.siguienteEstado);
 	}

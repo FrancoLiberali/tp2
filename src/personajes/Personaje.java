@@ -8,7 +8,6 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
-import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
@@ -161,13 +160,7 @@ public abstract class Personaje implements Posicionable
 	
 	public void reestablecer(){
 		/*deja todo listo para el siguiente turno*/
-		try{
-			this.estadoTransformacionActual.reducirTurnos();
-		}
-		catch (SeAcabaronTurnosDelEstadoException error){
-			this.estadoTransformacionActual.actualizarEstado(this);
-			//Falta volver al estado anterior.
-		}
+		this.estadoTransformacionActual.actualizarEstado(this);
 		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
 	}	
 	

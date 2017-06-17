@@ -25,11 +25,6 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public void aplicarAtaqueBasico(Personaje personaje, Posicion posicionVictima) {
 		throw new PersonajeInactivoNoPuedeAtacarException();
 	}
-
-	public void reducirTurnos()
-	{
-		this.cantTurnos.reducir();
-	}
 	
 	public ContadorDeTurnos getContadorDeTurnos()
 	{
@@ -77,11 +72,11 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 
 	@Override
 	public void actualizarEstado(Personaje personaje) {
+		cantTurnos.reducir();
 		if (cantTurnos.estaEnCero()){
 			personaje.setEstado(estadoAnterior);
 			return;
 		}
-		cantTurnos.reducir();
 	}
 
 	@Override

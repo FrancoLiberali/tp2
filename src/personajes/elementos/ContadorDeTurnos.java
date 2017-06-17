@@ -1,7 +1,5 @@
 package personajes.elementos;
 
-import exceptions.SeAcabaronTurnosDelEstadoException;
-
 public class ContadorDeTurnos 
 {
 	public int turnosIniciales;
