@@ -9,9 +9,8 @@ import javafx.scene.media.MediaView;;
 public class Reproductor {
 	
 	String path = "file:src/vista/musica/musicaDeFondo.mp3";
-	Media media = new Media(new File(path).toURI().toString());
-	MediaPlayer mediaPlayer = new MediaPlayer(media);
-	
+	Media media = new Media(path);
+	MediaPlayer mediaPlayer = new MediaPlayer(media); 
 	
 	public void reproducionAutomitica(boolean estado){
 		
@@ -21,6 +20,6 @@ public class Reproductor {
 	
 	public void pausar(){
 		
-		mediaPlayer.pause();;
+		mediaPlayer.pause();
 	}
 }
