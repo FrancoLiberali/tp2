@@ -18,10 +18,4 @@ public class EstadoFreezerNormal extends EstadoTransformacion {
 		this.siguienteEstado = new EstadoFreezerSegundaForma();
 	}
 
-	@Override
-	public void transformar(Personaje personaje) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

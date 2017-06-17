@@ -23,61 +23,10 @@ public class Goku extends Personaje
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_GOKU);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_GOKU, KI_ATQ_ESPECIAL_GOKU);
-		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU);
-<<<<<<< HEAD
 		this.estadoTransformacionActual = new EstadoGokuNormal();
-		this.movimientosRestantes = estadoTransformacionActual.getVelocidad();	
-=======
-		this.estadoTransformacionActual = setEstadoNormal();
 		this.rutaImagen = "file:src/vista/imagenes/goku.png";
-		
 	}
 	
-	
-	@Override
-	public EstadoTransformacion setEstadoNormal()
-	{
-		String nombre = NOMBRE_TRANF_NORMAL;
-		int velocidad = VELOCIDAD_GOKU_NORMAL;
-		int distancia = DISTANCIA_GOKU_NORMAL;
-		int poder = PODER_GOKU_NORMAL;
-		EstadoTransformacion normal = new EstadoTransformacion(nombre, poder, distancia, velocidad);
-		
-		EstadoTransformacion siguiente = setPrimerEstadoTransformacion();
-		normal.setSiguienteEstado(siguiente, KI_GOKU_PRIMERA_TRANF);
-
-		return normal;
-	}
-	
-	
-	@Override 
-	public EstadoTransformacion setPrimerEstadoTransformacion() 
-	{
-		String nombre = NOMBRE_GOKU_PRIMERA_TRANSF;
-		int velocidad = VELOCIDAD_GOKU_PRIMERA_TRANSF;
-		int distancia = DISTANCIA_GOKU_PRIMERA_TRANSF;
-		int poder = PODER_GOKU_PRIMERA_TRANSF;
-		EstadoTransformacion primeraTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
-		
-		EstadoTransformacion siguiente = setSegundoEstadoTransformacion();
-		primeraTranf.setSiguienteEstado(siguiente, KI_SEGUNDA_TRANF_GOKU);
-
-		return primeraTranf;
-	}
-	
-	
-	@Override 
-	public EstadoTransformacion setSegundoEstadoTransformacion()
-	{
-		String nombre = NOMBRE_GOKU_SEGUNDA_TRANF;
-		int velocidad = VELOCIDAD_GOKU_SEGUNDA_TRANF;
-		int distancia = DISTANCIA_GOKU_SEGUNDA_TRANF;
-		int poder = PODER_GOKU_SEGUNDA_TRANF;
-		EstadoTransformacion segundaTranf = new EstadoTransformacion(nombre, poder, distancia, velocidad);
-
-		return segundaTranf;
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
-	}
 	
 	private int bonusPorcentajeGoku()
 	{

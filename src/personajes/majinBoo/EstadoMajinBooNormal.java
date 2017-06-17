@@ -23,12 +23,6 @@ public class EstadoMajinBooNormal extends EstadoTransformacion {
 		this.siguienteEstado = new EstadoMajinBooMalo();	
 	}
 	
-	
-	@Override
-	public void transformar(Ki kiPersonaje) {
-		// TODO Auto-generated method stub
-		
-	}
 }
 	
 	
