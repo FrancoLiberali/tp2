@@ -150,6 +150,28 @@ public class Equipo implements Iterable<Personaje>
 		return pertenecientes.iterator();
 	}
 	
+	public ArrayList<Personaje> companierosDe(Personaje personajeBuscado) {
+		ArrayList<Personaje> companieros = new ArrayList<Personaje>();
+		for (Personaje personaje : this.pertenecientes) {
+			if (personajeBuscado != personaje){
+				companieros.add(personaje);
+			}
+		}
+		return companieros;
+	}
 	
+	public int mayorPorcentajeSaludDeCompanierosDe(Personaje psje)
+	{
+		int mayorPorcentaje = 0;
+		ArrayList<Personaje> companieros = this.companierosDe(psje);
+		
+		for (Personaje personaje : companieros){
+			int porcentajePsje = personaje.getPorcentajeSalud();
+			if (porcentajePsje > mayorPorcentaje){
+				mayorPorcentaje = porcentajePsje;
+			}
+		}
+		return mayorPorcentaje;
+	}
 	
 }

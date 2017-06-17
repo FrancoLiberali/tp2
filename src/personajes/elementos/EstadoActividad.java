@@ -1,20 +1,25 @@
 package personajes.elementos;
 
+import consumibles.Consumible;
 import personajes.Personaje;
 import tablero.Posicion;
 
 public interface EstadoActividad
 {
-	public abstract void aplicarKi(Personaje personaje, int cantidad);
-	public abstract void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion);
-	public abstract void reducirTurnos();
-	public abstract void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i);
-	public abstract int getVelocidad();
-	public abstract int getPoderDePelea();
-	public abstract int getDistanciaDeAtaque();
-	public abstract void transformar(Personaje personaje);
-	public abstract void realizarAtaqueBasico(Personaje victima);
-	public abstract void realizarAtaqueEspecial(Personaje victima, int porcentaje);
-	public abstract String getNombre();
-	public abstract void realizarAtaqueEspecial(Personaje atacante, Personaje victima);
+	void aplicarKi(Personaje personaje, int cantidad);
+	void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion);
+	void actualizarEstado(Personaje personaje);
+	void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i);
+	int getVelocidad();
+	int getPoderDePelea();
+	int getDistanciaDeAtaque();
+	EstadoActividad getEstadoSiguiente();
+	void transformar(Personaje personaje);
+	void realizarAtaqueBasico(Personaje victima);
+	void realizarAtaqueEspecial(Personaje victima, int porcentaje);
+	String getNombre();
+	void realizarAtaqueEspecial(Personaje atacante, Personaje victima);
+	EstadoActividad getEstadoAnterior();
+	void capturarConsumible(Personaje personaje, Consumible consumible);
+	void reducirKi(Personaje personaje, int cantidad);
 }

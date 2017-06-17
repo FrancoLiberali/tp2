@@ -2,22 +2,19 @@ package personajes;
 
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
-<<<<<<< HEAD
 import algoBall.Posicionable;
 import consumibles.Consumible;
 import exceptions.CasilleroOcupadoException;
-=======
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
 import exceptions.FueraDeRangoException;
+import exceptions.FueraDelTableroException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
-import exceptions.PersonajeEnEstadoChocolate;
+import exceptions.NoQuedanMovimientosException;
 import exceptions.SeAcabaronTurnosDelEstadoException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
 import personajes.elementos.EstadoInactivoConChocolate;
-import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
 import personajes.elementos.Salud;
 import tablero.Posicion;
@@ -78,7 +75,7 @@ public abstract class Personaje implements Posicionable
 	
 	public int getVelocidad()
 	{
-		return (this.estadoTransformacionActual.getVelocidad());
+		return this.estadoTransformacionActual.getVelocidad();
 	}
 	
 	public int getPoderDePelea()
@@ -92,6 +89,10 @@ public abstract class Personaje implements Posicionable
 	
 	public void aumentarKi(int cantidad){
 		this.estadoTransformacionActual.aplicarKi(this, cantidad);
+	}
+	
+	public void reducirKi(int cantidad){
+		this.estadoTransformacionActual.reducirKi(this, cantidad);
 	}
 	
 	public void transformar()
@@ -109,7 +110,6 @@ public abstract class Personaje implements Posicionable
 		}
 	}
 	
-<<<<<<< HEAD
 	private void mover(Posicion nuevaPosicion)
 	{
 		if (this.movimientosRestantes == 0){
@@ -151,11 +151,7 @@ public abstract class Personaje implements Posicionable
 	public void moverAbajo()
 	{
 		this.mover(this.posicion.darAbajo());
-=======
-	public boolean estaConvertidoAChocolate()
-	{
-		return (this.estadoTransformacionActual.getNombre() == ConstantesDelJuego.CHOCOLATE);
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
+
 	}
 	
 	protected void verificarAtaque(Personaje victima)
@@ -194,9 +190,15 @@ public abstract class Personaje implements Posicionable
 			danioARecibir = danioARecibir - (danioARecibir * ConstantesDelJuego.REDUCCION_DE_ATAQUE / 100);
 		}
 		this.salud.disminuir(danioARecibir);
+		
 		if (this.salud.esCero()){
 			this.equipo.eliminar(this);
 		}
+	}
+	
+	public void reducirSalud(int cantidad)
+	{
+		this.salud.disminuir(cantidad);
 	}
 	
 	public void reestablecer(){
@@ -224,7 +226,6 @@ public abstract class Personaje implements Posicionable
 	public EstadoActividad getEstado() {
 		return this.estadoTransformacionActual;
 	}
-<<<<<<< HEAD
 
 	public void regenerarSalud(int plusVida) {
 		this.salud.aumentar(plusVida);
@@ -232,15 +233,47 @@ public abstract class Personaje implements Posicionable
 	
 	public void agarrarConsumible(Consumible consumible)
 	{
-		consumible.aplicarAPersonaje(this);
+		this.estadoTransformacionActual.capturarConsumible(this, consumible);
 	}
 
 	public void setEstado(EstadoActividad estado) {
 		this.estadoTransformacionActual = estado;
-=======
+	}
 	
 	public String getImagen(){
 		return rutaImagen;
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19
+	}
+
+	@Override
+	public boolean equals(Object otroPersonaje) 
+	{
+		if (this == otroPersonaje){
+				return true;
+		}
+		if (!(otroPersonaje instanceof Posicion)){
+				return false;
+		}
+		Personaje otroPsje = (Personaje)otroPersonaje;
+		return this.getNombre() == otroPsje.getNombre();
+	}
+
+	@Override
+	public int hashCode() 
+	{
+	    return 0;
+	}
+
+	public int mayorPorcentajeSaludDeCompanieros() {
+		return equipo.mayorPorcentajeSaludDeCompanierosDe(this);
+	}
+	
+	public Personaje getCompaniero(String nombre)
+	{
+		return this.equipo.getPersonaje(nombre);
+	}
+	
+	public void actualizarEstado()
+	{
+		this.estadoTransformacionActual.actualizarEstado(this);
 	}
 }

@@ -6,7 +6,6 @@ import static algoBall.ConstantesDelJuego.PODER_FREEZER_NORMAL;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_FREEZER_NORMAL;
 
 import personajes.elementos.EstadoTransformacion;
-import personajes.elementos.Ki;
 
 public class EstadoFreezerNormal extends EstadoTransformacion {
 	
@@ -18,10 +17,4 @@ public class EstadoFreezerNormal extends EstadoTransformacion {
 		this.siguienteEstado = new EstadoFreezerSegundaForma();
 	}
 
-	@Override
-	public void transformar(Personaje personaje) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

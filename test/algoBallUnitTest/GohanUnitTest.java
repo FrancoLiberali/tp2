@@ -26,7 +26,6 @@ public class GohanUnitTest {
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
 		
-		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
@@ -34,10 +33,9 @@ public class GohanUnitTest {
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		
 	}
 	
-	@Test
+	@Test (expected = NoCumpleCondicionesDeTransformacionException.class)
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuOPiccoloEstanEnLaAgrupacionCon100PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
@@ -51,10 +49,9 @@ public class GohanUnitTest {
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 	}
 	
-	@Test
+	@Test (expected = NoCumpleCondicionesDeTransformacionException.class)
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuOPiccoloEstanEnLaAgrupacionConMasDe20PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
@@ -62,7 +59,6 @@ public class GohanUnitTest {
 		
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
-		
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
@@ -72,7 +68,6 @@ public class GohanUnitTest {
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
-		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 	}
 	
 	@Test
@@ -83,7 +78,6 @@ public class GohanUnitTest {
 		
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
-		
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
@@ -98,7 +92,7 @@ public class GohanUnitTest {
 	}
 	
 	@Test
-	public void gohanSePuedeTransformarDosVecesSiSoloGokuOPiccoloEstanEnLaAgrupacionConMenosDe20PorcientoDeVida()
+	public void gohanSePuedeTransformarDosVecesSiSoloSusCompanierosEstanConMenosDe20PorcientoDeSalud()
 	{
 		Personaje gohan = new Gohan();
 		gohan.aumentarKi(40);

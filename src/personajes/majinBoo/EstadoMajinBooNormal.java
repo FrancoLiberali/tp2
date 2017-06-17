@@ -8,6 +8,7 @@ import static algoBall.ConstantesDelJuego.VELOCIDAD_MAJIN_BOO_NORMAL;
 import static algoBall.ConstantesDelJuego.KI_ATQ_ESPECIAL_MAJIN_BOO;
 
 import personajes.Personaje;
+import personajes.elementos.EstadoInactivoConChocolate;
 import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
 
@@ -25,9 +26,10 @@ public class EstadoMajinBooNormal extends EstadoTransformacion {
 	
 	
 	@Override
-	public void transformar(Ki kiPersonaje) {
-		// TODO Auto-generated method stub
-		
+	public void realizarAtaqueEspecial(Personaje majinBoo, Personaje victima)
+	{	
+		victima.setEstado(new EstadoInactivoConChocolate());
+		majinBoo.reducirKi(KI_ATQ_ESPECIAL_MAJIN_BOO);
 	}
 }
 	

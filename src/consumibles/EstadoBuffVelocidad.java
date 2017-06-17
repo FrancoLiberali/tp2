@@ -3,20 +3,22 @@ package consumibles;
 import static algoBall.ConstantesDelJuego.NUBE_VOLADORA_MULTIPLICADOR_VELOCIDAD;
 import static algoBall.ConstantesDelJuego.NUBE_VOLADORA_TURNOS;
 
+import personajes.Personaje;
 import personajes.elementos.ContadorDeTurnos;
 import personajes.elementos.EstadoActividad;
 import personajes.elementos.EstadoTransformacion;
 
 public class EstadoBuffVelocidad extends EstadoTransformacion {
 
-	private EstadoTransformacion anterior; 
 	private int multiplicadorVelocidad = NUBE_VOLADORA_MULTIPLICADOR_VELOCIDAD;
-	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(NUBE_VOLADORA_TURNOS);
+	private ContadorDeTurnos turnos = new ContadorDeTurnos(NUBE_VOLADORA_TURNOS);
 	
-	public EstadoBuffVelocidad(EstadoActividad anterior) {
-		this.distanciaDeAtaque = anterior.getDistanciaDeAtaque();
-		this.poderDePelea = anterior.getPoderDePelea();
-		this.velocidad = calcularVelocidad(anterior.getVelocidad());
+	public EstadoBuffVelocidad(EstadoActividad actual) {
+		this.anteriorEstado = actual.getEstadoAnterior();
+		this.siguienteEstado = actual.getEstadoSiguiente();
+		this.distanciaDeAtaque = actual.getDistanciaDeAtaque();
+		this.poderDePelea = actual.getPoderDePelea();
+		this.velocidad = calcularVelocidad(actual.getVelocidad());
 	}
 
 	private int calcularVelocidad(int velocidad)
@@ -26,16 +28,20 @@ public class EstadoBuffVelocidad extends EstadoTransformacion {
 	
 	public void setEstadoAnterior(EstadoTransformacion estado)
 	{
-		this.anterior = estado;
+		this.anteriorEstado = estado;
 	}
 
-	public EstadoTransformacion getEstadoAnterior()
+	public EstadoActividad getEstadoAnterior()
 	{
-		return this.anterior;
+		return this.anteriorEstado;
 	}
 	
-	public void reducirTurno()
-	{
-		cantTurnos.reducir();
+	@Override
+	public void actualizarEstado(Personaje personaje) {
+		if (turnos.estaEnCero()){
+			personaje.setEstado(anteriorEstado);
+			return;
+		}
+		turnos.reducir();
 	}
 }

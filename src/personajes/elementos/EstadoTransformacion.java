@@ -1,9 +1,7 @@
 package personajes.elementos;
 
-<<<<<<< HEAD:src/personajes/elementos/EstadoTransformacion.java
-=======
+import consumibles.Consumible;
 import exceptions.YaNoPuedeEvolucionarException;
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19:src/funcionamientoPersonaje/elementos/EstadoTransformacion.java
 import personajes.Personaje;
 import tablero.Posicion;
 
@@ -13,29 +11,21 @@ public class EstadoTransformacion implements EstadoActividad {
 	protected int distanciaDeAtaque;
 	protected int poderDePelea;
 	protected EstadoActividad siguienteEstado = null;
+	protected EstadoActividad anteriorEstado = null;
 	protected Ki kiParaTransformacion = null;
 	
-	public void setSiguienteEstado(EstadoActividad siguiente, int kiNecesario){
-		this.siguienteEstado = siguiente;
-		this.kiParaTransformacion = new Ki(kiNecesario);		
-	}
-	
-<<<<<<< HEAD:src/personajes/elementos/EstadoTransformacion.java
 	public void reducirTurnos() {};
-	
 
 	public void transformar(Personaje personaje) {
 		personaje.setEstado(this.siguienteEstado);
-=======
-	public void reducirTurnos()
-	{}
+	}
+	
 	public EstadoActividad transformar(Ki kiPersonaje){
 		if (this.siguienteEstado == null){
 			throw new YaNoPuedeEvolucionarException();
 		}
 		kiPersonaje.restar(kiParaTransformacion);
 		return this.siguienteEstado;
->>>>>>> 725fe55233c63811d8188aa2745687d5fd216d19:src/funcionamientoPersonaje/elementos/EstadoTransformacion.java
 	}
 	
 	protected void atacar(Personaje victima, int danio){
@@ -87,10 +77,26 @@ public class EstadoTransformacion implements EstadoActividad {
 		return poderDePelea;
 	}
 	
+	public EstadoActividad getEstadoSiguiente() {
+		return siguienteEstado;
+	}
+	
+	public EstadoActividad getEstadoAnterior() {
+		if(this.anteriorEstado == null){
+			return this;
+		}
+		return anteriorEstado;
+	}
+	
 	public void aplicarKi(Personaje personaje, int cantidad) {
 		personaje.getKi().sumar(cantidad);
 	}
 
+	
+	public void reducirKi(Personaje personaje, int cantidad) {
+		personaje.getKi().restar(new Ki(cantidad));
+	}
+	
 	@Override
 	public void aplicarMovimiento(Personaje personaje, Posicion nuevaPosicion) {
 		// TODO Auto-generated method stub
@@ -102,5 +108,22 @@ public class EstadoTransformacion implements EstadoActividad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actualizarEstado(Personaje personaje) {};
+
+	@Override
+	public void capturarConsumible(Personaje personaje, Consumible consumible) {
+		consumible.aplicarAPersonaje(personaje);
+	}
+
+
+
 
 }

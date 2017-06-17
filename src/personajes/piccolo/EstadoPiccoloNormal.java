@@ -21,30 +21,4 @@ public class EstadoPiccoloNormal extends EstadoTransformacion {
 		this.poderDePelea = PODER_PICCOLO_NORMAL;
 		this.siguienteEstado = new EstadoPiccoloFortalecido();
 	}
-	
-	@Override
-	public void transformar(){
-		if(this.estadoTransformacionActual.getNombre() != NOMBRE_PICCOLO_PRIMERA_TRANSF ){
-			super.transformar();
-		}
-		else if (this.cumpleCondicionesProtector()){
-			super.transformar();
-		}
-		else{
-			throw new NoCumpleCondicionesDeTransformacionException();
-		}
-	}
-	
-	public boolean cumpleCondicionesProtector(){
-		Personaje gohan;
-		try{
-			gohan = this.equipo.getPersonaje("Gohan"); //Si Gohan esta muerto no se puede transformar
-		}
-		catch (PersonajeInexistenteException error){
-			throw new NoCumpleCondicionesDeTransformacionException();
-		}
-		
-		return (this.porcentajeVidaGohanParaProtector > gohan.getPorcentajeSalud());
-		
-	}
 }

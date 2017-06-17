@@ -5,7 +5,6 @@ import static algoBall.ConstantesDelJuego.NOMBRE_FREEZER_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_FREEZER_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_FREEZER_PRIMERA_TRANSF;
 
-import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
 
 public class EstadoFreezerSegundaForma extends EstadoTransformacion {
@@ -17,11 +16,6 @@ public class EstadoFreezerSegundaForma extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_FREEZER_PRIMERA_TRANSF;
 		this.poderDePelea = PODER_FREEZER_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoFreezerDefinitivo();
-		
 	}
 	
-	@Override
-	public void transformar(Personaje personaje) {
-		personaje.setEstado(this.siguienteEstado);
-	}
 }

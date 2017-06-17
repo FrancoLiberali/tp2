@@ -36,6 +36,18 @@ public class PersonajeUnitTest
 		
 	}
 	
+
+	@Test
+	public void reducirSaludPersonajeVerificarValor()
+	{
+		Personaje gohan = new Gohan();
+		int cantidadAReducir = 100;
+		int esperado = gohan.getSalud() - cantidadAReducir;
+		gohan.reducirSalud(cantidadAReducir);
+		assertEquals(gohan.getSalud(), esperado);
+	}
+	
+	
 	@Test
 	public void getVelocidadDevuleveLaDelEstadoDeTranformacionNromal()
 	{
