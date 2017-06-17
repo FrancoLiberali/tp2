@@ -2,10 +2,17 @@ package vistas;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import algoBall.Equipo;
+
+import java.io.File;
+
 import algoBall.AlgoBall;
 import vista.eventos.AplicacionOnKeyPressEventHandler;
+import vistas.Reproductor;
 
 public class Aplicacion extends Application {
 
@@ -27,7 +34,12 @@ public class Aplicacion extends Application {
 
         stage.setScene(escenaBienvenidos);
         stage.setFullScreen(true);
+     
+   
+        Reproductor reproductor =new Reproductor();
+        reproductor.reproducionAutomitica(true);
 
+        
         stage.show();
 
     }

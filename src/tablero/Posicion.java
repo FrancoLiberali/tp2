@@ -53,6 +53,7 @@ public class Posicion
 		return nueva_posicion;
 	}
 	
+	
 	public Posicion darArribaIzquierda(){
 		return this.darArriba().darIzquierda();
 	}
