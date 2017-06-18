@@ -49,6 +49,7 @@ public class ContenedorPrincipal extends BorderPane {
 	private Canvas canvasCentral;
 	private VistaTablero vistaTablero;
 	private BarrasDeVida barras;
+	private Consola consola;
     
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor,PanelDeCaracteristicas panelCaracteristicas) {
@@ -81,7 +82,7 @@ public class ContenedorPrincipal extends BorderPane {
         }
         Button finalizarTurno = new Button();
         finalizarTurno.setText("Finalizar turno");
-        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego);
+        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego, this.consola);
         this.finalizarTurnoHandler = finalizarHandler;
         finalizarTurno.setOnAction(finalizarHandler);
         contenedorVertical.getChildren().add(finalizarTurno);
@@ -94,7 +95,7 @@ public class ContenedorPrincipal extends BorderPane {
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje, barras);
+    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje, barras, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -106,7 +107,7 @@ public class ContenedorPrincipal extends BorderPane {
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -246,18 +247,8 @@ public class ContenedorPrincipal extends BorderPane {
   
     private void setConsola() {
 
-        // TODO cambiar por el modelo de Consola...
-        Label etiqueta = new Label();
-        etiqueta.setText("consola...");
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-        etiqueta.setTextFill(Color.WHITE);
-
-        VBox contenedorConsola = new VBox(etiqueta);
-        contenedorConsola.setSpacing(10);
-        contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
-
-        this.setBottom(contenedorConsola);
+      this.consola = new Consola();
+      this.setBottom(consola);
     }
 
     public BarraDeMenu getBarraDeMenu() {

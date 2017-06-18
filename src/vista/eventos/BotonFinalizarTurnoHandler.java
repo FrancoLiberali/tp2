@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import vistas.BarrasDeVida;
+import vistas.Consola;
 import vistas.VistaTablero;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
@@ -15,8 +16,9 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     AlgoBall juego;
     VistaTablero proximaVista;
     BarrasDeVida proximasBarras;
-
-    public BotonFinalizarTurnoHandler(Stage stage, AlgoBall juego) {
+    private Consola consola;
+    
+    public BotonFinalizarTurnoHandler(Stage stage, AlgoBall juego, Consola consola) {
         this.stage = stage;
         this.juego = juego;
     }
@@ -36,10 +38,12 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         proximaVista.update();
+        consola.reiniciar();
         proximasBarras.actualizar();
     	stage.setScene(proximaEscena);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         juego.finalizarTurno();
+        
     }
 }
