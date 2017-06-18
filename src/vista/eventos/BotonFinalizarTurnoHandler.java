@@ -38,7 +38,6 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         proximaVista.update();
-        consola.reiniciar();
         proximasBarras.actualizar();
     	stage.setScene(proximaEscena);
         stage.setFullScreenExitHint("");
