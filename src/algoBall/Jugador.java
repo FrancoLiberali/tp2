@@ -2,7 +2,6 @@ package algoBall;
 
 import exceptions.EquipoInexistenteException;
 import personajes.Personaje;
-import tablero.Posicion;
 
 public class Jugador 
 {
@@ -35,18 +34,6 @@ public class Jugador
 	
 	public void reestablecer(){
 		equipo.reestablecer();
-	}
-	
-	public Posicion obtenerPosicionDe(String nombrePersonaje){
-		return this.equipo.obtenerPosicionDe(nombrePersonaje);
-	}
-	
-	public int obtenerSaludDe(String nombrePersonaje){
-		return this.equipo.obtenerSaludDe(nombrePersonaje);
-	}
-	
-	public int getKiDe(String nombrePersonaje){
-		return this.equipo.getKiDe(nombrePersonaje);
 	}
 
 	public Personaje getPersonaje(String nombre) {

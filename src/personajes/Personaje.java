@@ -6,8 +6,6 @@ import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
 
 import java.util.Hashtable;
 
-import algoBall.ConstantesDelJuego;
-
 import algoBall.Equipo;
 import algoBall.Posicionable;
 import consumibles.Consumible;
@@ -15,7 +13,6 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
-import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
 import personajes.elementos.EstadoInactivoConChocolate;
