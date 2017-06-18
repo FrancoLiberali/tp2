@@ -3,6 +3,7 @@ package vista.eventos;
 import java.util.List;
 
 import personajes.Personaje;
+import vistas.PanelDeCaracteristicas;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
@@ -14,11 +15,14 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 	List<Button> botones;
     List<BotonModificableHandler> handlersBotones;
     final ToggleGroup grupo;
+    PanelDeCaracteristicas caracteristicas;
     
-    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones){
+    
+    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones,PanelDeCaracteristicas caracteristicas){
     	this.botones = botones;
     	this.handlersBotones = handlersBotones;
     	this.grupo = grupo;
+    	this.caracteristicas = caracteristicas;
     }
     
 	public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
@@ -35,6 +39,7 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 				handler.setPersonaje((Personaje) grupo.getSelectedToggle().getUserData());
 			}
 		}
-
+		
+		caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
 	}
 }

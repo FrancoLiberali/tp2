@@ -1,5 +1,7 @@
 package personajes;
 
+import java.util.Hashtable;
+
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
 import algoBall.Posicionable;
@@ -246,5 +248,14 @@ public abstract class Personaje implements Posicionable
 	//se puede hacer definiendo el equals en cada estado de actividad
 	public boolean estaConvertidoAChocolate() {
 		return this.estadoTransformacionActual.getClass() == EstadoInactivoConChocolate.class;
+	}
+
+	public Hashtable<String, Integer> darCaracteriticas() {
+		Hashtable<String, Integer> caracteristicas = new Hashtable<String, Integer>();
+		caracteristicas.put("Ki", this.getKiCantidad());
+		caracteristicas.put("Velocidad", this.getVelocidad());
+		caracteristicas.put("DistanciaDeAtaque", this.getDistanciaDeAtaque());
+		caracteristicas.put("PoderDePelea", this.getPoderDePelea());
+		return caracteristicas;
 	}
 }
