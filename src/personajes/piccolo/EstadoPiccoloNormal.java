@@ -6,6 +6,9 @@ import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 import static algoBall.ConstantesDelJuego.PODER_PICCOLO_NORMAL;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_PICCOLO_NORMAL;
 
+import exceptions.NoCumpleCondicionesDeTransformacionException;
+import exceptions.PersonajeInexistenteException;
+import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
 

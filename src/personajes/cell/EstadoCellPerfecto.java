@@ -1,6 +1,7 @@
 package personajes.cell;
 
 import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_SEGUNDA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_SEGUNDA_TRANF_GOKU;
 import static algoBall.ConstantesDelJuego.NOMBRE_CELL_SEGUNDA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_CELL_SEGUNDA_TRANSF;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_SEGUNDA_TRANSF;
