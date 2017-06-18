@@ -10,6 +10,7 @@ public final class ConstantesDelJuego {
 	public static final String NOMBRE_TRANF_NORMAL = "Normal";
 	public static final int KI_POR_TURNO = 5;
 	public static final int REDUCCION_DE_ATAQUE = 20; 
+	public static final int ATAQUES_POR_TURNO = 1; 
 	
     //Goku.
 	//posicion

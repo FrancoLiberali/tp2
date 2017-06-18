@@ -1,10 +1,11 @@
 package algoBall;
 
 import java.util.ArrayList;
-
 import java.util.Iterator;
 
+import exceptions.KiInsuficienteException;
 import exceptions.PersonajeInexistenteException;
+import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.elementos.Movimiento;
 import funcionamientoPersonaje.elementos.PanelCaracteristicas;
 import personajes.Personaje;
@@ -75,6 +76,8 @@ public class Equipo implements Iterable<Personaje>
 		movimiento = new Movimiento();
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();
+			caracteristicasDelEquipo.setCaracteristicas(personaje);
+
 		}
 	}
 	
@@ -142,6 +145,20 @@ public class Equipo implements Iterable<Personaje>
 	public void moverAbajoIzquierda(Personaje personaje)
 	{
 		movimiento.moverAbajoIzquierda(personaje);
+	}
+	
+	public void transformar (Personaje personaje){
+		try{
+			
+			personaje.transformar();
+			caracteristicasDelEquipo.setCaracteristicas(personaje);
+		}
+		catch (YaNoPuedeEvolucionarException error){
+			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
+		}
+		catch (KiInsuficienteException error){
+			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
+		}
 	}
 	
 	public void actualizarMovimientosRestantes(Personaje personaje,int velocidadAnterior, int velocidadActual){

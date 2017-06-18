@@ -38,8 +38,9 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 			for (BotonModificableHandler handler : handlersBotones){
 				handler.setPersonaje((Personaje) grupo.getSelectedToggle().getUserData());
 			}
+			caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
 		}
 		
-		caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
+		//caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
 	}
 }

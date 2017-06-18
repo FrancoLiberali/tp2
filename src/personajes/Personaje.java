@@ -15,7 +15,6 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
-import exceptions.PersonajeInexistenteException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
@@ -98,17 +97,10 @@ public abstract class Personaje implements Posicionable
 	
 	public void transformar()
 	{
-		try{
-			int velocidadAnterior = this.getVelocidad();
-			this.estadoTransformacionActual.transformar(this, this.ki);
-			this.actualizarMovimientosRestantes(velocidadAnterior);
-		}
-		catch (YaNoPuedeEvolucionarException error){
-			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
-		}
-		catch (KiInsuficienteException error){
-			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
-		}
+		int velocidadAnterior = this.getVelocidad();
+		this.estadoTransformacionActual.transformar(this, this.ki);
+		this.actualizarMovimientosRestantes(velocidadAnterior);
+		
 	}
 	
 	protected void verificarAtaque(Personaje victima)
@@ -124,26 +116,29 @@ public abstract class Personaje implements Posicionable
 			throw new NoTienesAtaquesRestantesException();
 			
 		}
-		if(victima.getPorcentajeSalud() == 0 ){
-			throw new PersonajeInexistenteException();
-		}
+		
 	}
 	public void realizarAtaqueBasico(Personaje victima){
-		this.verificarAtaque(victima);
-		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
-		this.equipo.restarAtaqueRestates();
+		try{
+			this.verificarAtaque(victima);
+			this.equipo.restarAtaqueRestates();
+			this.estadoTransformacionActual.realizarAtaqueBasico(victima);
+		}
+		catch(NoTienesAtaquesRestantesException error){
+		}
 	}
-	
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		
+		try{
 			this.verificarAtaque(victima);
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
 			this.equipo.restarAtaqueRestates();
-	
-			
+		}
+		catch( KiInsuficienteException error){
+		}
+				
 	}
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){

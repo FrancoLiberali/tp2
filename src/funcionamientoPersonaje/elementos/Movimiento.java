@@ -2,7 +2,6 @@ package funcionamientoPersonaje.elementos;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.FueraDelTableroException;
-import exceptions.NoQuedanMovimientosException;
 import personajes.Personaje;
 import tablero.Posicion;
 
@@ -18,7 +17,7 @@ public class Movimiento {
 			return;
 		}
 		if (movimientosRestantes == 0){
-			throw new NoQuedanMovimientosException();
+			return;
 		}
 		try {
 			Posicion antiguaPosicion = personaje.getPosicion();
@@ -31,10 +30,10 @@ public class Movimiento {
 			personajeQueSeMovio = personaje;
 		}
 		catch (CasilleroOcupadoException error){
-			/*cancela movimiento */
+			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
 		}
 		catch (FueraDelTableroException error){
-			/*cancela movimiento */
+			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
 		}
 	}
 	public boolean sePuedeMover(Personaje personaje){
