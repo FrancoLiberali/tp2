@@ -103,7 +103,7 @@ public class ConsumiblesUnitTest
 		
 		//a partir de este se termina el efecto.
 		goku.actualizarEstado();
-
+	
 		assertEquals(goku.getVelocidad(), velocidad);
 	}
 	

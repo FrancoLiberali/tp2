@@ -104,8 +104,7 @@ public class SaludUnitTest
 		
 		assertEquals(salud.getPorcentajeSalud(), porcentajeEsperado);
 	}
-	
-	
+		
 	@Test
 	public void disminuirYAumentarSaludAlTopeVerificarSaludActualEsInicial()
 	{

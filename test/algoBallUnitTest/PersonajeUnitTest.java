@@ -47,21 +47,6 @@ public class PersonajeUnitTest
 		assertEquals(gohan.getSalud(), esperado);
 	}
 	
-	
-	@Test
-	public void getVelocidadDevuleveLaDelEstadoDeTranformacionNromal()
-	{
-		Personaje gohan = new Gohan();
-		assertEquals(gohan.getVelocidad(), VELOCIDAD_GOHAN_NORMAL);
-	}
-	
-	@Test
-	public void getPoderDePeleaDevuleveElDelEstadoDeTranformacionActual()
-	{
-		Personaje gohan = new Gohan();
-		assertEquals(gohan.getPoderDePelea(), PODER_GOHAN_NORMAL);
-	}
-	
 	@Test
 	public void getKiParaUnPersonajeRecienCreadoDevuelveUnKiConCero()
 	{
@@ -145,7 +130,7 @@ public class PersonajeUnitTest
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, posicionInicial);
+		tablero.agregarPosicionable(goku, posicionInicial);
 		guerrerosZ.moverDerecha(goku);
 		goku.transformar();
 		guerrerosZ.moverDerecha(goku);
@@ -165,7 +150,7 @@ public class PersonajeUnitTest
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, posicionInicial);
+		tablero.agregarPosicionable(goku, posicionInicial);
 		guerrerosZ.moverDerecha(goku);
 		guerrerosZ.moverDerecha(goku);
 		goku.transformar();
@@ -184,8 +169,8 @@ public class PersonajeUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -209,15 +194,15 @@ public class PersonajeUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(gohan, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(gohan, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion2.agregarPersonaje(cell);
 		
-		int saludEsperada = PUNTOS_VIDA_CELL - PODER_GOHAN_NORMAL + PODER_GOHAN_NORMAL * REDUCCION_DE_ATAQUE /100;
+		int saludEsperada = (int) (PUNTOS_VIDA_CELL - PODER_GOHAN_NORMAL + (PODER_GOHAN_NORMAL * (REDUCCION_DE_ATAQUE /100.0f)));
 		
 		gohan.realizarAtaqueBasico(cell);
 		assertEquals(cell.getSalud(), saludEsperada);
@@ -232,7 +217,7 @@ public class PersonajeUnitTest
 		piccolo.setEquipo(guerrerosZ);
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPersonaje(piccolo, posicionInicial);
+		tablero.agregarPosicionable(piccolo, posicionInicial);
 		guerrerosZ.moverDerecha(piccolo);
 		guerrerosZ.moverDerecha(piccolo);
 		Posicion posAnt = piccolo.getPosicion();
@@ -250,8 +235,8 @@ public class PersonajeUnitTest
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialM = new Posicion(2,2);
 		Posicion posicionInicialC = new Posicion(3,2);
-		tablero.agregarPersonaje(majinBoo, posicionInicialM);
-		tablero.agregarPersonaje(cell, posicionInicialC);
+		tablero.agregarPosicionable(majinBoo, posicionInicialM);
+		tablero.agregarPosicionable(cell, posicionInicialC);
 		enemigos.moverDerecha(majinBoo);
 		Posicion pos = cell.getPosicion();
 		enemigos.moverDerecha(cell);
@@ -267,7 +252,7 @@ public class PersonajeUnitTest
 		Personaje goku = new Goku();
 		goku.setEquipo(guerrerosZ);
 		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, posicionInicial);
+		tablero.agregarPosicionable(goku, posicionInicial);
 		guerrerosZ.moverDerecha(goku);
 		Posicion posicionFinal = new Posicion(2,3);
 		assertEquals(goku.getPosicion(), posicionFinal);
@@ -286,8 +271,8 @@ public class PersonajeUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(piccolo, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(piccolo, posicionInicialY);
 		
 		guerrerosZ.moverAbajo(goku);
 		assertEquals(goku.getPosicion(), posicionInicialX);
@@ -305,7 +290,7 @@ public class PersonajeUnitTest
 		
 		Posicion posicionInicialX = new Posicion(9,2);
 		
-		tablero.agregarPersonaje(piccolo, posicionInicialX);
+		tablero.agregarPosicionable(piccolo, posicionInicialX);
 		
 		guerrerosZ.moverAbajo(piccolo);
 		assertEquals(piccolo.getPosicion(), posicionInicialX);
@@ -324,8 +309,8 @@ public class PersonajeUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(gohan, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(gohan, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(goku);
@@ -345,8 +330,8 @@ public class PersonajeUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(5,5);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		goku.realizarAtaqueBasico(cell);
 	}

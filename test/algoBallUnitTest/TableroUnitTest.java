@@ -13,6 +13,7 @@ import vistas.Aplicacion;
 public class TableroUnitTest 
 {	
 	Aplicacion aplicacion = new Aplicacion();
+	
 	@Test
 	public void crearTableroConDimension4VerificarDimension()
 	{
@@ -56,34 +57,14 @@ public class TableroUnitTest
 		tablero.getCasillero(pos);
 	}
 	
-	/*@Test (expected = FueraDelTableroException.class)
-	public void getPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
-	{
-		Tablero tablero = new Tablero(8);
-		Posicion pos = new Posicion(8,3);
-		
-		tablero.getPersonajeEn(pos);
-	}*/
-	
 	@Test (expected = FueraDelTableroException.class)
 	public void agregarPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
 		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
 		Personaje goku = new Goku();
-		tablero.agregarPersonaje(goku, pos);
+		tablero.agregarPosicionable(goku, pos);
 	}
-	
-	/*@Test
-	public void agregarPersonajeACasilleroDentroDelTablero()
-	{
-		Tablero tablero = new Tablero(4);
-		Personaje goku = new Goku();
-		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, pos);
-		assertEquals(tablero.getPersonajeEn(pos), goku);
-		
-	}*/
 	
 	@Test
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
@@ -91,7 +72,7 @@ public class TableroUnitTest
 		Tablero tablero = new Tablero(4);
 		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, pos);
+		tablero.agregarPosicionable(goku, pos);
 		assertEquals(goku.getPosicion(), pos);
 		
 	}
@@ -102,7 +83,7 @@ public class TableroUnitTest
 		Tablero tablero = new Tablero(4);
 		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
-		tablero.agregarPersonaje(goku, pos);
+		tablero.agregarPosicionable(goku, pos);
 		tablero.vaciarCasilleroEnPosicion(pos);
 		assertTrue(tablero.getCasillero(pos).estaVacio());
 	}

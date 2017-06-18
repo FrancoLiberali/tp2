@@ -30,14 +30,13 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
 		agrupacion1.agregarPersonaje(majinBoo);
 		agrupacion2.agregarPersonaje(goku);
-		
 		majinBoo.realizarAtaqueEspecial(goku);
 		goku.realizarAtaqueBasico(majinBoo);
 	}
@@ -53,8 +52,8 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -66,9 +65,9 @@ public class MajinBooUnitTest
 		
 		assertEquals(goku.getKiCantidad(), KI_INICIAL);
 	}
-	
-	@Test
-	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeTansformarse()
+
+	@Test (expected = PersonajeEnEstadoChocolate.class)
+	public void aplicarAtaqueEspecialDeMajinBooAGokuLevantaExcepcion()
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
@@ -79,8 +78,8 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -89,7 +88,6 @@ public class MajinBooUnitTest
 		
 		majinBoo.realizarAtaqueEspecial(goku);
 		goku.transformar();
-		assertEquals(goku.getEstado().getNombre(), NOMBRE_TRANF_NORMAL);
 	}
 	
 	@Test
@@ -104,8 +102,8 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -130,8 +128,8 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -168,8 +166,8 @@ public class MajinBooUnitTest
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(majinBoo, posicionInicialX);
-		tablero.agregarPersonaje(goku, posicionInicialY);
+		tablero.agregarPosicionable(majinBoo, posicionInicialX);
+		tablero.agregarPosicionable(goku, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");

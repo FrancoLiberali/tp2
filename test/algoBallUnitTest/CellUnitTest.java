@@ -37,8 +37,8 @@ public class CellUnitTest {
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -62,8 +62,8 @@ public class CellUnitTest {
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -89,8 +89,8 @@ public class CellUnitTest {
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
@@ -115,8 +115,8 @@ public class CellUnitTest {
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
-		tablero.agregarPersonaje(goku, posicionInicialX);
-		tablero.agregarPersonaje(cell, posicionInicialY);
+		tablero.agregarPosicionable(goku, posicionInicialX);
+		tablero.agregarPosicionable(cell, posicionInicialY);
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		Equipo agrupacion2 = new Equipo("malos");
