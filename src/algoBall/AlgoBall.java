@@ -3,6 +3,11 @@ package algoBall;
 import static algoBall.ConstantesDelJuego.CELL_FIL;
 import static algoBall.ConstantesDelJuego.CELL_COL;
 import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
 import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.FREEZER_COL;
@@ -47,7 +52,11 @@ public class AlgoBall
 		Turno turnoJugador2 = new Turno(jugador2);
 		turnoJugador1.setTurnoSiguiente(turnoJugador2);
 		turnoJugador2.setTurnoSiguiente(turnoJugador1);
-		return turnoJugador1;
+		List<Turno> lista = new ArrayList<Turno>();
+		lista.add(turnoJugador1);
+		lista.add(turnoJugador2);
+		int randomNum = ThreadLocalRandom.current().nextInt(0, 1 + 1);
+		return lista.get(randomNum);
 	}
 		
 	public void finalizarTurno(){
@@ -64,15 +73,6 @@ public class AlgoBall
 		@SuppressWarnings("unused")
 		Jugador jugadorGanador = this.turnoActual.getJugador();
 		/*mensaje final*/
-	}
-	
-	public Posicion obtenerPosicionDe(String nombrePersonaje){
-		try{
-			return this.turnoActual.obtenerPosicionDe(nombrePersonaje);
-		}
-		catch (PersonajeInexistenteException error){
-			return this.turnoSiguiente().obtenerPosicionDe(nombrePersonaje);
-		}
 	}
 	
 	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)

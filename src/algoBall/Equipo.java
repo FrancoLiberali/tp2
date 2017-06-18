@@ -9,7 +9,6 @@ import exceptions.YaNoPuedeEvolucionarException;
 import funcionamientoPersonaje.elementos.Movimiento;
 import funcionamientoPersonaje.elementos.PanelCaracteristicas;
 import personajes.Personaje;
-import tablero.Posicion;
 
 public class Equipo implements Iterable<Personaje> 
 {	
@@ -86,21 +85,6 @@ public class Equipo implements Iterable<Personaje>
 		if (pertenecientes.isEmpty()){
 			throw new JuegoTerminado();
 		}
-	}
-	
-	public Posicion obtenerPosicionDe(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		return personaje.getPosicion();
-	}
-	
-	public int obtenerSaludDe(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		return personaje.getSalud();
-	}
-	
-	public int getKiDe(String nombrePersonaje){
-		Personaje personaje = this.getPersonaje(nombrePersonaje);
-		return personaje.getKiCantidad();
 	}
 
 	public int getCantidadDeAtaquesRestantes() {

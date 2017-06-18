@@ -1,7 +1,6 @@
 package algoBall;
 
 import personajes.Personaje;
-import tablero.Posicion;
 
 public class Turno {
 	private Jugador jugador;
@@ -26,17 +25,6 @@ public class Turno {
 	public void setTurnoSiguiente(Turno turnoSiguiente){
 		this.turnoSiguiente = turnoSiguiente;
 	}
-
-	public Posicion obtenerPosicionDe(String nombrePersonaje){
-		return this.jugador.obtenerPosicionDe(nombrePersonaje);
-	}
-	
-	public int obtenerSaludDe(String nombrePersonaje){
-		return this.jugador.obtenerSaludDe(nombrePersonaje);
-	}
-	public int getKiDe(String nombrePersonaje){
-		return this.jugador.getKiDe(nombrePersonaje);
-	}
 	
 	public int getCantidadDeAtaquesRestantes(){
 		return this.jugador.getCantidadDeAtaquesRestantes();
@@ -44,7 +32,6 @@ public class Turno {
 	public Personaje getPersonaje(String nombre) {
 		return this.jugador.getPersonaje(nombre);
 	}
-	
 	
 	public Equipo getEquipo(String nombre) {
 		return this.jugador.getEquipo(nombre);
