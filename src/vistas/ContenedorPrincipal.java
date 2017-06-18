@@ -193,6 +193,7 @@ public class ContenedorPrincipal extends BorderPane {
         
         grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones));
         
+        
         ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
         Label labelBasicos = new Label("Mover personaje");
         contenedorVertical.getChildren().add(labelBasicos);
@@ -223,18 +224,9 @@ public class ContenedorPrincipal extends BorderPane {
   
     private void setConsola() {
 
-        // TODO cambiar por el modelo de Consola...
-        Label etiqueta = new Label();
-        etiqueta.setText("consola...");
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-        etiqueta.setTextFill(Color.WHITE);
-
-        VBox contenedorConsola = new VBox(etiqueta);
-        contenedorConsola.setSpacing(10);
-        contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
-
-        this.setBottom(contenedorConsola);
+    	Consola consola = new Consola();
+    	this.setBottom(consola);
+    
     }
 
     public BarraDeMenu getBarraDeMenu() {
