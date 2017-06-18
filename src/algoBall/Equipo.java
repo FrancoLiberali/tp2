@@ -1,10 +1,12 @@
 package algoBall;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 
 import exceptions.PersonajeInexistenteException;
 import funcionamientoPersonaje.elementos.Movimiento;
+import funcionamientoPersonaje.elementos.PanelCaracteristicas;
 import personajes.Personaje;
 import tablero.Posicion;
 
@@ -14,6 +16,7 @@ public class Equipo implements Iterable<Personaje>
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
 	private int cantidadAtaquesRestantes = 1;
 	private Movimiento movimiento = new Movimiento();
+	PanelCaracteristicas caracteristicasDelEquipo = new PanelCaracteristicas();
 	
 	public Equipo(String nombre)
 	{
@@ -24,6 +27,7 @@ public class Equipo implements Iterable<Personaje>
 	{
 		pertenecientes.add(psje);
 		psje.setEquipo(this);
+		caracteristicasDelEquipo.setCaracteristicas(psje);
 	}
 	 
 	public void restarAtaqueRestates()
@@ -177,6 +181,10 @@ public class Equipo implements Iterable<Personaje>
 	public int getAtaquesRestantes() {
 		
 		return this.cantidadAtaquesRestantes;
+	}
+	
+	public PanelCaracteristicas getPanelCaracteristicas(){
+		return this.caracteristicasDelEquipo;
 	}
 	
 }
