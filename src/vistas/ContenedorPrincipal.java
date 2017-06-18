@@ -47,6 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
 	private Canvas canvasCentral;
 	private VistaTablero vistaTablero;
 	private BarrasDeVida barras;
+	private Consola consola;
     
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor,PanelDeCaracteristicas panelCaracteristicas) {
@@ -104,7 +105,7 @@ public class ContenedorPrincipal extends BorderPane {
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras, this.consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -232,7 +233,7 @@ public class ContenedorPrincipal extends BorderPane {
   
     private void setConsola() {
 
-    	Consola consola = new Consola();
+    	this.consola = new Consola();
     	this.setBottom(consola);
     
     }
@@ -257,4 +258,5 @@ public class ContenedorPrincipal extends BorderPane {
     public void setProximasBarras(BarrasDeVida proximasBarras){
     	finalizarTurnoHandler.setProximasBarras(proximasBarras);
     }
+    
 }

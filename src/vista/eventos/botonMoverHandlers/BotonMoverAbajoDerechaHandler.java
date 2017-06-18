@@ -20,3 +20,4 @@ public class BotonMoverAbajoDerechaHandler extends BotonModificableHandler {
         this.vista.update();
     }
 }
+

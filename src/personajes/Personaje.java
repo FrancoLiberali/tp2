@@ -137,15 +137,13 @@ public abstract class Personaje implements Posicionable
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		try{
+		
 			this.verificarAtaque(victima);
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
 			this.equipo.restarAtaqueRestates();
-		}
-		catch( KiInsuficienteException error){
-		}
-				
+	
+			
 	}
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){

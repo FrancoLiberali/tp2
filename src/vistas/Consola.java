@@ -26,9 +26,10 @@ public class Consola extends VBox{
 	
     public void agregarInformacion(String stg){
     	Label frase = new Label();
-    	frase.setText("consola...");
+    	frase.setText(stg);
 	    frase.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 	    frase.setTextFill(Color.WHITE);
+	    this.getChildren().clear();
     	this.getChildren().add(frase);
     }
 
