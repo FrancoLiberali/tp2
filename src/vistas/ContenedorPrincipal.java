@@ -5,6 +5,7 @@ import java.util.List;
 
 import algoBall.AlgoBall;
 import algoBall.Equipo;
+import funcionamientoPersonaje.elementos.PanelCaracteristicas;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -48,13 +49,13 @@ public class ContenedorPrincipal extends BorderPane {
 	private BarrasDeVida barras;
     
 
-    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor) {
+    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor,PanelDeCaracteristicas panelCaracteristicas) {
         this.setPrefWidth(75);
     	this.setMenu(stage, reproductor);
         this.setConsola();
         this.setCentro(juego, agrupacionMover, agrupacionAtacar);
         this.setBotoneraDerecha(stage, juego, agrupacionAtacar, agrupacionMover);
-        this.setBotoneraIzquierda(juego, agrupacionMover, agrupacionAtacar);
+        this.setBotoneraIzquierda(juego, agrupacionMover, agrupacionAtacar, panelCaracteristicas);
         
     }
     
@@ -176,7 +177,7 @@ public class ContenedorPrincipal extends BorderPane {
         botonIzquierda.setDisable(true);
     }
     
-    private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar) {
+    private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,PanelDeCaracteristicas panelCaracteristicas) {
         this.setBotonesDeMovimiento(agrupacionMover);
         Label label = new Label("Seleccionar personaje");
         VBox contenedorVertical = new VBox(label);
@@ -191,12 +192,19 @@ public class ContenedorPrincipal extends BorderPane {
             contenedorVertical.getChildren().add(tBoton);
         }
         
-        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones));
+        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones,panelCaracteristicas));
+        
+        VBox caracteristicas = new VBox();
+        caracteristicas.setSpacing(7);
+      	caracteristicas.setPadding(new Insets(10));
+        panelCaracteristicas.setPanel(caracteristicas);
+        
         
         ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
         Label labelBasicos = new Label("Mover personaje");
         contenedorVertical.getChildren().add(labelBasicos);
         contenedorVertical.getChildren().add(contenedorFlechas);
+        contenedorVertical.getChildren().add(caracteristicas);
         this.setLeft(contenedorVertical);
 
     }

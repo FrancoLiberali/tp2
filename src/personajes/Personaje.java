@@ -1,7 +1,13 @@
 package personajes;
 
+
 import static algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
 import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
+
+import java.util.Hashtable;
+
+import algoBall.ConstantesDelJuego;
+
 import algoBall.Equipo;
 import algoBall.Posicionable;
 import consumibles.Consumible;
@@ -227,5 +233,13 @@ public abstract class Personaje implements Posicionable
 	{
 	    return 0;
 	}
-	
+
+	public Hashtable<String, Integer> darCaracteriticas() {
+		Hashtable<String, Integer> caracteristicas = new Hashtable<String, Integer>();
+		caracteristicas.put("Ki", this.getKiCantidad());
+		caracteristicas.put("Velocidad", this.getVelocidad());
+		caracteristicas.put("DistanciaDeAtaque", this.getDistanciaDeAtaque());
+		caracteristicas.put("PoderDePelea", this.getPoderDePelea());
+		return caracteristicas;
+	}
 }
