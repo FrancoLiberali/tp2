@@ -4,6 +4,8 @@ import personajes.Personaje;
 import vistas.BarrasDeVida;
 import vistas.Consola;
 import exceptions.KiInsuficienteException;
+import exceptions.PersonajeEnEstadoChocolate;
+import exceptions.PersonajeInexistenteException;
 import javafx.event.ActionEvent;
 
 public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
@@ -27,5 +29,11 @@ public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
 		catch( KiInsuficienteException error){
 			this.consola.agregarInformacion("Ki Insuficiente");
 		}
+		catch (PersonajeInexistenteException error){
+			this.consola.agregarInformacion("El enemigo a  muerto");
+		}
+		catch (PersonajeEnEstadoChocolate error){
+	       	this.consola.agregarInformacion("Personaje convertido a chocolate :( ");
+	    }
 	}
 }

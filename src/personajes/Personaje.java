@@ -15,6 +15,7 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
+import exceptions.PersonajeInexistenteException;
 import exceptions.YaNoPuedeEvolucionarException;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
@@ -123,17 +124,16 @@ public abstract class Personaje implements Posicionable
 			throw new NoTienesAtaquesRestantesException();
 			
 		}
-		
+		if(victima.getPorcentajeSalud() == 0 ){
+			throw new PersonajeInexistenteException();
+		}
 	}
 	public void realizarAtaqueBasico(Personaje victima){
-		try{
-			this.verificarAtaque(victima);
-			this.equipo.restarAtaqueRestates();
-			this.estadoTransformacionActual.realizarAtaqueBasico(victima);
-		}
-		catch(NoTienesAtaquesRestantesException error){
-		}
+		this.verificarAtaque(victima);
+		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
+		this.equipo.restarAtaqueRestates();
 	}
+	
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{

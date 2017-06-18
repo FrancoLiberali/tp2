@@ -19,9 +19,7 @@ public class Consola extends VBox{
 	    this.setPadding(new Insets(15));
 	    this.setStyle("-fx-background-color: black;");
 	    this.getChildren().add(etiqueta);
-
-	   
-
+	  
 	}
 	
     public void agregarInformacion(String stg){
