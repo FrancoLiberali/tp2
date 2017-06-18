@@ -97,17 +97,10 @@ public abstract class Personaje implements Posicionable
 	
 	public void transformar()
 	{
-		try{
-			int velocidadAnterior = this.getVelocidad();
-			this.estadoTransformacionActual.transformar(this, this.ki);
-			this.actualizarMovimientosRestantes(velocidadAnterior);
-		}
-		catch (YaNoPuedeEvolucionarException error){
-			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
-		}
-		catch (KiInsuficienteException error){
-			/*cancela evolucion (mas adelante agregar mensaje a usuario)*/
-		}
+		int velocidadAnterior = this.getVelocidad();
+		this.estadoTransformacionActual.transformar(this, this.ki);
+		this.actualizarMovimientosRestantes(velocidadAnterior);
+		
 	}
 	
 	protected void verificarAtaque(Personaje victima)
@@ -137,13 +130,15 @@ public abstract class Personaje implements Posicionable
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
-		
+		try{
 			this.verificarAtaque(victima);
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
 			this.equipo.restarAtaqueRestates();
-	
-			
+		}
+		catch( KiInsuficienteException error){
+		}
+				
 	}
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){

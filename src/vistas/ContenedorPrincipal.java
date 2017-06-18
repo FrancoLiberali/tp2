@@ -25,8 +25,10 @@ import javafx.stage.Stage;
 import personajes.Personaje;
 import vista.eventos.BotonAtaqueBasicoHandler;
 import vista.eventos.BotonAtaqueEspecialHandler;
+import vista.eventos.BotonEntrarEventHandler;
 import vista.eventos.BotonFinalizarTurnoHandler;
 import vista.eventos.BotonModificableHandler;
+import vista.eventos.BotonTransformarEventHandler;
 import vista.eventos.ModificadorDePersonaje;
 import vista.eventos.botonMoverHandlers.BotonMoverAbajoDerechaHandler;
 import vista.eventos.botonMoverHandlers.BotonMoverAbajoHandler;
@@ -47,7 +49,6 @@ public class ContenedorPrincipal extends BorderPane {
 	private Canvas canvasCentral;
 	private VistaTablero vistaTablero;
 	private BarrasDeVida barras;
-	private Consola consola;
     
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor,PanelDeCaracteristicas panelCaracteristicas) {
@@ -105,7 +106,7 @@ public class ContenedorPrincipal extends BorderPane {
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras, this.consola);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -200,6 +201,17 @@ public class ContenedorPrincipal extends BorderPane {
       	caracteristicas.setPadding(new Insets(10));
         panelCaracteristicas.setPanel(caracteristicas);
         
+        Button botonTransformar = new Button();
+        botonTransformar.setText("Transformar");
+        botonTransformar.setDisable(true);
+        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover);
+        botonTransformar.setOnAction(botonTrasnformarHandler);
+        botones.add(botonTransformar);
+        handlersBotones.add(botonTrasnformarHandler);
+        
+        //botonTransformar.setToggleGroup(grupo);
+        //BotonTransformarEventHandler botonTransformarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2,reproductor);
+        //botonTransformar.setOnAction(botonTransformarHandler);
         
         
         ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
@@ -207,6 +219,7 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorVertical.getChildren().add(labelBasicos);
         contenedorVertical.getChildren().add(contenedorFlechas);
         contenedorVertical.getChildren().add(caracteristicas);
+        contenedorVertical.getChildren().add(botonTransformar);
         this.setLeft(contenedorVertical);
 
     }
@@ -233,9 +246,18 @@ public class ContenedorPrincipal extends BorderPane {
   
     private void setConsola() {
 
-    	this.consola = new Consola();
-    	this.setBottom(consola);
-    
+        // TODO cambiar por el modelo de Consola...
+        Label etiqueta = new Label();
+        etiqueta.setText("consola...");
+        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+        etiqueta.setTextFill(Color.WHITE);
+
+        VBox contenedorConsola = new VBox(etiqueta);
+        contenedorConsola.setSpacing(10);
+        contenedorConsola.setPadding(new Insets(15));
+        contenedorConsola.setStyle("-fx-background-color: black;");
+
+        this.setBottom(contenedorConsola);
     }
 
     public BarraDeMenu getBarraDeMenu() {
@@ -258,5 +280,4 @@ public class ContenedorPrincipal extends BorderPane {
     public void setProximasBarras(BarrasDeVida proximasBarras){
     	finalizarTurnoHandler.setProximasBarras(proximasBarras);
     }
-    
 }
