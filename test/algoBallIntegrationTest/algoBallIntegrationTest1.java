@@ -8,6 +8,9 @@ import algoBall.Equipo;
 import personajes.Gohan;
 import personajes.Goku;
 import personajes.Personaje;
+import personajes.elementos.EstadoTransformacion;
+import personajes.goku.EstadoGokuKaioKen;
+import personajes.goku.EstadoGokuNormal;
 import tablero.Posicion;
 import tablero.Tablero;
 
@@ -49,7 +52,7 @@ public class algoBallIntegrationTest1 {
 		assertEquals(goku.getPosicion(), posicionGokuInicial);
 	}
 	
-	/*
+	
 	public void seUbicaUnPersonajeSeLoTransformaVerificarQueSePuedaTransformar(){
 		Tablero tablero = new Tablero(10);
 		
@@ -67,7 +70,7 @@ public class algoBallIntegrationTest1 {
 		EstadoTransformacion estadoTransfUno = new EstadoGokuKaioKen();
 		assertEquals(goku.getEstado().getNombre(), estadoTransfUno.getNombre());
 
-	}*/
+	}
 	
 	
 }

@@ -4,7 +4,6 @@ import algoBall.Posicionable;
 
 public class Casillero {
 
-	private Posicionable contenido;
 	private EstadoCasillero estado;
 	
 	
@@ -18,18 +17,18 @@ public class Casillero {
 		return (this.estado.estaVacio());
 	}
 	
-	public void ocupar()
+	public void ocupar(Posicionable personaje)
 	{
 		this.estado = this.estado.ocupar();
+		this.estado.aplicarConsumible(personaje);
 	}
 	
 	public void vaciar()
 	{
 		this.estado = this.estado.vaciar();
 	}
-
-	public Posicionable getContenido()
-	{
-		return this.contenido;
+	
+	public void agregarConsumible(Posicionable consumible){
+		this.estado.agregarConsumible(consumible);
 	}
 }

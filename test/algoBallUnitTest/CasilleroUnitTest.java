@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
+import personajes.Gohan;
+import personajes.Goku;
 import tablero.Casillero;
 
 public class CasilleroUnitTest
@@ -19,13 +21,15 @@ public class CasilleroUnitTest
 	@Test
 	public void ocupoVerificoCasilleroNoVacio(){
 		Casillero c1 = new Casillero();
-		c1.ocupar();
+		Goku goku = new Goku();
+		c1.ocupar(goku);
 		assertTrue(!c1.estaVacio());
 	}
 	
 	public void vaciarCasilleroVerificarQueQuedeVacio(){
 		Casillero c1 = new Casillero();
-		c1.ocupar();
+		Goku goku = new Goku();
+		c1.ocupar(goku);
 		c1.vaciar();
 		assertTrue(c1.estaVacio());
 	}
@@ -33,8 +37,10 @@ public class CasilleroUnitTest
 	@Test(expected = CasilleroOcupadoException.class)
 	public void tratarDeOcuparDosVecesLanzaCasilleroOcupado(){
 		Casillero c1 = new Casillero();
-		c1.ocupar();
-		c1.ocupar();
+		Goku goku = new Goku();
+		Gohan gohan = new Gohan();
+		c1.ocupar(goku);
+		c1.ocupar(gohan);
 	}
 	
 	@Test(expected = CasilleroVacioException.class)

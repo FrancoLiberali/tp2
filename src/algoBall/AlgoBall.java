@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import consumibles.EsferaDelDragon;
+import consumibles.NubeVoladora;
+import consumibles.SemillaDelErmitanio;
+
 import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
 import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.FREEZER_COL;
@@ -39,12 +43,22 @@ public class AlgoBall
 	private Tablero tablero;
 	
 	public AlgoBall(String nombre1, String nombre2)
-	{
+	{	
+		List<Posicionable> consumibles = this.setConsumibles();
 		this.tablero = new Tablero(TAMANIO_TABLERO);
+		tablero.setConsumibles(consumibles);
 		Jugador jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
 		Jugador jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
 		iniciarPersonajes(jugador1, jugador2);
 		this.turnoActual = iniciarTurnos(jugador1, jugador2);
+	}
+	
+	private List<Posicionable> setConsumibles(){
+		List<Posicionable> consumibles = new ArrayList<Posicionable>();
+		consumibles.add(new EsferaDelDragon());
+		consumibles.add(new NubeVoladora());
+		consumibles.add(new SemillaDelErmitanio());
+		return consumibles;
 	}
 	
 	public Turno iniciarTurnos(Jugador jugador1, Jugador jugador2){
@@ -61,6 +75,7 @@ public class AlgoBall
 		
 	public void finalizarTurno(){
 		turnoActual.reestablecer();
+		tablero.aparecerConsumible();
 		turnoActual = turnoActual.getTurnoSiguiente();
 	}
 	
