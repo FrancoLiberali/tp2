@@ -23,7 +23,6 @@ public class Posicion
 		return fila;
 	}
 	
-	
 	public int getColumna()
 	{
 		return columna;
@@ -53,7 +52,6 @@ public class Posicion
 		return nueva_posicion;
 	}
 	
-	
 	public Posicion darArribaIzquierda(){
 		return this.darArriba().darIzquierda();
 	}
@@ -75,22 +73,21 @@ public class Posicion
 	}
 	
 	public void agregarEnTablero(Personaje personaje){
-		this.tablero.agregarPersonaje(personaje, this);
+		this.tablero.agregarPosicionable(personaje, this);
 	}
-	
-	public boolean esIgualA(Posicion otraPosicion){
-		return (this.fila == otraPosicion.getFila() && this.columna==otraPosicion.getColumna());
-	}
-	
+
 	public boolean dentroDelRango(Posicion otraPosicion, int rango){
 		int difFilas = Math.abs(this.fila - otraPosicion.getFila());
 		int difColumnas = Math.abs(this.columna - otraPosicion.getColumna());
 		return (difFilas <= rango && difColumnas <= rango);
 	}
-
-	/*public Personaje getPersonaje() {
-		return this.tablero.getPersonajeEn(this);
-	}*/
+	
+	public int distanciaALa(Posicion pos)
+	{
+		return (int) Math.sqrt(
+				Math.pow((this.fila - pos.getFila()), 2) + 
+				Math.pow((this.columna - pos.getColumna()), 2) );
+	}
 	
 	@Override
 	public boolean equals(Object otraPosicion) 

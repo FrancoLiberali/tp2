@@ -17,4 +17,5 @@ public class EsferaDelDragon extends Consumible
 		EstadoActividad estado = new EstadoBuffDanio(personaje.getEstado());
 		personaje.setEstado(estado);
 	}
+
 }

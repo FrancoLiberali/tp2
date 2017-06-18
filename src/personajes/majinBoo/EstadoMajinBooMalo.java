@@ -10,7 +10,6 @@ import personajes.Personaje;
 import personajes.elementos.EstadoInactivoConChocolate;
 import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
-import personajes.majinBoo.EstadoMajinBooOriginal;
 
 public class EstadoMajinBooMalo extends EstadoTransformacion{
 	
@@ -27,6 +26,8 @@ public class EstadoMajinBooMalo extends EstadoTransformacion{
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima, int porcetajeBonus)
 	{	
-		victima.setEstado(new EstadoInactivoConChocolate());
+		EstadoInactivoConChocolate chocolate = new EstadoInactivoConChocolate();
+		chocolate.setEstadoAnterior(victima.getEstado());
+		victima.setEstado(chocolate);
 	}
 }

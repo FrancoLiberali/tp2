@@ -1,9 +1,10 @@
 package tablero;
 
+import algoBall.Posicionable;
+
 public class Casillero {
 
-	//private Personaje personaje;
-	//private Consumible consumible;
+	private Posicionable contenido;
 	private EstadoCasillero estado;
 	
 	
@@ -27,4 +28,8 @@ public class Casillero {
 		this.estado = this.estado.vaciar();
 	}
 
+	public Posicionable getContenido()
+	{
+		return this.contenido;
+	}
 }

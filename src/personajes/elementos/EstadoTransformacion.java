@@ -18,10 +18,11 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 	}
 	
 	protected void atacar(Personaje victima, int danio){
-		victima.recibirDanio(danio, this.getPoderDePelea());
+		victima.recibirDanio(danio, this.poderDePelea);
 	
 	}
 	public void realizarAtaqueBasico(Personaje victima) {
+		
 		this.atacar(victima, this.poderDePelea);
 		
 	}
@@ -82,20 +83,11 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 	}
 
 	@Override
-	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void actualizarEstado(Personaje personaje) {};
 
 	@Override
 	public void capturarConsumible(Personaje personaje, Consumible consumible) {
 		consumible.aplicarAPersonaje(personaje);
 	}
-
-
-
 
 }

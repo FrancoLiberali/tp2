@@ -7,7 +7,6 @@ public interface EstadoActividad
 {
 	void aplicarKi(Personaje personaje, int cantidad);
 	void actualizarEstado(Personaje personaje);
-	void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i);
 	int getVelocidad();
 	int getPoderDePelea();
 	int getDistanciaDeAtaque();

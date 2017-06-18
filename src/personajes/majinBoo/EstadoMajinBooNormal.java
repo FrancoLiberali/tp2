@@ -27,7 +27,9 @@ public class EstadoMajinBooNormal extends EstadoTransformacion {
 	@Override
 	public void realizarAtaqueEspecial(Personaje victima, int porcetajeBonus)
 	{	
-		victima.setEstado(new EstadoInactivoConChocolate());
+		EstadoInactivoConChocolate chocolate = new EstadoInactivoConChocolate();
+		chocolate.setEstadoAnterior(victima.getEstado());
+		victima.setEstado(chocolate);
 	}
 }
 	

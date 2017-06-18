@@ -93,12 +93,12 @@ public class AlgoBall
 		jugador2.agregarPersonaje(cell);
 		jugador2.agregarPersonaje(freezer);
 	
-		tablero.agregarPersonaje(goku, new Posicion(GOKU_FIL,GOKU_COL));
-		tablero.agregarPersonaje(gohan, new Posicion(GOHAN_FIL,GOHAN_COL));
-		tablero.agregarPersonaje(piccolo, new Posicion(PICCOLO_FIL,PICCOLO_COL));
-		tablero.agregarPersonaje(majinBoo,  new Posicion(MAJIN_BOO_FIL,MAJIN_BOO_COL));
-		tablero.agregarPersonaje(cell, new Posicion(CELL_FIL,CELL_COL));
-		tablero.agregarPersonaje(freezer, new Posicion(FREEZER_FIL,FREEZER_COL));
+		tablero.agregarPosicionable(goku, new Posicion(GOKU_FIL,GOKU_COL));
+		tablero.agregarPosicionable(gohan, new Posicion(GOHAN_FIL,GOHAN_COL));
+		tablero.agregarPosicionable(piccolo, new Posicion(PICCOLO_FIL,PICCOLO_COL));
+		tablero.agregarPosicionable(majinBoo,  new Posicion(MAJIN_BOO_FIL,MAJIN_BOO_COL));
+		tablero.agregarPosicionable(cell, new Posicion(CELL_FIL,CELL_COL));
+		tablero.agregarPosicionable(freezer, new Posicion(FREEZER_FIL,FREEZER_COL));
 	}
 
 	public int getCantidadDeAtaquesRestantes()

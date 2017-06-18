@@ -1,8 +1,9 @@
 package consumibles;
 
+import static algoBall.ConstantesDelJuego.NUBE_VOLADORA_NOMBRE;
+
 import personajes.Personaje;
 import personajes.elementos.EstadoActividad;
-import static algoBall.ConstantesDelJuego.NUBE_VOLADORA_NOMBRE;
 
 public class NubeVoladora extends Consumible{
 	

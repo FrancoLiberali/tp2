@@ -9,10 +9,10 @@ import personajes.elementos.EstadoTransformacion;
 
 public class EstadoGokuBuffDanio extends EstadoTransformacion {
 
-	private EstadoTransformacion anterior; 
 	private int porcentajePlusDanio = PORCENTAJE_AUMENTO_DANIO_GOKU;
 		
 	public EstadoGokuBuffDanio(EstadoActividad anterior) {
+		this.anteriorEstado = anterior;
 		this.siguienteEstado = anterior.getEstadoSiguiente();
 		this.distanciaDeAtaque = anterior.getDistanciaDeAtaque();
 		this.velocidad = anterior.getVelocidad();
@@ -26,19 +26,19 @@ public class EstadoGokuBuffDanio extends EstadoTransformacion {
 		
 	public void setEstadoAnterior(EstadoTransformacion estado)
 	{
-		this.anterior = estado;
+		this.anteriorEstado = estado;
 	}
 
-	public EstadoTransformacion getEstadoAnterior()
+	public EstadoActividad getEstadoAnterior()
 	{
-		return this.anterior;
+		return this.anteriorEstado;
 	}
 	
 	@Override
 	public void actualizarEstado(Personaje goku)
 	{
 		if(goku.getPorcentajeSalud() > PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU){
-			goku.setEstado(this.getEstadoAnterior());
+			goku.setEstado(this.anteriorEstado);
 		}
 	}
 		

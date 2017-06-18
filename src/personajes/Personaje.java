@@ -1,6 +1,7 @@
 package personajes;
 
-import algoBall.ConstantesDelJuego;
+import static algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
+import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
 import algoBall.Equipo;
 import algoBall.Posicionable;
 import consumibles.Consumible;
@@ -140,11 +141,10 @@ public abstract class Personaje implements Posicionable
 		}
 				
 	}
-	
 
 	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){
 		if (poderDePeleaEnemigo < this.getPoderDePelea()){
-			danioARecibir = danioARecibir - (danioARecibir * ConstantesDelJuego.REDUCCION_DE_ATAQUE / 100);
+			danioARecibir = (int)(danioARecibir - (danioARecibir * (REDUCCION_DE_ATAQUE / 100.0f)));
 		}
 		this.salud.disminuir(danioARecibir);
 		
@@ -161,19 +161,13 @@ public abstract class Personaje implements Posicionable
 	public void reestablecer(){
 		/*deja todo listo para el siguiente turno*/
 		this.estadoTransformacionActual.actualizarEstado(this);
-		this.aumentarKi(ConstantesDelJuego.KI_POR_TURNO);
+		this.aumentarKi(KI_POR_TURNO);
 	}	
 	
 	private void actualizarMovimientosRestantes(int velocidadAnterior){
 		equipo.actualizarMovimientosRestantes(this, velocidadAnterior, this.getVelocidad());
 		
 	}
-
-	public void convertirAChocolate(){
-        EstadoActividad transformacionAChocolate = new EstadoInactivoConChocolate(); 
-        transformacionAChocolate.setSiguienteEstado(this.estadoTransformacionActual, 0);
-        this.estadoTransformacionActual = transformacionAChocolate;
-    }
 	
 	public EstadoActividad getEstado() {
 		return this.estadoTransformacionActual;
@@ -196,25 +190,6 @@ public abstract class Personaje implements Posicionable
 		return rutaImagen;
 	}
 
-	@Override
-	public boolean equals(Object otroPersonaje) 
-	{
-		if (this == otroPersonaje){
-				return true;
-		}
-		if (!(otroPersonaje instanceof Posicion)){
-				return false;
-		}
-		Personaje otroPsje = (Personaje)otroPersonaje;
-		return this.getNombre() == otroPsje.getNombre();
-	}
-
-	@Override
-	public int hashCode() 
-	{
-	    return 0;
-	}
-
 	public int mayorPorcentajeSaludDeCompanieros() {
 		return equipo.mayorPorcentajeSaludDeCompanierosDe(this);
 	}
@@ -233,4 +208,24 @@ public abstract class Personaje implements Posicionable
 	public boolean estaConvertidoAChocolate() {
 		return this.estadoTransformacionActual.getClass() == EstadoInactivoConChocolate.class;
 	}
+	
+	@Override
+	public boolean equals(Object otroPersonaje) 
+	{
+		if (this == otroPersonaje){
+				return true;
+		}
+		if (!(otroPersonaje instanceof Posicion)){
+				return false;
+		}
+		Personaje otroPsje = (Personaje)otroPersonaje;
+		return this.getNombre() == otroPsje.getNombre();
+	}
+
+	@Override
+	public int hashCode() 
+	{
+	    return 0;
+	}
+	
 }

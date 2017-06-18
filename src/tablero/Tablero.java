@@ -1,9 +1,7 @@
 package tablero;
 
-
-
+import algoBall.Posicionable;
 import exceptions.FueraDelTableroException;
-import personajes.Personaje;
 
 public class Tablero 
 {
@@ -18,8 +16,6 @@ public class Tablero
 	    for(int i = 0; i < dimension; i++)
             for(int j=0; j < dimension; j++)
                 tableroDeCasilleros[i][j] = new Casillero();
-
-	    
 	}
 	
 	public Casillero getCasillero(Posicion pos)
@@ -37,17 +33,16 @@ public class Tablero
 		return dimension;
 	}
 	
-	public void agregarPersonaje(Personaje personaje, Posicion pos)
+	public void agregarPosicionable(Posicionable personaje, Posicion posicion)
 	{
-		(this.getCasillero(pos)).ocupar();
-		pos.setTablero(this);
-		personaje.setPosicion(pos);
+		(this.getCasillero(posicion)).ocupar();
+		posicion.setTablero(this);
+		personaje.setPosicion(posicion);
 	}
 	
 	public void vaciarCasilleroEnPosicion (Posicion posicion){
 		this.getCasillero(posicion).vaciar();
 	}
-	
 	
 }
 

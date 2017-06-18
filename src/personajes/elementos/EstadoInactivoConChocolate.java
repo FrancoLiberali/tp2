@@ -11,8 +11,8 @@ import consumibles.Consumible;
 
 public class EstadoInactivoConChocolate implements EstadoActividad 
 {
-	private EstadoActividad estadoSiguiente;
 	private EstadoActividad estadoAnterior;
+	private EstadoActividad estadoSiguiente;
 	private String nombre = CHOCOLATE;
 	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(TURNOS_ESTUNEO_MAJIN_BOO);
 	
@@ -31,23 +31,23 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 		return cantTurnos;
 	}
 
-	public void setSiguienteEstado(EstadoActividad estadoTransformacionActual, int i) {
-		this.estadoSiguiente = estadoTransformacionActual;
+	public void setEstadoAnterior(EstadoActividad anterior) {
+		this.estadoAnterior = anterior;
 	}
 
 	@Override
 	public int getVelocidad() {
-		return 0;
+		return this.estadoAnterior.getVelocidad();
 	}
 
 	@Override
 	public int getPoderDePelea() {
-		return 0;
+		return this.estadoAnterior.getPoderDePelea();
 	}
 
 	@Override
 	public int getDistanciaDeAtaque() {
-		return 0;
+		return this.estadoAnterior.getDistanciaDeAtaque();
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	}
 
 	@Override
-	public EstadoActividad getEstadoSiguiente() {
+	public EstadoActividad getEstadoSiguiente(){
 		return this.estadoSiguiente;
 	}
 
@@ -93,6 +93,5 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public EstadoActividad getEstadoAnterior() {
 		return this.estadoAnterior;	
 	}
-
 
 }

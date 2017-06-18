@@ -16,6 +16,5 @@ public class SemillaDelErmitanio extends Consumible {
 	@Override
 	public void aplicarAPersonaje(Personaje personaje) {
 		personaje.regenerarSalud(this.plusSalud);
-	}	
-
+	}
 }
