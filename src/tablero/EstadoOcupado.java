@@ -1,5 +1,6 @@
 package tablero;
 
+import algoBall.Posicionable;
 import exceptions.CasilleroOcupadoException;
 
 public class EstadoOcupado implements EstadoCasillero{
@@ -18,4 +19,8 @@ public class EstadoOcupado implements EstadoCasillero{
 	{	
 		return new EstadoVacio();
 	}
+	
+	public void agregarConsumible(Posicionable consumible){}
+	
+	public void aplicarConsumible(Posicionable personaje){}
 }
