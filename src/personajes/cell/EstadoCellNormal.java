@@ -2,6 +2,7 @@ package personajes.cell;
 
 import static algoBall.ConstantesDelJuego.CELL_CANT_ABSORVER_VIDA_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.DISTANCIA_CELL_NORMAL;
+import static algoBall.ConstantesDelJuego.KI_CELL_PRIMERA_TRANF;
 import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 import static algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
 import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_NORMAL;
@@ -9,6 +10,7 @@ import static algoBall.ConstantesDelJuego.VELOCIDAD_CELL_NORMAL;
 import exceptions.NoCumpleCondicionesDeTransformacionException;
 import personajes.Cell;
 import personajes.Personaje;
+import personajes.cell.EstadoCellSemiPerfecto;
 import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
 
@@ -22,6 +24,7 @@ public class EstadoCellNormal extends EstadoTransformacion {
 			this.distanciaDeAtaque = DISTANCIA_CELL_NORMAL;
 			this.poderDePelea = PODER_CELL_NORMAL;
 			this.siguienteEstado = new EstadoCellSemiPerfecto();
+			this.kiParaTransformacion = new Ki(KI_CELL_PRIMERA_TRANF);
 		};
 		
 		@Override

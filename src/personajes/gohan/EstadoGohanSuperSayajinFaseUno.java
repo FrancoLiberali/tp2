@@ -1,20 +1,19 @@
 package personajes.gohan;
 
 import static algoBall.ConstantesDelJuego.DISTANCIA_GOHAN_PRIMERA_TRANSF;
+import static algoBall.ConstantesDelJuego.KI_SEGUNDA_TRANF_GOHAN;
 import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PODER_GOHAN_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.VELOCIDAD_GOHAN_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
+import static algoBall.ConstantesDelJuego.VELOCIDAD_GOHAN_PRIMERA_TRANSF;
 
 import exceptions.NoCumpleCondicionesDeTransformacionException;
-import exceptions.YaNoPuedeEvolucionarException;
 import personajes.Personaje;
 import personajes.elementos.EstadoTransformacion;
 import personajes.elementos.Ki;
 
 public class EstadoGohanSuperSayajinFaseUno extends EstadoTransformacion 
 {
-
 	private int porcentajeSaludMinimoParaSegundaTranf = PORCENTAJE_TOPE_VIDA_ATAQ_OCULTO_GOHAN;
 	
 	public EstadoGohanSuperSayajinFaseUno()
@@ -24,6 +23,7 @@ public class EstadoGohanSuperSayajinFaseUno extends EstadoTransformacion
 		this.distanciaDeAtaque = DISTANCIA_GOHAN_PRIMERA_TRANSF;
 		this.poderDePelea = PODER_GOHAN_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoGohanSuperSayajinFaseDos();
+		this.kiParaTransformacion = new Ki(KI_SEGUNDA_TRANF_GOHAN);
 	}
 	
 	@Override
