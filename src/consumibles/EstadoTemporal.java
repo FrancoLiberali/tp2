@@ -12,7 +12,9 @@ public abstract class EstadoTemporal extends EstadoTransformacion{
 	
 	public void setEstadoAnterior(EstadoTransformacion estado)
 	{
+		
 		this.anteriorEstado = estado;
+		
 	}
 	
 	@Override

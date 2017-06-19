@@ -176,11 +176,18 @@ public class ContenedorPrincipal extends BorderPane {
     }
     
     private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,PanelDeCaracteristicas panelCaracteristicas) {
+    	
+    	
+    	
+    	Label nombreDeEquipo = new Label (agrupacionAtacar.getNombre());
+    	 
+    	
         this.setBotonesDeMovimiento(agrupacionMover);
         Label label = new Label("Seleccionar personaje");
         VBox contenedorVertical = new VBox(label);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
+        contenedorVertical.getChildren().add(nombreDeEquipo);
         
         for (Personaje personaje : agrupacionMover){
         	ToggleButton tBoton = new ToggleButton(personaje.getNombre());

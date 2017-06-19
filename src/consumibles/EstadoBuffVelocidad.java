@@ -13,6 +13,7 @@ public class EstadoBuffVelocidad extends EstadoTemporal{
 	private ContadorDeTurnos turnos = new ContadorDeTurnos(NUBE_VOLADORA_TURNOS);
 	
 	public EstadoBuffVelocidad(EstadoActividad actual) {
+		this.rutaImagen = actual.getImagen();
 		if (actual.esTemporal()){
 			EstadoTemporal actualTemporal = (EstadoTemporal) actual;
 			this.siguienteEstado = actual;

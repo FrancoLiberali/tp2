@@ -13,6 +13,7 @@ public class EstadoBuffDanio extends EstadoTemporal
 	private int porcentajePlusDanio = ESFERA_DEL_DRAGON_PORCENTAJE_PLUS_DANIO;
 	
 	public EstadoBuffDanio(EstadoActividad actual) {
+		this.rutaImagen = actual.getImagen();
 		if (actual.esTemporal()){
 			EstadoTemporal actualTemporal = (EstadoTemporal) actual;
 			this.siguienteEstado = actual;

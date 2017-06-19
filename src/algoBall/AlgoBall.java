@@ -41,14 +41,16 @@ public class AlgoBall
 {
 	private Turno turnoActual;
 	private Tablero tablero;
+	private Jugador jugador1;
+	private Jugador jugador2; 
 	
 	public AlgoBall(String nombre1, String nombre2)
 	{	
 		List<Posicionable> consumibles = this.setConsumibles();
 		this.tablero = new Tablero(TAMANIO_TABLERO);
 		tablero.setConsumibles(consumibles);
-		Jugador jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
-		Jugador jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
+		this.jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
+		this.jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
 		iniciarPersonajes(jugador1, jugador2);
 		this.turnoActual = iniciarTurnos(jugador1, jugador2);
 	}
@@ -59,6 +61,14 @@ public class AlgoBall
 		consumibles.add(new NubeVoladora());
 		consumibles.add(new SemillaDelErmitanio());
 		return consumibles;
+	}
+	
+	public Jugador getJugador1(){
+		return this.jugador1;
+	}
+	
+	public Jugador getJugador2(){
+		return this.jugador1;
 	}
 	
 	public Turno iniciarTurnos(Jugador jugador1, Jugador jugador2){
