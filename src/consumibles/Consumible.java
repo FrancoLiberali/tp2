@@ -25,4 +25,6 @@ public abstract class Consumible implements Posicionable
 	}
 	
 	public abstract void aplicarAPersonaje(Personaje personaje);
+	
+	public abstract void aplicarAPersonajeConTemporalAnterior(Personaje personaje);
 }

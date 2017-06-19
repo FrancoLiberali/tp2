@@ -64,6 +64,7 @@ public class ConsumiblesUnitTest
 		int velocidad = goku.getVelocidad();
 		int velEsperada = velocidad * 2; 
 		goku.agarrarConsumible(nube);
+		assertEquals(goku.getVelocidad(), velEsperada);
 		
 		int danio = goku.getPoderDePelea();
 		int esperado = (int) (danio + danio * 0.25); //esfera +25% danio
@@ -75,7 +76,7 @@ public class ConsumiblesUnitTest
 	
 	
 	@Test
-	public void personajeAgarraDosNubesVOladorasSeCuatriplicaLaVelocidad()
+	public void personajeAgarraDosNubesVoladorasSeCuatriplicaLaVelocidad()
 	{
 		Consumible nube = new NubeVoladora();
 		Personaje goku = new Goku();
@@ -104,6 +105,36 @@ public class ConsumiblesUnitTest
 		//a partir de este se termina el efecto.
 		goku.actualizarEstado();
 	
+		assertEquals(goku.getVelocidad(), velocidad);
+	}
+	
+	@Test
+	public void personajeAgarrarDosConsumiblesTerminaElEfectoPorSeparado()
+	{
+		Consumible nube = new NubeVoladora();
+		Consumible bola = new EsferaDelDragon();
+		Personaje goku = new Goku();
+		
+		int velocidad = goku.getVelocidad();
+		goku.agarrarConsumible(nube);
+		int velEsperada = velocidad * 2; 
+		
+		assertEquals(goku.getVelocidad(), velEsperada);
+		//paso turnos
+		goku.actualizarEstado();
+		assertEquals(goku.getVelocidad(), velEsperada);
+		int danio = goku.getPoderDePelea();
+		goku.agarrarConsumible(bola);
+		int esperado = (int) (danio + danio * 0.25); //esfera +25% danio
+		
+		assertEquals(goku.getPoderDePelea(), esperado);
+		assertEquals(goku.getVelocidad(), velEsperada);
+		goku.actualizarEstado();	
+		assertEquals(goku.getPoderDePelea(), esperado);
+		assertEquals(goku.getVelocidad(), velEsperada);
+		//a partir de este se termina el efecto.
+		goku.actualizarEstado();
+		assertEquals(goku.getPoderDePelea(), esperado);
 		assertEquals(goku.getVelocidad(), velocidad);
 	}
 	

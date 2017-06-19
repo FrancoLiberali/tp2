@@ -18,4 +18,5 @@ public interface EstadoActividad
 	EstadoActividad getEstadoAnterior();
 	void capturarConsumible(Personaje personaje, Consumible consumible);
 	String getImagen();
+	boolean esTemporal();
 }

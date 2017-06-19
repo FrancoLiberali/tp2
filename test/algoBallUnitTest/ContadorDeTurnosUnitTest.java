@@ -35,6 +35,14 @@ public class ContadorDeTurnosUnitTest
 	}
 	
 	@Test
+	public void reducirLaCantidadDeVecesDeLosTurnosInicialesVerificarTurnosRestantesEsCero(){
+		ContadorDeTurnos cont = new ContadorDeTurnos(2);
+		cont.reducir();
+		cont.reducir();
+		assertTrue(cont.estaEnCero());
+	}
+	
+	@Test
 	public void reestablecerTurnosVerificarCantTurnosRestantesEsElInicial(){
 		int turnosIniciales = 10;
 		ContadorDeTurnos cont = new ContadorDeTurnos(turnosIniciales);
