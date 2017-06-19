@@ -12,7 +12,7 @@ public class AtaqueEspecialUnitTest
 	public void getAtaqueLanzaKiInsuficienteSiElKiActualEsMenorAlNecesario(){
 		int kiNescesario = 10;
 		int porcentaje = 20;
-		AtaqueEspecial golpe = new AtaqueEspecial("Cabezaso Tucumano",kiNescesario);
+		AtaqueEspecial golpe = new AtaqueEspecial("Cabezaso Tucumano",kiNescesario,"");
 		golpe.setPorcentaje(porcentaje);
 		Ki kiActual = new Ki(9);
 		golpe.getPorcentaje(kiActual);

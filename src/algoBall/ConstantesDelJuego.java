@@ -31,7 +31,7 @@ public final class ConstantesDelJuego {
     //Goku segunda transformacion.
     public static final int KI_SEGUNDA_TRANF_GOKU = 20;
     public static final String NOMBRE_GOKU_SEGUNDA_TRANF = "Super Sayajin";
-    public static final int PODER_GOKU_SEGUNDA_TRANF = 2;
+    public static final int PODER_GOKU_SEGUNDA_TRANF = 60;
     public static final int DISTANCIA_GOKU_SEGUNDA_TRANF = 4;
     public static final int VELOCIDAD_GOKU_SEGUNDA_TRANF = 5;
     //Otros
