@@ -31,4 +31,8 @@ public class Casillero {
 	public void agregarConsumible(Posicionable consumible){
 		this.estado.agregarConsumible(consumible);
 	}
+	
+	public Posicionable getConsumible(){
+		return this.estado.getConsumible();
+	}
 }

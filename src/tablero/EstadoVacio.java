@@ -35,4 +35,8 @@ public class EstadoVacio implements EstadoCasillero{
 			consumible = null;
 		}
 	}
+	
+	public Posicionable getConsumible(){
+		return consumible;
+	}
 }

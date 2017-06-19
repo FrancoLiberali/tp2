@@ -7,8 +7,10 @@ import personajes.elementos.EstadoActividad;
 
 public class EsferaDelDragon extends Consumible 
 {
+	
 	public EsferaDelDragon(){
 		this.nombre = ESFERA_DEL_DRAGON_NOMBRE;
+		this.rutaImagen = "file:src/vista/imagenes/esfera.png";
 	}
 
 	@Override

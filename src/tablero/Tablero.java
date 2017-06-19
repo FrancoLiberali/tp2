@@ -1,16 +1,19 @@
 package tablero;
 
+import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import algoBall.Posicionable;
+import consumibles.Consumible;
 import exceptions.FueraDelTableroException;
 
 public class Tablero 
 {
 	private int dimension;
 	private Casillero tableroDeCasilleros[][];
-	private List<Posicionable> consumibles;
+	private List<Posicionable> posiblesConsumibles;
+	Hashtable<Posicion,Consumible> consumiblesActuales = new Hashtable<Posicion,Consumible>();
 	
 	public Tablero(int dimension)
 	{
@@ -23,23 +26,26 @@ public class Tablero
 	}
 	
 	public void setConsumibles(List<Posicionable> consumibles){
-		this.consumibles = consumibles;
+		this.posiblesConsumibles = consumibles;
 	}
 	
 	public void aparecerConsumible(){
 		if (this.debeAparecerConsumibleEsteTurno()){
-			int randomNum = ThreadLocalRandom.current().nextInt(0, consumibles.size() + 1);
-			Posicionable consumible = consumibles.get(randomNum);
-			int randomFila = ThreadLocalRandom.current().nextInt(0, dimension + 1);
-			int randomColumna = ThreadLocalRandom.current().nextInt(0, dimension + 1);
-			tableroDeCasilleros[randomFila][randomColumna].agregarConsumible(consumible);
+			int randomNum = ThreadLocalRandom.current().nextInt(0, posiblesConsumibles.size());
+			Posicionable consumible = posiblesConsumibles.get(randomNum);
+			int randomFila = ThreadLocalRandom.current().nextInt(0, dimension);
+			int randomColumna = ThreadLocalRandom.current().nextInt(0, dimension);
+			if (tableroDeCasilleros[randomFila][randomColumna].estaVacio()){
+				tableroDeCasilleros[randomFila][randomColumna].agregarConsumible(consumible);
+				consumiblesActuales.put(new Posicion(randomFila,randomColumna),(Consumible)consumible);
+			}
 		}
 		
 	}
 	
 	private boolean debeAparecerConsumibleEsteTurno(){
-		int randomNum = ThreadLocalRandom.current().nextInt(0, 5 + 1);
-		return (randomNum==0);//25% de posibilidad de que deba aparecer
+		int randomNum = ThreadLocalRandom.current().nextInt(0, 10);
+		return (randomNum==0);//10% de posibilidad de que deba aparecer
 	}
 	public Casillero getCasillero(Posicion pos)
 	{
@@ -65,6 +71,20 @@ public class Tablero
 	
 	public void vaciarCasilleroEnPosicion (Posicion posicion){
 		this.getCasillero(posicion).vaciar();
+	}
+	
+	public Hashtable<Posicion,Consumible> getPosicionesYConsumibles(){
+		Hashtable<Posicion,Consumible> consumibles= new Hashtable<Posicion,Consumible>();
+		for(int i = 0; i < dimension; i++){
+            for(int j=0; j < dimension; j++){
+                Posicionable consumible = tableroDeCasilleros[i][j].getConsumible();
+                if (consumible!=null){
+                	consumibles.put(new Posicion(i,j), (Consumible) consumible);
+                }
+            }
+		}
+		return consumibles;
+		
 	}
 	
 }

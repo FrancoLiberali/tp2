@@ -8,4 +8,5 @@ public interface EstadoCasillero {
 	EstadoCasillero vaciar();
 	void agregarConsumible(Posicionable consumible);
 	void aplicarConsumible(Posicionable personaje);
+	Posicionable getConsumible();
 }

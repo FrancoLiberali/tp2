@@ -11,6 +11,7 @@ public class SemillaDelErmitanio extends Consumible {
 
 	public SemillaDelErmitanio(){
 		this.nombre = SEMILLA_HERMITANEO_NOMBRE;
+		this.rutaImagen = "file:src/vista/imagenes/semilla.png";
 	};
 
 	@Override

@@ -23,4 +23,8 @@ public class EstadoOcupado implements EstadoCasillero{
 	public void agregarConsumible(Posicionable consumible){}
 	
 	public void aplicarConsumible(Posicionable personaje){}
+	
+	public Posicionable getConsumible(){
+		return null;
+	}
 }

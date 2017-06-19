@@ -187,5 +187,9 @@ public class AlgoBall
 	public Personaje getMajinBoo(){
 		return this.getPersonaje(ConstantesDelJuego.MAJIN_BOO_NOMBRE);
 	}
+	
+	public Tablero getTablero(){
+		return tablero;
+	}
 
 }

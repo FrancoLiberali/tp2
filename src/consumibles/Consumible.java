@@ -8,6 +8,7 @@ public abstract class Consumible implements Posicionable
 {
 	protected String nombre;
 	protected Posicion posicion;
+	protected String rutaImagen;
 	
 	public Posicion getPosicion()
 	{
@@ -17,6 +18,10 @@ public abstract class Consumible implements Posicionable
 	public void setPosicion(Posicion posicion)
 	{
 		this.posicion = posicion;
+	}
+	
+	public String getImagen(){
+		return rutaImagen;
 	}
 	
 	public abstract void aplicarAPersonaje(Personaje personaje);

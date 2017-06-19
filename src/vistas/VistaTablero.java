@@ -1,26 +1,34 @@
 package vistas;
 
+import java.util.Hashtable;
+
 import algoBall.AlgoBall;
 import algoBall.Equipo;
+import consumibles.Consumible;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import personajes.Personaje;
 import tablero.Posicion;
+import tablero.Tablero;
 
 public class VistaTablero {
 	private Image suelo = new Image("file:src/vista/imagenes/texturaSuelo.jpg");
 	private int dimension;
-    Canvas canvas;
+    private Canvas canvas;
     private Equipo equipo1;
     private Equipo equipo2;
+    private Tablero tablero;
+    private Hashtable<Posicion,Consumible> consumibles;
 
     public VistaTablero(AlgoBall juego, Canvas canvas, Equipo equipo1, Equipo equipo2) {
         this.dimension = juego.getDimensionTablero();
+        this.tablero = juego.getTablero();
         this.canvas = canvas;
         this.equipo1=equipo1;
         this.equipo2=equipo2;
+        this.consumibles =   tablero.getPosicionesYConsumibles();
     }
     
     public Canvas getCanvas(){
@@ -31,7 +39,8 @@ public class VistaTablero {
     	this.clean();
     	this.dibujarSuelo();
     	this.dibujarLineas();
-        this.dibujarFormas();
+        this.dibujarPersonajes();
+        this.dibujarConsumibles();
     }
     private void dibujarSuelo(){
     	canvas.getGraphicsContext2D().drawImage(suelo,0, 0, canvas.getWidth(), canvas.getHeight());
@@ -55,7 +64,7 @@ public class VistaTablero {
             gc.stroke();
         }
     }
-    private void dibujarFormas() {
+    private void dibujarPersonajes() {
         canvas.getGraphicsContext2D().setStroke(Color.GREEN);
         canvas.getGraphicsContext2D().setLineWidth(5);
         double tamanioCasillero = canvas.getWidth() / dimension;
@@ -64,7 +73,7 @@ public class VistaTablero {
         	Posicion posicion = personaje.getPosicion();
         	Image imagen = new Image(personaje.getImagen());
         	canvas.getGraphicsContext2D().strokeRect(posicion.getColumna() * tamanioCasillero +1, posicion.getFila() * tamanioCasillero +1, tamanioCasillero-2, tamanioCasillero-2);
-        	canvas.getGraphicsContext2D().drawImage(imagen,posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, 75, 75);
+        	canvas.getGraphicsContext2D().drawImage(imagen,posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, tamanioCasillero*2 /3, tamanioCasillero*2 /3);
         }
         
         canvas.getGraphicsContext2D().setStroke(Color.RED);
@@ -72,9 +81,19 @@ public class VistaTablero {
         	Posicion posicion = personaje.getPosicion();
         	Image imagen = new Image(personaje.getImagen());
         	canvas.getGraphicsContext2D().strokeRect(posicion.getColumna() * tamanioCasillero +1, posicion.getFila() * tamanioCasillero +1, tamanioCasillero-2, tamanioCasillero-2);
-        	canvas.getGraphicsContext2D().drawImage(imagen, posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, 75, 75);
+        	canvas.getGraphicsContext2D().drawImage(imagen, posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, tamanioCasillero *2 /3, tamanioCasillero *2 /3);
         }
         
+    }
+    
+    public void dibujarConsumibles(){
+    	consumibles = tablero.getPosicionesYConsumibles();
+    	double tamanioCasillero = canvas.getWidth() / dimension;
+    	for (Posicion posicion : consumibles.keySet()){
+			Consumible consumible = consumibles.get(posicion);
+			Image imagen = new Image(consumible.getImagen());
+			canvas.getGraphicsContext2D().drawImage(imagen, posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, tamanioCasillero *2 /3, tamanioCasillero *2 /3);
+		}
     }
 
     public void clean() {
