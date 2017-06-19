@@ -7,6 +7,7 @@ import static algoBall.ConstantesDelJuego.GOKU_FIL;
 import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
 import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
+import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -14,14 +15,16 @@ import org.junit.Test;
 import algoBall.ConstantesDelJuego;
 import algoBall.Equipo;
 import algoBall.Jugador;
+import consumibles.Consumible;
+import consumibles.EsferaDelDragon;
+import consumibles.NubeVoladora;
+import consumibles.SemillaDelErmitanio;
 import exceptions.CasilleroOcupadoException;
 import personajes.Cell;
 import personajes.Gohan;
 import personajes.Goku;
 import personajes.Personaje;
-import personajes.elementos.EstadoTransformacion;
-import personajes.goku.EstadoGokuKaioKen;
-import personajes.goku.EstadoGokuNormal;
+import tablero.Casillero;
 import tablero.Posicion;
 import tablero.Tablero;
 
@@ -132,23 +135,104 @@ public class AlgoBallIntegrationTest {
 		assertEquals(goku.getPosicion(), posicionGokuInicial);
 	}
 	
-	
-	public void seUbicaUnPersonajeSeLoTransformaVerificarQueSePuedaTransformar(){
+	@Test
+	public void ConsumibleDesapareceAlIrUnPersonajeASuCasillero(){
 		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
-		EstadoTransformacion estadoInicial = new EstadoGokuNormal();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible esfera = new EsferaDelDragon();
+		Posicion posicionEsfera = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionEsfera);
+		cas.agregarConsumible(esfera);
+		assertEquals(cas.getConsumible(),esfera);
 		
-		Posicion posicionGokuInicial = new Posicion(1,1);
-		tablero.agregarPosicionable(goku, posicionGokuInicial);
-
-		assertEquals(goku.getKiCantidad(), 0);
-		
-		goku.transformar();
-		assertEquals(goku.getEstado().getNombre(), estadoInicial.getNombre());
-		
-		EstadoTransformacion estadoTransfUno = new EstadoGokuKaioKen();
-		assertEquals(goku.getEstado().getNombre(), estadoTransfUno.getNombre());
-
+		equipo.moverDerecha(goku);
+		assertEquals(cas.getConsumible(),null);
 	}
+	
+	@Test
+	public void EsferaDelDragonAumenta25PorCientoDeDanioAlIrUnPersonajeASuCasillero(){
+		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
+		
+		Personaje goku = new Goku();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible esfera = new EsferaDelDragon();
+		Posicion posicionEsfera = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionEsfera);
+		cas.agregarConsumible(esfera);
+		assertEquals(cas.getConsumible(),esfera);
+		int poderAnt = goku.getPoderDePelea();
+		int poderEsp = poderAnt + poderAnt * 25 /100;
+		equipo.moverDerecha(goku);
+		assertEquals(goku.getPoderDePelea(),poderEsp);
+	}
+	
+	@Test
+	public void NubeVoladoraDuplicaLaVelocidadAlIrUnPersonajeASuCasillero(){
+		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
+		
+		Personaje goku = new Goku();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible nube = new NubeVoladora();
+		Posicion posicionNube = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionNube);
+		cas.agregarConsumible(nube);
+		assertEquals(cas.getConsumible(),nube);
+		int velAnt = goku.getVelocidad();
+		int velEsp = velAnt * 2;
+		equipo.moverDerecha(goku);
+		assertEquals(goku.getVelocidad(),velEsp);
+	}
+	
+	@Test
+	public void SemillaDelErmitanioAumenta100DeVidaAlIrUnPersonajeDaniado100OMasASuCasillero(){
+		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
+		
+		Personaje goku = new Goku();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible semilla = new SemillaDelErmitanio();
+		Posicion posicionSemilla = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionSemilla);
+		cas.agregarConsumible(semilla);
+		assertEquals(cas.getConsumible(),semilla);
+		goku.reducirSalud(200);
+		int vidaEsp = PUNTOS_VIDA_GOKU -200 +100;
+		equipo.moverDerecha(goku);
+		assertEquals(goku.getSalud(),vidaEsp);
+	}
+	
+	@Test
+	public void SemillaDelErmitanioLlevaLaVidaAlMaximoAlIrUnPersonajeDaniadoMenosDe100ASuCasillero(){
+		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
+		
+		Personaje goku = new Goku();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible semilla = new SemillaDelErmitanio();
+		Posicion posicionSemilla = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionSemilla);
+		cas.agregarConsumible(semilla);
+		assertEquals(cas.getConsumible(),semilla);
+		goku.reducirSalud(99);
+		int vidaEsp = PUNTOS_VIDA_GOKU;
+		equipo.moverDerecha(goku);
+		assertEquals(goku.getSalud(),vidaEsp);
+	}
+	
+	
 }

@@ -19,8 +19,9 @@ public class Casillero {
 	
 	public void ocupar(Posicionable personaje)
 	{
-		this.estado = this.estado.ocupar();
 		this.estado.aplicarConsumible(personaje);
+		this.estado = this.estado.ocupar();
+		
 	}
 	
 	public void vaciar()
