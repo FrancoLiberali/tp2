@@ -42,19 +42,42 @@ public class AlgoBallIntegrationTest {
 		Equipo enemigos = jugador2.getEquipo();
 		
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
-		assertEquals(goku.getPosicion().getColumna(),0);
+		assertEquals(goku.getPosicion().getColumna(),5);
 		assertEquals(goku.getPosicion().getFila(),0);
 		
 		guerrerosZ.moverAbajo(goku);
-		assertEquals(goku.getPosicion().getColumna(),0);
+		assertEquals(goku.getPosicion().getColumna(),5);
 		assertEquals(goku.getPosicion().getFila(),1);
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
 		
 		guerrerosZ.moverDerecha(goku);
-		assertEquals(goku.getPosicion().getColumna(),1);
+		assertEquals(goku.getPosicion().getColumna(),6);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
+		
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
+		
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
+		
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
+		
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
+		
+		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
+		guerrerosZ.moverAbajo(goku);		
+		guerrerosZ.moverAbajo(goku);
 		
 		goku.realizarAtaqueBasico(cell);
 		
@@ -64,7 +87,7 @@ public class AlgoBallIntegrationTest {
 
 		assertEquals(enemigos.getCantidadDeAtaquesRestantes(),1);
 		enemigos.moverAbajo(cell);
-		assertEquals(cell.getPosicion().getColumna(),0);
-		assertEquals(cell.getPosicion().getFila(),4);
+		assertEquals(cell.getPosicion().getColumna(),5);
+		assertEquals(cell.getPosicion().getFila(),14);
 	}
 }
