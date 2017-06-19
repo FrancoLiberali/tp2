@@ -25,6 +25,7 @@ public class Aplicacion extends Application {
         Reproductor reproductor = new Reproductor();
         reproductor.reproducionAutomitica(true);
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen, reproductor);
+        
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
         contenedorBienvenidos.requestFocus();
 

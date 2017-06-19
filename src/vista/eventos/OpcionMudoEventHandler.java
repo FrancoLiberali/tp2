@@ -8,12 +8,10 @@ import vistas.Reproductor;
 public class OpcionMudoEventHandler implements EventHandler<ActionEvent> {
 	
 	 Reproductor reproductor;
-	 MenuItem opcionMudo;
 	 
 	 
-	 public OpcionMudoEventHandler(Reproductor reproductor, MenuItem opcionMudo) {
+	 public OpcionMudoEventHandler(Reproductor reproductor) {
 	        this.reproductor = reproductor;
-	        this.opcionMudo = opcionMudo;
 	    }
 
 	    @Override

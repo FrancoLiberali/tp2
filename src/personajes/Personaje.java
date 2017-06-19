@@ -4,6 +4,7 @@ package personajes;
 import static algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
 import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
 
+import java.io.File;
 import java.util.Hashtable;
 
 import algoBall.Equipo;
@@ -13,6 +14,7 @@ import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeInexistenteException;
+import javafx.scene.media.AudioClip;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
 import personajes.elementos.EstadoInactivoConChocolate;
@@ -94,8 +96,12 @@ public abstract class Personaje implements Posicionable
 	
 	public void transformar()
 	{
+		File archivo = new File("src/vista/musica/auraOn.mp3");
+		AudioClip sonidoAtaque = new AudioClip(archivo.toURI().toString());
+		
 		int velocidadAnterior = this.getVelocidad();
 		this.estadoTransformacionActual.transformar(this, this.ki);
+		sonidoAtaque.play();
 		this.actualizarMovimientosRestantes(velocidadAnterior);
 		
 	}
@@ -120,8 +126,8 @@ public abstract class Personaje implements Posicionable
 	}
 	public void realizarAtaqueBasico(Personaje victima){
 		this.verificarAtaque(victima);
-		this.equipo.restarAtaqueRestates();
 		this.estadoTransformacionActual.realizarAtaqueBasico(victima);
+		this.equipo.restarAtaqueRestates();
 		
 		
 	}

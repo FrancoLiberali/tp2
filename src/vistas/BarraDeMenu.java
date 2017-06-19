@@ -35,7 +35,7 @@ public class BarraDeMenu extends MenuBar {
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
         
-        OpcionMudoEventHandler opcionMudoHandler = new OpcionMudoEventHandler(reproductor, opcionMudo);
+        OpcionMudoEventHandler opcionMudoHandler = new OpcionMudoEventHandler(reproductor);
         opcionMudo.setOnAction(opcionMudoHandler);
 
         opcionPantallaCompleta.setDisable(true);
