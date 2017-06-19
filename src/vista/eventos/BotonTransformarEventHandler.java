@@ -2,6 +2,7 @@ package vista.eventos;
 
 import algoBall.Equipo;
 import exceptions.KiInsuficienteException;
+import exceptions.NoCumpleCondicionesDeTransformacionException;
 import exceptions.YaNoPuedeEvolucionarException;
 import javafx.event.ActionEvent;
 import vistas.Consola;
@@ -31,7 +32,9 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 		catch (KiInsuficienteException error){
 			this.consola.agregarInformacion("El ki del personaje no es suficiente para evolucionar");
 		}
-		
+		catch (NoCumpleCondicionesDeTransformacionException error){
+			this.consola.agregarInformacion("Este personaje aun no cumple todas las condiciones para tranformarse");
+		}
 	}
 	
 	
