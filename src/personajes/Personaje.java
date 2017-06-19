@@ -128,12 +128,24 @@ public abstract class Personaje implements Posicionable
 
 	public void realizarAtaqueEspecial(Personaje victima)
 	{
+<<<<<<< HEAD
 		
 		this.verificarAtaque(victima);
 		this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 				this.ataqueEspecial.getPorcentaje(this.ki));
 		this.equipo.restarAtaqueRestates();
 		
+=======
+		try{
+			this.verificarAtaque(victima);
+			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
+					this.ataqueEspecial.getPorcentaje(this.ki));
+			this.equipo.restarAtaqueRestates();
+			this.ataqueEspecial.ReproducirAtaque();
+		}
+		catch( KiInsuficienteException error){
+		}
+>>>>>>> graficos
 				
 	}
 
@@ -182,7 +194,7 @@ public abstract class Personaje implements Posicionable
 	}
 	
 	public String getImagen(){
-		return rutaImagen;
+		return this.estadoTransformacionActual.getImagen();
 	}
 
 	public int mayorPorcentajeSaludDeCompanieros() {

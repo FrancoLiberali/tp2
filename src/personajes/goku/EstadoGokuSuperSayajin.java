@@ -20,6 +20,7 @@ public class EstadoGokuSuperSayajin extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_GOKU_SEGUNDA_TRANF;
 		this.poderDePelea = PODER_GOKU_SEGUNDA_TRANF;
 		this.siguienteEstado = null;
+		this.rutaImagen = "file:src/vista/imagenes/gokuSuperSaiyan.png";
 	}
 	
 	@Override

@@ -20,6 +20,7 @@ public class EstadoGokuNormal extends EstadoTransformacion {
 		this.poderDePelea = PODER_GOKU_NORMAL;
 		this.siguienteEstado = new EstadoGokuKaioKen();
 		this.kiParaTransformacion = new Ki(KI_GOKU_PRIMERA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/gokuNormal.png";
 	}
 		
 	@Override

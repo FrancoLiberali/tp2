@@ -21,6 +21,7 @@ public class EstadoMajinBooOriginal extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_MAJIN_BOO_SEGUNDA_TRANSF;
 		this.poderDePelea = PODER_MAJIN_BOO_SEGUNDA_TRANSF;
 		this.siguienteEstado = null;	
+		this.rutaImagen = "file:src/vista/imagenes/booOriginal.png";
 	}
 	
 	@Override

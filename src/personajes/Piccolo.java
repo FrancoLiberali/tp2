@@ -19,7 +19,7 @@ public class Piccolo extends Personaje
 		this.nombre = PICCOLO_NOMBRE;
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_PICCOLO);
-		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_PICCOLO, KI_ATQ_ESPECIAL_PICCOLO , "src/vista/musica/makankosappo.mp3");
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = new EstadoPiccoloNormal();
 		//this.movimientosRestantes = estadoTransformacionActual.getVelocidad();

@@ -19,7 +19,7 @@ public class Freezer extends Personaje
 		this.nombre = FREEZER_NOMBRE;
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_FREEZER);
-		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_FREEZER, KI_ATQ_ESPECIAL_FREEZER);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_FREEZER, KI_ATQ_ESPECIAL_FREEZER,"src/vista/musica/freezabeam.mp3");
 		this.estadoTransformacionActual = new EstadoFreezerNormal();
 		
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_FREEZER);

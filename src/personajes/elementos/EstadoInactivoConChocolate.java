@@ -15,6 +15,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	private EstadoActividad estadoSiguiente;
 	private String nombre = CHOCOLATE;
 	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(TURNOS_ESTUNEO_MAJIN_BOO);
+	String rutaImagen = "file:src/vista/imagenes/estadoChocolate.png";
 	
 	public void aplicarKi(Personaje personaje, int cantidad) {}
 
@@ -92,6 +93,12 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	@Override
 	public EstadoActividad getEstadoAnterior() {
 		return this.estadoAnterior;	
+	}
+
+	@Override
+	public String getImagen() {
+		
+		return this.rutaImagen;
 	}
 
 }

@@ -19,6 +19,7 @@ public class EstadoGohanNormal extends EstadoTransformacion {
 		this.poderDePelea = PODER_GOHAN_NORMAL;
 		this.siguienteEstado = new EstadoGohanSuperSayajinFaseUno();
 		this.kiParaTransformacion = new Ki(KI_GOHAN_PRIMERA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/gohanNormal.png";
 	}
 	
 }

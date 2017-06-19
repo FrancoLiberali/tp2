@@ -25,6 +25,7 @@ public class EstadoCellNormal extends EstadoTransformacion {
 			this.poderDePelea = PODER_CELL_NORMAL;
 			this.siguienteEstado = new EstadoCellSemiPerfecto();
 			this.kiParaTransformacion = new Ki(KI_CELL_PRIMERA_TRANF);
+			this.rutaImagen = "file:src/vista/imagenes/cellNormal.png";
 		};
 		
 		@Override

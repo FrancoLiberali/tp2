@@ -22,6 +22,7 @@ public class EstadoGokuKaioKen extends EstadoTransformacion {
 		this.poderDePelea = PODER_GOKU_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoGokuSuperSayajin();
 		this.kiParaTransformacion = new Ki(KI_SEGUNDA_TRANF_GOKU);
+		this.rutaImagen = "file:src/vista/imagenes/kioken.png";
 	}
 	
 	@Override

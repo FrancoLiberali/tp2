@@ -21,7 +21,7 @@ public class Cell extends Personaje
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_CELL);
 		this.estadoTransformacionActual = new EstadoCellNormal();
-		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_CELL, KI_ATQ_ESPECIAL_CELL);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_CELL, KI_ATQ_ESPECIAL_CELL,"src/vista/musica/absorber.mp3");
 		this.rutaImagen = "file:src/vista/imagenes/cell.png";
 		
 	}

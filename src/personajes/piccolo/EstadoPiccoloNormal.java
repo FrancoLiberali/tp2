@@ -19,5 +19,6 @@ public class EstadoPiccoloNormal extends EstadoTransformacion {
 		this.poderDePelea = PODER_PICCOLO_NORMAL;
 		this.siguienteEstado = new EstadoPiccoloFortalecido();
 		this.kiParaTransformacion = new Ki(KI_PICCOLO_PRIMERA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/piccoloNormal.png";
 	}
 }

@@ -21,6 +21,7 @@ public class EstadoMajinBooMalo extends EstadoTransformacion{
 		this.poderDePelea = PODER_MAJIN_BOO_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoMajinBooOriginal();
 		this.kiParaTransformacion = new Ki(KI_MAJIN_BOO_SEGUNDA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/booMalo.png";
 	}
 	
 	@Override
