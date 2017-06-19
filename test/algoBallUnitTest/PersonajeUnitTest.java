@@ -215,7 +215,6 @@ public class PersonajeUnitTest
 		tablero.agregarPosicionable(piccolo, posicionInicial);
 		guerrerosZ.moverDerecha(piccolo);
 		guerrerosZ.moverDerecha(piccolo);
-		Posicion posAnt = piccolo.getPosicion();
 		/* se alcanza limite de movimientos*/
 		guerrerosZ.moverDerecha(piccolo);
 	}

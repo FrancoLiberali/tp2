@@ -11,7 +11,6 @@ import algoBall.Posicionable;
 import consumibles.Consumible;
 import exceptions.FueraDeRangoException;
 import exceptions.IntentandoAtacarAUnCompanieroException;
-import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeInexistenteException;
 import personajes.elementos.AtaqueEspecial;

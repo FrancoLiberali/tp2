@@ -34,7 +34,7 @@ public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
 			this.consola.agregarInformacion("Ki insuficiente");
 		}
         catch(PersonajeEnEstadoChocolate error){
-        	this.consola.agregarInformacion("Estás convertido en Chocolate :(");
+        	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
         }
         catch(PersonajeInexistenteException error){
         	this.consola.agregarInformacion("Ese personaje esta muerto x(");

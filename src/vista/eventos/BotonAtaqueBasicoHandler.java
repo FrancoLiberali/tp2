@@ -8,7 +8,6 @@ import java.io.File;
 
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeEnEstadoChocolate;
-import exceptions.PersonajeInactivoNoPuedeAtacarException;
 import exceptions.PersonajeInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.scene.media.AudioClip;
@@ -48,7 +47,7 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
         	this.consola.agregarInformacion("Ese personaje esta muerto x(");
         }
         catch(PersonajeEnEstadoChocolate error){
-        	this.consola.agregarInformacion("Estás convertido en Chocolate :(");
+        	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
         }
 	}
 }
