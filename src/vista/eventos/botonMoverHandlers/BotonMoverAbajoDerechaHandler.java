@@ -1,22 +1,30 @@
 package vista.eventos.botonMoverHandlers;
 import algoBall.Equipo;
+import exceptions.NoQuedanMovimientosException;
 import javafx.event.ActionEvent;
 import vista.eventos.BotonModificableHandler;
+import vistas.Consola;
 import vistas.VistaTablero;
 
 public class BotonMoverAbajoDerechaHandler extends BotonModificableHandler {
 	
 	private Equipo equipo;
 	private final VistaTablero vista;
+	private Consola consola;
 	
-	public BotonMoverAbajoDerechaHandler(Equipo equipo, VistaTablero vista) {
+	public BotonMoverAbajoDerechaHandler(Equipo equipo, VistaTablero vista,Consola consola) {
 		this.equipo = equipo;
 		this.vista = vista;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.equipo.moverAbajoDerecha(personajeModificador);
-        this.vista.update();
+       try{
+    	   this.equipo.moverAbajoDerecha(personajeModificador);
+    	   this.vista.update();
+       }
+       catch(NoQuedanMovimientosException error){
+    	   this.consola.agregarInformacion("No te quedan movimientos!");
+       }
     }
 }
