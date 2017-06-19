@@ -4,6 +4,7 @@ import static algoBall.ConstantesDelJuego.CELL_COL;
 import static algoBall.ConstantesDelJuego.CELL_FIL;
 import static algoBall.ConstantesDelJuego.GOKU_COL;
 import static algoBall.ConstantesDelJuego.GOKU_FIL;
+import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
 import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
 import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
 import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
@@ -234,5 +235,24 @@ public class AlgoBallIntegrationTest {
 		assertEquals(goku.getSalud(),vidaEsp);
 	}
 	
+	@Test
+	public void SePuedeTranformarLuegoDeConsumirUnConsumible(){
+		Tablero tablero = new Tablero(10);
+		Equipo equipo = new Equipo("buenos");
+		
+		Personaje goku = new Goku();
+		Posicion posicionGoku = new Posicion(1,1);
+		tablero.agregarPosicionable(goku, posicionGoku);
+		equipo.agregarPersonaje(goku);
+		Consumible nube = new NubeVoladora();
+		Posicion posicionNube = posicionGoku.darDerecha();
+		Casillero cas = tablero.getCasillero(posicionNube);
+		cas.agregarConsumible(nube);
+		assertEquals(cas.getConsumible(),nube);
+		equipo.moverDerecha(goku);
+		goku.aumentarKi(21);
+		goku.transformar();
+		assertEquals(goku.getEstado().getNombre(),NOMBRE_GOKU_PRIMERA_TRANSF);
+	}
 	
 }
