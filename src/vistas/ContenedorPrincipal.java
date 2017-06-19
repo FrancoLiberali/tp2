@@ -204,7 +204,7 @@ public class ContenedorPrincipal extends BorderPane {
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         botonTransformar.setDisable(true);
-        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover);
+        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover, vistaTablero);
         botonTransformar.setOnAction(botonTrasnformarHandler);
         botones.add(botonTransformar);
         handlersBotones.add(botonTrasnformarHandler);

@@ -18,6 +18,7 @@ public class EstadoFreezerDefinitivo extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_FREEZER_SEGUNDA_TRANSF;
 		this.poderDePelea = PODER_FREEZER_SEGUNDA_TRANSF;
 		this.siguienteEstado = null;
+		this.rutaImagen = "file:src/vista/imagenes/freezerFinal.png";
 	}
 
 	@Override

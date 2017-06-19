@@ -19,6 +19,7 @@ public class EstadoGohanSuperSayajinFaseDos extends EstadoTransformacion  {
 		this.distanciaDeAtaque = DISTANCIA_GOHAN_SEGUNDA_TRANSF;
 		this.poderDePelea = PODER_GOHAN_SEGUNDA_TRANSF;
 		this.siguienteEstado = null;
+		this.rutaImagen = "file:src/vista/imagenes/gohanSuperSaiyan2.png";
 	}
 	
 	@Override

@@ -19,7 +19,7 @@ public class MajinBoo extends Personaje
 		this.nombre = MAJIN_BOO_NOMBRE;
 		this.ki = new Ki(KI_INICIAL);
 		this.salud = new Salud(PUNTOS_VIDA_MAJIN_BOO);
-		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_MAJIN_BOO, KI_ATQ_ESPECIAL_MAJIN_BOO);
+		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_MAJIN_BOO, KI_ATQ_ESPECIAL_MAJIN_BOO,"src/vista/musica/candyattack.mp3");
 		this.estadoTransformacionActual = new EstadoMajinBooNormal();
 		this.rutaImagen = "file:src/vista/imagenes/majinboo.png";
 	}

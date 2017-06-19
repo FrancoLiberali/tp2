@@ -11,6 +11,7 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 	protected EstadoActividad siguienteEstado = null;
 	protected EstadoActividad anteriorEstado = null;
 	protected Ki kiParaTransformacion = null;
+	protected String rutaImagen;
 	
 	public void transformar(Personaje personaje, Ki kiPersonaje){
 		kiPersonaje.restar(kiParaTransformacion);
@@ -78,6 +79,10 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 		return anteriorEstado;
 	}
 	
+	public String getImagen(){
+		return this.rutaImagen;
+	}
+	 
 	public void aplicarKi(Personaje personaje, int cantidad) {
 		personaje.getKi().sumar(cantidad);
 	}

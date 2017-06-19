@@ -135,6 +135,7 @@ public abstract class Personaje implements Posicionable
 			this.estadoTransformacionActual.realizarAtaqueEspecial(victima,
 					this.ataqueEspecial.getPorcentaje(this.ki));
 			this.equipo.restarAtaqueRestates();
+			this.ataqueEspecial.ReproducirAtaque();
 		}
 		catch( KiInsuficienteException error){
 		}
@@ -186,7 +187,7 @@ public abstract class Personaje implements Posicionable
 	}
 	
 	public String getImagen(){
-		return rutaImagen;
+		return this.estadoTransformacionActual.getImagen();
 	}
 
 	public int mayorPorcentajeSaludDeCompanieros() {

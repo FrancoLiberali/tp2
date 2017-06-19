@@ -17,4 +17,5 @@ public interface EstadoActividad
 	String getNombre();
 	EstadoActividad getEstadoAnterior();
 	void capturarConsumible(Personaje personaje, Consumible consumible);
+	String getImagen();
 }

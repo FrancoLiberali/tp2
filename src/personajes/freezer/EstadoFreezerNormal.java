@@ -18,6 +18,7 @@ public class EstadoFreezerNormal extends EstadoTransformacion {
 		this.poderDePelea = PODER_FREEZER_NORMAL;
 		this.siguienteEstado = new EstadoFreezerSegundaForma();
 		this.kiParaTransformacion = new Ki(KI_FREEZER_PRIMERA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/freezerNormal.png";
 	}
 
 }

@@ -24,6 +24,7 @@ public class EstadoCellSemiPerfecto extends EstadoTransformacion
 		this.poderDePelea = PODER_CELL_PRIMERA_TRANSF;
 		this.siguienteEstado = new EstadoCellPerfecto();
 		this.kiParaTransformacion = new Ki(KI_CELL_SEGUNDA_TRANF);
+		this.rutaImagen = "file:src/vista/imagenes/cellSemiperfecto.png";
 	}
 	
 	
