@@ -66,13 +66,13 @@ public class ContenedorPrincipal extends BorderPane {
         Label labelBasicos = new Label("Realizar ataque basico sobre:");
         contenedorVertical.getChildren().add(labelBasicos);
         for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje, barras);
+        	Button boton = this.setBotonAtaqueBasicoPersonaje(juego, personaje.getNombre(), personaje, barras);
         	contenedorVertical.getChildren().add(boton);
         }
         Label labelEspecial = new Label("Realizar ataque especial sobre:");
         contenedorVertical.getChildren().add(labelEspecial);
         for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje, barras);
+        	Button boton = this.setBotonAtaqueEspecialPersonaje(juego, personaje.getNombre(), personaje, barras);
         	contenedorVertical.getChildren().add(boton);
         }
         Button finalizarTurno = new Button();
@@ -85,24 +85,24 @@ public class ContenedorPrincipal extends BorderPane {
         this.setRight(contenedorVertical);
 
     }
-    private Button setBotonAtaqueBasicoPersonaje(String text, Personaje personaje, BarrasDeVida barras){
+    private Button setBotonAtaqueBasicoPersonaje(AlgoBall juego, String text, Personaje personaje, BarrasDeVida barras){
     	Button boton = new Button();
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje, barras, consola);
+    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(juego, personaje, barras, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
     	return boton;
     }
     
-    private Button setBotonAtaqueEspecialPersonaje(String text, Personaje personaje, BarrasDeVida barras){
+    private Button setBotonAtaqueEspecialPersonaje(AlgoBall juego, String text, Personaje personaje, BarrasDeVida barras){
     	Button boton = new Button();
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, barras, consola);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(juego, personaje, barras, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -176,11 +176,18 @@ public class ContenedorPrincipal extends BorderPane {
     }
     
     private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,PanelDeCaracteristicas panelCaracteristicas) {
+    	
+    	
+    	
+    	Label nombreDeEquipo = new Label (agrupacionAtacar.getNombre());
+    	 
+    	
         this.setBotonesDeMovimiento(agrupacionMover);
         Label label = new Label("Seleccionar personaje");
         VBox contenedorVertical = new VBox(label);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
+        contenedorVertical.getChildren().add(nombreDeEquipo);
         
         for (Personaje personaje : agrupacionMover){
         	ToggleButton tBoton = new ToggleButton(personaje.getNombre());
@@ -200,7 +207,7 @@ public class ContenedorPrincipal extends BorderPane {
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         botonTransformar.setDisable(true);
-        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover, vistaTablero);
+        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover, vistaTablero, this.consola);
         botonTransformar.setOnAction(botonTrasnformarHandler);
         botones.add(botonTransformar);
         handlersBotones.add(botonTrasnformarHandler);

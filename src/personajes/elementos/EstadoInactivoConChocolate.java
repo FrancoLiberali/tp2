@@ -100,5 +100,9 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 		
 		return this.rutaImagen;
 	}
+	
+	public boolean esTemporal(){
+		return true;
+	}
 
 }

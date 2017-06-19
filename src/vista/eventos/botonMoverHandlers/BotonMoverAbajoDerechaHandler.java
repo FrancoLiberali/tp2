@@ -1,5 +1,8 @@
 package vista.eventos.botonMoverHandlers;
 import algoBall.Equipo;
+import exceptions.CasilleroOcupadoException;
+import exceptions.EstePersonajeNoSePuedeMoverException;
+import exceptions.FueraDelTableroException;
 import exceptions.NoQuedanMovimientosException;
 import javafx.event.ActionEvent;
 import vista.eventos.BotonModificableHandler;
@@ -19,12 +22,21 @@ public class BotonMoverAbajoDerechaHandler extends BotonModificableHandler {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-       try{
-    	   this.equipo.moverAbajoDerecha(personajeModificador);
-    	   this.vista.update();
-       }
-       catch(NoQuedanMovimientosException error){
+    	try{
+    		this.equipo.moverAbajoDerecha(personajeModificador);
+    		this.vista.update();
+    	}
+    	catch(NoQuedanMovimientosException error){
     	   this.consola.agregarInformacion("No te quedan movimientos!");
-       }
+    	}
+    	catch(EstePersonajeNoSePuedeMoverException e){
+    	   this.consola.agregarInformacion("No se puede mover este personaje");
+        }
+    	catch (CasilleroOcupadoException error){
+    	   this.consola.agregarInformacion("La posicion a la que intentas moverte ya esta ocupada");
+    	}
+		catch (FueraDelTableroException error){
+			this.consola.agregarInformacion("Estas intentando moverte fuera del tablero");
+		}
     }
 }

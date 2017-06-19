@@ -1,7 +1,6 @@
 package funcionamientoPersonaje.elementos;
 
-import exceptions.CasilleroOcupadoException;
-import exceptions.FueraDelTableroException;
+import exceptions.EstePersonajeNoSePuedeMoverException;
 import exceptions.NoQuedanMovimientosException;
 import personajes.Personaje;
 import tablero.Posicion;
@@ -15,27 +14,20 @@ public class Movimiento {
 	
 	public void mover(Personaje personaje, Posicion nuevaPosicion){
 		if (!this.sePuedeMover(personaje)){
-			return;
+			throw new EstePersonajeNoSePuedeMoverException();
 		}
 		if (movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
 		}
-		try {
-			Posicion antiguaPosicion = personaje.getPosicion();
-			nuevaPosicion.agregarEnTablero(personaje);
-			antiguaPosicion.vaciarEnTablero();
-			if (personajeQueSeMovio == null){
-				movimientosRestantes = personaje.getVelocidad();
-			}
-			movimientosRestantes--;
-			personajeQueSeMovio = personaje;
+		Posicion antiguaPosicion = personaje.getPosicion();
+		nuevaPosicion.agregarEnTablero(personaje);
+		antiguaPosicion.vaciarEnTablero();
+		if (personajeQueSeMovio == null){
+			movimientosRestantes = personaje.getVelocidad();
 		}
-		catch (CasilleroOcupadoException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
-		}
-		catch (FueraDelTableroException error){
-			/*cancela movimiento (mas adelante agregar mensaje a usuario)*/
-		}
+		movimientosRestantes--;
+		personajeQueSeMovio = personaje;
+		
 	}
 	public boolean sePuedeMover(Personaje personaje){
 		return ((personajeQueSeMovio == null || personaje == personajeQueSeMovio) && !(personaje.estaConvertidoAChocolate()));

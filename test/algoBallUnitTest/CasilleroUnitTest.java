@@ -1,9 +1,12 @@
 package algoBallUnitTest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import consumibles.Consumible;
+import consumibles.EsferaDelDragon;
 import exceptions.CasilleroOcupadoException;
 import exceptions.CasilleroVacioException;
 import personajes.Gohan;
@@ -47,5 +50,37 @@ public class CasilleroUnitTest
 	public void vaciarCasilleroVacioLanzaCasillleroVacio(){
 		Casillero c1 = new Casillero();
 		c1.vaciar();
+	}
+	
+	@Test
+	public void obtenerElConsumibleDeUnCasilleroQueSeLeAgregoConsumibleLoDebvuelve(){
+		Casillero c1 = new Casillero();
+		Consumible bola = new EsferaDelDragon();
+		c1.agregarConsumible(bola);
+		assertEquals((Consumible)c1.getConsumible(), bola);
+	}
+	
+	@Test
+	public void obtenerElConsumibleDeUnCasilleroVacioDevuelveNull(){
+		Casillero c1 = new Casillero();
+		assertEquals((Consumible)c1.getConsumible(), null);
+	}
+	
+	@Test
+	public void obtenerElConsumibleDeUnCasilleroOcupadoDevuelveNull(){
+		Casillero c1 = new Casillero();
+		Goku goku = new Goku();
+		c1.ocupar(goku);
+		assertEquals((Consumible)c1.getConsumible(), null);
+	}
+	
+	@Test
+	public void obtenerElConsumibleDeUnCasilleroOcupadoAlQueSeLeAgregaConsumibleDevuelveNull(){
+		Casillero c1 = new Casillero();
+		Goku goku = new Goku();
+		c1.ocupar(goku);
+		Consumible bola = new EsferaDelDragon();
+		c1.agregarConsumible(bola);
+		assertEquals((Consumible)c1.getConsumible(), null);
 	}
 }

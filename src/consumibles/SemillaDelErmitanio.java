@@ -18,4 +18,9 @@ public class SemillaDelErmitanio extends Consumible {
 	public void aplicarAPersonaje(Personaje personaje) {
 		personaje.regenerarSalud(this.plusSalud);
 	}
+	
+	@Override
+	public void aplicarAPersonajeConTemporalAnterior(Personaje personaje){
+		this.aplicarAPersonaje(personaje);
+	}
 }

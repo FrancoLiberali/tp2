@@ -174,6 +174,8 @@ public abstract class Personaje implements Posicionable
 	public void agarrarConsumible(Consumible consumible)
 	{
 		this.estadoTransformacionActual.capturarConsumible(this, consumible);
+		
+		
 	}
 
 	public void setEstado(EstadoActividad estado) {

@@ -94,5 +94,9 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 	public void capturarConsumible(Personaje personaje, Consumible consumible) {
 		consumible.aplicarAPersonaje(personaje);
 	}
+	
+	public boolean esTemporal(){
+		return false;
+	}
 
 }
