@@ -16,7 +16,7 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     AlgoBall juego;
     VistaTablero proximaVista;
     BarrasDeVida proximasBarras;
-    private Consola consola;
+ 
     
     public BotonFinalizarTurnoHandler(Stage stage, AlgoBall juego, Consola consola) {
         this.stage = stage;

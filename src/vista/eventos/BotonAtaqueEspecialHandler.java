@@ -3,6 +3,7 @@ package vista.eventos;
 import personajes.Personaje;
 import vistas.BarrasDeVida;
 import vistas.Consola;
+import exceptions.FueraDeRangoException;
 import exceptions.KiInsuficienteException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeEnEstadoChocolate;
@@ -38,6 +39,9 @@ public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
         }
         catch(PersonajeInexistenteException error){
         	this.consola.agregarInformacion("Ese personaje esta muerto x(");
+        }
+        catch(FueraDeRangoException error){
+        	this.consola.agregarInformacion("No! no puedes atacar mas lejos que tu distancia de ataque");
         }
     }
 }

@@ -6,6 +6,7 @@ import vistas.Consola;
 
 import java.io.File;
 
+import exceptions.FueraDeRangoException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeEnEstadoChocolate;
 import exceptions.PersonajeInexistenteException;
@@ -48,6 +49,9 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
         }
         catch(PersonajeEnEstadoChocolate error){
         	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
+        }
+        catch(FueraDeRangoException error){
+        	this.consola.agregarInformacion("No! no puedes atacar mas lejos que tu distancia de ataque");
         }
 	}
 }
