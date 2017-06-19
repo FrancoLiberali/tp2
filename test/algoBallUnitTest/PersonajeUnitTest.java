@@ -81,17 +81,12 @@ public class PersonajeUnitTest
 		assertEquals(goku.getDistanciaDeAtaque(), DISTANCIA_GOKU_NORMAL);
 	}
 	
-	@Test
-	public void transformarConINsuficienteKiQuedaEnElMismoEstadoVerificarAtributos(){
+	@Test(expected = KiInsuficienteException.class)
+	public void transformarConInsuficienteKiLanzaKiInsuficiente(){
 		Personaje goku = new Goku();
 		//ki nescesario = 20;
 		goku.aumentarKi(10);
 		goku.transformar();
-		EstadoActividad estado = goku.getEstado();
-		assertEquals(estado.getNombre(), NOMBRE_TRANF_NORMAL);
-		assertEquals(estado.getPoderDePelea(), PODER_GOKU_NORMAL);
-		assertEquals(estado.getDistanciaDeAtaque(), DISTANCIA_GOKU_NORMAL);
-		assertEquals(estado.getVelocidad(), VELOCIDAD_GOKU_NORMAL);
 	}
 
 	@Test
@@ -210,8 +205,8 @@ public class PersonajeUnitTest
 	}
 	
 	
-	@Test
-	public void noSePuedeMoverPersonajeMasVecesQueSuVelocidadActual(){
+	@Test(expected = NoQuedanMovimientosException.class)
+	public void MoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
 		Personaje piccolo = new Piccolo();
 		Equipo guerrerosZ = new Equipo("Guerreros Z");
 		piccolo.setEquipo(guerrerosZ);
@@ -223,7 +218,6 @@ public class PersonajeUnitTest
 		Posicion posAnt = piccolo.getPosicion();
 		/* se alcanza limite de movimientos*/
 		guerrerosZ.moverDerecha(piccolo);
-		assertEquals(piccolo.getPosicion(), posAnt);
 	}
 	
 	@Test 

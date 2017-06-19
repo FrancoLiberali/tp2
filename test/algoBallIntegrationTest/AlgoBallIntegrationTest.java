@@ -54,9 +54,6 @@ public class AlgoBallIntegrationTest {
 		assertEquals(goku.getPosicion().getColumna(),1);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
-		guerrerosZ.moverDerecha(goku);
-		assertEquals(goku.getPosicion().getColumna(),1);
-		assertEquals(goku.getPosicion().getFila(),1);//goku ya no se puede mover
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
 		
 		goku.realizarAtaqueBasico(cell);
