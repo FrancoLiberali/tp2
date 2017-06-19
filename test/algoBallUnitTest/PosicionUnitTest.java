@@ -43,27 +43,6 @@ public class PosicionUnitTest {
 
         assertTrue(hashPosiciones.contains(posPrueba2));
     }
-
-    @Test
-    public void distanciaEntreUnPosicionYSiMismoEsCero() {
-        Posicion pos = new Posicion(1, 1);
-        assertEquals(pos.distanciaALa(pos), 0);
-    }
-
-
-    @Test
-    public void distanciaEntreDosPosicionesA2DeDistanciaHorizontalmenteEs2() {
-        Posicion pos1 = new Posicion(1, 4);
-        Posicion pos2 = new Posicion(3, 4);
-        assertEquals(pos1.distanciaALa(pos2), 2);
-    }
-
-    @Test
-    public void distanciaEntreDosPosicionesA3DeDistanciaVerticalmenteEs3() {
-        Posicion pos1 = new Posicion(1, 5);
-        Posicion pos2 = new Posicion(1, 2);
-        assertEquals(pos1.distanciaALa(pos2), 3);
-    }
 	
     @Test
 	public void posicionQueEquidistaTresEstaFueraDelRango2()

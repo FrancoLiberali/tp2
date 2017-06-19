@@ -6,7 +6,6 @@ import static algoBall.ConstantesDelJuego.ESFERA_DEL_DRAGON_TURNOS;
 import personajes.Personaje;
 import personajes.elementos.ContadorDeTurnos;
 import personajes.elementos.EstadoActividad;
-import personajes.elementos.EstadoTransformacion;
 
 public class EstadoBuffDanio extends EstadoTemporal 
 {

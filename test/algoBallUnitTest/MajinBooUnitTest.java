@@ -90,7 +90,7 @@ public class MajinBooUnitTest
 		goku.transformar();
 	}
 	
-	@Test
+	@Test(expected = EstePersonajeNoSePuedeMoverException.class)
 	public void aplicarAtaqueEspecialDeMajinBooAGokuEsteNoPuedeMoverse()
 	{
 		Personaje majinBoo = new MajinBoo();
@@ -111,9 +111,7 @@ public class MajinBooUnitTest
 		agrupacion2.agregarPersonaje(goku);
 		
 		majinBoo.realizarAtaqueEspecial(goku);
-		Posicion posicion = goku.getPosicion();
 		agrupacion2.moverDerecha(goku);
-		assertEquals(goku.getPosicion(),posicion);
 		
 	}
 	

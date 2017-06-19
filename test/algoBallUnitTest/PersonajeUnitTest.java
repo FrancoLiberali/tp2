@@ -219,7 +219,7 @@ public class PersonajeUnitTest
 		guerrerosZ.moverDerecha(piccolo);
 	}
 	
-	@Test 
+	@Test (expected = EstePersonajeNoSePuedeMoverException.class)
 	public void noSePuedeMoverPersonajeLuegoDeMoverAOtroEnEsteTurno(){
 		Personaje majinBoo = new MajinBoo();
 		Personaje cell = new Cell();
@@ -231,9 +231,7 @@ public class PersonajeUnitTest
 		tablero.agregarPosicionable(majinBoo, posicionInicialM);
 		tablero.agregarPosicionable(cell, posicionInicialC);
 		enemigos.moverDerecha(majinBoo);
-		Posicion pos = cell.getPosicion();
 		enemigos.moverDerecha(cell);
-		assertEquals(cell.getPosicion(),pos);
 	}
 	
 	@Test
@@ -252,7 +250,7 @@ public class PersonajeUnitTest
 		
 	}
 	
-	@Test
+	@Test (expected = CasilleroOcupadoException.class)
 	public void moverPersonajeNoFuncionaSiHayOtroPersonajeEnElLugarAlQueNosQueremosMover()
 	{
 		Tablero tablero = new Tablero(10);
@@ -268,12 +266,10 @@ public class PersonajeUnitTest
 		tablero.agregarPosicionable(piccolo, posicionInicialY);
 		
 		guerrerosZ.moverAbajo(goku);
-		assertEquals(goku.getPosicion(), posicionInicialX);
-		/*es decir, el movimiento no se realizo*/
 		
 	}
 	
-	@Test
+	@Test(expected = FueraDelTableroException.class)
 	public void moverPersonajeNoFuncionaSiElLugarAlQueNosQueremosMoverSeEncuentraFueraDelTablero()
 	{
 		Tablero tablero = new Tablero(10);
@@ -286,8 +282,6 @@ public class PersonajeUnitTest
 		tablero.agregarPosicionable(piccolo, posicionInicialX);
 		
 		guerrerosZ.moverAbajo(piccolo);
-		assertEquals(piccolo.getPosicion(), posicionInicialX);
-		/*es decir, el movimiento no se realizo*/
 		
 	}
 	

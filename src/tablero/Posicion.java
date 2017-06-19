@@ -82,13 +82,6 @@ public class Posicion
 		return (difFilas <= rango && difColumnas <= rango);
 	}
 	
-	public int distanciaALa(Posicion pos)
-	{
-		return (int) Math.sqrt(
-				Math.pow((this.fila - pos.getFila()), 2) + 
-				Math.pow((this.columna - pos.getColumna()), 2) );
-	}
-	
 	@Override
 	public boolean equals(Object otraPosicion) 
 	{

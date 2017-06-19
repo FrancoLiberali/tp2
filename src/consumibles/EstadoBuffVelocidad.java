@@ -6,7 +6,6 @@ import static algoBall.ConstantesDelJuego.NUBE_VOLADORA_TURNOS;
 import personajes.Personaje;
 import personajes.elementos.ContadorDeTurnos;
 import personajes.elementos.EstadoActividad;
-import personajes.elementos.EstadoTransformacion;
 
 public class EstadoBuffVelocidad extends EstadoTemporal{
 
