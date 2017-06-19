@@ -18,6 +18,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import vista.eventos.BotonEntrarEventHandler;
+import vista.eventos.OpcionMudoEventHandler;
 
 public class ContenedorBienvenidos extends VBox {
 
@@ -39,9 +40,12 @@ public class ContenedorBienvenidos extends VBox {
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
+        
         Label label1 = new Label();
         TextField nombre1 = new TextField();
         nombre1.setPromptText("Ingrese nombre jugador Guerreros Z");
+    
+
         Label label2 = new Label();
         TextField nombre2 = new TextField();
         nombre2.setPromptText("Ingrese nombre jugador Enemigos de la Tierra");

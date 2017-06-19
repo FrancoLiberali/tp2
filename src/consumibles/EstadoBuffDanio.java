@@ -35,6 +35,8 @@ public class EstadoBuffDanio extends EstadoTemporal
 		
 	}
 
+	
+	
 	private int calcularDanio(int danio, int plusPorcentaje)
 	{
 		return danio + (danio*plusPorcentaje)/100;
