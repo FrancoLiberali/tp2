@@ -1,5 +1,6 @@
 package vistas;
 
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,7 +19,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import vista.eventos.BotonEntrarEventHandler;
-import vista.eventos.OpcionMudoEventHandler;
+import vista.eventos.MuteOnOffEventHandler;
+import javafx.scene.image.ImageView;
+import javafx.geometry.Pos;
+import javafx.scene.control.ToggleButton;
+
 
 public class ContenedorBienvenidos extends VBox {
 
@@ -39,6 +44,17 @@ public class ContenedorBienvenidos extends VBox {
         
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+        
+        // falta poner el tamanioo correcto
+        ToggleButton botonMudo = new ToggleButton();
+        Image imagen1 = new Image("file:src/vista/imagenes/sonidoOn.png" );
+        ImageView imagenBoton = new ImageView(imagen1);
+        imagenBoton.setFitWidth(50);
+        imagenBoton.setPreserveRatio(true);
+        botonMudo.setGraphic(imagenBoton);
+        botonMudo.setAlignment(Pos.TOP_RIGHT );//no esta funcionando 
+        botonMudo.setOnAction(new MuteOnOffEventHandler(botonMudo, reproductor));
+       
         
         
         Label label1 = new Label();
@@ -63,7 +79,7 @@ public class ContenedorBienvenidos extends VBox {
         botonEntrar.setOnAction(botonEntrarHandler);
         
         
-        this.getChildren().addAll(etiqueta, label1, nombre1, label2, nombre2, botonEntrar);
+        this.getChildren().addAll(botonMudo,etiqueta, label1, nombre1, label2, nombre2, botonEntrar);
        
     }
 }
