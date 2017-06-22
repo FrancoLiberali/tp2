@@ -14,6 +14,7 @@ import personajes.Gohan;
 import personajes.Goku;
 import personajes.Personaje;
 import personajes.Piccolo;
+import personajes.elementos.Ataque;
 
 public class GohanUnitTest {
 
@@ -64,7 +65,8 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataque = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 81 / 100));
+		goku.recibirDanio(ataque);//poder de pelea 40 asi no hay reduccion de ataque
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
@@ -83,8 +85,10 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
-		piccolo.recibirDanio( (int) (PUNTOS_VIDA_PICCOLO * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGoku = new Ataque(40,  (int) (PUNTOS_VIDA_GOKU * 81 / 100)); //poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio( ataqueAGoku);
+		Ataque ataqueAPiccolo = new Ataque(40,(int) (PUNTOS_VIDA_PICCOLO * 81 / 100) );
+		piccolo.recibirDanio(ataqueAPiccolo);//poder de pelea 40 asi no hay reduccion de ataque
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
@@ -102,7 +106,8 @@ public class GohanUnitTest {
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGoku = new Ataque(40,  (int) (PUNTOS_VIDA_GOKU * 81 / 100)); //poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio(ataqueAGoku);
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();

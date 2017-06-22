@@ -13,6 +13,7 @@ import algoBall.Equipo;
 import personajes.Cell;
 import personajes.Goku;
 import personajes.Personaje;
+import personajes.elementos.Ataque;
 import tablero.Posicion;
 import tablero.Tablero;
 
@@ -73,7 +74,8 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 71 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 71 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio( ataqueAGoku );
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -100,7 +102,8 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 80 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 80 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio( ataqueAGoku );
 		goku.aumentarKi(20);
 		
 		Tablero tablero = new Tablero(10);
@@ -129,7 +132,8 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.recibirDanio( (int) (PUNTOS_VIDA_GOKU * 80 / 100), 40); //poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 80 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio( ataqueAGoku );
 		goku.aumentarKi(100);
 		
 		Tablero tablero = new Tablero(10);

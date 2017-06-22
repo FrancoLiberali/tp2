@@ -12,6 +12,7 @@ import exceptions.NoCumpleCondicionesDeTransformacionException;
 import personajes.Gohan;
 import personajes.Personaje;
 import personajes.Piccolo;
+import personajes.elementos.Ataque;
 
 public class PiccoloUnitTest {
 
@@ -53,7 +54,8 @@ public class PiccoloUnitTest {
 		piccolo.aumentarKi(20);
 		
 		Personaje gohan = new Gohan();
-		gohan.recibirDanio( (int) (PUNTOS_VIDA_GOHAN * 81 / 100), 40);//poder de pelea 40 asi no hay reduccion de ataque
+		Ataque ataqueAGohan = new Ataque(40, (int) (PUNTOS_VIDA_GOHAN * 81 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
+		gohan.recibirDanio(ataqueAGohan);//poder de pelea 40 asi no hay reduccion de ataque
 		
 		
 		Equipo agrupacion1 = new Equipo("buenos");
