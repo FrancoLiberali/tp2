@@ -15,6 +15,7 @@ import exceptions.IntentandoAtacarAUnCompanieroException;
 import exceptions.NoTienesAtaquesRestantesException;
 import exceptions.PersonajeInexistenteException;
 import javafx.scene.media.AudioClip;
+import personajes.elementos.Ataque;
 import personajes.elementos.AtaqueEspecial;
 import personajes.elementos.EstadoActividad;
 import personajes.elementos.EstadoInactivoConChocolate;
@@ -142,8 +143,9 @@ public abstract class Personaje implements Posicionable
 				
 	}
 
-	public void recibirDanio(int danioARecibir, int poderDePeleaEnemigo){
-		if (poderDePeleaEnemigo < this.getPoderDePelea()){
+	public void recibirDanio(Ataque ataque){
+		int danioARecibir = ataque.getDanio();
+		if (ataque.getPoderDePelea() < this.getPoderDePelea()){
 			danioARecibir = (int)(danioARecibir - (danioARecibir * (REDUCCION_DE_ATAQUE / 100.0f)));
 		}
 		this.salud.disminuir(danioARecibir);

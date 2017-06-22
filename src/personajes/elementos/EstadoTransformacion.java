@@ -18,18 +18,14 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 		personaje.setEstado(this.siguienteEstado);
 	}
 	
-	protected void atacar(Personaje victima, int danio){
-		victima.recibirDanio(danio, this.poderDePelea);
 	
-	}
 	public void realizarAtaqueBasico(Personaje victima) {
-		
-		this.atacar(victima, this.poderDePelea);
-		
+		Ataque ataque = new Ataque(this.poderDePelea, this.poderDePelea);
+		victima.recibirDanio(ataque);
 	}
 	public void realizarAtaqueEspecial(Personaje victima, int porcentajeBonus) {
-		this.atacar(victima, this.poderDePelea + this.poderDePelea * porcentajeBonus /100);
-		
+		Ataque ataque =  new Ataque(this.poderDePelea, this.poderDePelea + this.poderDePelea * porcentajeBonus /100);
+		victima.recibirDanio(ataque);
 	}
 	
 	public void setNombre(String nombre)
