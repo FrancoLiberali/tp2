@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import tablero.Posicion;
+import model.tablero.Posicion;
 
 public class PosicionUnitTest {
 

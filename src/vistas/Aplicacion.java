@@ -4,9 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import algoBall.Equipo;
-
-import algoBall.AlgoBall;
+import model.algoBall.AlgoBall;
+import model.algoBall.Equipo;
 import vista.eventos.AplicacionOnKeyPressEventHandler;
 import vistas.Reproductor;
 

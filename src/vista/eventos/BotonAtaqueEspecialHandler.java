@@ -1,14 +1,14 @@
 package vista.eventos;
 
-import personajes.Personaje;
 import vistas.BarrasDeVida;
 import vistas.Consola;
-import exceptions.FueraDeRangoException;
-import exceptions.KiInsuficienteException;
-import exceptions.NoTienesAtaquesRestantesException;
-import exceptions.PersonajeEnEstadoChocolate;
-import exceptions.PersonajeInexistenteException;
 import javafx.event.ActionEvent;
+import model.exceptions.FueraDeRangoException;
+import model.exceptions.KiInsuficienteException;
+import model.exceptions.NoTienesAtaquesRestantesException;
+import model.exceptions.PersonajeEnEstadoChocolate;
+import model.exceptions.PersonajeInexistenteException;
+import model.personajes.Personaje;
 
 public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
 	

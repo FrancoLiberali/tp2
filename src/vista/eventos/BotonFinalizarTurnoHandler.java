@@ -1,10 +1,10 @@
 package vista.eventos;
 
-import algoBall.AlgoBall;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.algoBall.AlgoBall;
 import vistas.BarrasDeVida;
 import vistas.Consola;
 import vistas.VistaTablero;

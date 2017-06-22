@@ -3,8 +3,8 @@ package algoBallUnitTest;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import exceptions.KiInsuficienteException;
-import personajes.elementos.Ki;
+import model.exceptions.KiInsuficienteException;
+import model.personajes.elementos.Ki;
 
 
 public class KiUnitTest {
@@ -17,7 +17,7 @@ public class KiUnitTest {
 	@Test
 	public void SumarKiDevuelveInicialMasLoAniadido(){
 		Ki ki = new Ki(2);
-		ki.sumar(3);
+		ki.sumar(new Ki(3));
 		assertEquals(ki.getKi(),5);
 	}
 	

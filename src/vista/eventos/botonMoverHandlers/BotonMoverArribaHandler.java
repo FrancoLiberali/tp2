@@ -1,10 +1,10 @@
 package vista.eventos.botonMoverHandlers;
-import algoBall.Equipo;
-import exceptions.CasilleroOcupadoException;
-import exceptions.EstePersonajeNoSePuedeMoverException;
-import exceptions.FueraDelTableroException;
-import exceptions.NoQuedanMovimientosException;
 import javafx.event.ActionEvent;
+import model.algoBall.Equipo;
+import model.exceptions.CasilleroOcupadoException;
+import model.exceptions.EstePersonajeNoSePuedeMoverException;
+import model.exceptions.FueraDelTableroException;
+import model.exceptions.NoQuedanMovimientosException;
 import vista.eventos.BotonModificableHandler;
 import vistas.Consola;
 import vistas.VistaTablero;

@@ -1,21 +1,22 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.KI_GOKU_PRIMERA_TRANF;
-import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.PODER_GOKU_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.DISTANCIA_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.KI_GOKU_PRIMERA_TRANF;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.PODER_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_PRIMERA_TRANSF;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.KiInsuficienteException;
-import personajes.Goku;
-import personajes.Personaje;
-import personajes.elementos.EstadoActividad;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.Equipo;
+import model.exceptions.KiInsuficienteException;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.elementos.EstadoActividad;
+import model.personajes.elementos.Ki;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class PersonajeTransformacionUnitTest {
 	
@@ -23,14 +24,14 @@ public class PersonajeTransformacionUnitTest {
 	public void transformarConInsuficienteKiLanzaKiInsuficiente(){
 		Personaje goku = new Goku();
 		//ki nescesario = 20;
-		goku.aumentarKi(10);
+		goku.aumentarKi(new Ki(10));
 		goku.transformar();
 	}
 
 	@Test
 	public void transformarFuncionaSiHaySiguienteEstadoYKiSuficienteVerificarAtributos(){
 		Personaje goku = new Goku();
-		goku.aumentarKi(40);
+		goku.aumentarKi(new Ki(40));
 		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
 		goku.transformar();
@@ -48,7 +49,7 @@ public class PersonajeTransformacionUnitTest {
 		goku.setEquipo(guerrerosZ);
 		int ki = 40;
 		int kiEsperado = ki - KI_GOKU_PRIMERA_TRANF;
-		goku.aumentarKi(ki);
+		goku.aumentarKi(new Ki(ki));
 		goku.transformar();
 		
 		assertEquals(goku.getKiCantidad(), kiEsperado);
@@ -59,7 +60,7 @@ public class PersonajeTransformacionUnitTest {
 		Personaje goku = new Goku();
 		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
-		goku.aumentarKi(40);
+		goku.aumentarKi(new Ki(40));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);
@@ -79,7 +80,7 @@ public class PersonajeTransformacionUnitTest {
 		Personaje goku = new Goku();
 		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
-		goku.aumentarKi(40);
+		goku.aumentarKi(new Ki(40));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicial = new Posicion(2,2);

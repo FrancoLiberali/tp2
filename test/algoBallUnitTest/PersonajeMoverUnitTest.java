@@ -4,18 +4,18 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.CasilleroOcupadoException;
-import exceptions.EstePersonajeNoSePuedeMoverException;
-import exceptions.FueraDelTableroException;
-import exceptions.NoQuedanMovimientosException;
-import personajes.Cell;
-import personajes.Goku;
-import personajes.MajinBoo;
-import personajes.Personaje;
-import personajes.Piccolo;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.Equipo;
+import model.exceptions.CasilleroOcupadoException;
+import model.exceptions.EstePersonajeNoSePuedeMoverException;
+import model.exceptions.FueraDelTableroException;
+import model.exceptions.NoQuedanMovimientosException;
+import model.personajes.Cell;
+import model.personajes.Goku;
+import model.personajes.MajinBoo;
+import model.personajes.Personaje;
+import model.personajes.Piccolo;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class PersonajeMoverUnitTest {
 	

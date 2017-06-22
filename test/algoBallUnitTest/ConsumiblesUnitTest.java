@@ -4,12 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import consumibles.Consumible;
-import consumibles.EsferaDelDragon;
-import consumibles.NubeVoladora;
-import consumibles.SemillaDelErmitanio;
-import personajes.Goku;
-import personajes.Personaje;
+import model.consumibles.Consumible;
+import model.consumibles.EsferaDelDragon;
+import model.consumibles.NubeVoladora;
+import model.consumibles.SemillaDelErmitanio;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.elementos.Salud;
 
 public class ConsumiblesUnitTest 
 {
@@ -21,7 +22,7 @@ public class ConsumiblesUnitTest
 		int saludAReducir = 200;
 		int esperado = goku.getSalud() - saludAReducir + 100; //semilla +100 salud
 		
-		goku.reducirSalud(saludAReducir);
+		goku.reducirSalud(new Salud(saludAReducir));
 		goku.agarrarConsumible(semilla);
 		
 		assertEquals(goku.getSalud(), esperado);

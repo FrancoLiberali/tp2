@@ -1,23 +1,23 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.DISTANCIA_GOKU_NORMAL;
-import static algoBall.ConstantesDelJuego.PODER_GOHAN_NORMAL;
-import static algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
-import static algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
+import static model.algoBall.ConstantesDelJuego.DISTANCIA_GOKU_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PODER_GOHAN_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static model.algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.FueraDeRangoException;
-import exceptions.IntentandoAtacarAUnCompanieroException;
-import personajes.Cell;
-import personajes.Gohan;
-import personajes.Goku;
-import personajes.Personaje;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.Equipo;
+import model.exceptions.FueraDeRangoException;
+import model.exceptions.IntentandoAtacarAUnCompanieroException;
+import model.personajes.Cell;
+import model.personajes.Gohan;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class PersonajeAtaqueUnitTest {
 	

@@ -1,21 +1,22 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.NOMBRE_CELL_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
-import static algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_CELL_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.NoCumpleCondicionesDeTransformacionException;
-import personajes.Cell;
-import personajes.Goku;
-import personajes.Personaje;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.Equipo;
+import model.exceptions.NoCumpleCondicionesDeTransformacionException;
+import model.personajes.Cell;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.elementos.Ki;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class CellUnitTest {
 
@@ -31,7 +32,7 @@ public class CellUnitTest {
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		cell.aumentarKi(5);
+		cell.aumentarKi(new Ki(5));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -56,7 +57,7 @@ public class CellUnitTest {
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		cell.aumentarKi(5);
+		cell.aumentarKi(new Ki(5));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -83,7 +84,7 @@ public class CellUnitTest {
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		cell.aumentarKi(5);
+		cell.aumentarKi(new Ki(5));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -109,7 +110,7 @@ public class CellUnitTest {
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		cell.aumentarKi(20);
+		cell.aumentarKi(new Ki(5));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);

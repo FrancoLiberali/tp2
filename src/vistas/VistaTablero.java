@@ -2,16 +2,16 @@ package vistas;
 
 import java.util.Hashtable;
 
-import algoBall.AlgoBall;
-import algoBall.Equipo;
-import consumibles.Consumible;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import personajes.Personaje;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.AlgoBall;
+import model.algoBall.Equipo;
+import model.consumibles.Consumible;
+import model.personajes.Personaje;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class VistaTablero {
 	private Image suelo = new Image("file:src/vista/imagenes/texturaSuelo.jpg");

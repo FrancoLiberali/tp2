@@ -1,10 +1,10 @@
 package vista.eventos;
 
-import algoBall.Equipo;
-import exceptions.KiInsuficienteException;
-import exceptions.NoCumpleCondicionesDeTransformacionException;
-import exceptions.YaNoPuedeEvolucionarException;
 import javafx.event.ActionEvent;
+import model.algoBall.Equipo;
+import model.exceptions.KiInsuficienteException;
+import model.exceptions.NoCumpleCondicionesDeTransformacionException;
+import model.exceptions.YaNoPuedeEvolucionarException;
 import vistas.Consola;
 import vistas.VistaTablero;
 

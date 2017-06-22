@@ -2,7 +2,7 @@ package vista.eventos;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import personajes.Personaje;
+import model.personajes.Personaje;
 import vistas.PanelDeCaracteristicas;
 
 public class OnMouseTransformarEventHandler implements EventHandler<ActionEvent>  {

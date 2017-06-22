@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import personajes.elementos.ContadorDeTurnos;
+import model.personajes.elementos.ContadorDeTurnos;
 
 
 public class ContadorDeTurnosUnitTest 

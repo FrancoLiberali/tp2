@@ -1,20 +1,19 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.NOMBRE_GOHAN_SEGUNDA_TRANSF;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_PICCOLO;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GOHAN_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GOHAN_SEGUNDA_TRANSF;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.NoCumpleCondicionesDeTransformacionException;
-import personajes.Gohan;
-import personajes.Goku;
-import personajes.Personaje;
-import personajes.Piccolo;
-import personajes.elementos.Ataque;
+import model.algoBall.Equipo;
+import model.exceptions.NoCumpleCondicionesDeTransformacionException;
+import model.personajes.Gohan;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.Piccolo;
+import model.personajes.elementos.Danio;
+import model.personajes.elementos.Ki;
 
 public class GohanUnitTest {
 
@@ -22,7 +21,7 @@ public class GohanUnitTest {
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuYPiccoloEstanEnLaAgrupacionCon100PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
-		gohan.aumentarKi(10);
+		gohan.aumentarKi(new Ki(10));
 		
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
@@ -40,7 +39,7 @@ public class GohanUnitTest {
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuOPiccoloEstanEnLaAgrupacionCon100PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
-		gohan.aumentarKi(10);
+		gohan.aumentarKi(new Ki(10));
 		
 		Personaje goku = new Goku();
 		
@@ -56,7 +55,7 @@ public class GohanUnitTest {
 	public void gohanSePuedeTransformarSoloUnaVezSiGokuOPiccoloEstanEnLaAgrupacionConMasDe20PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
-		gohan.aumentarKi(10);
+		gohan.aumentarKi(new Ki(10));
 		
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
@@ -65,8 +64,7 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		Ataque ataque = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 81 / 100));
-		goku.recibirDanio(ataque);//poder de pelea 40 asi no hay reduccion de ataque
+		goku.recibirDanio(new Danio(40));
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
@@ -76,7 +74,7 @@ public class GohanUnitTest {
 	public void gohanSePuedeTransformarDosVecesSiGokuYPiccoloEstanEnLaAgrupacionConMenosDe20PorcientoDeVida()
 	{
 		Personaje gohan = new Gohan();
-		gohan.aumentarKi(40);
+		gohan.aumentarKi(new Ki(40));
 		
 		Personaje goku = new Goku();
 		Personaje piccolo = new Piccolo();
@@ -85,10 +83,10 @@ public class GohanUnitTest {
 		agrupacion1.agregarPersonaje(piccolo);
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		Ataque ataqueAGoku = new Ataque(40,  (int) (PUNTOS_VIDA_GOKU * 81 / 100)); //poder de pelea 40 asi no hay reduccion de ataque
-		goku.recibirDanio( ataqueAGoku);
-		Ataque ataqueAPiccolo = new Ataque(40,(int) (PUNTOS_VIDA_PICCOLO * 81 / 100) );
-		piccolo.recibirDanio(ataqueAPiccolo);//poder de pelea 40 asi no hay reduccion de ataque
+		
+		goku.recibirDanio(new Danio(480));	//salud Goku 500.
+		piccolo.recibirDanio(new Danio(480)); //salud piccolo 500
+		
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();
@@ -99,15 +97,15 @@ public class GohanUnitTest {
 	public void gohanSePuedeTransformarDosVecesSiSoloSusCompanierosEstanConMenosDe20PorcientoDeSalud()
 	{
 		Personaje gohan = new Gohan();
-		gohan.aumentarKi(40);
+		gohan.aumentarKi(new Ki(40));
 		
 		Personaje goku = new Goku();
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(gohan);
 		agrupacion1.agregarPersonaje(goku);
-		Ataque ataqueAGoku = new Ataque(40,  (int) (PUNTOS_VIDA_GOKU * 81 / 100)); //poder de pelea 40 asi no hay reduccion de ataque
-		goku.recibirDanio(ataqueAGoku);
+	
+		goku.recibirDanio(new Danio(480));
 		gohan.transformar();
 		assertEquals(gohan.getEstado().getNombre(), NOMBRE_GOHAN_PRIMERA_TRANSF);
 		gohan.transformar();

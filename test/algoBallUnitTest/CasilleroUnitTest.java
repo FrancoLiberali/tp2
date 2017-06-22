@@ -5,13 +5,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import consumibles.Consumible;
-import consumibles.EsferaDelDragon;
-import exceptions.CasilleroOcupadoException;
-import exceptions.CasilleroVacioException;
-import personajes.Gohan;
-import personajes.Goku;
-import tablero.Casillero;
+import model.consumibles.Consumible;
+import model.consumibles.EsferaDelDragon;
+import model.exceptions.CasilleroOcupadoException;
+import model.exceptions.CasilleroVacioException;
+import model.personajes.Gohan;
+import model.personajes.Goku;
+import model.tablero.Casillero;
 
 public class CasilleroUnitTest
 {

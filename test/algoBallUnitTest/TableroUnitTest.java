@@ -2,12 +2,12 @@ package algoBallUnitTest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import exceptions.CasilleroVacioException;
-import exceptions.FueraDelTableroException;
-import personajes.Goku;
-import personajes.Personaje;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.exceptions.CasilleroVacioException;
+import model.exceptions.FueraDelTableroException;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 import vistas.Aplicacion;
 
 public class TableroUnitTest 

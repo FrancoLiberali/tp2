@@ -1,17 +1,17 @@
 package vista.eventos;
 
-import personajes.Personaje;
 import vistas.BarrasDeVida;
 import vistas.Consola;
 
 import java.io.File;
 
-import exceptions.FueraDeRangoException;
-import exceptions.NoTienesAtaquesRestantesException;
-import exceptions.PersonajeEnEstadoChocolate;
-import exceptions.PersonajeInexistenteException;
 import javafx.event.ActionEvent;
 import javafx.scene.media.AudioClip;
+import model.exceptions.FueraDeRangoException;
+import model.exceptions.NoTienesAtaquesRestantesException;
+import model.exceptions.PersonajeEnEstadoChocolate;
+import model.exceptions.PersonajeInexistenteException;
+import model.personajes.Personaje;
 
 
 public class BotonAtaqueBasicoHandler extends BotonModificableHandler{

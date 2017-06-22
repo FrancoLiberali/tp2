@@ -1,33 +1,35 @@
 package algoBallIntegrationTest;
 
-import static algoBall.ConstantesDelJuego.CELL_COL;
-import static algoBall.ConstantesDelJuego.CELL_FIL;
-import static algoBall.ConstantesDelJuego.GOKU_COL;
-import static algoBall.ConstantesDelJuego.GOKU_FIL;
-import static algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
-import static algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
-import static algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static model.algoBall.ConstantesDelJuego.CELL_COL;
+import static model.algoBall.ConstantesDelJuego.CELL_FIL;
+import static model.algoBall.ConstantesDelJuego.GOKU_COL;
+import static model.algoBall.ConstantesDelJuego.GOKU_FIL;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_ENEMIGOS;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GUERREROS;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.ConstantesDelJuego;
-import algoBall.Equipo;
-import algoBall.Jugador;
-import consumibles.Consumible;
-import consumibles.EsferaDelDragon;
-import consumibles.NubeVoladora;
-import consumibles.SemillaDelErmitanio;
-import exceptions.CasilleroOcupadoException;
-import personajes.Cell;
-import personajes.Gohan;
-import personajes.Goku;
-import personajes.Personaje;
-import tablero.Casillero;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.ConstantesDelJuego;
+import model.algoBall.Equipo;
+import model.algoBall.Jugador;
+import model.consumibles.Consumible;
+import model.consumibles.EsferaDelDragon;
+import model.consumibles.NubeVoladora;
+import model.consumibles.SemillaDelErmitanio;
+import model.exceptions.CasilleroOcupadoException;
+import model.personajes.Cell;
+import model.personajes.Gohan;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.elementos.Ki;
+import model.personajes.elementos.Salud;
+import model.tablero.Casillero;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class AlgoBallIntegrationTest {
 	
@@ -209,7 +211,7 @@ public class AlgoBallIntegrationTest {
 		Casillero cas = tablero.getCasillero(posicionSemilla);
 		cas.agregarConsumible(semilla);
 		assertEquals(cas.getConsumible(),semilla);
-		goku.reducirSalud(200);
+		goku.reducirSalud(new Salud(200));
 		int vidaEsp = PUNTOS_VIDA_GOKU -200 +100;
 		equipo.moverDerecha(goku);
 		assertEquals(goku.getSalud(),vidaEsp);
@@ -229,7 +231,7 @@ public class AlgoBallIntegrationTest {
 		Casillero cas = tablero.getCasillero(posicionSemilla);
 		cas.agregarConsumible(semilla);
 		assertEquals(cas.getConsumible(),semilla);
-		goku.reducirSalud(99);
+		goku.reducirSalud(new Salud(99));
 		int vidaEsp = PUNTOS_VIDA_GOKU;
 		equipo.moverDerecha(goku);
 		assertEquals(goku.getSalud(),vidaEsp);
@@ -250,7 +252,7 @@ public class AlgoBallIntegrationTest {
 		cas.agregarConsumible(nube);
 		assertEquals(cas.getConsumible(),nube);
 		equipo.moverDerecha(goku);
-		goku.aumentarKi(21);
+		goku.aumentarKi(new Ki(21));
 		goku.transformar();
 		assertEquals(goku.getEstado().getNombre(),NOMBRE_GOKU_PRIMERA_TRANSF);
 	}

@@ -1,19 +1,21 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.GOKU_NOMBRE;
-import static algoBall.ConstantesDelJuego.KI_INICIAL;
+import static model.algoBall.ConstantesDelJuego.GOKU_NOMBRE;
+import static model.algoBall.ConstantesDelJuego.KI_INICIAL;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import personajes.Cell;
-import personajes.Freezer;
-import personajes.Gohan;
-import personajes.Goku;
-import personajes.MajinBoo;
-import personajes.Personaje;
-import personajes.Piccolo;
-import tablero.Posicion;
+import model.personajes.Cell;
+import model.personajes.Freezer;
+import model.personajes.Gohan;
+import model.personajes.Goku;
+import model.personajes.MajinBoo;
+import model.personajes.Personaje;
+import model.personajes.Piccolo;
+import model.personajes.elementos.Ki;
+import model.personajes.elementos.Salud;
+import model.tablero.Posicion;
 
 public class PersonajeUnitTest 
 {
@@ -41,7 +43,7 @@ public class PersonajeUnitTest
 		Personaje gohan = new Gohan();
 		int cantidadAReducir = 100;
 		int esperado = gohan.getSalud() - cantidadAReducir;
-		gohan.reducirSalud(cantidadAReducir);
+		gohan.reducirSalud(new Salud(cantidadAReducir));
 		assertEquals(gohan.getSalud(), esperado);
 	}
 	
@@ -68,7 +70,7 @@ public class PersonajeUnitTest
 	{
 		Personaje goku = new Goku();
 		int cant = 5;
-		goku.aumentarKi(cant);
+		goku.aumentarKi(new Ki(cant));
 		assertEquals(goku.getKiCantidad(), cant);
 	}
 	

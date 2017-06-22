@@ -6,7 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -20,9 +22,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import vista.eventos.BotonEntrarEventHandler;
 import vista.eventos.MuteOnOffEventHandler;
-import javafx.scene.image.ImageView;
-import javafx.geometry.Pos;
-import javafx.scene.control.ToggleButton;
 
 
 public class ContenedorBienvenidos extends VBox {

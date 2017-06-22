@@ -1,21 +1,23 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.PORCENTAJE_AUMENTO_DANIO_GOKU;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
-import static algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
-import static algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static model.algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
+import static model.algoBall.ConstantesDelJuego.PORCENTAJE_AUMENTO_DANIO_GOKU;
+import static model.algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
+import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import personajes.Cell;
-import personajes.Goku;
-import personajes.Personaje;
-import personajes.elementos.Ataque;
-import tablero.Posicion;
-import tablero.Tablero;
+import model.algoBall.Equipo;
+import model.personajes.Cell;
+import model.personajes.Goku;
+import model.personajes.Personaje;
+import model.personajes.elementos.Danio;
+import model.personajes.elementos.Ki;
+import model.personajes.elementos.Salud;
+import model.tablero.Posicion;
+import model.tablero.Tablero;
 
 public class GokuUnitTest 
 {
@@ -24,7 +26,7 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		goku.aumentarKi(20);
+		goku.aumentarKi(new Ki(20));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -74,8 +76,8 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 71 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
-		goku.recibirDanio( ataqueAGoku );
+
+		goku.recibirDanio(new Danio(480)); //salud goku = 500;
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -102,9 +104,9 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 80 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
-		goku.recibirDanio( ataqueAGoku );
-		goku.aumentarKi(20);
+		
+		goku.recibirDanio(new Danio(480)); //salud goku = 500;
+		goku.aumentarKi(new Ki(20));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -132,9 +134,9 @@ public class GokuUnitTest
 	{
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
-		Ataque ataqueAGoku = new Ataque(40, (int) (PUNTOS_VIDA_GOKU * 80 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
-		goku.recibirDanio( ataqueAGoku );
-		goku.aumentarKi(100);
+		
+		goku.recibirDanio(new Danio(40));
+		goku.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -149,7 +151,7 @@ public class GokuUnitTest
 		agrupacion2.agregarPersonaje(cell);
 		
 		int noventaPorciento = (int) (PUNTOS_VIDA_GOKU * 0.9); 
-		goku.reducirSalud(noventaPorciento);
+		goku.reducirSalud(new Salud(noventaPorciento));
 		
 		int danioAtaqueEspecial = (PODER_GOKU_NORMAL + PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU * PODER_GOKU_NORMAL / 100 );
 		int saludEsperada = PUNTOS_VIDA_CELL - ( danioAtaqueEspecial
@@ -160,7 +162,7 @@ public class GokuUnitTest
 		
 		assertEquals(saludEsperada, cell.getSalud());
 		
-		goku.regenerarSalud(noventaPorciento); //goku con toda la salud.
+		goku.regenerarSalud(new Salud(noventaPorciento)); //goku con toda la salud.
 		
 		agrupacion1.reestablecer();
 		int saludEsperadaSinBonus = saludEsperada - danioAtaqueEspecial;

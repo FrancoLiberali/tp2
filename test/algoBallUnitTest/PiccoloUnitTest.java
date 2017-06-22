@@ -1,18 +1,18 @@
 package algoBallUnitTest;
 
-import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
-import static algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_SEGUNDA_TRANSF;
-import static algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOHAN;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_PICCOLO_SEGUNDA_TRANSF;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import exceptions.NoCumpleCondicionesDeTransformacionException;
-import personajes.Gohan;
-import personajes.Personaje;
-import personajes.Piccolo;
-import personajes.elementos.Ataque;
+import model.algoBall.Equipo;
+import model.exceptions.NoCumpleCondicionesDeTransformacionException;
+import model.personajes.Gohan;
+import model.personajes.Personaje;
+import model.personajes.Piccolo;
+import model.personajes.elementos.Danio;
+import model.personajes.elementos.Ki;
 
 public class PiccoloUnitTest {
 
@@ -20,10 +20,9 @@ public class PiccoloUnitTest {
 	public void piccoloSePuedeTransformarSoloUnaVezSiGohanEstaEnLaAgrupacionConMasDe20PorcientoDeVida()
 	{
 		Personaje piccolo = new Piccolo();
-		piccolo.aumentarKi(20);
+		piccolo.aumentarKi(new Ki(20));
 		
 		Personaje gohan = new Gohan();
-		
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
@@ -38,7 +37,7 @@ public class PiccoloUnitTest {
 	public void piccoloSePuedeTransformarAPrimeraTransSiGohanNoEstaEnLaAgrupacion()
 	{
 		Personaje piccolo = new Piccolo();
-		piccolo.aumentarKi(20);		
+		piccolo.aumentarKi(new Ki(20));		
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);
@@ -51,12 +50,10 @@ public class PiccoloUnitTest {
 	public void piccoloSePuedeTransformarDosVecesSiGohanEstaEnLaAgrupacionConMenosDe20PorcientoDeVida()
 	{
 		Personaje piccolo = new Piccolo();
-		piccolo.aumentarKi(20);
+		piccolo.aumentarKi(new Ki(20));
 		
 		Personaje gohan = new Gohan();
-		Ataque ataqueAGohan = new Ataque(40, (int) (PUNTOS_VIDA_GOHAN * 81 / 100) );//poder de pelea 40 asi no hay reduccion de ataque
-		gohan.recibirDanio(ataqueAGohan);//poder de pelea 40 asi no hay reduccion de ataque
-		
+		gohan.recibirDanio(new Danio(250));
 		
 		Equipo agrupacion1 = new Equipo("buenos");
 		agrupacion1.agregarPersonaje(piccolo);

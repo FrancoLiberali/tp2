@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-import algoBall.Equipo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -13,7 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import personajes.Personaje;
+import model.algoBall.Equipo;
+import model.personajes.Personaje;
 
 public class BarrasDeVida extends VBox{
 	List<Equipo> equipos = new ArrayList<Equipo>();

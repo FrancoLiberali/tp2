@@ -2,13 +2,13 @@ package vista.eventos;
 
 import java.util.List;
 
-import personajes.Personaje;
 import vistas.PanelDeCaracteristicas;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import model.personajes.Personaje;
 
 public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 	

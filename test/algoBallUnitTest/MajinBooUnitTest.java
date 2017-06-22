@@ -1,20 +1,19 @@
 package algoBallUnitTest;
 
+import static model.algoBall.ConstantesDelJuego.KI_INICIAL;
+import static model.algoBall.ConstantesDelJuego.KI_POR_TURNO;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import algoBall.Equipo;
-import personajes.Goku;
-import personajes.MajinBoo;
-import personajes.Personaje;
-import personajes.elementos.*;
-import tablero.*;
-import exceptions.*;
-
-import static algoBall.ConstantesDelJuego.KI_INICIAL;
-import static algoBall.ConstantesDelJuego.KI_POR_TURNO;
-import static algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import model.algoBall.Equipo;
+import model.exceptions.*;
+import model.personajes.Goku;
+import model.personajes.MajinBoo;
+import model.personajes.Personaje;
+import model.personajes.elementos.*;
+import model.tablero.*;
 
 public class MajinBooUnitTest 
 {
@@ -23,8 +22,8 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
-		goku.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
+		goku.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -46,7 +45,7 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -61,7 +60,7 @@ public class MajinBooUnitTest
 		agrupacion2.agregarPersonaje(goku);
 		
 		majinBoo.realizarAtaqueEspecial(goku);
-		goku.aumentarKi(100);
+		goku.aumentarKi(new Ki(100));
 		
 		assertEquals(goku.getKiCantidad(), KI_INICIAL);
 	}
@@ -71,8 +70,8 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
-		goku.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
+		goku.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -95,8 +94,8 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
-		goku.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
+		goku.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -120,7 +119,7 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
@@ -158,7 +157,7 @@ public class MajinBooUnitTest
 	{
 		Personaje majinBoo = new MajinBoo();
 		Personaje goku = new Goku();
-		majinBoo.aumentarKi(100);
+		majinBoo.aumentarKi(new Ki(100));
 		
 		Tablero tablero = new Tablero(10);
 		Posicion posicionInicialX = new Posicion(2,2);
