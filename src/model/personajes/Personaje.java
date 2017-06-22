@@ -99,6 +99,12 @@ public abstract class Personaje implements Posicionable
 		this.actualizarMovimientosRestantes(velocidadAnterior);
 	}
 	
+	public void mover(Posicion nuevaPosicion){
+		nuevaPosicion.ocupar(this);
+		posicion.vaciar();
+		posicion = nuevaPosicion;
+	}
+	
 	protected void verificarAtaque(Personaje victima)
 	{	
 		if (!this.posicion.dentroDelRango(victima.getPosicion(), this.getDistanciaDeAtaque())){

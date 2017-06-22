@@ -73,13 +73,10 @@ public class Tablero
 	
 	public void agregarPosicionable(Posicionable personaje, Posicion posicion)
 	{
-		(this.getCasillero(posicion)).ocupar(personaje);
-		posicion.setTablero(this);
+		Casillero casillero = this.getCasillero(posicion);
+		casillero.ocupar(personaje);
+		posicion.setCasillero(casillero);
 		personaje.setPosicion(posicion);
-	}
-	
-	public void vaciarCasilleroEnPosicion (Posicion posicion){
-		this.getCasillero(posicion).vaciar();
 	}
 	
 	public Hashtable<Posicion,Consumible> getPosicionesYConsumibles(){

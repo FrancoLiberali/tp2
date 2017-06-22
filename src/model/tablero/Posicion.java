@@ -6,7 +6,7 @@ public class Posicion
 {
 	private int fila;
 	private int columna;
-	private Tablero tablero;
+	private Casillero casillero;
 	
 	public Posicion(int fil, int col)
 	{
@@ -14,8 +14,8 @@ public class Posicion
 		columna = col;
 	}
 	
-	public void setTablero(Tablero tablero){
-		this.tablero = tablero;
+	public void setCasillero(Casillero casillero){
+		this.casillero = casillero;
 	}
 	
 	public int getFila()
@@ -30,25 +30,21 @@ public class Posicion
 	
 	public Posicion darIzquierda(){
 		Posicion nueva_posicion = new Posicion(this.fila, this.columna-1);
-		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darDerecha(){
 		Posicion nueva_posicion = new Posicion(this.fila, this.columna+1);
-		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darAbajo(){
 		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna);
-		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
 	public Posicion darArriba(){
 		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna);
-		nueva_posicion.setTablero(tablero);
 		return nueva_posicion;
 	}
 	
@@ -68,12 +64,12 @@ public class Posicion
 		return this.darAbajo().darIzquierda();
 	}
 	
-	public void vaciarEnTablero(){
-		this.tablero.vaciarCasilleroEnPosicion(this);
+	public void vaciar(){
+		this.casillero.vaciar();
 	}
 	
-	public void agregarEnTablero(Personaje personaje){
-		this.tablero.agregarPosicionable(personaje, this);
+	public void ocupar(Personaje personaje){
+		this.casillero.ocupar(personaje);
 	}
 
 	public boolean dentroDelRango(Posicion otraPosicion, int rango){

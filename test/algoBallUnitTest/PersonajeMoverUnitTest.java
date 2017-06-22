@@ -20,35 +20,6 @@ import model.tablero.Tablero;
 
 public class PersonajeMoverUnitTest {
 	
-	@Test(expected = NoQuedanMovimientosException.class)
-	public void MoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
-		Personaje piccolo = new Piccolo();
-		Equipo guerrerosZ = new Equipo("Guerreros Z");
-		piccolo.setEquipo(guerrerosZ);
-		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
-		Posicion posicionInicial = new Posicion(2,2);
-		tablero.agregarPosicionable(piccolo, posicionInicial);
-		guerrerosZ.moverDerecha(piccolo);
-		guerrerosZ.moverDerecha(piccolo);
-		/* se alcanza limite de movimientos*/
-		guerrerosZ.moverDerecha(piccolo);
-	}
-	
-	@Test (expected = EstePersonajeNoSePuedeMoverException.class)
-	public void noSePuedeMoverPersonajeLuegoDeMoverAOtroEnEsteTurno(){
-		Personaje majinBoo = new MajinBoo();
-		Personaje cell = new Cell();
-		Equipo enemigos = new Equipo("enemigos");
-		majinBoo.setEquipo(enemigos);
-		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
-		Posicion posicionInicialM = new Posicion(2,2);
-		Posicion posicionInicialC = new Posicion(3,2);
-		tablero.agregarPosicionable(majinBoo, posicionInicialM);
-		tablero.agregarPosicionable(cell, posicionInicialC);
-		enemigos.moverDerecha(majinBoo);
-		enemigos.moverDerecha(cell);
-	}
-	
 	@Test
 	public void moverPersonajeVerificarPosicion()
 	{
@@ -63,6 +34,36 @@ public class PersonajeMoverUnitTest {
 		Posicion posicionFinal = new Posicion(2,3);
 		assertEquals(goku.getPosicion(), posicionFinal);
 		
+	}
+	
+	@Test(expected = NoQuedanMovimientosException.class)
+	public void MoverPersonajeMasVecesQueSuVelocidadActualLanzaNoQuedanMovimientos(){
+		Personaje piccolo = new Piccolo();
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
+		Equipo guerrerosZ = new Equipo("Guerreros Z");
+		piccolo.setEquipo(guerrerosZ);
+		
+		Posicion posicionInicial = new Posicion(2,2);
+		tablero.agregarPosicionable(piccolo, posicionInicial);
+		guerrerosZ.moverDerecha(piccolo);
+		guerrerosZ.moverDerecha(piccolo);
+		/* se alcanza limite de movimientos*/
+		guerrerosZ.moverDerecha(piccolo);
+	}
+	
+	@Test (expected = EstePersonajeNoSePuedeMoverException.class)
+	public void noSePuedeMoverPersonajeLuegoDeMoverAOtroEnEsteTurno(){
+		Personaje majinBoo = new MajinBoo();
+		Personaje cell = new Cell();
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
+		Equipo enemigos = new Equipo("enemigos");
+		majinBoo.setEquipo(enemigos);
+		Posicion posicionInicialM = new Posicion(2,2);
+		Posicion posicionInicialC = new Posicion(3,2);
+		tablero.agregarPosicionable(majinBoo, posicionInicialM);
+		tablero.agregarPosicionable(cell, posicionInicialC);
+		enemigos.moverDerecha(majinBoo);
+		enemigos.moverDerecha(cell);
 	}
 	
 	@Test (expected = CasilleroOcupadoException.class)
