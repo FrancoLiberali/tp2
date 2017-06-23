@@ -111,7 +111,7 @@ public class MajinBooUnitTest
 		agrupacion2.agregarPersonaje(goku);
 		
 		majinBoo.realizarAtaqueEspecial(goku);
-		agrupacion2.moverDerecha(goku);
+		agrupacion2.mover(goku, Direccion.derecha());
 		
 	}
 	

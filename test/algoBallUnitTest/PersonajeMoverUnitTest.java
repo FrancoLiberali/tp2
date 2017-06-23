@@ -15,6 +15,7 @@ import model.personajes.Goku;
 import model.personajes.MajinBoo;
 import model.personajes.Personaje;
 import model.personajes.Piccolo;
+import model.personajes.elementos.Direccion;
 import model.tablero.Posicion;
 import model.tablero.Tablero;
 
@@ -30,7 +31,7 @@ public class PersonajeMoverUnitTest {
 		goku.setEquipo(guerrerosZ);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, posicionInicial);
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		Posicion posicionFinal = new Posicion(2,3);
 		assertEquals(goku.getPosicion(), posicionFinal);
 		
@@ -45,10 +46,10 @@ public class PersonajeMoverUnitTest {
 		
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(piccolo, posicionInicial);
-		guerrerosZ.moverDerecha(piccolo);
-		guerrerosZ.moverDerecha(piccolo);
+		guerrerosZ.mover(piccolo, Direccion.derecha());
+		guerrerosZ.mover(piccolo, Direccion.derecha());
 		/* se alcanza limite de movimientos*/
-		guerrerosZ.moverDerecha(piccolo);
+		guerrerosZ.mover(piccolo, Direccion.derecha());
 	}
 	
 	@Test (expected = EstePersonajeNoSePuedeMoverException.class)
@@ -62,8 +63,8 @@ public class PersonajeMoverUnitTest {
 		Posicion posicionInicialC = new Posicion(3,2);
 		tablero.agregarPosicionable(majinBoo, posicionInicialM);
 		tablero.agregarPosicionable(cell, posicionInicialC);
-		enemigos.moverDerecha(majinBoo);
-		enemigos.moverDerecha(cell);
+		enemigos.mover(majinBoo, Direccion.derecha());
+		enemigos.mover(cell, Direccion.derecha());
 	}
 	
 	@Test (expected = CasilleroOcupadoException.class)
@@ -81,7 +82,7 @@ public class PersonajeMoverUnitTest {
 		tablero.agregarPosicionable(goku, posicionInicialX);
 		tablero.agregarPosicionable(piccolo, posicionInicialY);
 		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 	}
 	
@@ -97,7 +98,7 @@ public class PersonajeMoverUnitTest {
 		
 		tablero.agregarPosicionable(piccolo, posicionInicialX);
 		
-		guerrerosZ.moverAbajo(piccolo);
+		guerrerosZ.mover(piccolo, Direccion.abajo());
 		
 	}
 

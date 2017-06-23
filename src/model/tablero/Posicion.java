@@ -28,42 +28,6 @@ public class Posicion
 		return columna;
 	}
 	
-	public Posicion darIzquierda(){
-		Posicion nueva_posicion = new Posicion(this.fila, this.columna-1);
-		return nueva_posicion;
-	}
-	
-	public Posicion darDerecha(){
-		Posicion nueva_posicion = new Posicion(this.fila, this.columna+1);
-		return nueva_posicion;
-	}
-	
-	public Posicion darAbajo(){
-		Posicion nueva_posicion = new Posicion(this.fila+1, this.columna);
-		return nueva_posicion;
-	}
-	
-	public Posicion darArriba(){
-		Posicion nueva_posicion = new Posicion(this.fila-1, this.columna);
-		return nueva_posicion;
-	}
-	
-	public Posicion darArribaIzquierda(){
-		return this.darArriba().darIzquierda();
-	}
-	
-	public Posicion darArribaDerecha(){
-		return this.darArriba().darDerecha();
-	}
-	
-	public Posicion darAbajoDerecha(){
-		return this.darAbajo().darDerecha();
-	}
-	
-	public Posicion darAbajoIzquierda(){
-		return this.darAbajo().darIzquierda();
-	}
-	
 	public void vaciar(){
 		this.casillero.vaciar();
 	}

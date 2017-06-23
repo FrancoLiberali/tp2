@@ -25,6 +25,7 @@ import model.personajes.Cell;
 import model.personajes.Gohan;
 import model.personajes.Goku;
 import model.personajes.Personaje;
+import model.personajes.elementos.Direccion;
 import model.personajes.elementos.Ki;
 import model.personajes.elementos.Salud;
 import model.tablero.Casillero;
@@ -56,39 +57,39 @@ public class AlgoBallIntegrationTest {
 		assertEquals(goku.getPosicion().getColumna(),5);
 		assertEquals(goku.getPosicion().getFila(),0);
 		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());
 		assertEquals(goku.getPosicion().getColumna(),5);
 		assertEquals(goku.getPosicion().getFila(),1);
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
 		
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		assertEquals(goku.getPosicion().getColumna(),6);
 		assertEquals(goku.getPosicion().getFila(),1);
 		
 		assertEquals(guerrerosZ.getCantidadDeAtaquesRestantes(),1);
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());		
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());		
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());	
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());		
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());		
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
-		guerrerosZ.moverAbajo(goku);		
-		guerrerosZ.moverAbajo(goku);
+		guerrerosZ.mover(goku, Direccion.abajo());		
+		guerrerosZ.mover(goku, Direccion.abajo());
 		
 		goku.realizarAtaqueBasico(cell);
 		
@@ -97,7 +98,7 @@ public class AlgoBallIntegrationTest {
 		guerrerosZ.reestablecer();//simulacion finalizacion de turnos
 
 		assertEquals(enemigos.getCantidadDeAtaquesRestantes(),1);
-		enemigos.moverArriba(cell);
+		enemigos.mover(cell, Direccion.arriba());
 		assertEquals(cell.getPosicion().getColumna(),5);
 		assertEquals(cell.getPosicion().getFila(),13);
 	}
@@ -112,7 +113,7 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		
 		equipo.agregarPersonaje(goku);
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		Posicion posicionEsperada = new Posicion(1,2);
 		
 		assertEquals(goku.getPosicion(), posicionEsperada);
@@ -133,7 +134,7 @@ public class AlgoBallIntegrationTest {
 		equipo.agregarPersonaje(goku);
 		equipo.agregarPersonaje(gohan);
 		
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 
 		assertEquals(goku.getPosicion(), posicionGokuInicial);
 	}
@@ -148,12 +149,12 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible esfera = new EsferaDelDragon();
-		Posicion posicionEsfera = posicionGoku.darDerecha();
+		Posicion posicionEsfera = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionEsfera);
 		cas.agregarConsumible(esfera);
 		assertEquals(cas.getConsumible(),esfera);
 		
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		assertEquals(cas.getConsumible(),null);
 	}
 	
@@ -167,13 +168,13 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible esfera = new EsferaDelDragon();
-		Posicion posicionEsfera = posicionGoku.darDerecha();
+		Posicion posicionEsfera = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionEsfera);
 		cas.agregarConsumible(esfera);
 		assertEquals(cas.getConsumible(),esfera);
 		int poderAnt = goku.getPoderDePelea();
 		int poderEsp = poderAnt + poderAnt * 25 /100;
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		assertEquals(goku.getPoderDePelea(),poderEsp);
 	}
 	
@@ -187,13 +188,13 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible nube = new NubeVoladora();
-		Posicion posicionNube = posicionGoku.darDerecha();
+		Posicion posicionNube = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionNube);
 		cas.agregarConsumible(nube);
 		assertEquals(cas.getConsumible(),nube);
 		int velAnt = goku.getVelocidad();
 		int velEsp = velAnt * 2;
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		assertEquals(goku.getVelocidad(),velEsp);
 	}
 	
@@ -207,13 +208,13 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible semilla = new SemillaDelErmitanio();
-		Posicion posicionSemilla = posicionGoku.darDerecha();
+		Posicion posicionSemilla = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionSemilla);
 		cas.agregarConsumible(semilla);
 		assertEquals(cas.getConsumible(),semilla);
 		goku.reducirSalud(new Salud(200));
 		int vidaEsp = PUNTOS_VIDA_GOKU -200 +100;
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		assertEquals(goku.getSalud(),vidaEsp);
 	}
 	
@@ -227,13 +228,13 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible semilla = new SemillaDelErmitanio();
-		Posicion posicionSemilla = posicionGoku.darDerecha();
+		Posicion posicionSemilla = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionSemilla);
 		cas.agregarConsumible(semilla);
 		assertEquals(cas.getConsumible(),semilla);
 		goku.reducirSalud(new Salud(99));
 		int vidaEsp = PUNTOS_VIDA_GOKU;
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		assertEquals(goku.getSalud(),vidaEsp);
 	}
 	
@@ -247,11 +248,11 @@ public class AlgoBallIntegrationTest {
 		tablero.agregarPosicionable(goku, posicionGoku);
 		equipo.agregarPersonaje(goku);
 		Consumible nube = new NubeVoladora();
-		Posicion posicionNube = posicionGoku.darDerecha();
+		Posicion posicionNube = Direccion.derecha().proximaPosicion(posicionGoku);
 		Casillero cas = tablero.getCasillero(posicionNube);
 		cas.agregarConsumible(nube);
 		assertEquals(cas.getConsumible(),nube);
-		equipo.moverDerecha(goku);
+		equipo.mover(goku, Direccion.derecha());
 		goku.aumentarKi(new Ki(21));
 		goku.transformar();
 		assertEquals(goku.getEstado().getNombre(),NOMBRE_GOKU_PRIMERA_TRANSF);

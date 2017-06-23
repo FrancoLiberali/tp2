@@ -14,6 +14,7 @@ import model.algoBall.Equipo;
 import model.exceptions.KiInsuficienteException;
 import model.personajes.Goku;
 import model.personajes.Personaje;
+import model.personajes.elementos.Direccion;
 import model.personajes.elementos.EstadoActividad;
 import model.personajes.elementos.Ki;
 import model.tablero.Posicion;
@@ -59,18 +60,18 @@ public class PersonajeTransformacionUnitTest {
 	@Test
 	public void transformarseLuegoDeMoverseSinAlcarzarElLimiteDeMovimientosAumentaLaCantidadDeMovimientosPosibles(){
 		Personaje goku = new Goku();
+		Tablero tablero =Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
 		goku.aumentarKi(new Ki(40));
 		
-		Tablero tablero =Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, posicionInicial);
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		goku.transformar();
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		/*aqui se abrian limitado los movimientos sin la transformacion*/
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		Posicion posicionFinal = new Posicion(2,5);
 		assertEquals(goku.getPosicion(),posicionFinal);
 	}
@@ -79,17 +80,17 @@ public class PersonajeTransformacionUnitTest {
 	public void transformarseLuegoDeMoverseConAlcarzarElLimiteDeMovimientosAumentLaCantidadDeMovimientosPosibles(){
 		
 		Personaje goku = new Goku();
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo guerrerosZ = new Equipo("z");
 		goku.setEquipo(guerrerosZ);
 		goku.aumentarKi(new Ki(40));
 		
-		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, posicionInicial);
-		guerrerosZ.moverDerecha(goku);
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
+		guerrerosZ.mover(goku, Direccion.derecha());
 		goku.transformar();
-		guerrerosZ.moverDerecha(goku);
+		guerrerosZ.mover(goku, Direccion.derecha());
 		Posicion posicionFinal = new Posicion(2,5);
 		assertEquals(goku.getPosicion(),posicionFinal);
 	}

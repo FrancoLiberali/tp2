@@ -10,29 +10,28 @@ public class Movimiento {
 	private  int movimientosRestantes = 1;
 	private Personaje personajeQueSeMovio;
 	private Tablero tablero;
-	private Personaje personajeIntentandoMover;
 	
 	public Movimiento(){
 		tablero = Tablero.getInstance();
 	}
 	
-	private void mover(Posicion nuevaPosicion){
-		if (!this.sePuedeMover(personajeIntentandoMover)){
+	public void mover(Personaje personaje, Direccion direccion){
+		if (!this.sePuedeMover(personaje)){
 			throw new EstePersonajeNoSePuedeMoverException();
 		}
 		if (movimientosRestantes == 0){
 			throw new NoQuedanMovimientosException();
 		}
-		
+		Posicion nuevaPosicion = direccion.proximaPosicion(personaje.getPosicion());
 		nuevaPosicion.setCasillero(tablero.getCasillero(nuevaPosicion));
-		personajeIntentandoMover.mover(nuevaPosicion);
+		personaje.mover(nuevaPosicion);
 		if (personajeQueSeMovio == null){
-			movimientosRestantes = personajeIntentandoMover.getVelocidad();
+			movimientosRestantes = personaje.getVelocidad();
 		}
 		movimientosRestantes--;
-		personajeQueSeMovio = personajeIntentandoMover;
-		
+		personajeQueSeMovio = personaje;
 	}
+	
 	public boolean sePuedeMover(Personaje personaje){
 		return ((personajeQueSeMovio == null || personaje == personajeQueSeMovio) && !(personaje.estaConvertidoAChocolate()));
 	}
@@ -42,54 +41,6 @@ public class Movimiento {
 			int movimientosRealizados = velocidadAnterior - movimientosRestantes;
 			movimientosRestantes = (velocidadActual - movimientosRealizados);
 		}
-	}
-	
-	public void moverIzquierda(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darIzquierda());
-	}
-	
-	public void moverDerecha(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darDerecha());
-	}
-	
-	public void moverArriba(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darArriba());
-	}
-	
-	public void moverAbajo(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darAbajo());
-	}
-	
-	public void moverArribaIzquierda(Personaje personaje)
-	{	
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darArribaIzquierda());
-	}
-	
-	public void moverArribaDerecha(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darArribaDerecha());
-	}
-	
-	public void moverAbajoDerecha(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darAbajoDerecha());
-	}
-	
-	public void moverAbajoIzquierda(Personaje personaje)
-	{
-		personajeIntentandoMover = personaje;
-		this.mover(personaje.getPosicion().darAbajoIzquierda());
 	}
 }	
 

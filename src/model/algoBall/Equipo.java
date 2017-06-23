@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
+import model.personajes.elementos.Direccion;
 import model.personajes.elementos.Movimiento;
 import model.personajes.elementos.PanelCaracteristicas;
 
@@ -89,44 +90,8 @@ public class Equipo implements Iterable<Personaje>
 		return this.cantidadAtaquesRestantes;
 	}
 	
-	public void moverIzquierda(Personaje personaje)
-	{	
-		movimiento.moverIzquierda(personaje);
-	}
-	
-	public void moverDerecha(Personaje personaje)
-	{
-		movimiento.moverDerecha(personaje);
-	}
-	
-	public void moverArriba(Personaje personaje)
-	{
-		movimiento.moverArriba(personaje);
-	}
-	
-	public void moverAbajo(Personaje personaje)
-	{
-		movimiento.moverAbajo(personaje);
-	}
-	
-	public void moverArribaIzquierda(Personaje personaje)
-	{	
-		movimiento.moverArribaIzquierda(personaje);
-	}
-	
-	public void moverArribaDerecha(Personaje personaje)
-	{
-		movimiento.moverArribaDerecha(personaje);
-	}
-	
-	public void moverAbajoDerecha(Personaje personaje)
-	{
-		movimiento.moverAbajoDerecha(personaje);
-	}
-	
-	public void moverAbajoIzquierda(Personaje personaje)
-	{
-		movimiento.moverAbajoIzquierda(personaje);
+	public void mover(Personaje personaje, Direccion direccion){
+		movimiento.mover(personaje, direccion);
 	}
 	
 	public void transformar (Personaje personaje){
