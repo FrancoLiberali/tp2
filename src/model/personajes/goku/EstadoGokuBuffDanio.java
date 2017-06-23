@@ -17,7 +17,7 @@ public class EstadoGokuBuffDanio extends EstadoTransformacion {
 		this.distanciaDeAtaque = anterior.getDistanciaDeAtaque();
 		this.velocidad = anterior.getVelocidad();
 		this.setPoderDePelea(this.calcularDanio(anterior.getPoderDePelea(), porcentajePlusDanio));
-		this.rutaImagen = "file:src/vista/imagenes/gokuLastimado.png";
+		this.rutaImagen = "file:src/vistas/imagenes/gokuLastimado.png";
 	}
 
 	private int calcularDanio(int danio, int plusPorcentaje)

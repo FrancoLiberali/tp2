@@ -25,7 +25,7 @@ public class EstadoGohanSuperSayajinFaseUno extends EstadoTransformacion
 		this.poderDePelea = new Danio(PODER_GOHAN_PRIMERA_TRANSF);
 		this.siguienteEstado = new EstadoGohanSuperSayajinFaseDos();
 		this.kiParaTransformacion = new Ki(KI_SEGUNDA_TRANF_GOHAN);
-		this.rutaImagen = "file:src/vista/imagenes/gohanSuperSaiyan1.png";
+		this.rutaImagen = "file:src/vistas/imagenes/gohanSuperSaiyan1.png";
 	}
 	
 	@Override

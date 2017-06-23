@@ -23,7 +23,7 @@ public class Freezer extends Personaje
 		this.estadoTransformacionActual = new EstadoFreezerNormal();
 		
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_FREEZER);
-		this.rutaImagen = "file:src/vista/imagenes/freezer.png";
+		this.rutaImagen = "file:src/vistas/imagenes/freezer.png";
 	}
 	
 }

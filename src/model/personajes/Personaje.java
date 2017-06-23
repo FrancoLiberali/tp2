@@ -11,7 +11,6 @@ import model.consumibles.Consumible;
 import model.exceptions.FueraDeRangoException;
 import model.exceptions.IntentandoAtacarAUnCompanieroException;
 import model.exceptions.NoTienesAtaquesRestantesException;
-import model.exceptions.PersonajeInexistenteException;
 import model.personajes.elementos.AtaqueEspecial;
 import model.personajes.elementos.Danio;
 import model.personajes.elementos.EstadoActividad;

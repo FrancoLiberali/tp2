@@ -1,4 +1,4 @@
-package vista.eventos.botonMoverHandlers;
+package controladores.eventos.botonMoverHandlers;
 
 import model.algoBall.Equipo;
 import model.exceptions.CasilleroOcupadoException;

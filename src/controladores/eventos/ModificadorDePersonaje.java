@@ -1,4 +1,4 @@
-package vista.eventos;
+package controladores.eventos;
 
 import java.util.List;
 

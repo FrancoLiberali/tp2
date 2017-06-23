@@ -1,8 +1,8 @@
-package vista.eventos.botonMoverHandlers;
+package controladores.eventos.botonMoverHandlers;
+import controladores.eventos.BotonModificableHandler;
 import javafx.event.ActionEvent;
 import model.algoBall.Equipo;
 import model.personajes.elementos.Direccion;
-import vista.eventos.BotonModificableHandler;
 import vistas.Consola;
 import vistas.VistaTablero;
 

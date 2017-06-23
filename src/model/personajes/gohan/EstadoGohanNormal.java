@@ -20,7 +20,7 @@ public class EstadoGohanNormal extends EstadoTransformacion {
 		this.poderDePelea = new Danio(PODER_GOHAN_NORMAL);
 		this.siguienteEstado = new EstadoGohanSuperSayajinFaseUno();
 		this.kiParaTransformacion = new Ki(KI_GOHAN_PRIMERA_TRANF);
-		this.rutaImagen = "file:src/vista/imagenes/gohanNormal.png";
+		this.rutaImagen = "file:src/vistas/imagenes/gohanNormal.png";
 	}
 	
 }

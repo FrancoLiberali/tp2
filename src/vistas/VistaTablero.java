@@ -14,7 +14,7 @@ import model.tablero.Posicion;
 import model.tablero.Tablero;
 
 public class VistaTablero {
-	private Image suelo = new Image("file:src/vista/imagenes/texturaSuelo.jpg");
+	private Image suelo = new Image("file:src/vistas/imagenes/texturaSuelo.jpg");
 	private int dimension;
     private Canvas canvas;
     private Equipo equipo1;

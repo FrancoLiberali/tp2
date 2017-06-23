@@ -7,7 +7,7 @@ import javafx.scene.media.MediaPlayer;;
 
 public class Reproductor {
 	
-	String path = "src/vista/musica/musicaDeFondo.mp3";
+	String path = "src/vistas/musica/musicaDeFondo.mp3";
 	File archivo = new File(path);
 	Media media = new Media(archivo.toURI().toString());
 	MediaPlayer mediaPlayer = new MediaPlayer(media); 

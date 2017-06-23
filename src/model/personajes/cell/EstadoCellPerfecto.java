@@ -19,7 +19,7 @@ public class EstadoCellPerfecto extends EstadoTransformacion{
 		this.distanciaDeAtaque = DISTANCIA_CELL_SEGUNDA_TRANSF;
 		this.poderDePelea = new Danio(PODER_CELL_SEGUNDA_TRANSF);
 		this.siguienteEstado = null;
-		this.rutaImagen = "file:src/vista/imagenes/cellPerfecto.png";
+		this.rutaImagen = "file:src/vistas/imagenes/cellPerfecto.png";
 	}
 	
 	@Override

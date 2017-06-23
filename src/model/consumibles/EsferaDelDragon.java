@@ -10,7 +10,7 @@ public class EsferaDelDragon extends Consumible
 	
 	public EsferaDelDragon(){
 		this.nombre = ESFERA_DEL_DRAGON_NOMBRE;
-		this.rutaImagen = "file:src/vista/imagenes/esfera.png";
+		this.rutaImagen = "file:src/vistas/imagenes/esfera.png";
 	}
 
 	@Override

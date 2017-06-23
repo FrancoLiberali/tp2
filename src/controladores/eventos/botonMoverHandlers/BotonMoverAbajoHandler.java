@@ -1,18 +1,18 @@
-package vista.eventos.botonMoverHandlers;
+package controladores.eventos.botonMoverHandlers;
+import controladores.eventos.BotonModificableHandler;
 import javafx.event.ActionEvent;
 import model.algoBall.Equipo;
 import model.personajes.elementos.Direccion;
-import vista.eventos.BotonModificableHandler;
 import vistas.Consola;
 import vistas.VistaTablero;
 
-public class BotonMoverArribaDerechaHandler extends BotonModificableHandler {
-
+public class BotonMoverAbajoHandler extends BotonModificableHandler {
+	
 	private Equipo equipo;
-	private VistaTablero vista;
+	private final VistaTablero vista;
 	private BotonMoverHandler moverHandler;
 	
-	public BotonMoverArribaDerechaHandler(Equipo equipo, VistaTablero vista, Consola consola) {
+	public BotonMoverAbajoHandler(Equipo equipo, VistaTablero vista, Consola consola) {
 		this.equipo = equipo;
 		this.vista = vista;
 		this.moverHandler = new BotonMoverHandler(consola);
@@ -20,7 +20,7 @@ public class BotonMoverArribaDerechaHandler extends BotonModificableHandler {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	moverHandler.mover(equipo, personajeModificador, Direccion.arribaDerecha());
+    	moverHandler.mover(equipo, personajeModificador, Direccion.abajo());
     	this.vista.update();
     }
 }

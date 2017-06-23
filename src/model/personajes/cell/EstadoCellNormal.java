@@ -25,7 +25,7 @@ public class EstadoCellNormal extends EstadoTransformacion {
 			this.poderDePelea = new Danio(PODER_CELL_NORMAL);
 			this.siguienteEstado = new EstadoCellSemiPerfecto();
 			this.kiParaTransformacion = new Ki(KI_CELL_PRIMERA_TRANF);
-			this.rutaImagen = "file:src/vista/imagenes/cellNormal.png";
+			this.rutaImagen = "file:src/vistas/imagenes/cellNormal.png";
 		};
 		
 		@Override

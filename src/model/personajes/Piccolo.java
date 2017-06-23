@@ -23,7 +23,7 @@ public class Piccolo extends Personaje
 		this.ataqueEspecial.setPorcentaje(PROCENTAJE_DANIO_ATAQ_ESPECIAL_PICCOLO);
 		this.estadoTransformacionActual = new EstadoPiccoloNormal();
 		//this.movimientosRestantes = estadoTransformacionActual.getVelocidad();
-		this.rutaImagen = "file:src/vista/imagenes/piccolo.png";
+		this.rutaImagen = "file:src/vistas/imagenes/piccolo.png";
 	}
 	
 }

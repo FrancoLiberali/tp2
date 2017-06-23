@@ -19,7 +19,7 @@ public class EstadoFreezerNormal extends EstadoTransformacion {
 		this.poderDePelea = new Danio(PODER_FREEZER_NORMAL);
 		this.siguienteEstado = new EstadoFreezerSegundaForma();
 		this.kiParaTransformacion = new Ki(KI_FREEZER_PRIMERA_TRANF);
-		this.rutaImagen = "file:src/vista/imagenes/freezerNormal.png";
+		this.rutaImagen = "file:src/vistas/imagenes/freezerNormal.png";
 	}
 
 }

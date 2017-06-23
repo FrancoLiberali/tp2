@@ -20,7 +20,7 @@ public class EstadoPiccoloProtector extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_PICCOLO_SEGUNDA_TRANSF;
 		this.poderDePelea = new Danio(PODER_PICCOLO_SEGUNDA_TRANSF);
 		this.siguienteEstado = null;
-		this.rutaImagen = "file:src/vista/imagenes/piccoloProtector.png";
+		this.rutaImagen = "file:src/vistas/imagenes/piccoloProtector.png";
 	}
 	
 	@Override

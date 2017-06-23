@@ -9,7 +9,7 @@ public class NubeVoladora extends Consumible{
 	
 	public NubeVoladora(){
 		this.nombre = NUBE_VOLADORA_NOMBRE;
-		this.rutaImagen = "file:src/vista/imagenes/nube.png";
+		this.rutaImagen = "file:src/vistas/imagenes/nube.png";
 	}
 
 	@Override

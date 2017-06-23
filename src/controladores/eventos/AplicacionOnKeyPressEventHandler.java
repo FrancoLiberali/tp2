@@ -1,4 +1,4 @@
-package vista.eventos;
+package controladores.eventos;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;

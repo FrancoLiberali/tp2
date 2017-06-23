@@ -21,6 +21,6 @@ public class MajinBoo extends Personaje
 		this.salud = new Salud(PUNTOS_VIDA_MAJIN_BOO);
 		this.ataqueEspecial = new AtaqueEspecial(NOMBRE_ATQ_ESPECIAL_MAJIN_BOO, KI_ATQ_ESPECIAL_MAJIN_BOO);
 		this.estadoTransformacionActual = new EstadoMajinBooNormal();
-		this.rutaImagen = "file:src/vista/imagenes/majinboo.png";
+		this.rutaImagen = "file:src/vistas/imagenes/majinboo.png";
 	}
 }

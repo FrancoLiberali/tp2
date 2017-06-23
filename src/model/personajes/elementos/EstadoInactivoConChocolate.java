@@ -14,7 +14,7 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	private EstadoActividad estadoSiguiente;
 	private String nombre = CHOCOLATE;
 	private ContadorDeTurnos cantTurnos = new ContadorDeTurnos(TURNOS_ESTUNEO_MAJIN_BOO);
-	String rutaImagen = "file:src/vista/imagenes/estadoChocolate.png";
+	String rutaImagen = "file:src/vistas/imagenes/estadoChocolate.png";
 	
 	public void aplicarKi(Personaje personaje, Ki cantidad) {}
 

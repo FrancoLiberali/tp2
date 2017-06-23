@@ -1,14 +1,14 @@
 package vistas;
 
+import controladores.eventos.OpcionAcercaDeEventHandler;
+import controladores.eventos.OpcionMudoEventHandler;
+import controladores.eventos.OpcionPantallaCompletaEventHandler;
+import controladores.eventos.OpcionSalirEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
-import vista.eventos.OpcionAcercaDeEventHandler;
-import vista.eventos.OpcionMudoEventHandler;
-import vista.eventos.OpcionPantallaCompletaEventHandler;
-import vista.eventos.OpcionSalirEventHandler;
 
 public class BarraDeMenu extends MenuBar {
 

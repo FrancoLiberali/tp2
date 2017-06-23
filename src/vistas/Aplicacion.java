@@ -1,12 +1,12 @@
 package vistas;
 
+import controladores.eventos.AplicacionOnKeyPressEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.algoBall.AlgoBall;
 import model.algoBall.Equipo;
-import vista.eventos.AplicacionOnKeyPressEventHandler;
 import vistas.Reproductor;
 
 public class Aplicacion extends Application {

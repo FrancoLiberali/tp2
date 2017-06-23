@@ -19,7 +19,7 @@ public class EstadoFreezerDefinitivo extends EstadoTransformacion {
 		this.distanciaDeAtaque = DISTANCIA_FREEZER_SEGUNDA_TRANSF;
 		this.poderDePelea = new Danio(PODER_FREEZER_SEGUNDA_TRANSF);
 		this.siguienteEstado = null;
-		this.rutaImagen = "file:src/vista/imagenes/freezerFinal.png";
+		this.rutaImagen = "file:src/vistas/imagenes/freezerFinal.png";
 	}
 
 	@Override

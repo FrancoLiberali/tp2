@@ -26,7 +26,7 @@ public class EstadoPiccoloFortalecido extends EstadoTransformacion {
 		this.poderDePelea = new Danio(PODER_PICCOLO_PRIMERA_TRANSF);
 		this.siguienteEstado = new EstadoPiccoloProtector();
 		this.kiParaTransformacion = new Ki(KI_PICCOLO_SEGUNDA_TRANF);
-		this.rutaImagen = "file:src/vista/imagenes/piccoloFortalecido.png";
+		this.rutaImagen = "file:src/vistas/imagenes/piccoloFortalecido.png";
 	}
 	
 	@Override

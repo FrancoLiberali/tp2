@@ -1,6 +1,8 @@
 package vistas;
 
 
+import controladores.eventos.BotonEntrarEventHandler;
+import controladores.eventos.MuteOnOffEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,8 +22,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import vista.eventos.BotonEntrarEventHandler;
-import vista.eventos.MuteOnOffEventHandler;
 
 
 public class ContenedorBienvenidos extends VBox {
@@ -39,14 +39,14 @@ public class ContenedorBienvenidos extends VBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-        Image imagen = new Image("file:src/vista/imagenes/inicio.jpg",Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() +50, false, true);
+        Image imagen = new Image("file:src/vistas/imagenes/inicio.jpg",Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() +50, false, true);
         
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         
         // falta poner el tamanioo correcto
         ToggleButton botonMudo = new ToggleButton();
-        Image imagen1 = new Image("file:src/vista/imagenes/sonidoOn.png" );
+        Image imagen1 = new Image("file:src/vistas/imagenes/sonidoOn.png" );
         ImageView imagenBoton = new ImageView(imagen1);
         imagenBoton.setFitWidth(50);
         imagenBoton.setPreserveRatio(true);
