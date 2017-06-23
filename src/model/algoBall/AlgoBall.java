@@ -45,7 +45,7 @@ public class AlgoBall
 	public AlgoBall(String nombre1, String nombre2)
 	{	
 		List<Posicionable> consumibles = this.setConsumibles();
-		this.tablero = new Tablero(TAMANIO_TABLERO);
+		this.tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		tablero.setConsumibles(consumibles);
 		this.jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
 		this.jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);

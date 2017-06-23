@@ -1,5 +1,6 @@
 package algoBallUnitTest;
 
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class PersonajeMoverUnitTest {
 		Personaje piccolo = new Piccolo();
 		Equipo guerrerosZ = new Equipo("Guerreros Z");
 		piccolo.setEquipo(guerrerosZ);
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(piccolo, posicionInicial);
 		guerrerosZ.moverDerecha(piccolo);
@@ -39,7 +40,7 @@ public class PersonajeMoverUnitTest {
 		Personaje cell = new Cell();
 		Equipo enemigos = new Equipo("enemigos");
 		majinBoo.setEquipo(enemigos);
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialM = new Posicion(2,2);
 		Posicion posicionInicialC = new Posicion(3,2);
 		tablero.agregarPosicionable(majinBoo, posicionInicialM);
@@ -52,7 +53,7 @@ public class PersonajeMoverUnitTest {
 	public void moverPersonajeVerificarPosicion()
 	{
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo guerrerosZ = new Equipo("GuerrerosZ");
 		Personaje goku = new Goku();
 		goku.setEquipo(guerrerosZ);
@@ -67,7 +68,7 @@ public class PersonajeMoverUnitTest {
 	@Test (expected = CasilleroOcupadoException.class)
 	public void moverPersonajeNoFuncionaSiHayOtroPersonajeEnElLugarAlQueNosQueremosMover()
 	{
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo guerrerosZ = new Equipo("GuerrerosZ");
 		Personaje goku = new Goku();
 		goku.setEquipo(guerrerosZ);
@@ -86,12 +87,12 @@ public class PersonajeMoverUnitTest {
 	@Test(expected = FueraDelTableroException.class)
 	public void moverPersonajeNoFuncionaSiElLugarAlQueNosQueremosMoverSeEncuentraFueraDelTablero()
 	{
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Personaje piccolo = new Piccolo();
 		Equipo guerrerosZ = new Equipo("GuerrerosZ");
 		piccolo.setEquipo(guerrerosZ);
 		
-		Posicion posicionInicialX = new Posicion(9,2);
+		Posicion posicionInicialX = new Posicion(14,2);
 		
 		tablero.agregarPosicionable(piccolo, posicionInicialX);
 		

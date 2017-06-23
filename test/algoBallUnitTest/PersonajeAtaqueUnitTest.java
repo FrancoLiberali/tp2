@@ -5,6 +5,7 @@ import static model.algoBall.ConstantesDelJuego.PODER_GOHAN_NORMAL;
 import static model.algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
 import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
 import static model.algoBall.ConstantesDelJuego.REDUCCION_DE_ATAQUE;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class PersonajeAtaqueUnitTest {
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -61,7 +62,7 @@ public class PersonajeAtaqueUnitTest {
 		Personaje gohan = new Gohan();
 		Personaje cell = new Cell();
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -86,7 +87,7 @@ public class PersonajeAtaqueUnitTest {
 		Personaje goku = new Goku();
 		Personaje gohan = new Gohan();
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -106,7 +107,7 @@ public class PersonajeAtaqueUnitTest {
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
 	
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(5,5);

@@ -44,7 +44,7 @@ public class AlgoBallIntegrationTest {
 		jugador1.agregarPersonaje(goku);
 		jugador2.agregarPersonaje(cell);
 		
-		Tablero tablero = new Tablero(TAMANIO_TABLERO);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 	
 		tablero.agregarPosicionable(goku, new Posicion(GOKU_FIL,GOKU_COL));
 		tablero.agregarPosicionable(cell, new Posicion(CELL_FIL,CELL_COL));
@@ -104,7 +104,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void sePideQueSeMuevaUnPersonajeVerificarPosicionFinal(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -120,7 +120,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test (expected = CasilleroOcupadoException.class)
 	public void seVerificaQueNoPuedaHaberDosJPersonajesEnUnMismoCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -140,7 +140,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void ConsumibleDesapareceAlIrUnPersonajeASuCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -159,7 +159,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void EsferaDelDragonAumenta25PorCientoDeDanioAlIrUnPersonajeASuCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -179,7 +179,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void NubeVoladoraDuplicaLaVelocidadAlIrUnPersonajeASuCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -199,7 +199,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void SemillaDelErmitanioAumenta100DeVidaAlIrUnPersonajeDaniado100OMasASuCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -219,7 +219,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void SemillaDelErmitanioLlevaLaVidaAlMaximoAlIrUnPersonajeDaniadoMenosDe100ASuCasillero(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();
@@ -239,7 +239,7 @@ public class AlgoBallIntegrationTest {
 	
 	@Test
 	public void SePuedeTranformarLuegoDeConsumirUnConsumible(){
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Equipo equipo = new Equipo("buenos");
 		
 		Personaje goku = new Goku();

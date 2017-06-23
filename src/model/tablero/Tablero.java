@@ -13,9 +13,18 @@ public class Tablero
 	private int dimension;
 	private Casillero tableroDeCasilleros[][];
 	private List<Posicionable> posiblesConsumibles;
-	Hashtable<Posicion,Consumible> consumiblesActuales = new Hashtable<Posicion,Consumible>();
+	private Hashtable<Posicion,Consumible> consumiblesActuales = new Hashtable<Posicion,Consumible>();
+	private static Tablero INSTANCE = null;
 	
-	public Tablero(int dimension)
+	public static Tablero createInstance(int dimension){
+		INSTANCE = new Tablero(dimension);
+		return INSTANCE;
+	}
+	
+	public static Tablero getInstance(){
+		return INSTANCE;
+	}
+	private Tablero(int dimension)
 	{
 		this.dimension = dimension;
 	    tableroDeCasilleros = new Casillero[dimension][dimension];

@@ -5,6 +5,7 @@ import static model.algoBall.ConstantesDelJuego.PORCENTAJE_AUMENTO_DANIO_GOKU;
 import static model.algoBall.ConstantesDelJuego.PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU;
 import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
 import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class GokuUnitTest
 		Personaje cell = new Cell();
 		goku.aumentarKi(new Ki(20));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -53,7 +54,7 @@ public class GokuUnitTest
 		Personaje goku = new Goku();
 		Personaje cell = new Cell();
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -79,7 +80,7 @@ public class GokuUnitTest
 
 		goku.recibirDanio(new Danio(480)); //salud goku = 500;
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -108,7 +109,7 @@ public class GokuUnitTest
 		goku.recibirDanio(new Danio(480)); //salud goku = 500;
 		goku.aumentarKi(new Ki(20));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -138,7 +139,7 @@ public class GokuUnitTest
 		goku.recibirDanio(new Danio(40));
 		goku.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		

@@ -8,23 +8,19 @@ import model.personajes.Goku;
 import model.personajes.Personaje;
 import model.tablero.Posicion;
 import model.tablero.Tablero;
-import vistas.Aplicacion;
 
 public class TableroUnitTest 
 {	
-	Aplicacion aplicacion = new Aplicacion();
-	
+	Tablero tablero = Tablero.createInstance(8);
 	@Test
 	public void crearTableroConDimension4VerificarDimension()
 	{
-		Tablero tablero = new Tablero(4);
-		assertEquals(tablero.getDimension(), 4);
+		assertEquals(tablero.getDimension(), 8);
 	}
 	
 	@Test
 	public void crearTableroVerificarCasilleroVacio() 
 	{
-		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(2,3);
 		
 		assertTrue(tablero.getCasillero(pos).estaVacio());
@@ -33,7 +29,6 @@ public class TableroUnitTest
 	@Test(expected = CasilleroVacioException.class)
 	public void vaciarCasilleroEnPosicionDentroDelTableroLanzaCasilleroVacio() 
 	{
-		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(2,3);
 		
 		tablero.vaciarCasilleroEnPosicion(pos);
@@ -42,7 +37,6 @@ public class TableroUnitTest
 	@Test(expected = FueraDelTableroException.class)
 	public void vaciarCasilleroEnPosicionFueraDelTableroLanzaFueraDelTablero() 
 	{
-		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(9,3);
 		
 		tablero.vaciarCasilleroEnPosicion(pos);
@@ -51,7 +45,6 @@ public class TableroUnitTest
 	@Test (expected = FueraDelTableroException.class)
 	public void getCasilleroEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
-		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
 		
 		tablero.getCasillero(pos);
@@ -60,7 +53,6 @@ public class TableroUnitTest
 	@Test (expected = FueraDelTableroException.class)
 	public void agregarPersonajeEnPosicionMayorQueLaDimensionLanzaFueraDelTablero() 
 	{
-		Tablero tablero = new Tablero(8);
 		Posicion pos = new Posicion(8,3);
 		Personaje goku = new Goku();
 		tablero.agregarPosicionable(goku, pos);
@@ -69,7 +61,6 @@ public class TableroUnitTest
 	@Test
 	public void agregarPersonajeACasilleroDentroDelTableroCambiaPosicionDelPersonaje()
 	{
-		Tablero tablero = new Tablero(4);
 		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, pos);
@@ -80,7 +71,6 @@ public class TableroUnitTest
 	@Test
 	public void vaciarCasillerooDentroDelTableroLeQuitaElPersonaje()
 	{
-		Tablero tablero = new Tablero(4);
 		Personaje goku = new Goku();
 		Posicion pos = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, pos);

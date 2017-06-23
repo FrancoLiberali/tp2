@@ -3,6 +3,7 @@ package algoBallUnitTest;
 import static model.algoBall.ConstantesDelJuego.KI_INICIAL;
 import static model.algoBall.ConstantesDelJuego.KI_POR_TURNO;
 import static model.algoBall.ConstantesDelJuego.NOMBRE_TRANF_NORMAL;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class MajinBooUnitTest
 		majinBoo.aumentarKi(new Ki(100));
 		goku.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -47,7 +48,7 @@ public class MajinBooUnitTest
 		Personaje goku = new Goku();
 		majinBoo.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -73,7 +74,7 @@ public class MajinBooUnitTest
 		majinBoo.aumentarKi(new Ki(100));
 		goku.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -97,7 +98,7 @@ public class MajinBooUnitTest
 		majinBoo.aumentarKi(new Ki(100));
 		goku.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -121,7 +122,7 @@ public class MajinBooUnitTest
 		Personaje goku = new Goku();
 		majinBoo.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -159,7 +160,7 @@ public class MajinBooUnitTest
 		Personaje goku = new Goku();
 		majinBoo.aumentarKi(new Ki(100));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		

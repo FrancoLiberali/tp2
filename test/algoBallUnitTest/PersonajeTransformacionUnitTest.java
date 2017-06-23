@@ -4,6 +4,7 @@ import static model.algoBall.ConstantesDelJuego.DISTANCIA_GOKU_PRIMERA_TRANSF;
 import static model.algoBall.ConstantesDelJuego.KI_GOKU_PRIMERA_TRANF;
 import static model.algoBall.ConstantesDelJuego.NOMBRE_GOKU_PRIMERA_TRANSF;
 import static model.algoBall.ConstantesDelJuego.PODER_GOKU_PRIMERA_TRANSF;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static model.algoBall.ConstantesDelJuego.VELOCIDAD_GOKU_PRIMERA_TRANSF;
 import static org.junit.Assert.assertEquals;
 
@@ -62,7 +63,7 @@ public class PersonajeTransformacionUnitTest {
 		goku.setEquipo(guerrerosZ);
 		goku.aumentarKi(new Ki(40));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero =Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, posicionInicial);
 		guerrerosZ.moverDerecha(goku);
@@ -82,7 +83,7 @@ public class PersonajeTransformacionUnitTest {
 		goku.setEquipo(guerrerosZ);
 		goku.aumentarKi(new Ki(40));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicial = new Posicion(2,2);
 		tablero.agregarPosicionable(goku, posicionInicial);
 		guerrerosZ.moverDerecha(goku);

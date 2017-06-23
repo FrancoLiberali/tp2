@@ -5,6 +5,7 @@ import static model.algoBall.ConstantesDelJuego.PODER_CELL_NORMAL;
 import static model.algoBall.ConstantesDelJuego.PODER_GOKU_NORMAL;
 import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_CELL;
 import static model.algoBall.ConstantesDelJuego.PUNTOS_VIDA_GOKU;
+import static model.algoBall.ConstantesDelJuego.TAMANIO_TABLERO;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class CellUnitTest {
 		Personaje cell = new Cell();
 		cell.aumentarKi(new Ki(5));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -59,7 +60,7 @@ public class CellUnitTest {
 		Personaje cell = new Cell();
 		cell.aumentarKi(new Ki(5));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -86,7 +87,7 @@ public class CellUnitTest {
 		Personaje cell = new Cell();
 		cell.aumentarKi(new Ki(5));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
@@ -112,7 +113,7 @@ public class CellUnitTest {
 		Personaje cell = new Cell();
 		cell.aumentarKi(new Ki(5));
 		
-		Tablero tablero = new Tablero(10);
+		Tablero tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		Posicion posicionInicialX = new Posicion(2,2);
 		Posicion posicionInicialY = new Posicion(3,2);
 		
