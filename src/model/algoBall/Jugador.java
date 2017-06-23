@@ -29,7 +29,7 @@ public class Jugador
 	}
 	
 	public boolean existePersonaje(String personaje){
-		return (this.equipo.existePersonaje(personaje));
+		return (this.equipo.esAliado(personaje));
 	}
 	
 	public void reestablecer(){

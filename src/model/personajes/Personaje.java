@@ -111,16 +111,14 @@ public abstract class Personaje implements Posicionable
 			throw new FueraDeRangoException();
 		}
 		
-		if (this.equipo.existePersonaje(victima.getNombre())){
+		if (this.equipo.esAliado(victima.getNombre())){
 			throw new IntentandoAtacarAUnCompanieroException();
 		}
 		if(this.equipo.getAtaquesRestantes() == 0){
 			throw new NoTienesAtaquesRestantesException();
 			
 		}
-		if (victima.getPorcentajeSalud() == 0){
-			throw new PersonajeInexistenteException();
-		}
+		
 		
 	}
 	public void realizarAtaqueBasico(Personaje victima){

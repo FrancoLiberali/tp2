@@ -47,7 +47,7 @@ public class Equipo implements Iterable<Personaje>
 	public Personaje getPersonaje(String personajeBuscado)
 	{
 		Personaje personajeEncontrado = null;
-		if(!this.existePersonaje(personajeBuscado))
+		if(!this.esAliado(personajeBuscado))
 		{
 			throw new PersonajeInexistenteException();
 		}
@@ -59,7 +59,7 @@ public class Equipo implements Iterable<Personaje>
 		return personajeEncontrado;
 	}
 	
-	public boolean existePersonaje(String personajeBuscado) 
+	public boolean esAliado(String personajeBuscado) 
 	{
 		for (Personaje personaje : pertenecientes) {
 			if (personaje.getNombre() == personajeBuscado){
