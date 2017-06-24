@@ -28,6 +28,7 @@ public class ContenedorBienvenidos extends VBox {
 
     Stage stage;
     Reproductor reproductor;
+    private Button botonEntrar;
     
     public ContenedorBienvenidos(Aplicacion aplicacion, Stage stage, Screen screen ,Reproductor reproductor) {
 
@@ -65,7 +66,7 @@ public class ContenedorBienvenidos extends VBox {
         TextField nombre2 = new TextField();
         nombre2.setPromptText("Ingrese nombre jugador Enemigos de la Tierra");
         
-        Button botonEntrar = new Button();
+        botonEntrar = new Button();
         botonEntrar.setText("Entrar");
 
         Label etiqueta = new Label();
@@ -80,5 +81,9 @@ public class ContenedorBienvenidos extends VBox {
         
         this.getChildren().addAll(botonMudo,etiqueta, label1, nombre1, label2, nombre2, botonEntrar);
        
+    }
+    
+    public Button getBotonEntrar(){
+    	return botonEntrar;
     }
 }

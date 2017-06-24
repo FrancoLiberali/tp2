@@ -1,8 +1,11 @@
 package vistas;
 
 import controladores.eventos.AplicacionOnKeyPressEventHandler;
+import controladores.eventos.OnCloseRequestEventHandler;
+import controladores.eventos.OnEnterPressEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.algoBall.AlgoBall;
@@ -28,8 +31,10 @@ public class Aplicacion extends Application {
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
         contenedorBienvenidos.requestFocus();
 
-        // add handler to this:
-        // stage.setOnCloseRequest()
+        stage.setOnCloseRequest(new OnCloseRequestEventHandler());
+        Button botonEntrar = contenedorBienvenidos.getBotonEntrar();
+        OnEnterPressEventHandler OnEnterPressEventHandler = new OnEnterPressEventHandler(botonEntrar);
+        escenaBienvenidos.setOnKeyPressed(OnEnterPressEventHandler);
 
         stage.setScene(escenaBienvenidos);
         stage.setFullScreen(true);

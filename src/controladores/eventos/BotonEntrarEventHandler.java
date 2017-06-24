@@ -12,13 +12,13 @@ import vistas.Reproductor;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 	
-	Aplicacion aplicacion;
-    Stage stage;
-    TextField nombre1;
-    TextField nombre2;
-    Label label1;
-    Label label2;
-    Reproductor reproductor;
+	private Aplicacion aplicacion;
+    private Stage stage;
+    private TextField nombre1;
+    private TextField nombre2;
+    private Label label1;
+    private Label label2;
+    private Reproductor reproductor;
 
     public BotonEntrarEventHandler(Aplicacion aplicacion, Stage stage, Label label1, TextField nombre1, Label label2, TextField nombre2,Reproductor reproductor) {
         this.aplicacion = aplicacion;

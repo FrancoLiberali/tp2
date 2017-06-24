@@ -3,12 +3,11 @@ package vistas;
 import controladores.eventos.OpcionAcercaDeEventHandler;
 import controladores.eventos.OpcionMudoEventHandler;
 import controladores.eventos.OpcionPantallaCompletaEventHandler;
-import controladores.eventos.OpcionSalirEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class BarraDeMenu extends MenuBar {
 
@@ -23,11 +22,10 @@ public class BarraDeMenu extends MenuBar {
         Menu menuAyuda = new Menu("Ayuda");
 
         MenuItem opcionSalir = new MenuItem("Salir");
-        MenuItem opcionAbrir = new MenuItem("Abrir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
 
-        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
-        opcionSalir.setOnAction(opcionSalirHandler);
+        opcionSalir.setOnAction(event ->
+        stage.fireEvent( new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST)));
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
@@ -40,7 +38,7 @@ public class BarraDeMenu extends MenuBar {
 
         opcionPantallaCompleta.setDisable(true);
 
-        menuArchivo.getItems().addAll(opcionAbrir, new SeparatorMenuItem(), opcionSalir);
+        menuArchivo.getItems().addAll(opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
         menuAudio.getItems().addAll(opcionMudo);
