@@ -13,7 +13,7 @@ public class OnCloseRequestEventHandler implements EventHandler<WindowEvent>{
 	
 	@Override
     public void handle(WindowEvent windowEvent) {
-        Alert alert = new Alert(AlertType.CONFIRMATION, "¿Seguro que desea salir?");
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Seguro que desea salir?");
         alert.setHeaderText("Al confirmar salida sus avance en el juego se perdera");
         Button exitButton = (Button) alert.getDialogPane().lookupButton(
                 ButtonType.OK
