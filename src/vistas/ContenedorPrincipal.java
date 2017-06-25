@@ -45,7 +45,7 @@ public class ContenedorPrincipal extends BorderPane {
 	private Canvas canvasCentral;
 	private VistaTablero vistaTablero;
 	private Consola consola;
-	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
+	private Hashtable<String,CajaDeInformacionPersonaje> cajas = new Hashtable<String,CajaDeInformacionPersonaje>();
     
 
     public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar,Reproductor reproductor) {
