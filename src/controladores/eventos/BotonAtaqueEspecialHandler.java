@@ -1,7 +1,10 @@
 package controladores.eventos;
 
-import vistas.BarrasDeVida;
+import vistas.CajaDeInformacionPersonaje;
 import vistas.Consola;
+
+import java.util.Hashtable;
+
 import javafx.event.ActionEvent;
 import model.exceptions.FueraDeRangoException;
 import model.exceptions.KiInsuficienteException;
@@ -13,12 +16,12 @@ import model.personajes.Personaje;
 public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
 	
 	private Personaje personajeAAtacar;
-	private BarrasDeVida barras;
+	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
 	private Consola consola;
 	
-	public BotonAtaqueEspecialHandler(Personaje personaje, BarrasDeVida barras, Consola consola){
+	public BotonAtaqueEspecialHandler(Personaje personaje, Hashtable<String,CajaDeInformacionPersonaje> cajas, Consola consola){
 		personajeAAtacar = personaje;	
-		this.barras = barras;
+		this.cajas = cajas;
 		this.consola = consola;
 	}
 	
@@ -26,7 +29,7 @@ public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
     public void handle(ActionEvent actionEvent) {
         try{
         	this.personajeModificador.realizarAtaqueEspecial(personajeAAtacar);
-        	barras.actualizar();
+        	cajas.get(personajeAAtacar).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	this.consola.agregarInformacion("Ya no tienes ataques!");

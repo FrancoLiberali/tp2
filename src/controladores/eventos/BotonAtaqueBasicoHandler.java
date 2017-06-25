@@ -1,12 +1,14 @@
 package controladores.eventos;
 
+import java.util.Hashtable;
+
 import javafx.event.ActionEvent;
 import model.exceptions.FueraDeRangoException;
 import model.exceptions.NoTienesAtaquesRestantesException;
 import model.exceptions.PersonajeEnEstadoChocolate;
 import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
-import vistas.BarrasDeVida;
+import vistas.CajaDeInformacionPersonaje;
 import vistas.Consola;
 import vistas.ReproductorEfectos;
 
@@ -14,12 +16,12 @@ import vistas.ReproductorEfectos;
 public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
 	
 	private Personaje personajeAAtacar;
-	private BarrasDeVida barras;
+	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
 	private Consola consola;
 	
-	public BotonAtaqueBasicoHandler(Personaje personaje, BarrasDeVida barras, Consola consola){
+	public BotonAtaqueBasicoHandler(Personaje personaje, Hashtable<String,CajaDeInformacionPersonaje> cajas, Consola consola){
 		personajeAAtacar = personaje;		
-		this.barras = barras;
+		this.cajas = cajas;
 		this.consola = consola;
 	}
 	
@@ -28,7 +30,7 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
         try{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
-        	barras.actualizar();
+        	cajas.get(personajeAAtacar).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);

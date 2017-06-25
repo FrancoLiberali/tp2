@@ -2,7 +2,6 @@ package controladores.eventos;
 
 import java.util.List;
 
-import vistas.PanelDeCaracteristicas;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;

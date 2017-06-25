@@ -58,8 +58,8 @@ public class Aplicacion extends Application {
         Scene escenaJugador1 = new Scene(contenedorTurnoJugador1, 640, 480);
         contenedorTurnoJugador1.setProximaEscena(escenaJugador2, contenedorTurnoJugador2.getVista());
         contenedorTurnoJugador2.setProximaEscena(escenaJugador1, contenedorTurnoJugador1.getVista());
-        contenedorTurnoJugador1.setProximasBarras(contenedorTurnoJugador2.getBarras());
-        contenedorTurnoJugador2.setProximasBarras(contenedorTurnoJugador1.getBarras());
+        //contenedorTurnoJugador1.setProximasBarras(contenedorTurnoJugador2.getBarras());
+        //contenedorTurnoJugador2.setProximasBarras(contenedorTurnoJugador1.getBarras());
 
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorTurnoJugador1.getBarraDeMenu(), contenedorTurnoJugador1.getBarraDeMenu());
         escenaJugador1.setOnKeyPressed(AplicacionOnKeyPressEventHandler);

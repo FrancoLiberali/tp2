@@ -1,10 +1,13 @@
 package controladores.eventos;
 
+import java.util.Hashtable;
+
 import javafx.event.ActionEvent;
 import model.algoBall.Equipo;
 import model.exceptions.KiInsuficienteException;
 import model.exceptions.NoCumpleCondicionesDeTransformacionException;
 import model.exceptions.YaNoPuedeEvolucionarException;
+import vistas.CajaDeInformacionPersonaje;
 import vistas.Consola;
 import vistas.VistaTablero;
 
@@ -12,12 +15,14 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 	
 	private Equipo equipo;
 	private VistaTablero vista;
+	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
 	private Consola consola;
 	
-	public BotonTransformarEventHandler(Equipo equipo,VistaTablero vista, Consola consola){
+	public BotonTransformarEventHandler(Equipo equipo,VistaTablero vista, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas){
 		this.equipo = equipo;
 		this. vista = vista;
 		this.consola = consola;
+		this.cajas = cajas;
 	}
 
 	@Override
@@ -25,6 +30,7 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 		try{
 			equipo.transformar(this.personajeModificador);
 			vista.update();
+			cajas.get(personajeModificador).actualizar();
 		}
 		catch (YaNoPuedeEvolucionarException error){
 			this.consola.agregarInformacion("Este personaje ya no posee una proxima evolucion");

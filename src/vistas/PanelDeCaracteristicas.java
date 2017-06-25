@@ -1,20 +1,14 @@
 package vistas;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import model.personajes.Personaje;
-import model.personajes.elementos.PanelCaracteristicas;
 
 
 public class PanelDeCaracteristicas extends VBox {
@@ -24,8 +18,8 @@ public class PanelDeCaracteristicas extends VBox {
 	public PanelDeCaracteristicas(Hashtable<String, Integer> caracteristicas){
 		
 		this.caracteristicas = caracteristicas;
-		this.setSpacing(7); 
-		this.setPadding(new Insets(10));
+		this.setSpacing(2); 
+		this.setPadding(new Insets(2));
 		this.setCaracteristicas();
 		
 	}

@@ -4,7 +4,8 @@ import java.util.Hashtable;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -17,7 +18,8 @@ public class CajaDeInformacionPersonaje extends VBox{
 	private Hashtable<String, Integer> caracteristicas;
 	private Label nombrePersonaje ; 
 	private BarraDeVida barraDeVida; 
-	PanelDeCaracteristicas panelCaracteristicas;
+	private PanelDeCaracteristicas panelCaracteristicas;
+	private ImageView contenedorImagen;
 	
 	
 	public CajaDeInformacionPersonaje(Personaje personaje){
@@ -25,19 +27,29 @@ public class CajaDeInformacionPersonaje extends VBox{
 		this.caracteristicas = personaje.darCaracteriticas();
 		this.setNombrePersonaje();
 		this.getChildren().add(nombrePersonaje);
+		this.setAlignment(Pos.CENTER);
 		this.barraDeVida = new BarraDeVida(personaje);
 		this.getChildren().add(barraDeVida );
-		this.panelCaracteristicas = new PanelDeCaracteristicas(caracteristicas); 
-		this.getChildren().add(panelCaracteristicas);
+		HBox hb = new HBox();
+		contenedorImagen = new ImageView();
+		contenedorImagen.setFitWidth(50);
+		contenedorImagen.setPreserveRatio(true);
+		contenedorImagen.setSmooth(true);
+        contenedorImagen.setImage(new Image(personaje.getImagen()));
+		hb.getChildren().add(contenedorImagen);
+		this.panelCaracteristicas = new PanelDeCaracteristicas(caracteristicas);
+		hb.getChildren().add(panelCaracteristicas);
+		this.getChildren().add(hb);
 		
 	}	
 	
 	public void setNombrePersonaje(){
-		this.nombrePersonaje = new Label(personaje.getNombre() + " " + personaje.getEstado().getNombre());
-		
+		this.nombrePersonaje = new Label(personaje.getNombre() + " " + personaje.getEstado().getNombre());		
+		nombrePersonaje.setFont(Font.font("courier new", FontWeight.BOLD, 16));
 	}
 	public void actualizar(){
 		this.setNombrePersonaje();
+		contenedorImagen.setImage(new Image(personaje.getImagen()));
 		this.barraDeVida.actualizar();
 		this.caracteristicas = this.personaje.darCaracteriticas();
 		this.panelCaracteristicas.actualizar(caracteristicas);
