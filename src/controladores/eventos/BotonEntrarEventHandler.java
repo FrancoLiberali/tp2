@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import vistas.Aplicacion;
 import vistas.Reproductor;
+import vistas.ReproductorEfectos;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 	
@@ -50,6 +51,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     		stage.setScene(proximaEscena);
             stage.setFullScreenExitHint("");
             stage.setFullScreen(true);
+        	ReproductorEfectos.inicializarReproductorFX();
     	}
         
     }

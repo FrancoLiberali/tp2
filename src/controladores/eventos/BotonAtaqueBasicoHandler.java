@@ -1,17 +1,14 @@
 package controladores.eventos;
 
-import vistas.BarrasDeVida;
-import vistas.Consola;
-
-import java.io.File;
-
 import javafx.event.ActionEvent;
-import javafx.scene.media.AudioClip;
 import model.exceptions.FueraDeRangoException;
 import model.exceptions.NoTienesAtaquesRestantesException;
 import model.exceptions.PersonajeEnEstadoChocolate;
 import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
+import vistas.BarrasDeVida;
+import vistas.Consola;
+import vistas.ReproductorEfectos;
 
 
 public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
@@ -26,31 +23,27 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
 		this.consola = consola;
 	}
 	
-	public void sonidoAtaque(){
-		
-		String path = "src/vista/musica/burning_fire.wav";
-		File archivo = new File(path);
-		AudioClip sonidoAtaque = new AudioClip(archivo.toURI().toString());
-		sonidoAtaque.play();
-	}
-	
 	@Override
     public void handle(ActionEvent actionEvent) {
         try{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
-        	sonidoAtaque();
+        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
         	barras.actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
+        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
         	this.consola.agregarInformacion("Ya no tienes ataques!");
         }
         catch(PersonajeInexistenteException error){
+        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
         	this.consola.agregarInformacion("Ese personaje esta muerto x(");
         }
         catch(PersonajeEnEstadoChocolate error){
+        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
         	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
         }
         catch(FueraDeRangoException error){
+        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
         	this.consola.agregarInformacion("No! no puedes atacar mas lejos que tu distancia de ataque");
         }
 	}

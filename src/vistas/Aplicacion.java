@@ -10,7 +10,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.algoBall.AlgoBall;
 import model.algoBall.Equipo;
-import vistas.Reproductor;
 
 public class Aplicacion extends Application {
 

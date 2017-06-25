@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import model.algoBall.AlgoBall;
 import vistas.BarrasDeVida;
 import vistas.Consola;
+import vistas.ReproductorEfectos;
 import vistas.VistaTablero;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
@@ -43,6 +44,6 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         juego.finalizarTurno();
-        
+    	ReproductorEfectos.reproducirFX(ReproductorEfectos.ENDTURN);
     }
 }
