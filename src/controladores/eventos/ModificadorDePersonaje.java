@@ -15,14 +15,12 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 	List<Button> botones;
     List<BotonModificableHandler> handlersBotones;
     final ToggleGroup grupo;
-    PanelDeCaracteristicas caracteristicas;
     
     
-    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones,PanelDeCaracteristicas caracteristicas){
+    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones){
     	this.botones = botones;
     	this.handlersBotones = handlersBotones;
     	this.grupo = grupo;
-    	this.caracteristicas = caracteristicas;
     }
     
 	public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
@@ -38,9 +36,6 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 			for (BotonModificableHandler handler : handlersBotones){
 				handler.setPersonaje((Personaje) grupo.getSelectedToggle().getUserData());
 			}
-			caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
 		}
-		
-		//caracteristicas.agregarPanelCaracteristicas((Personaje) grupo.getSelectedToggle().getUserData());
 	}
 }

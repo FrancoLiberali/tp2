@@ -17,7 +17,7 @@ public class OnMouseTransformarEventHandler implements EventHandler<ActionEvent>
 	
 	@Override
 	public void handle(ActionEvent event) {
-		panel.setearBotonTransformar(personaje);
+		//panel.setearBotonTransformar(personaje);
 	}
 
 }

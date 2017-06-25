@@ -47,8 +47,8 @@ public class AlgoBall
 		List<Posicionable> consumibles = this.setConsumibles();
 		this.tablero = Tablero.createInstance(TAMANIO_TABLERO);
 		tablero.setConsumibles(consumibles);
-		this.jugador1 = new Jugador(nombre1, NOMBRE_ENEMIGOS);
-		this.jugador2 = new Jugador(nombre2, NOMBRE_GUERREROS);
+		this.jugador1 = new Jugador(nombre1, NOMBRE_GUERREROS);
+		this.jugador2 = new Jugador(nombre2, NOMBRE_ENEMIGOS);
 		iniciarPersonajes(jugador1, jugador2);
 		this.turnoActual = iniciarTurnos(jugador1, jugador2);
 	}

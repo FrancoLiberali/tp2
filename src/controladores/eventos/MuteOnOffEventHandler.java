@@ -20,7 +20,7 @@ public class MuteOnOffEventHandler  extends BotonModificableHandler {
 	@Override
 	public void handle(ActionEvent arg0) {
 		if(boton.isSelected()){
-			 Image imagenOff = new Image("file:src/vista/imagenes/sonidoOff.png" );
+			 Image imagenOff = new Image("file:src/vistas/imagenes/sonidoOff.png" );
 		     ImageView imagenBoton = new ImageView(imagenOff);
 		     imagenBoton.setFitWidth(50);
 		     imagenBoton.setPreserveRatio(true);
@@ -28,7 +28,7 @@ public class MuteOnOffEventHandler  extends BotonModificableHandler {
 		     reproductor.muteOn();
 		}
 		else{
-			Image imagenOn = new Image("file:src/vista/imagenes/sonidoOn.png" );
+			Image imagenOn = new Image("file:src/vistas/imagenes/sonidoOn.png" );
 			ImageView imagenBoton = new ImageView(imagenOn);
 			imagenBoton.setFitWidth(50);
 			imagenBoton.setPreserveRatio(true);

@@ -52,6 +52,7 @@ public class ContenedorBienvenidos extends VBox {
         imagenBoton.setFitWidth(50);
         imagenBoton.setPreserveRatio(true);
         botonMudo.setGraphic(imagenBoton);
+        botonMudo.setStyle("-fx-background-color:transparent;");
         botonMudo.setAlignment(Pos.TOP_RIGHT );//no esta funcionando 
         botonMudo.setOnAction(new MuteOnOffEventHandler(botonMudo, reproductor));
        

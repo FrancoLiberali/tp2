@@ -1,6 +1,7 @@
 package vistas;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,58 +19,47 @@ import model.personajes.elementos.PanelCaracteristicas;
 
 public class PanelDeCaracteristicas extends VBox {
 	
+	Hashtable<String, Integer> caracteristicas;
 	
-	PanelCaracteristicas panelCaracteristicas;
-	ArrayList<String> personajes;
-	ArrayList<String> caracteristicas;
-	ArrayList<String> caracteristicasTranformacion;
-	Button botonTransformar;
-	
-	public PanelDeCaracteristicas(PanelCaracteristicas panelCaracteristicas){
+	public PanelDeCaracteristicas(Hashtable<String, Integer> caracteristicas){
 		
-		this.panelCaracteristicas = panelCaracteristicas;
-		this.personajes = panelCaracteristicas.Personajes();
-		this.caracteristicas = panelCaracteristicas.caracteristicas();
-		this.caracteristicasTranformacion = panelCaracteristicas.caracteristicasTransformacion();
-		
+		this.caracteristicas = caracteristicas;
 		this.setSpacing(7); 
 		this.setPadding(new Insets(10));
-		}
-		public void agregarPanelCaracteristicas(Personaje personaje){
-			
-			
-			this.getChildren().clear();
-			
-			VBox vb = new VBox();
-			HBox hB = new HBox();
-			
-			for (String caracteristica : this.caracteristicas){
-				
-				Label caracteristicaDePersonaje = new Label();
-				caracteristicaDePersonaje.setText(caracteristica + ":");
-				caracteristicaDePersonaje.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-				Label valor = new Label();
-				//this.panelCaracteristicas.mostrarCaracteristica(personaje.getNombre(), caracteristica)
-				valor.setText(((Integer)this.panelCaracteristicas.mostrarCaracteristica(personaje.getNombre(), caracteristica)).toString());
-				valor.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
-				final HBox hb = new HBox();
-				hb.setAlignment(Pos.CENTER_RIGHT);
-				hb.getChildren().addAll(caracteristicaDePersonaje, valor);
-				vb.getChildren().add(hb);
-				}
-			 Image imagen = new Image(personaje.getImagen() );
-		     ImageView imagenPersonaje = new ImageView(imagen);
-		     imagenPersonaje.setFitWidth(200);
-		     imagenPersonaje.setPreserveRatio(true);
-		     hB.getChildren().addAll(imagenPersonaje,vb);
-		     this.getChildren().addAll(hB,botonTransformar);
-			
-		}
-		public void agregarBotonTransformar(Button botonTransformar){
-			this.botonTransformar = botonTransformar;
-			
-		}
+		this.setCaracteristicas();
 		
+	}
+	
+	public void setCaracteristicas(){
+		
+		for (String caracteristica : caracteristicas.keySet()){
+			
+			Label caracteristicaDePersonaje = new Label();
+			caracteristicaDePersonaje.setText(caracteristica + ":");
+			caracteristicaDePersonaje.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+			Label valor = new Label();
+			valor.setText(caracteristicas.get(caracteristica).toString());
+			valor.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+			final HBox hb = new HBox();
+			hb.setAlignment(Pos.CENTER_RIGHT);
+			hb.getChildren().addAll(caracteristicaDePersonaje, valor);
+			this.getChildren().add(hb);
+			}
+		
+	}
+	
+	
+	public void actualizar(Hashtable<String, Integer> nuevasCaracteristicas){
+		
+		this.getChildren().clear();
+		this.caracteristicas = nuevasCaracteristicas;
+		this.setCaracteristicas();
+		
+		
+		
+	}
+		
+		/*
 		public void setearBotonTransformar(Personaje personaje){
 			VBox vb = new VBox();
 			for (String caracteristica : this.caracteristicas){
@@ -89,7 +79,7 @@ public class PanelDeCaracteristicas extends VBox {
 		     this.getChildren().addAll(vb);	
 		}
 		
-		
+		*/
 		
 		
 }

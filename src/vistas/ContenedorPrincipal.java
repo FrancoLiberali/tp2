@@ -47,41 +47,43 @@ public class ContenedorPrincipal extends BorderPane {
 	private Consola consola;
     
 
-    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,Reproductor reproductor,PanelDeCaracteristicas panelCaracteristicas) {
+    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar,Reproductor reproductor) {
         this.setPrefWidth(75);
     	this.setMenu(stage, reproductor);
         this.setConsola();
-        this.setCentro(juego, agrupacionMover, agrupacionAtacar);
-        this.setBotoneraDerecha(stage, juego, agrupacionAtacar, agrupacionMover);
-        this.setBotoneraIzquierda(juego, agrupacionMover, agrupacionAtacar, panelCaracteristicas);
+        this.setCentro(juego, equipoMover, equipoAtacar);
+        this.setBotoneraIzquierda(stage, juego, equipoMover, equipoAtacar);
+        this.setBotoneraDerecha(stage, juego, equipoAtacar, equipoMover);
         
     }
     
-    private void setBotoneraDerecha(Stage stage, AlgoBall juego, Equipo agrupacionAtacar, Equipo equipoMover) {
+    private void setBotoneraDerecha(Stage stage, AlgoBall juego, Equipo equipoAtacar, Equipo equipoMover) {
     	
-    	barras = new BarrasDeVida(agrupacionAtacar, equipoMover);
     	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
-        Label labelBasicos = new Label("Realizar ataque basico sobre:");
-        contenedorVertical.getChildren().add(labelBasicos);
-        for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje, barras);
-        	contenedorVertical.getChildren().add(boton);
+        
+        for (Personaje personaje : equipoAtacar){
+        	contenedorVertical.getChildren().add(new CajaDeInformacionPersonaje(personaje));
         }
-        Label labelEspecial = new Label("Realizar ataque especial sobre:");
-        contenedorVertical.getChildren().add(labelEspecial);
-        for (Personaje personaje : agrupacionAtacar){
-        	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje, barras);
-        	contenedorVertical.getChildren().add(boton);
+        
+        for (Personaje personaje : equipoMover){
+        	contenedorVertical.getChildren().add(new CajaDeInformacionPersonaje(personaje));
         }
-        Button finalizarTurno = new Button();
-        finalizarTurno.setText("Finalizar turno");
-        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego, this.consola);
-        this.finalizarTurnoHandler = finalizarHandler;
-        finalizarTurno.setOnAction(finalizarHandler);
-        contenedorVertical.getChildren().add(finalizarTurno);
+        
+        /*barras = new BarrasDeVida(equipoAtacar, equipoMover);
         contenedorVertical.getChildren().add(barras);
+        
+        Button botonTransformar = new Button();
+        botonTransformar.setText("Transformar");
+        botonTransformar.setDisable(true);
+        BotonTransformarEventHandler botonTransformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, this.consola);
+        botonTransformar.setOnAction(botonTransformarHandler);
+        botones.add(botonTransformar);
+        handlersBotones.add(botonTransformarHandler);
+        panelCaracteristicas.agregarBotonTransformar(botonTransformar);
+        contenedorVertical.getChildren().add(panelCaracteristicas);*/
+        
         this.setRight(contenedorVertical);
 
     }
@@ -146,19 +148,12 @@ public class ContenedorPrincipal extends BorderPane {
         handlersBotones.add(moveRightButtonHandler);
         botonDerecha.setDisable(true);
         
-        Button botonAbajoDerecha = setBotonConImagen("file:src/vistas/imagenes/downRight.png");
-    	botones.add(botonAbajoDerecha);
-    	BotonMoverAbajoDerechaHandler moveDownRightButtonHandler = new BotonMoverAbajoDerechaHandler(equipoMover, vistaTablero, this.consola);
-        botonAbajoDerecha.setOnAction(moveDownRightButtonHandler);
-        handlersBotones.add(moveDownRightButtonHandler);
-        botonAbajoDerecha.setDisable(true);
-        
-        Button botonAbajo = setBotonConImagen("file:src/vistas/imagenes/down.png");
-    	botones.add(botonAbajo);
-    	BotonMoverAbajoHandler moveDownButtonHandler = new BotonMoverAbajoHandler(equipoMover, vistaTablero, this.consola);
-        botonAbajo.setOnAction(moveDownButtonHandler);
-        handlersBotones.add(moveDownButtonHandler);
-        botonAbajo.setDisable(true);
+        Button botonIzquierda = setBotonConImagen("file:src/vistas/imagenes/left.png");
+    	botones.add(botonIzquierda);
+    	BotonMoverIzquierdaHandler moveLeftButtonHandler = new BotonMoverIzquierdaHandler(equipoMover, vistaTablero, this.consola);
+        botonIzquierda.setOnAction(moveLeftButtonHandler);
+        handlersBotones.add(moveLeftButtonHandler);
+        botonIzquierda.setDisable(true);
         
         Button botonAbajoIzquierda = setBotonConImagen("file:src/vistas/imagenes/downLeft.png");
     	botones.add(botonAbajoIzquierda);
@@ -167,29 +162,33 @@ public class ContenedorPrincipal extends BorderPane {
         handlersBotones.add(moveDownLeftButtonHandler);
         botonAbajoIzquierda.setDisable(true);
         
-        Button botonIzquierda = setBotonConImagen("file:src/vistas/imagenes/left.png");
-    	botones.add(botonIzquierda);
-    	BotonMoverIzquierdaHandler moveLeftButtonHandler = new BotonMoverIzquierdaHandler(equipoMover, vistaTablero, this.consola);
-        botonIzquierda.setOnAction(moveLeftButtonHandler);
-        handlersBotones.add(moveLeftButtonHandler);
-        botonIzquierda.setDisable(true);
+        Button botonAbajo = setBotonConImagen("file:src/vistas/imagenes/down.png");
+    	botones.add(botonAbajo);
+    	BotonMoverAbajoHandler moveDownButtonHandler = new BotonMoverAbajoHandler(equipoMover, vistaTablero, this.consola);
+        botonAbajo.setOnAction(moveDownButtonHandler);
+        handlersBotones.add(moveDownButtonHandler);
+        botonAbajo.setDisable(true);
+        
+        Button botonAbajoDerecha = setBotonConImagen("file:src/vistas/imagenes/downRight.png");
+    	botones.add(botonAbajoDerecha);
+    	BotonMoverAbajoDerechaHandler moveDownRightButtonHandler = new BotonMoverAbajoDerechaHandler(equipoMover, vistaTablero, this.consola);
+        botonAbajoDerecha.setOnAction(moveDownRightButtonHandler);
+        handlersBotones.add(moveDownRightButtonHandler);
+        botonAbajoDerecha.setDisable(true);
     }
     
-    private void setBotoneraIzquierda(AlgoBall juego, Equipo agrupacionMover, Equipo agrupacionAtacar,PanelDeCaracteristicas panelCaracteristicas) {
+    private void setBotoneraIzquierda(Stage stage, AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar) {
     	
-    	
-    	
-    	Label nombreDeEquipo = new Label (agrupacionAtacar.getNombre());
-    	 
-    	
-        this.setBotonesDeMovimiento(agrupacionMover);
-        Label label = new Label("Seleccionar personaje");
-        VBox contenedorVertical = new VBox(label);
+    	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
-        contenedorVertical.getChildren().add(nombreDeEquipo);
         
-        for (Personaje personaje : agrupacionMover){
+    	Label nombreDeEquipo = new Label (equipoMover.getNombre());
+    	Label label = new Label("Seleccionar personaje");
+        contenedorVertical.getChildren().add(nombreDeEquipo);
+        contenedorVertical.getChildren().add(label);
+        
+        for (Personaje personaje : equipoMover){
         	ToggleButton tBoton = new ToggleButton(personaje.getNombre());
             tBoton.setToggleGroup(grupo);
             tBoton.setUserData(personaje);
@@ -197,31 +196,48 @@ public class ContenedorPrincipal extends BorderPane {
             contenedorVertical.getChildren().add(tBoton);
         }
         
-        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones,panelCaracteristicas));
+        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones));
         
+        this.setBotonesDeMovimiento(equipoMover);
+        ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
+        Label labelMover = new Label("Mover personaje");
+        contenedorVertical.getChildren().add(labelMover);
+        contenedorVertical.getChildren().add(contenedorFlechas);
+        
+        Label labelBasicos = new Label("Realizar ataque basico sobre:");
+        contenedorVertical.getChildren().add(labelBasicos);
+        for (Personaje personaje : equipoAtacar){
+        	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje, barras);
+        	contenedorVertical.getChildren().add(boton);
+        }
+        Label labelEspecial = new Label("Realizar ataque especial sobre:");
+        contenedorVertical.getChildren().add(labelEspecial);
+        for (Personaje personaje : equipoAtacar){
+        	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje, barras);
+        	contenedorVertical.getChildren().add(boton);
+        }
         
         
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         botonTransformar.setDisable(true);
-        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(agrupacionMover, vistaTablero, this.consola);
+        BotonTransformarEventHandler botonTrasnformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, this.consola);
         botonTransformar.setOnAction(botonTrasnformarHandler);
         botones.add(botonTransformar);
         handlersBotones.add(botonTrasnformarHandler);
-        
-        panelCaracteristicas.agregarBotonTransformar(botonTransformar);
-        
-        //botonTransformar.setToggleGroup(grupo);
-        //BotonTransformarEventHandler botonTransformarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2,reproductor);
-        //botonTransformar.setOnAction(botonTransformarHandler);
+        contenedorVertical.getChildren().add(botonTransformar);
         
         
-        ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
-        Label labelBasicos = new Label("Mover personaje");
-        contenedorVertical.getChildren().add(labelBasicos);
-        contenedorVertical.getChildren().add(contenedorFlechas);
-        contenedorVertical.getChildren().add(panelCaracteristicas);
-       // contenedorVertical.getChildren().add(botonTransformar);
+        Button finalizarTurno = new Button();
+        finalizarTurno.setText("Finalizar turno");
+        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego, this.consola);
+        this.finalizarTurnoHandler = finalizarHandler;
+        finalizarTurno.setOnAction(finalizarHandler);
+        contenedorVertical.getChildren().add(finalizarTurno);
+        
+        //panelCaracteristicas.agregarBotonTransformar(botonTransformar);
+        
+        //contenedorVertical.getChildren().add(panelCaracteristicas);
         this.setLeft(contenedorVertical);
 
     }

@@ -48,11 +48,11 @@ public class Aplicacion extends Application {
     	
     	Equipo equipo1 = juego.getEquipoActual();
         Equipo equipo2 = juego.getEquipoSiguiente();
-        PanelDeCaracteristicas caracteristicasEquipo1 = new PanelDeCaracteristicas(equipo1.getPanelCaracteristicas());
-        PanelDeCaracteristicas caracteristicasEquipo2 = new PanelDeCaracteristicas(equipo2.getPanelCaracteristicas());
+        //PanelDeCaracteristicas caracteristicasEquipo1 = new PanelDeCaracteristicas(equipo1.getPanelCaracteristicas());
+        //PanelDeCaracteristicas caracteristicasEquipo2 = new PanelDeCaracteristicas(equipo2.getPanelCaracteristicas());
         
-        ContenedorPrincipal contenedorTurnoJugador1 = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor,caracteristicasEquipo1);
-        ContenedorPrincipal contenedorTurnoJugador2 = new ContenedorPrincipal(stage, juego, equipo2, equipo1,reproductor,caracteristicasEquipo2);
+        ContenedorPrincipal contenedorTurnoJugador1 = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor);
+        ContenedorPrincipal contenedorTurnoJugador2 = new ContenedorPrincipal(stage, juego, equipo2, equipo1,reproductor);
         
         Scene escenaJugador2 = new Scene(contenedorTurnoJugador2, 640, 480);
         Scene escenaJugador1 = new Scene(contenedorTurnoJugador1, 640, 480);

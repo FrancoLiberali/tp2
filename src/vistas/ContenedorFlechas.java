@@ -17,34 +17,34 @@ public class ContenedorFlechas extends GridPane{
 		this.setFlechasAbajo();
 	}
 	public void setTamanioFlechas(){
-		int i = 6;
-		while (i<14){
+		int i = 0;
+		while (i<8){
 			Button boton = botones.get(i);
 			boton.setMinWidth(this.getPrefWidth());
 			i++;
 		}
 	}
 	public void setFlechasDeArriba(){
-		int i = 6;
-		while (i<9){
+		int i = 0;
+		while (i<3){
 			Button boton = botones.get(i);
-			this.add(boton,i-6,0);
+			this.add(boton,i,0);
 			i++;
 		}
 	}
 	
 	public void setFlechasMedias(){
-		this.add(botones.get(9),2,1);
-		this.add(botones.get(13),0,1);
+		this.add(botones.get(3),2,1);
+		this.add(botones.get(4),0,1);
 		
 	}
 	
 	public void setFlechasAbajo(){
-		int i = 12;
-		while (i>9){
+		int i = 5;
+		while (i<8){
 			Button boton = botones.get(i);
-			this.add(boton, 12-i, 2);
-			i--;
+			this.add(boton, i-5, 2);
+			i++;
 		}
 	}
 }
