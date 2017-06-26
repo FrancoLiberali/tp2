@@ -8,7 +8,6 @@ public class Turno {
 	
 	public Turno(Jugador jugador){
 		this.jugador = jugador;
-		this.reestablecer();
 	}
 	public Jugador getJugador(){
 		return jugador;

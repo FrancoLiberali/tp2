@@ -78,13 +78,15 @@ public class AlgoBall
 		lista.add(turnoJugador1);
 		lista.add(turnoJugador2);
 		int randomNum = ThreadLocalRandom.current().nextInt(0, 1 + 1);
-		return lista.get(randomNum);
+		Turno primerTurno = lista.get(randomNum);
+		primerTurno.reestablecer();
+		return primerTurno;
 	}
 		
 	public void finalizarTurno(){
-		turnoActual.reestablecer();
 		tablero.aparecerConsumible();
 		turnoActual = turnoActual.getTurnoSiguiente();
+		turnoActual.reestablecer();
 	}
 	
 	public Turno turnoSiguiente(){
