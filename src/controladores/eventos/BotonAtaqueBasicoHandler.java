@@ -30,7 +30,8 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
         try{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
-        	cajas.get(personajeAAtacar).actualizar();
+        	cajas.get(personajeAAtacar.getNombre()).actualizar();
+        	cajas.get(this.personajeModificador.getNombre()).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);

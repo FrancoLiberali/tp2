@@ -28,8 +28,14 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.algoBall.AlgoBall;
 import model.algoBall.Equipo;
@@ -55,6 +61,10 @@ public class ContenedorPrincipal extends BorderPane {
         this.setCentro(juego, equipoMover, equipoAtacar);
         this.setBotoneraDerecha(stage, juego, equipoAtacar, equipoMover);
         this.setBotoneraIzquierda(stage, juego, equipoMover, equipoAtacar);
+        Image imagen = new Image("file:src/vista/imagenes/fondoArena.jpg",Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() +50, false, true);
+        
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
         
         
     }
@@ -236,7 +246,7 @@ public class ContenedorPrincipal extends BorderPane {
         
         Button finalizarTurno = new Button();
         finalizarTurno.setText("Finalizar turno");
-        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego, this.consola);
+        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(stage, juego, this.consola,cajas);
         this.finalizarTurnoHandler = finalizarHandler;
         finalizarTurno.setOnAction(finalizarHandler);
         contenedorVertical.getChildren().add(finalizarTurno);

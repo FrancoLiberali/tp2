@@ -30,7 +30,7 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 		try{
 			equipo.transformar(this.personajeModificador);
 			vista.update();
-			cajas.get(personajeModificador).actualizar();
+			cajas.get(personajeModificador.getNombre()).actualizar();
 		}
 		catch (YaNoPuedeEvolucionarException error){
 			this.consola.agregarInformacion("Este personaje ya no posee una proxima evolucion");
