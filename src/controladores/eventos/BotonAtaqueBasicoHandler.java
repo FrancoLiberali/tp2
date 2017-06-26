@@ -13,16 +13,10 @@ import vistas.Consola;
 import vistas.ReproductorEfectos;
 
 
-public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
-	
-	private Personaje personajeAAtacar;
-	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
-	private Consola consola;
+public class BotonAtaqueBasicoHandler extends BotonAtaqueHandler{
 	
 	public BotonAtaqueBasicoHandler(Personaje personaje, Hashtable<String,CajaDeInformacionPersonaje> cajas, Consola consola){
-		personajeAAtacar = personaje;		
-		this.cajas = cajas;
-		this.consola = consola;
+		super(personaje, cajas, consola);
 	}
 	
 	@Override
@@ -30,7 +24,7 @@ public class BotonAtaqueBasicoHandler extends BotonModificableHandler{
         try{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
-        	cajas.get(personajeAAtacar).actualizar();
+        	cajas.get(personajeAAtacar.getNombre()).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);

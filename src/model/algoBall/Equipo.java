@@ -7,7 +7,6 @@ import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
 import model.personajes.elementos.Direccion;
 import model.personajes.elementos.Movimiento;
-import model.personajes.elementos.PanelCaracteristicas;
 
 public class Equipo implements Iterable<Personaje> 
 {	
@@ -15,7 +14,6 @@ public class Equipo implements Iterable<Personaje>
 	private ArrayList<Personaje> pertenecientes = new ArrayList<Personaje>();
 	private int cantidadAtaquesRestantes = 1;
 	private Movimiento movimiento = new Movimiento();
-	PanelCaracteristicas caracteristicasDelEquipo = new PanelCaracteristicas();
 	
 	public Equipo(String nombre)
 	{
@@ -26,7 +24,6 @@ public class Equipo implements Iterable<Personaje>
 	{
 		pertenecientes.add(psje);
 		psje.setEquipo(this);
-		caracteristicasDelEquipo.setCaracteristicas(psje);
 	}
 	 
 	public void restarAtaqueRestates()
@@ -74,7 +71,6 @@ public class Equipo implements Iterable<Personaje>
 		movimiento = new Movimiento();
 		for (Personaje personaje : pertenecientes) {
 			personaje.reestablecer();
-			caracteristicasDelEquipo.setCaracteristicas(personaje);
 
 		}
 	}
@@ -96,7 +92,6 @@ public class Equipo implements Iterable<Personaje>
 	
 	public void transformar (Personaje personaje){
 		personaje.transformar();
-		caracteristicasDelEquipo.setCaracteristicas(personaje);
 	}
 	
 	public void actualizarMovimientosRestantes(Personaje personaje,int velocidadAnterior, int velocidadActual){
@@ -136,10 +131,6 @@ public class Equipo implements Iterable<Personaje>
 	public int getAtaquesRestantes() {
 		
 		return this.cantidadAtaquesRestantes;
-	}
-	
-	public PanelCaracteristicas getPanelCaracteristicas(){
-		return this.caracteristicasDelEquipo;
 	}
 	
 }

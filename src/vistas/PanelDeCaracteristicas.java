@@ -13,7 +13,7 @@ import javafx.scene.text.FontWeight;
 
 public class PanelDeCaracteristicas extends VBox {
 	
-	Hashtable<String, Integer> caracteristicas;
+	private Hashtable<String, Integer> caracteristicas;
 	
 	public PanelDeCaracteristicas(Hashtable<String, Integer> caracteristicas){
 		

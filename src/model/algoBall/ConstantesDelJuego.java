@@ -138,7 +138,6 @@ public final class ConstantesDelJuego {
     public static final int VELOCIDAD_FREEZER_NORMAL = 4;
     //Freezer primera transformacion.
     public static final int KI_FREEZER_PRIMERA_TRANF = 20;
-    public static final int FREEZER_CANT_ABSORVER_VIDA_PRIMERA_TRANSF = 4;
     public static final String NOMBRE_FREEZER_PRIMERA_TRANSF = "Segunda Forma";
     public static final int PODER_FREEZER_PRIMERA_TRANSF = 40;
     public static final int DISTANCIA_FREEZER_PRIMERA_TRANSF = 3;

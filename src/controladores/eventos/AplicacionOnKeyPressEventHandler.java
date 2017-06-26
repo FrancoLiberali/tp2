@@ -9,13 +9,11 @@ import vistas.BarraDeMenu;
 public class AplicacionOnKeyPressEventHandler implements EventHandler<KeyEvent> {
 
     private Stage stage;
-    private BarraDeMenu menuBar1;
-    private BarraDeMenu menuBar2;
+    private BarraDeMenu menuBar;
 
-    public AplicacionOnKeyPressEventHandler(Stage stage, BarraDeMenu menuBar1, BarraDeMenu menuBar2) {
+    public AplicacionOnKeyPressEventHandler(Stage stage, BarraDeMenu menuBar) {
         this.stage = stage;
-        this.menuBar1 = menuBar1;
-        this.menuBar2 = menuBar2;
+        this.menuBar = menuBar;
     }
 
     @Override
@@ -23,8 +21,7 @@ public class AplicacionOnKeyPressEventHandler implements EventHandler<KeyEvent> 
 
         if (event.getCode() == KeyCode.ESCAPE) {
             stage.setMaximized(true);
-            menuBar1.aplicacionMaximizada();
-            menuBar2.aplicacionMaximizada();
+            menuBar.aplicacionMaximizada();
         }
     }
 }

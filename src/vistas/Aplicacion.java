@@ -48,23 +48,13 @@ public class Aplicacion extends Application {
     	
     	Equipo equipo1 = juego.getEquipoActual();
         Equipo equipo2 = juego.getEquipoSiguiente();
-        //PanelDeCaracteristicas caracteristicasEquipo1 = new PanelDeCaracteristicas(equipo1.getPanelCaracteristicas());
-        //PanelDeCaracteristicas caracteristicasEquipo2 = new PanelDeCaracteristicas(equipo2.getPanelCaracteristicas());
         
-        ContenedorPrincipal contenedorTurnoJugador1 = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor);
-        ContenedorPrincipal contenedorTurnoJugador2 = new ContenedorPrincipal(stage, juego, equipo2, equipo1,reproductor);
-        
-        Scene escenaJugador2 = new Scene(contenedorTurnoJugador2, 640, 480);
-        Scene escenaJugador1 = new Scene(contenedorTurnoJugador1, 640, 480);
-        contenedorTurnoJugador1.setProximaEscena(escenaJugador2, contenedorTurnoJugador2.getVista());
-        contenedorTurnoJugador2.setProximaEscena(escenaJugador1, contenedorTurnoJugador1.getVista());
-        //contenedorTurnoJugador1.setProximasBarras(contenedorTurnoJugador2.getBarras());
-        //contenedorTurnoJugador2.setProximasBarras(contenedorTurnoJugador1.getBarras());
+        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor);
+        Scene escena = new Scene(contenedor, 640, 480);
 
-        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorTurnoJugador1.getBarraDeMenu(), contenedorTurnoJugador1.getBarraDeMenu());
-        escenaJugador1.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
-        escenaJugador2.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
+        AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedor.getBarraDeMenu());
+        escena.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
         
-        return escenaJugador1;
+        return escena;
     }
 }

@@ -13,23 +13,17 @@ import model.exceptions.PersonajeEnEstadoChocolate;
 import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
 
-public class BotonAtaqueEspecialHandler extends BotonModificableHandler{
-	
-	private Personaje personajeAAtacar;
-	private Hashtable<String,CajaDeInformacionPersonaje> cajas;
-	private Consola consola;
+public class BotonAtaqueEspecialHandler extends BotonAtaqueHandler{
 	
 	public BotonAtaqueEspecialHandler(Personaje personaje, Hashtable<String,CajaDeInformacionPersonaje> cajas, Consola consola){
-		personajeAAtacar = personaje;	
-		this.cajas = cajas;
-		this.consola = consola;
+		super(personaje,cajas,consola);
 	}
 	
 	@Override
     public void handle(ActionEvent actionEvent) {
         try{
         	this.personajeModificador.realizarAtaqueEspecial(personajeAAtacar);
-        	cajas.get(personajeAAtacar).actualizar();
+        	cajas.get(personajeAAtacar.getNombre()).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	this.consola.agregarInformacion("Ya no tienes ataques!");

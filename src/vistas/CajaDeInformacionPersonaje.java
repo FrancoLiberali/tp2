@@ -30,6 +30,7 @@ public class CajaDeInformacionPersonaje extends VBox{
 		this.setAlignment(Pos.CENTER);
 		this.barraDeVida = new BarraDeVida(personaje);
 		this.getChildren().add(barraDeVida );
+		this.setAlignment(Pos.CENTER);
 		HBox hb = new HBox();
 		contenedorImagen = new ImageView();
 		contenedorImagen.setFitWidth(50);
@@ -48,7 +49,9 @@ public class CajaDeInformacionPersonaje extends VBox{
 		nombrePersonaje.setFont(Font.font("courier new", FontWeight.BOLD, 16));
 	}
 	public void actualizar(){
+		this.getChildren().remove(nombrePersonaje);
 		this.setNombrePersonaje();
+		this.getChildren().add(0, nombrePersonaje);
 		contenedorImagen.setImage(new Image(personaje.getImagen()));
 		this.barraDeVida.actualizar();
 		this.caracteristicas = this.personaje.darCaracteriticas();

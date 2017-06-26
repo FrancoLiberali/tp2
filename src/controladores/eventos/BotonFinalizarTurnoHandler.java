@@ -2,48 +2,36 @@ package controladores.eventos;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import model.algoBall.AlgoBall;
-import vistas.BarrasDeVida;
+import vistas.BotoneraIzquierda;
 import vistas.Consola;
 import vistas.ReproductorEfectos;
-import vistas.VistaTablero;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	
-	Stage stage;
-    Scene proximaEscena;
-    AlgoBall juego;
-    VistaTablero proximaVista;
-    BarrasDeVida proximasBarras;
+	private AlgoBall juego;
+    private BotoneraIzquierda botonera;
+    private VBox contenedor;
+    private Button finalizarTurno;
  
     
-    public BotonFinalizarTurnoHandler(Stage stage, AlgoBall juego, Consola consola) {
-        this.stage = stage;
+    public BotonFinalizarTurnoHandler(AlgoBall juego, Consola consola, BotoneraIzquierda botonera, VBox contenedor, Button finalizarTurno) {
         this.juego = juego;
-    }
-    
-    public void setProximaEscena(Scene proximaEscena){
-    	this.proximaEscena = proximaEscena;
-    }
-    
-    public void setProximaVista(VistaTablero proximaVista){
-    	this.proximaVista = proximaVista;
-    }
-    
-    public void setProximasBarras(BarrasDeVida proximasBarras){
-    	this.proximasBarras = proximasBarras;
+        this.botonera = botonera;
+        this.contenedor = contenedor;
+        this.finalizarTurno = finalizarTurno;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        proximaVista.update();
-    	//proximasBarras.actualizar();
-    	stage.setScene(proximaEscena);
-        stage.setFullScreenExitHint("");
-        stage.setFullScreen(true);
         juego.finalizarTurno();
+        botonera = botonera.getSiguiente();
+        botonera.actualizar();
+        contenedor.getChildren().clear();
+        contenedor.getChildren().add(botonera);   
+        contenedor.getChildren().add(finalizarTurno); 
     	ReproductorEfectos.reproducirFX(ReproductorEfectos.ENDTURN);
     }
 }
