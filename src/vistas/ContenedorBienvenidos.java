@@ -40,7 +40,7 @@ public class ContenedorBienvenidos extends VBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
-        Image imagen = new Image("file:src/vistas/imagenes/inicio.jpg",Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() +50, false, true);
+        Image imagen = new Image("file:src/vista/imagenes/pantallaInicio.jpg",Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight() +50, false, true);
         
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
@@ -51,6 +51,7 @@ public class ContenedorBienvenidos extends VBox {
         ImageView imagenBoton = new ImageView(imagen1);
         imagenBoton.setFitWidth(50);
         imagenBoton.setPreserveRatio(true);
+        imagenBoton.setSmooth(true);
         botonMudo.setGraphic(imagenBoton);
         botonMudo.setStyle("-fx-background-color:transparent;");
         botonMudo.setAlignment(Pos.TOP_RIGHT );//no esta funcionando 
@@ -68,7 +69,15 @@ public class ContenedorBienvenidos extends VBox {
         nombre2.setPromptText("Ingrese nombre jugador Enemigos de la Tierra");
         
         botonEntrar = new Button();
-        botonEntrar.setText("Entrar");
+        Image imagenInicio = new Image("file:src/vista/imagenes/inicio.gif" );
+        ImageView imagenBotonEntrar = new ImageView(imagenInicio);
+        imagenBotonEntrar.setFitWidth(125);
+        imagenBotonEntrar.setPreserveRatio(true);
+        imagenBotonEntrar.setSmooth(true);
+        botonEntrar.setGraphic(imagenBotonEntrar);
+        botonEntrar.setStyle("-fx-background-color:transparent;");
+        //botonEntrar.setAlignment(Pos.TOP_RIGHT );//no esta funcionando 
+        //botonEntrar.setText("Entrar");
 
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 22));

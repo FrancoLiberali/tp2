@@ -24,6 +24,7 @@ public class BotonAtaqueEspecialHandler extends BotonAtaqueHandler{
         try{
         	this.personajeModificador.realizarAtaqueEspecial(personajeAAtacar);
         	cajas.get(personajeAAtacar.getNombre()).actualizar();
+        	cajas.get(this.personajeModificador.getNombre()).actualizar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	this.consola.agregarInformacion("Ya no tienes ataques!");
