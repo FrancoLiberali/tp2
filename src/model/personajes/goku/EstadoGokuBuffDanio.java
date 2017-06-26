@@ -1,6 +1,7 @@
 package model.personajes.goku;
 
 import static model.algoBall.ConstantesDelJuego.PORCENTAJE_AUMENTO_DANIO_GOKU;
+import static model.algoBall.ConstantesDelJuego.NOMBRE_GOKU_LASTIMADO;
 import static model.algoBall.ConstantesDelJuego.PORCENTAJE_TOPE_VIDA_PARA_MAYOR_DANIO_GOKU;
 
 import model.personajes.Personaje;
@@ -12,6 +13,7 @@ public class EstadoGokuBuffDanio extends EstadoTransformacion {
 	private int porcentajePlusDanio = PORCENTAJE_AUMENTO_DANIO_GOKU;
 		
 	public EstadoGokuBuffDanio(EstadoActividad anterior) {
+		this.nombre = NOMBRE_GOKU_LASTIMADO;
 		this.anteriorEstado = anterior;
 		this.siguienteEstado = anterior.getEstadoSiguiente();
 		this.distanciaDeAtaque = anterior.getDistanciaDeAtaque();

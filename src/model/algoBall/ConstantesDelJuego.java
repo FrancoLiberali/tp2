@@ -35,6 +35,7 @@ public final class ConstantesDelJuego {
     public static final int DISTANCIA_GOKU_SEGUNDA_TRANF = 4;
     public static final int VELOCIDAD_GOKU_SEGUNDA_TRANF = 5;
     //Otros
+    public static final String NOMBRE_GOKU_LASTIMADO = "inquebrantable";
     public static final int KI_ATQ_ESPECIAL_GOKU = 20;
     public static final int PROCENTAJE_DANIO_ATAQ_ESPECIAL_GOKU = 50;
     public static final int KI_ATQ_ESPECIAL_GOKU1 = 20;

@@ -20,8 +20,10 @@ public class NubeVoladora extends Consumible{
 	
 	@Override
 	public void aplicarAPersonajeConTemporalAnterior(Personaje personaje){
+		int velocidadAnterior = personaje.getVelocidad();
 		EstadoActividad estado = new EstadoBuffVelocidad(personaje.getEstado());
 		personaje.setEstado(estado.getEstadoSiguiente());
+		personaje.actualizarMovimientosRestantes(velocidadAnterior);
 	}
 	
 }

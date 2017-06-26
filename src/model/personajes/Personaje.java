@@ -140,6 +140,7 @@ public abstract class Personaje implements Posicionable
 		this.salud.disminuir(new Salud(danio.getDanio()));
 		
 		if (this.salud.esCero()){
+			posicion.vaciar();
 			this.equipo.eliminar(this);
 		}
 	}
@@ -155,7 +156,7 @@ public abstract class Personaje implements Posicionable
 		this.aumentarKi(new Ki(KI_POR_TURNO));
 	}	
 	
-	private void actualizarMovimientosRestantes(int velocidadAnterior)
+	public void actualizarMovimientosRestantes(int velocidadAnterior)
 	{
 		equipo.actualizarMovimientosRestantes(this, velocidadAnterior, this.getVelocidad());
 	}

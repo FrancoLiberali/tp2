@@ -3,17 +3,17 @@ package model.consumibles;
 import static model.algoBall.ConstantesDelJuego.ESFERA_DEL_DRAGON_PORCENTAJE_PLUS_DANIO;
 import static model.algoBall.ConstantesDelJuego.ESFERA_DEL_DRAGON_TURNOS;
 
-import model.personajes.Personaje;
 import model.personajes.elementos.ContadorDeTurnos;
 import model.personajes.elementos.EstadoActividad;
 
 public class EstadoBuffDanio extends EstadoTemporal 
 {
-	private ContadorDeTurnos turnos = new ContadorDeTurnos(ESFERA_DEL_DRAGON_TURNOS);
 	private int porcentajePlusDanio = ESFERA_DEL_DRAGON_PORCENTAJE_PLUS_DANIO;
 	
 	public EstadoBuffDanio(EstadoActividad actual) {
+		turnos = new ContadorDeTurnos(ESFERA_DEL_DRAGON_TURNOS);
 		this.rutaImagen = actual.getImagen();
+		this.nombre = actual.getNombre();
 		if (actual.esTemporal()){
 			EstadoTemporal actualTemporal = (EstadoTemporal) actual;
 			this.siguienteEstado = actual;
@@ -35,8 +35,6 @@ public class EstadoBuffDanio extends EstadoTemporal
 		
 	}
 
-	
-	
 	private int calcularDanio(int danio, int plusPorcentaje)
 	{
 		return danio + (danio*plusPorcentaje)/100;
@@ -45,15 +43,6 @@ public class EstadoBuffDanio extends EstadoTemporal
 	public EstadoActividad getEstadoAnterior()
 	{
 		return this.anteriorEstado;
-	}
-	
-	@Override
-	public void actualizarEstado(Personaje personaje) {
-		if (turnos.estaEnCero()){
-			personaje.setEstado(anteriorEstado);
-			return;
-		}
-		turnos.reducir();
 	}
 	
 }

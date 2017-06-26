@@ -71,17 +71,17 @@ public class VistaTablero {
         
         for (Personaje personaje : equipo1){
         	Posicion posicion = personaje.getPosicion();
-        	Image imagen = new Image(personaje.getImagen());
+        	Image imagen = new Image(personaje.getImagen(), tamanioCasillero *2 /3, tamanioCasillero *2 /3, false, true);
         	canvas.getGraphicsContext2D().strokeRect(posicion.getColumna() * tamanioCasillero +1, posicion.getFila() * tamanioCasillero +1, tamanioCasillero-2, tamanioCasillero-2);
-        	canvas.getGraphicsContext2D().drawImage(imagen,posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, tamanioCasillero*2 /3, tamanioCasillero*2 /3);
+        	canvas.getGraphicsContext2D().drawImage(imagen,posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6);
         }
         
         canvas.getGraphicsContext2D().setStroke(Color.RED);
         for (Personaje personaje : equipo2){
         	Posicion posicion = personaje.getPosicion();
-        	Image imagen = new Image(personaje.getImagen());
+        	Image imagen = new Image(personaje.getImagen(), tamanioCasillero *2 /3, tamanioCasillero *2 /3, false, true);
         	canvas.getGraphicsContext2D().strokeRect(posicion.getColumna() * tamanioCasillero +1, posicion.getFila() * tamanioCasillero +1, tamanioCasillero-2, tamanioCasillero-2);
-        	canvas.getGraphicsContext2D().drawImage(imagen, posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6, tamanioCasillero *2 /3, tamanioCasillero *2 /3);
+        	canvas.getGraphicsContext2D().drawImage(imagen, posicion.getColumna() * tamanioCasillero + tamanioCasillero /6, posicion.getFila() * tamanioCasillero + tamanioCasillero /6);
         }
         
     }
@@ -103,6 +103,6 @@ public class VistaTablero {
     }
 
     public void update() {
-        this.dibujar();
+    	this.dibujar();
     }
 }

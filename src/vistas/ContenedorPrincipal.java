@@ -80,7 +80,7 @@ public class ContenedorPrincipal extends BorderPane {
     	        
         Button finalizarTurno = new Button();
         finalizarTurno.setText("Finalizar turno");
-        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(juego, consola, botonera1, contenedorVertical, finalizarTurno);
+        BotonFinalizarTurnoHandler finalizarHandler = new BotonFinalizarTurnoHandler(juego, consola, botonera1, contenedorVertical, finalizarTurno, vistaTablero);
         finalizarTurno.setOnAction(finalizarHandler);
         contenedorVertical.getChildren().add(finalizarTurno);
         

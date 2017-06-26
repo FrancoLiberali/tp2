@@ -33,10 +33,7 @@ public class CajaDeInformacionPersonaje extends VBox{
 		this.setAlignment(Pos.CENTER);
 		HBox hb = new HBox();
 		contenedorImagen = new ImageView();
-		contenedorImagen.setFitWidth(50);
-		contenedorImagen.setPreserveRatio(true);
-		contenedorImagen.setSmooth(true);
-        contenedorImagen.setImage(new Image(personaje.getImagen()));
+        contenedorImagen.setImage(new Image(personaje.getImagen(),50,70,false,true));
 		hb.getChildren().add(contenedorImagen);
 		this.panelCaracteristicas = new PanelDeCaracteristicas(caracteristicas);
 		hb.getChildren().add(panelCaracteristicas);
@@ -52,7 +49,7 @@ public class CajaDeInformacionPersonaje extends VBox{
 		this.getChildren().remove(nombrePersonaje);
 		this.setNombrePersonaje();
 		this.getChildren().add(0, nombrePersonaje);
-		contenedorImagen.setImage(new Image(personaje.getImagen()));
+		contenedorImagen.setImage(new Image(personaje.getImagen(),50,70,false,true));
 		this.barraDeVida.actualizar();
 		this.caracteristicas = this.personaje.darCaracteriticas();
 		this.panelCaracteristicas.actualizar(caracteristicas);

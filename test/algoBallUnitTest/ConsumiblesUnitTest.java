@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import model.algoBall.Equipo;
 import model.consumibles.Consumible;
 import model.consumibles.EsferaDelDragon;
 import model.consumibles.NubeVoladora;
@@ -81,6 +82,8 @@ public class ConsumiblesUnitTest
 	{
 		Consumible nube = new NubeVoladora();
 		Personaje goku = new Goku();
+		Equipo equipo = new Equipo("");
+		equipo.agregarPersonaje(goku);
 		
 		int velocidad = goku.getVelocidad();
 		int velEsperada = velocidad * 4; 

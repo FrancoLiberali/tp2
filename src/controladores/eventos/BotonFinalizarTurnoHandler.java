@@ -8,6 +8,7 @@ import model.algoBall.AlgoBall;
 import vistas.BotoneraIzquierda;
 import vistas.Consola;
 import vistas.ReproductorEfectos;
+import vistas.VistaTablero;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
 	
@@ -15,18 +16,20 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
     private BotoneraIzquierda botonera;
     private VBox contenedor;
     private Button finalizarTurno;
- 
+    private VistaTablero vistaTablero; 
     
-    public BotonFinalizarTurnoHandler(AlgoBall juego, Consola consola, BotoneraIzquierda botonera, VBox contenedor, Button finalizarTurno) {
+    public BotonFinalizarTurnoHandler(AlgoBall juego, Consola consola, BotoneraIzquierda botonera, VBox contenedor, Button finalizarTurno, VistaTablero vista) {
         this.juego = juego;
         this.botonera = botonera;
         this.contenedor = contenedor;
         this.finalizarTurno = finalizarTurno;
+        this.vistaTablero = vista;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         juego.finalizarTurno();
+        vistaTablero.update();
         botonera = botonera.getSiguiente();
         botonera.actualizar();
         contenedor.getChildren().clear();
