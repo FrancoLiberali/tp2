@@ -25,6 +25,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import model.algoBall.AlgoBall;
 import model.algoBall.Equipo;
 import model.personajes.Personaje;
 
@@ -41,10 +42,12 @@ public class BotoneraIzquierda extends VBox{
     private Equipo equipoMover;
     private Equipo equipoAtacar;
     private Hashtable<Button, BotonAtaqueHandler> botonesAtacar = new Hashtable<Button, BotonAtaqueHandler>();
+    private AlgoBall juego;
     
-	public BotoneraIzquierda(Equipo equipoMover, Equipo equipoAtacar,VistaTablero vistaTablero, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas){
+	public BotoneraIzquierda(AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar,VistaTablero vistaTablero, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas){
 		this.setSpacing(10);
 	    this.setPrefWidth(75);
+	    this.juego = juego;
 		this.vistaTablero = vistaTablero;
 		this.consola = consola;
 		this.cajas = cajas;
@@ -126,7 +129,7 @@ public class BotoneraIzquierda extends VBox{
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(personaje, cajas, consola);
+    	BotonAtaqueBasicoHandler ataqueHandler = new BotonAtaqueBasicoHandler(juego, personaje, cajas, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);
@@ -139,7 +142,7 @@ public class BotoneraIzquierda extends VBox{
     	boton.setText(text);
     	boton.setMinWidth(this.getPrefWidth());
     	botones.add(boton);
-    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(personaje, cajas, consola);
+    	BotonAtaqueEspecialHandler ataqueHandler = new BotonAtaqueEspecialHandler(juego, personaje, cajas, consola);
     	boton.setOnAction(ataqueHandler);
     	handlersBotones.add(ataqueHandler);
     	boton.setDisable(true);

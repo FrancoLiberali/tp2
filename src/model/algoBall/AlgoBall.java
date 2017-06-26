@@ -93,11 +93,8 @@ public class AlgoBall
 		return turnoActual.getTurnoSiguiente();
 	}
 	
-	
-	public void terminarJuego(){
-		@SuppressWarnings("unused")
-		Jugador jugadorGanador = this.turnoActual.getJugador();
-		/*mensaje final*/
+	public Jugador getJugadorActual(){
+		return turnoActual.getJugador();
 	}
 	
 	public void iniciarPersonajes(Jugador jugador1, Jugador jugador2)

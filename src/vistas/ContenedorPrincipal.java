@@ -72,9 +72,9 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorVertical.setPadding(new Insets(15));
         contenedorVertical.setPrefWidth(200);
         
-        BotoneraIzquierda botonera1 = new BotoneraIzquierda(equipoMover, equipoAtacar, vistaTablero, consola, cajas);
+        BotoneraIzquierda botonera1 = new BotoneraIzquierda(juego, equipoMover, equipoAtacar, vistaTablero, consola, cajas);
         contenedorVertical.getChildren().add(botonera1);
-        BotoneraIzquierda botonera2 = new BotoneraIzquierda(equipoAtacar, equipoMover, vistaTablero, consola, cajas);
+        BotoneraIzquierda botonera2 = new BotoneraIzquierda(juego, equipoAtacar, equipoMover, vistaTablero, consola, cajas);
         botonera1.setSiguiente(botonera2);
         botonera2.setSiguiente(botonera1);
     	        
