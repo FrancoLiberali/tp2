@@ -107,7 +107,7 @@ public class BotoneraIzquierda extends VBox{
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         botonTransformar.setDisable(true);
-        BotonTransformarEventHandler botonTransformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, consola, cajas, danioBasicos, danioEspecial, cajaProxima);
+        BotonTransformarEventHandler botonTransformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, consola, cajas, danioBasicos, danioEspecial, costoTransformar, cajaProxima);
         botonTransformar.setOnAction(botonTransformarHandler);
         botones.add(botonTransformar);
         handlersBotones.add(botonTransformarHandler);

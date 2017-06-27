@@ -55,8 +55,8 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 			}
 			danioBasicos.modificar("danio(PdP)", personaje.getPoderDePelea());
 			danioEspecial.modificar("danio", personaje.getDanioAtaqueEspecial());
-			costoEspecial.modificar("costo", personaje.getCostoAtaqueEspecial());
-			costoTransformar.modificar("costo", personaje.getCostoTransformar());
+			costoEspecial.modificar("costo(ki)", personaje.getCostoAtaqueEspecial());
+			costoTransformar.modificar("costo(ki)", personaje.getCostoTransformar());
 			cajaProxima.actualizar(personaje);
 		}
 	}

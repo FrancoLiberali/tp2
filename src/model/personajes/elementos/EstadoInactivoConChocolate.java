@@ -34,6 +34,10 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public void setEstadoAnterior(EstadoActividad anterior) {
 		this.estadoAnterior = anterior;
 	}
+	
+	public void setEstadoSiguiente(EstadoActividad siguiente) {
+		this.estadoSiguiente = siguiente;
+	}
 
 	@Override
 	public int getVelocidad() {

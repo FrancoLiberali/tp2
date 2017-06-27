@@ -36,6 +36,7 @@ public class EstadoMajinBooOriginal extends EstadoTransformacion {
 	{	
 		EstadoInactivoConChocolate chocolate = new EstadoInactivoConChocolate();
 		chocolate.setEstadoAnterior(victima.getEstado());
+		chocolate.setEstadoSiguiente(victima.getEstado().getEstadoSiguiente());
 		victima.setEstado(chocolate);
 	}
 }
