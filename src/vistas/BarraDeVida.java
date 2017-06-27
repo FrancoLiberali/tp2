@@ -22,6 +22,7 @@ public class BarraDeVida extends HBox {
 		numeroVida.setText(((Integer)personaje.getSalud()).toString());
 		numeroVida.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
 		ProgressBar barraVidaParticular = new ProgressBar(); // crea la barra de vida
+		barraVidaParticular.prefWidthProperty().bind(this.widthProperty().subtract(20));
 		barraVidaParticular.setProgress(personaje.getPorcentajeSalud()/100F); // Ese F es necesario
 		this.getChildren().addAll(barraVidaParticular, numeroVida);
 	}

@@ -24,6 +24,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.algoBall.AlgoBall;
 import model.algoBall.Equipo;
@@ -45,7 +46,7 @@ public class BotoneraIzquierda extends VBox{
     private AlgoBall juego;
     
 	public BotoneraIzquierda(AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar,VistaTablero vistaTablero, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas){
-		this.setSpacing(5);
+		this.setSpacing(7);
 	    this.setPrefWidth(75);
 	    this.juego = juego;
 		this.vistaTablero = vistaTablero;
@@ -57,6 +58,7 @@ public class BotoneraIzquierda extends VBox{
 		LabelModificable danioEspecial =  new LabelModificable();
 		LabelModificable costoEspecial =  new LabelModificable();
 		LabelModificable costoTransformar =  new LabelModificable();
+		CajaInformacionProximaTransformacion cajaProxima = new CajaInformacionProximaTransformacion();
         
 		Label nombreDeEquipo = new Label (equipoMover.getNombre());
     	Label label = new Label("Seleccionar personaje");
@@ -72,7 +74,7 @@ public class BotoneraIzquierda extends VBox{
             this.getChildren().add(tBoton);
         }
         
-        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones, danioBasicos, danioEspecial, costoEspecial, costoTransformar));
+        grupo.selectedToggleProperty().addListener(new ModificadorDePersonaje(grupo,botones, handlersBotones, danioBasicos, danioEspecial, costoEspecial, costoTransformar, cajaProxima));
         
         this.setBotonesDeMovimiento(equipoMover);
         ContenedorFlechas contenedorFlechas = new ContenedorFlechas(botones);
@@ -82,31 +84,36 @@ public class BotoneraIzquierda extends VBox{
         
         Label labelBasicos = new Label("Realizar ataque basico sobre:");
         this.getChildren().add(labelBasicos);
-        
         this.getChildren().add(danioBasicos);
+        HBox hb1 = new HBox();
+        hb1.setSpacing(10);
         for (Personaje personaje : equipoAtacar){
         	Button boton = this.setBotonAtaqueBasicoPersonaje(personaje.getNombre(), personaje);
-        	this.getChildren().add(boton);
+        	hb1.getChildren().add(boton);
         }
+        this.getChildren().add(hb1);
         Label labelEspecial = new Label("Realizar ataque especial sobre:");
         this.getChildren().add(labelEspecial);
         this.getChildren().add(danioEspecial);
         this.getChildren().add(costoEspecial);
+        HBox hb2 = new HBox();
+        hb2.setSpacing(10);
         for (Personaje personaje : equipoAtacar){
         	Button boton = this.setBotonAtaqueEspecialPersonaje(personaje.getNombre(), personaje);
-        	this.getChildren().add(boton);
+        	hb2.getChildren().add(boton);
         }
-        
+        this.getChildren().add(hb2);
         
         Button botonTransformar = new Button();
         botonTransformar.setText("Transformar");
         botonTransformar.setDisable(true);
-        BotonTransformarEventHandler botonTransformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, consola, cajas, danioBasicos, danioEspecial);
+        BotonTransformarEventHandler botonTransformarHandler = new BotonTransformarEventHandler(equipoMover, vistaTablero, consola, cajas, danioBasicos, danioEspecial, cajaProxima);
         botonTransformar.setOnAction(botonTransformarHandler);
         botones.add(botonTransformar);
         handlersBotones.add(botonTransformarHandler);
         this.getChildren().add(botonTransformar);
         this.getChildren().add(costoTransformar);
+        this.getChildren().add(cajaProxima);
 	}
 	
 	public void setSiguiente(BotoneraIzquierda siguiente){

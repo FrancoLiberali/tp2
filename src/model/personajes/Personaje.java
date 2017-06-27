@@ -231,7 +231,7 @@ public abstract class Personaje implements Posicionable
 	    return 0;
 	}
 	
-	public Hashtable<String, Integer> darCaracteriticas() {
+	public Hashtable<String, Integer> darCaracteristicas() {
 		Hashtable<String, Integer> caracteristicas = new Hashtable<String, Integer>();
 		caracteristicas.put("Ki", this.getKiCantidad());
 		caracteristicas.put("Vel", this.getVelocidad());
@@ -240,9 +240,8 @@ public abstract class Personaje implements Posicionable
 		return caracteristicas;
 	}
 
-	public Hashtable<String, Integer> darCaracteriticasTransormacion() {
+	public Hashtable<String, Integer> darCaracteristicasTransformacion() {
 		Hashtable<String, Integer> caracteristicas = new Hashtable<String, Integer>();
-		//caracteristicas.put("Ki", estadoTransformacionActual.getEstadoSiguiente().); ki necesario
 		caracteristicas.put("Vel", estadoTransformacionActual.getEstadoSiguiente().getVelocidad());
 		caracteristicas.put("DdA", estadoTransformacionActual.getEstadoSiguiente().getDistanciaDeAtaque());
 		caracteristicas.put("PdP", estadoTransformacionActual.getEstadoSiguiente().getPoderDePelea());

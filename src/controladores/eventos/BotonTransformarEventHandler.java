@@ -8,6 +8,7 @@ import model.exceptions.KiInsuficienteException;
 import model.exceptions.NoCumpleCondicionesDeTransformacionException;
 import model.exceptions.YaNoPuedeEvolucionarException;
 import vistas.CajaDeInformacionPersonaje;
+import vistas.CajaInformacionProximaTransformacion;
 import vistas.Consola;
 import vistas.LabelModificable;
 import vistas.VistaTablero;
@@ -20,14 +21,16 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 	private Consola consola;
 	private LabelModificable danioBasico;
 	private LabelModificable danioEspecial;
+	private CajaInformacionProximaTransformacion cajaProxima;
 	
-	public BotonTransformarEventHandler(Equipo equipo,VistaTablero vista, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas, LabelModificable danioBasico, LabelModificable danioEspecial){
+	public BotonTransformarEventHandler(Equipo equipo,VistaTablero vista, Consola consola, Hashtable<String,CajaDeInformacionPersonaje> cajas, LabelModificable danioBasico, LabelModificable danioEspecial, CajaInformacionProximaTransformacion cajaProxima){
 		this.equipo = equipo;
 		this. vista = vista;
 		this.consola = consola;
 		this.cajas = cajas;
 		this.danioBasico = danioBasico;
 		this.danioEspecial = danioEspecial;
+		this.cajaProxima = cajaProxima;
 	}
 
 	@Override
@@ -38,6 +41,7 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 			cajas.get(personajeModificador.getNombre()).actualizar();
 			danioBasico.modificar("danio(PdP)", personajeModificador.getPoderDePelea());
 			danioEspecial.modificar("danio", personajeModificador.getDanioAtaqueEspecial());
+			cajaProxima.actualizar(personajeModificador);
 			consola.reiniciar();
 		}
 		catch (YaNoPuedeEvolucionarException error){

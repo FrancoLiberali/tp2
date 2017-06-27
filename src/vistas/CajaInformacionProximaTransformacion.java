@@ -12,45 +12,40 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import model.personajes.Personaje;
 
-public class CajaDeInformacionPersonaje extends VBox{
-	
+public class CajaInformacionProximaTransformacion extends VBox{
 	private Personaje personaje;
-	private Hashtable<String, Integer> caracteristicas;
-	private Label nombrePersonaje ; 
-	private BarraDeVida barraDeVida; 
+	private Hashtable<String, Integer> caracteristicas = new Hashtable<String, Integer>();
+	private Label nombrePersonaje = new Label();
 	private PanelDeCaracteristicas panelCaracteristicas;
 	private ImageView contenedorImagen;
 	
 	
-	public CajaDeInformacionPersonaje(Personaje personaje){
-		this.caracteristicas = personaje.darCaracteristicas();
-		this.personaje = personaje;
-		this.setNombrePersonaje();
+	public CajaInformacionProximaTransformacion(){
+		this.setSpacing(2);
 		this.getChildren().add(nombrePersonaje);
 		this.setAlignment(Pos.CENTER);
-		this.barraDeVida = new BarraDeVida(personaje);
-		this.getChildren().add(barraDeVida );
 		HBox hb = new HBox();
 		contenedorImagen = new ImageView();
-        contenedorImagen.setImage(new Image(personaje.getImagen(),50,70,false,true));
 		hb.getChildren().add(contenedorImagen);
 		this.panelCaracteristicas = new PanelDeCaracteristicas(caracteristicas);
 		hb.getChildren().add(panelCaracteristicas);
 		this.getChildren().add(hb);
+		this.setDisable(true);
 		
 	}	
 	
 	public void setNombrePersonaje(){
-		this.nombrePersonaje = new Label(personaje.getNombre() + " " + personaje.getEstado().getNombre());		
-		nombrePersonaje.setFont(Font.font("courier new", FontWeight.BOLD, 16));
+		this.nombrePersonaje = new Label(personaje.getNombre() + " " + personaje.getEstado().getEstadoSiguiente().getNombre());		
+		nombrePersonaje.setFont(Font.font("courier new", FontWeight.BOLD, 14));
 	}
-	public void actualizar(){
+	public void actualizar(Personaje personaje){
+		this.personaje = personaje;
 		this.getChildren().remove(nombrePersonaje);
 		this.setNombrePersonaje();
 		this.getChildren().add(0, nombrePersonaje);
-		contenedorImagen.setImage(new Image(personaje.getImagen(),50,70,false,true));
-		this.barraDeVida.actualizar();
-		this.caracteristicas = this.personaje.darCaracteristicas();
+		contenedorImagen.setImage(new Image(personaje.getEstado().getEstadoSiguiente().getImagen(),30,50,false,true));
+		this.caracteristicas = this.personaje.darCaracteristicasTransformacion();
 		this.panelCaracteristicas.actualizar(caracteristicas);
+		this.setDisable(false);
 	}
 }

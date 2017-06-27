@@ -47,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
     	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(5);
         contenedorVertical.setPadding(new Insets(5));
-        contenedorVertical.setPrefWidth(250);
+        contenedorVertical.setPrefWidth(300);
         
         for (Personaje personaje : equipoAtacar){
         	CajaDeInformacionPersonaje caja = new CajaDeInformacionPersonaje(personaje);

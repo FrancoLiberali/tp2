@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import model.personajes.Personaje;
+import vistas.CajaInformacionProximaTransformacion;
 import vistas.LabelModificable;
 
 public class ModificadorDePersonaje implements ChangeListener<Toggle>{
@@ -19,9 +20,10 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 	private LabelModificable danioEspecial;
 	private LabelModificable costoTransformar;
 	private LabelModificable costoEspecial;
+	private CajaInformacionProximaTransformacion cajaProxima;
     
     
-    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones, LabelModificable danioBasicos,LabelModificable danioEspecial,LabelModificable costoEspecial, LabelModificable costoTransformar){
+    public ModificadorDePersonaje(ToggleGroup grupo, List<Button> botones, List<BotonModificableHandler> handlersBotones, LabelModificable danioBasicos,LabelModificable danioEspecial,LabelModificable costoEspecial, LabelModificable costoTransformar, CajaInformacionProximaTransformacion cajaProxima){
     	this.botones = botones;
     	this.handlersBotones = handlersBotones;
     	this.grupo = grupo;
@@ -29,6 +31,7 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
     	this.danioEspecial = danioEspecial;
     	this.costoEspecial = costoEspecial;
     	this.costoTransformar = costoTransformar;
+    	this.cajaProxima = cajaProxima;
     }
     
 	public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) {
@@ -40,6 +43,7 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 			danioEspecial.setDisable(true);
 			costoEspecial.setDisable(true);
 			costoTransformar.setDisable(true);
+			cajaProxima.setDisable(true);
 		}
 		else{
 			Personaje personaje = (Personaje) grupo.getSelectedToggle().getUserData();
@@ -53,6 +57,7 @@ public class ModificadorDePersonaje implements ChangeListener<Toggle>{
 			danioEspecial.modificar("danio", personaje.getDanioAtaqueEspecial());
 			costoEspecial.modificar("costo", personaje.getCostoAtaqueEspecial());
 			costoTransformar.modificar("costo", personaje.getCostoTransformar());
+			cajaProxima.actualizar(personaje);
 		}
 	}
 }
