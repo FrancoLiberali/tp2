@@ -49,6 +49,16 @@ public class EstadoInactivoConChocolate implements EstadoActividad
 	public int getDistanciaDeAtaque() {
 		return this.estadoAnterior.getDistanciaDeAtaque();
 	}
+	
+	@Override
+	public Ki getCostoTransformar() {
+		return this.estadoAnterior.getCostoTransformar();
+	}
+	
+	@Override
+	public int getDanioAtaqueEspecial(int porcentaje) {
+		return this.estadoAnterior.getDanioAtaqueEspecial(porcentaje);
+	}
 
 	@Override
 	public void realizarAtaqueBasico(Personaje victima) {

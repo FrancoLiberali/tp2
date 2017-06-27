@@ -19,6 +19,10 @@ public class AtaqueEspecial {
 		return porcentaje;
 	}
 	
+	public Ki getCosto(){
+		return kiNecesario;
+	}
+	
 	public String getNombre(){
 		return nombre;
 	}

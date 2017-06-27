@@ -22,6 +22,16 @@ public abstract class EstadoTemporal extends EstadoTransformacion{
 	}
 	
 	@Override
+	public Ki getCostoTransformar() {
+		return this.anteriorEstado.getCostoTransformar();
+	}
+	
+	@Override
+	public int getDanioAtaqueEspecial(int porcentaje) {
+		return this.anteriorEstado.getDanioAtaqueEspecial(porcentaje);
+	}
+	
+	@Override
 	public void capturarConsumible(Personaje personaje, Consumible consumible) {
 		consumible.aplicarAPersonajeConTemporalAnterior(personaje);
 	}

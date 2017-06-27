@@ -32,6 +32,7 @@ public class BotonAtaqueBasicoHandler extends BotonAtaqueHandler{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
         	cajas.get(personajeAAtacar.getNombre()).actualizar();
+        	consola.reiniciar();
         }
         catch(NoTienesAtaquesRestantesException error){
         	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);

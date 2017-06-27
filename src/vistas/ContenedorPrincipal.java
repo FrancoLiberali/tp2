@@ -47,7 +47,7 @@ public class ContenedorPrincipal extends BorderPane {
     	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(5);
         contenedorVertical.setPadding(new Insets(5));
-        contenedorVertical.setPrefWidth(300);
+        contenedorVertical.setPrefWidth(250);
         
         for (Personaje personaje : equipoAtacar){
         	CajaDeInformacionPersonaje caja = new CajaDeInformacionPersonaje(personaje);
@@ -70,7 +70,7 @@ public class ContenedorPrincipal extends BorderPane {
     	VBox contenedorVertical = new VBox();
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
-        contenedorVertical.setPrefWidth(200);
+        contenedorVertical.setPrefWidth(300);
         
         BotoneraIzquierda botonera1 = new BotoneraIzquierda(juego, equipoMover, equipoAtacar, vistaTablero, consola, cajas);
         contenedorVertical.getChildren().add(botonera1);

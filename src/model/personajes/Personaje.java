@@ -87,6 +87,18 @@ public abstract class Personaje implements Posicionable
 		return this.estadoTransformacionActual.getDistanciaDeAtaque();
 	}
 	
+	public int getCostoAtaqueEspecial(){
+		return ataqueEspecial.getCosto().getKi();
+	}
+	
+	public int getCostoTransformar(){
+		return estadoTransformacionActual.getCostoTransformar().getKi();
+	}
+	
+	public int getDanioAtaqueEspecial(){
+		return estadoTransformacionActual.getDanioAtaqueEspecial(this.ataqueEspecial.getPorcentaje(new Ki(this.getCostoAtaqueEspecial())));
+	}
+	
 	public void aumentarKi(Ki kiPorTurno){
 		this.estadoTransformacionActual.aplicarKi(this, kiPorTurno);
 	}

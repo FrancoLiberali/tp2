@@ -26,6 +26,7 @@ public class BotonMoverHandler {
 		try{
     		equipo.mover(personaje, direccion);
         	cajas.get(personaje.getNombre()).actualizar();
+        	consola.reiniciar();
     		ReproductorEfectos.reproducirFX(ReproductorEfectos.MOVE);
     	}
     	catch(NoQuedanMovimientosException error){

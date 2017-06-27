@@ -19,4 +19,6 @@ public interface EstadoActividad
 	void capturarConsumible(Personaje personaje, Consumible consumible);
 	String getImagen();
 	boolean esTemporal();
+	Ki getCostoTransformar();
+	int getDanioAtaqueEspecial(int porcentaje);
 }

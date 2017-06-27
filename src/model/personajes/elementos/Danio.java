@@ -42,6 +42,11 @@ public class Danio
 		return new Danio(danioTotal);
 	}
 	
+	public int obtenerDanioEspecial(int plusPorcentaje)
+	{
+		return this.danio + this.calcularPorcentajeDanio(plusPorcentaje);
+	}
+	
 	private int calcularPorcentajeDanio(int porcentaje)
 	{
 		return (int) (this.danio * (porcentaje / 100.0f));

@@ -72,6 +72,14 @@ public abstract class EstadoTransformacion implements EstadoActividad {
 		return anteriorEstado;
 	}
 	
+	public Ki getCostoTransformar(){
+		return kiParaTransformacion;
+	}
+	
+	public int getDanioAtaqueEspecial(int porcentajeBonus){
+		return this.poderDePelea.obtenerDanioEspecial(porcentajeBonus);
+	}
+	
 	public String getImagen(){
 		return this.rutaImagen;
 	}
