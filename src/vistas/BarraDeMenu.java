@@ -1,6 +1,7 @@
 package vistas;
 
 import controladores.eventos.OpcionAcercaDeEventHandler;
+import controladores.eventos.OpcionAyudaEventHandler;
 import controladores.eventos.OpcionMudoEventHandler;
 import controladores.eventos.OpcionPantallaCompletaEventHandler;
 import javafx.scene.control.Menu;
@@ -23,12 +24,16 @@ public class BarraDeMenu extends MenuBar {
 
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+        MenuItem opcionAyuda = new MenuItem("Ayuda...");
 
         opcionSalir.setOnAction(event ->
         stage.fireEvent( new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST)));
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
+        
+        OpcionAyudaEventHandler opcionAyudaHandler = new OpcionAyudaEventHandler();
+        opcionAyuda.setOnAction(opcionAyudaHandler);
 
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
@@ -40,6 +45,7 @@ public class BarraDeMenu extends MenuBar {
 
         menuArchivo.getItems().addAll(opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
+        menuAyuda.getItems().addAll(opcionAyuda);
         menuVer.getItems().addAll(opcionPantallaCompleta);
         menuAudio.getItems().addAll(opcionMudo);
 
