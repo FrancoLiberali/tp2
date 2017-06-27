@@ -47,6 +47,8 @@ public class ConsumiblesUnitTest
 	{
 		Consumible nube = new NubeVoladora();
 		Personaje goku = new Goku();
+		Equipo equipo = new Equipo("");
+		equipo.agregarPersonaje(goku);
 		
 		int velocidad = goku.getVelocidad();
 		int velEsperada = velocidad * 2; 
@@ -62,6 +64,8 @@ public class ConsumiblesUnitTest
 		Consumible nube = new NubeVoladora();
 		Consumible esfera = new EsferaDelDragon();
 		Personaje goku = new Goku();
+		Equipo equipo = new Equipo("");
+		equipo.agregarPersonaje(goku);
 		
 		int velocidad = goku.getVelocidad();
 		int velEsperada = velocidad * 2; 
@@ -98,6 +102,8 @@ public class ConsumiblesUnitTest
 	{
 		Consumible nube = new NubeVoladora();
 		Personaje goku = new Goku();
+		Equipo equipo = new Equipo("");
+		equipo.agregarPersonaje(goku);
 		
 		int velocidad = goku.getVelocidad();
 		goku.agarrarConsumible(nube);
@@ -118,6 +124,8 @@ public class ConsumiblesUnitTest
 		Consumible nube = new NubeVoladora();
 		Consumible bola = new EsferaDelDragon();
 		Personaje goku = new Goku();
+		Equipo equipo = new Equipo("");
+		equipo.agregarPersonaje(goku);
 		
 		int velocidad = goku.getVelocidad();
 		goku.agarrarConsumible(nube);
