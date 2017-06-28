@@ -17,7 +17,7 @@ import model.exceptions.PersonajeInexistenteException;
 import model.personajes.Personaje;
 import vistas.CajaDeInformacionPersonaje;
 import vistas.Consola;
-import vistas.ReproductorEfectos;
+
 
 
 public class BotonAtaqueBasicoHandler extends BotonAtaqueHandler{
@@ -30,24 +30,24 @@ public class BotonAtaqueBasicoHandler extends BotonAtaqueHandler{
     public void handle(ActionEvent actionEvent) {
         try{
         	this.personajeModificador.realizarAtaqueBasico(personajeAAtacar);
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ATTACK);
+        	
         	cajas.get(personajeAAtacar.getNombre()).actualizar();
         	consola.reiniciar();
         }
         catch(NoTienesAtaquesRestantesException error){
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
+        	
         	this.consola.agregarInformacion("Ya no tienes ataques!");
         }
         catch(PersonajeInexistenteException error){
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
+        	
         	this.consola.agregarInformacion("Ese personaje esta muerto x(");
         }
         catch(PersonajeEnEstadoChocolate error){
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
+        	
         	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
         }
         catch(FueraDeRangoException error){
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
+        	
         	this.consola.agregarInformacion("No! no puedes atacar mas lejos que tu distancia de ataque");
         }
         catch (JuegoTerminado error){

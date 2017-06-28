@@ -15,7 +15,7 @@ public class BarraDeMenu extends MenuBar {
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
     MenuItem opcionMudo = new MenuItem("Mudo");
 
-    public BarraDeMenu(Stage stage , Reproductor reproductor) {
+    public BarraDeMenu(Stage stage ) {
 
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
@@ -38,8 +38,6 @@ public class BarraDeMenu extends MenuBar {
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
         
-        OpcionMudoEventHandler opcionMudoHandler = new OpcionMudoEventHandler(reproductor);
-        opcionMudo.setOnAction(opcionMudoHandler);
 
         opcionPantallaCompleta.setDisable(true);
 

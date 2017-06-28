@@ -23,9 +23,7 @@ public class Aplicacion extends Application {
         stage.setTitle("Dragon AlgoBall");
         Screen screen = Screen.getPrimary();
         
-        Reproductor reproductor = new Reproductor();
-        reproductor.reproducionAutomitica(true);
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen, reproductor);
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(this, stage, screen);
         
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
         contenedorBienvenidos.requestFocus();
@@ -43,13 +41,13 @@ public class Aplicacion extends Application {
 
     }
     
-    public Scene crearJuego(Stage stage, String nombre1, String nombre2,Reproductor reproductor){
+    public Scene crearJuego(Stage stage, String nombre1, String nombre2){
     	AlgoBall juego = new AlgoBall(nombre1,nombre2);
     	
     	Equipo equipo1 = juego.getEquipoActual();
         Equipo equipo2 = juego.getEquipoSiguiente();
         
-        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, juego, equipo1, equipo2,reproductor);
+        ContenedorPrincipal contenedor = new ContenedorPrincipal(stage, juego, equipo1, equipo2);
         Scene escena = new Scene(contenedor, 640, 480);
 
         AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedor.getBarraDeMenu());

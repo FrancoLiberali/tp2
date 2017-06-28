@@ -12,7 +12,6 @@ import vistas.CajaDeInformacionPersonaje;
 import vistas.CajaInformacionProximaTransformacion;
 import vistas.Consola;
 import vistas.LabelModificable;
-import vistas.ReproductorEfectos;
 import vistas.VistaTablero;
 
 public class BotonTransformarEventHandler extends BotonModificableHandler {
@@ -50,19 +49,16 @@ public class BotonTransformarEventHandler extends BotonModificableHandler {
 			consola.reiniciar();
 		}
 		catch (YaNoPuedeEvolucionarException error){
-			ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
+			
 			this.consola.agregarInformacion("Este personaje ya no posee una proxima evolucion");
 		}
 		catch (KiInsuficienteException error){
-			ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
 			this.consola.agregarInformacion("El ki del personaje no es suficiente para evolucionar");
 		}
 		catch (NoCumpleCondicionesDeTransformacionException error){
-			ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
 			this.consola.agregarInformacion("Este personaje aun no cumple todas las condiciones para tranformarse");
 		}
 		catch(PersonajeEnEstadoChocolate error){
-        	ReproductorEfectos.reproducirFX(ReproductorEfectos.ERROR);
         	this.consola.agregarInformacion("Estas convertido en Chocolate :(");
 		}
 	}

@@ -29,9 +29,9 @@ public class ContenedorPrincipal extends BorderPane {
 	private Hashtable<String,CajaDeInformacionPersonaje> cajas = new Hashtable<String,CajaDeInformacionPersonaje>();
     
 
-    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar,Reproductor reproductor) {
+    public ContenedorPrincipal(Stage stage, AlgoBall juego, Equipo equipoMover, Equipo equipoAtacar) {
         this.setPrefWidth(75);
-    	this.setMenu(stage, reproductor);
+    	this.setMenu(stage);
         this.setConsola();
         this.setCentro(juego, equipoMover, equipoAtacar);
         this.setBotoneraDerecha(stage, juego, equipoAtacar, equipoMover);
@@ -88,8 +88,8 @@ public class ContenedorPrincipal extends BorderPane {
 
     }
 
-    private void setMenu(Stage stage,Reproductor reproductor) {
-        this.menuBar = new BarraDeMenu(stage, reproductor);
+    private void setMenu(Stage stage) {
+        this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
     }
 
@@ -101,9 +101,7 @@ public class ContenedorPrincipal extends BorderPane {
         contenedorCentral.setAlignment(Pos.CENTER);
         contenedorCentral.setSpacing(20);
         contenedorCentral.setPadding(new Insets(25));
-        //Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
-        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        //contenedorCentral.setBackground(new Background(imagenDeFondo));
+        ;
 
         this.setCenter(contenedorCentral);
     }

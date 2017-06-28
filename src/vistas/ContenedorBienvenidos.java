@@ -27,15 +27,13 @@ import javafx.stage.Stage;
 public class ContenedorBienvenidos extends VBox {
 
     Stage stage;
-    Reproductor reproductor;
     private Button botonEntrar;
     
-    public ContenedorBienvenidos(Aplicacion aplicacion, Stage stage, Screen screen ,Reproductor reproductor) {
+    public ContenedorBienvenidos(Aplicacion aplicacion, Stage stage, Screen screen ) {
 
         super();
 
         this.stage = stage;
-        this.reproductor = reproductor;
         
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
@@ -55,7 +53,7 @@ public class ContenedorBienvenidos extends VBox {
         botonMudo.setGraphic(imagenBoton);
         botonMudo.setStyle("-fx-background-color:transparent;");
         botonMudo.setAlignment(Pos.TOP_RIGHT );//no esta funcionando 
-        botonMudo.setOnAction(new MuteOnOffEventHandler(botonMudo, reproductor));
+       
        
         
         
@@ -85,7 +83,7 @@ public class ContenedorBienvenidos extends VBox {
         etiqueta.setText("Bienvenidos al AlgoBall. Por favor complete los siguientes parametros");
         etiqueta.setTextFill(Color.RED);
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2,reproductor);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(aplicacion, stage, label1, nombre1, label2, nombre2);
         botonEntrar.setOnAction(botonEntrarHandler);
         
         

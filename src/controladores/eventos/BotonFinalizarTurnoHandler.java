@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import model.algoBall.AlgoBall;
 import vistas.BotoneraIzquierda;
 import vistas.Consola;
-import vistas.ReproductorEfectos;
+
 import vistas.VistaTablero;
 
 public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
@@ -35,6 +35,6 @@ public class BotonFinalizarTurnoHandler implements EventHandler<ActionEvent> {
         contenedor.getChildren().clear();
         contenedor.getChildren().add(botonera);   
         contenedor.getChildren().add(finalizarTurno); 
-    	ReproductorEfectos.reproducirFX(ReproductorEfectos.ENDTURN);
+    	
     }
 }
